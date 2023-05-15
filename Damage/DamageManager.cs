@@ -4,6 +4,7 @@ using UnityEngine;
 public class DamageManager : Singleton<DamageManager>
 {
     public Sprite[] numberSprites;
+    public Sprite[] messages;
     public GameObject scoreLabelPrefab;
 
     public AnimationCurve labelMoveUpAnimationCurve;
@@ -67,6 +68,12 @@ public class DamageManager : Singleton<DamageManager>
         GameObject tempScoreLabelObj = GetLabelFromPool();
         tempScoreLabelObj.SetActive(true);
         tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_damage, _OnObj);
+    }
+    public void ShowMessageLabelOnObj(DamageLabel.Message _message, GameObject _OnObj)
+    {
+        GameObject tempScoreLabelObj = GetLabelFromPool();
+        tempScoreLabelObj.SetActive(true);
+        tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_message, _OnObj);
     }
 
 }
