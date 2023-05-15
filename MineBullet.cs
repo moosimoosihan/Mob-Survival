@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MineBullet : EffectBullet
@@ -33,7 +31,7 @@ public class MineBullet : EffectBullet
                 isExplode = true;
                 explosionEffect.SetActive(true);
                 mineObj.SetActive(false);
-                Fire(damage, -1, Vector3.zero, false);
+                Fire(damage, -1, Vector3.zero, knockBackPower, false);
                 DeActivate(duration);
             }
         }        

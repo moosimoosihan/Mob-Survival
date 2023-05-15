@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -69,6 +68,6 @@ public class MeleeWeapon : Weapon
 
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(damage, count, Vector3.zero);
+        bullet.GetComponent<Bullet>().Fire(damage, count, Vector3.zero, knockBackPower);
     }
 }

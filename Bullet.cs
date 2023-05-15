@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
 
     public float damage;
     public int per;
+    public float knockBackPower;
     protected bool hitOnlyOnce = true;
 
     [SerializeField]
@@ -28,10 +29,11 @@ public class Bullet : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public virtual void Init(float _damage, int _per, bool _deActivate = false)
+    public virtual void Init(float _damage, int _per, float _knockBackPower, bool _deActivate = false)
     {
         damage = _damage;
         per = _per;
+        knockBackPower = _knockBackPower;
 
         //duration이후에 총알 비활성화
         if (_deActivate)
@@ -40,11 +42,12 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public virtual void Fire(float _damage, int _per, Vector3 _dir, bool _deActivate = true, bool _hitOnlyOnce = true)
+    public virtual void Fire(float _damage, int _per, Vector3 _dir, float _knockBackPower, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         damage = _damage;
         per = _per;
         hitOnlyOnce = _hitOnlyOnce;
+        knockBackPower = _knockBackPower;
 
         if (per > -1)
         {
@@ -89,12 +92,12 @@ public class Bullet : MonoBehaviour
                 {
                     detectedEnemyList.Add(detectedEnemy);
                     if (detectedEnemy.gameObject.activeSelf)
-                        tempIsHit = detectedEnemy.GetDamage(damage);
+                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower);
                 }
             }
             else
             {
-                tempIsHit = detectedEnemy.GetDamage(damage);
+                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower);
             }            
         }
 

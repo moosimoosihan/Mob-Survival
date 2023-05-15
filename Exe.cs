@@ -36,7 +36,7 @@ public class Exe : Weapon
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         Vector3 ranVec = new Vector3(Random.Range(-distX, distX), distY, 0);
-        bullet.GetComponent<Bullet>().Fire(damage, count, ranVec);
+        bullet.GetComponent<Bullet>().Fire(damage, count, ranVec, knockBackPower);
     }
 
 }

@@ -55,7 +55,7 @@ public class MineWeapon : Weapon
             createdMineList.Add(mineBullet.gameObject);
         }
 
-        bulletScript.Init(damage, -1);
+        bulletScript.Init(damage, -1, knockBackPower);
         bulletScript.DeActivate(duration);
     }
 

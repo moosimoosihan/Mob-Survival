@@ -6,6 +6,7 @@ public abstract class Weapon : MonoBehaviour
     public float damage;
     public int count;
     public float delay;
+    public float knockBackPower;
     protected float timer;
     protected Player player;
 

@@ -59,7 +59,7 @@ public class EffectBullet : Bullet
         return result;
     }
 
-    public override void Fire(float _damage, int _per, Vector3 _dir, bool _deActivate = true, bool _hitOnlyOnce = true)
+    public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         if (enemyList.Count > 0)
             enemyList.Clear();
@@ -67,11 +67,12 @@ public class EffectBullet : Bullet
         enemyList = GetEnemies();
         hitOnlyOnce = _hitOnlyOnce;
         damage = _damage;
+        knockBackPower = _knockBackPower;
 
         for (int i = 0; i < enemyList.Count; i++)
         {
             //Debug.Log($"µ¥¹ÌÁö [{damage}]");
-            enemyList[i].GetDamage(damage);
+            enemyList[i].GetDamage(damage, knockBackPower);
         }
 
         if(_deActivate)

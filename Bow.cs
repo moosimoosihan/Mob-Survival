@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bow : Weapon
@@ -32,7 +30,7 @@ public class Bow : Weapon
 
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(damage, count, dir);
+        bullet.GetComponent<Bullet>().Fire(damage, count, dir, knockBackPower);
     }
 
 }

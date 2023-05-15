@@ -120,7 +120,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, lastDir);
 
-            tempBullet.Fire(damage, count, lastDir);
+            tempBullet.Fire(damage, count, lastDir, knockBackPower);
             yield return new WaitForSeconds(0.1f);                
         }
 
@@ -173,7 +173,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.localPosition = Vector3.zero + (positionOffset.normalized * distanceFromPivot);
             tempBullet.rotation = Quaternion.identity;
-            bulletScript.Fire(damage, tempPenetrationCount, Vector3.zero, false, false);            
+            bulletScript.Fire(damage, tempPenetrationCount, Vector3.zero, knockBackPower, false, false);
             createdBulletList.Add(bulletScript);
             angleCumulative += angleOffset;
 

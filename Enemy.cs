@@ -108,7 +108,7 @@ public class Enemy : CharacterStatus
 
     }
 
-    public virtual bool GetDamage(float _damage)
+    public virtual bool GetDamage(float _damage, float knockBackPower)
     {
         if (curHP <= 0)
             return false;
@@ -120,7 +120,7 @@ public class Enemy : CharacterStatus
         curHP -= _damage;
 
         if (gameObject.activeSelf)
-            StartCoroutine(KnockBack());
+            StartCoroutine(KnockBack(knockBackPower));
 
         if (curHP > 0)
         {
@@ -166,7 +166,7 @@ public class Enemy : CharacterStatus
         return true;
     }
 
-    IEnumerator KnockBack()
+    IEnumerator KnockBack(float knockBackPower)
     {
         if (scaner != null)
         {
@@ -177,7 +177,7 @@ public class Enemy : CharacterStatus
             {
                 Vector3 playerPos = scaner.nearestTarget.transform.position;
                 Vector3 dirVec = transform.position - playerPos;
-                rigid.AddForce(dirVec.normalized * 3, ForceMode2D.Impulse);
+                rigid.AddForce(dirVec.normalized * knockBackPower, ForceMode2D.Impulse);
                 yield return new WaitForSeconds(0.1f);
                 knockBack = false;
             }            

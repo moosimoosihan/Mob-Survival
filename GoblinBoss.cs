@@ -81,7 +81,7 @@ public class GoblinBoss : Enemy
         missileDamage = data.attackDamage/2;
         bulletSpeed = 3;
     }
-    public override bool GetDamage(float _damage)
+    public override bool GetDamage(float _damage,float knockBackPower)
     {
         if (curHP <= 0)
             return false;
