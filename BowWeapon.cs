@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bow : Weapon
+public class BowWeapon : Weapon
 {
     public override void InitWeapon()
     {

@@ -1,12 +1,7 @@
 using UnityEngine;
 
-public class Exe : Weapon
+public class SpearWeapon : Weapon
 {
-    [SerializeField]
-    float distX;
-    [SerializeField]
-    float distY;
-
     public override void InitWeapon()
     {
         delay = 1;
@@ -30,13 +25,11 @@ public class Exe : Weapon
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
-
+        
         Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
 
-        bullet.position = transform.position;
+        bullet.position = transform.position + dir;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        Vector3 ranVec = new Vector3(Random.Range(-distX, distX), distY, 0);
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), count, ranVec, knockBackPower, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, isCritical);
     }
-
 }
