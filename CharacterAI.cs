@@ -91,7 +91,8 @@ public class CharacterAI : MonoBehaviour
             {
                 childTransform.localScale = new Vector3(-1, 1, 1);
             }
-            rigid.MovePosition(rigid.position + moveVec);
+            gameObject.GetComponent<Player>().StopToWall(moveVec);
+            rigid.MovePosition(gameObject.GetComponent<Player>().isBorder? rigid.position : rigid.position + moveVec);
         }
     }
 

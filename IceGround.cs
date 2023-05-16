@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IceGround : Bullet
 {
-    float time;
+    public float time;
 
     public virtual void OnTriggerStay2D(Collider2D collision) {
         if (!collision.CompareTag("Enemy"))

@@ -12,6 +12,7 @@ public class Player : CharacterStatus
     [Header("플레이어 컨트롤 설정")]
     public Vector2 inputVec;
     Rigidbody2D rigid;
+    public bool isBorder;
 
     [Header("이미지 혹은 에니메이션 설정")]
     SpriteRenderer spriter;
@@ -87,8 +88,9 @@ public class Player : CharacterStatus
 
         if(inputEnabled)
         {
+            StopToWall(inputVec);
             Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-            rigid.MovePosition(rigid.position + nextVec);
+            rigid.MovePosition(isBorder? rigid.position : rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
             {
@@ -99,7 +101,11 @@ public class Player : CharacterStatus
                 SetAnimationState(AnimationState.Idle);
             }
         }
-        
+    }
+    public void StopToWall(Vector2 _inputVec)
+    {
+        Debug.DrawRay(transform.position, _inputVec * 2, Color.green);
+        isBorder = Physics2D.Raycast(transform.position, _inputVec, 1, LayerMask.GetMask("Wall"));
     }
     void OnMove(InputValue value)
     {

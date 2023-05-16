@@ -31,7 +31,7 @@ public class IceBullet : Bullet
             // 얼음 장판 소환
             Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
             bullet.position = transform.position;
-            bullet.GetComponent<Bullet>().Init(groundDamage, -1, 0, true);
+            bullet.GetComponent<Bullet>().Init(groundDamage, -1, 0, false, true);
         }
 
         //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
