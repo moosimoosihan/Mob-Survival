@@ -6,7 +6,7 @@ public class CharacterStatus : MonoBehaviour
     public float curHP;
     public float speed;
     public float critRate;
-    public float critDamage = 1;
+    public float critDamage = 2;
 
     public float attackDamage;
 

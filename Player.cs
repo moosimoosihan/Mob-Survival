@@ -17,18 +17,14 @@ public class Player : CharacterStatus
     [Header("이미지 혹은 에니메이션 설정")]
     SpriteRenderer spriter;
     public Animator anim;
-    public RuntimeAnimatorController[] animCharacter;
 
     [Header("플레이어 상태 설정")]
     public bool playerDead = false;
     // 무속성, 불, 물, 흙, 바람, 전기, 정신, 빛, 어둠 등 상태 추가 예정
     public bool isDamaged = false;
-    public float damageDelay = 0.3f;
+    float damageDelay = 1f;
 
     [Header("플레이어 공격 설정")]
-    bool isAttack;
-    bool isAttackReady;
-    public float attackDeley;
     public Scaner scanner;
 
     [SerializeField]
@@ -135,6 +131,7 @@ public class Player : CharacterStatus
         if (playerDead || !GameManager.instance.isPlay || isDamaged)
             return;
 
+        isDamaged = true;
         double dam = 0;
         if(_damage>0){
             dam = _damage/(1+def*0.01);
@@ -159,8 +156,7 @@ public class Player : CharacterStatus
             curHP = 0;
             //죽음
             SetAnimationState(AnimationState.Death);
-            gameObject.SetActive(false);    //애니메이션 없으면 그냥 사라지게
-            //if(ret == false)
+            //gameObject.SetActive(false);    //애니메이션 없으면 그냥 사라지게
         }
     }
 
@@ -183,7 +179,6 @@ public class Player : CharacterStatus
         }
     }
     IEnumerator DamageDelay(){
-        isDamaged = true;
         yield return new WaitForSeconds(damageDelay);
         isDamaged = false;
     }

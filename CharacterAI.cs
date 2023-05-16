@@ -19,9 +19,6 @@ public class CharacterAI : MonoBehaviour
     float speed;
     float curSpeed;
 
-    [SerializeField]
-    State curState = State.Init;
-
     //??¢Ò?¢¥?¢¥? ¢¬¨­?? ¢¯?¨¬??¡×¨¡¢ç
     public GameObject mainCharacter;
 
