@@ -104,17 +104,17 @@ public class DamageLabel : MonoBehaviour
         return false;
     }
 
-    public void ShowDamageAnimation(int _damage, GameObject _OnObj)
+    public void ShowDamageAnimation(int _damage, GameObject _OnObj, bool _isCritical)
     {
         UpdateScore(_damage);
-        StartCoroutine(CoSpawnDamageLabel(_OnObj));
+        StartCoroutine(CoSpawnDamageLabel(_OnObj, _isCritical));
     }
     public void ShowDamageAnimation(Message _message, GameObject _OnObj)
     {
         UpdateMessage(_message);
         StartCoroutine(CoSpawnMessageLabel(_OnObj));
     }
-    IEnumerator CoSpawnDamageLabel(GameObject _OnObj)
+    IEnumerator CoSpawnDamageLabel(GameObject _OnObj,bool _isCritical)
     {
         //시작 사이즈 살짝 랜덤화
         float tempOffset = Random.Range(-0.05f, 0.05f);
@@ -141,7 +141,7 @@ public class DamageLabel : MonoBehaviour
         group.SetActive(true);
         
         //커진상태에서 작아지기
-        StartCoroutine(MyCoroutines.CoChangeSize(gameObject, 3f, transform.localScale.x, 0.15f));
+        StartCoroutine(MyCoroutines.CoChangeSize(gameObject, _isCritical? 10f : 3f, _isCritical? transform.localScale.x*2 :  transform.localScale.x, 0.15f));
 
         //빠르게 페이드인하면서 등장
         for (int i = 0; i < curScoreSpriteRenderers.Length; i++)

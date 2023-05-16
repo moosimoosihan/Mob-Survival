@@ -11,7 +11,7 @@ public class IceGround : Bullet
         time += Time.deltaTime;
         if(time>1){
             Enemy detectedEnemy = collision.GetComponent<Enemy>();
-            detectedEnemy.GetDamage(damage, 0);
+            detectedEnemy.GetDamage(damage, 0, false);
             time = 0;
         }
     }

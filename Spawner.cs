@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     public int bossCount = 0;
     void Awake()
     {
+        spawnPoint = GetComponentsInChildren<Transform>();
         //몬스터 데이터 불러오기
         string seperator = "\r\n";
         string[] lines = enemyDatabase.text.Substring(0).Split(seperator);
@@ -89,7 +90,7 @@ public class Spawner : MonoBehaviour
 
         GameObject enemy = GameManager.instance.pool.Get(enemySpawnDataList[monsterIndex].monsterPrefab);
 
-        int randPointIndex = Random.Range(0, spawnPoint.Length);
+        int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
         enemy.SetActive(true);
         if(enemy.GetComponent<Enemy>()){

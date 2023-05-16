@@ -63,11 +63,11 @@ public class DamageManager : Singleton<DamageManager>
         return tempLabel;
     }
 
-    public void ShowDamageLabelOnObj(int _damage, GameObject _OnObj)
+    public void ShowDamageLabelOnObj(int _damage, GameObject _OnObj, bool _isCritical)
     {
         GameObject tempScoreLabelObj = GetLabelFromPool();
         tempScoreLabelObj.SetActive(true);
-        tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_damage, _OnObj);
+        tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_damage, _OnObj, _isCritical);
     }
     public void ShowMessageLabelOnObj(DamageLabel.Message _message, GameObject _OnObj)
     {
@@ -75,5 +75,16 @@ public class DamageManager : Singleton<DamageManager>
         tempScoreLabelObj.SetActive(true);
         tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_message, _OnObj);
     }
-
+    public float Critical(CharacterStatus _character, float _damage, out bool _isCritical)
+    {
+        int ran = Random.Range(0,100);
+        if(_character.critRate*100 > ran){
+            //크리티컬 성공
+            _isCritical = true;
+            return _character.critDamage * _damage;
+        } else {
+            _isCritical = false;
+            return _damage;
+        }
+    }
 }

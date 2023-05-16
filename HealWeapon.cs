@@ -30,7 +30,7 @@ public class HealWeapon : Weapon
 
         if (GameManager.instance.players[playerNum].gameObject.activeSelf)
         {
-            GameManager.instance.players[playerNum].GetDamage(-damage);
+            GameManager.instance.players[playerNum].GetDamage(-damage, false);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
             if (GameManager.instance.players[playerNum].curHP > GameManager.instance.players[playerNum].maxHP)
@@ -41,7 +41,7 @@ public class HealWeapon : Weapon
             // 체력 회복 이펙트 생성
             Transform healEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
             Bullet healScript = healEffect.GetComponent<Bullet>();
-            healScript.Fire(0, -1, Vector3.zero, 0, true, false);
+            healScript.Fire(0, -1, Vector3.zero, 0,false, true, false);
             healEffect.position = GameManager.instance.players[playerNum].transform.position;
             //healEffect.SetParent(GameManager.instance.players[playerNum].transform);
             //healEffect.localPosition = Vector3.zero;

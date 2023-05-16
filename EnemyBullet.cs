@@ -5,12 +5,14 @@ public class EnemyBullet : MonoBehaviour
 {
     public float damage;
     public int per;
+    public bool isCritical;
     protected float duration = 5;
 
-    public void Init(float _damage, int _per)
+    public void Init(float _damage, int _per, bool _isCritical)
     {
         damage = _damage;
         per = _per;
+        isCritical = _isCritical;
         DeActivate(duration);
     }
 
@@ -23,7 +25,7 @@ public class EnemyBullet : MonoBehaviour
     }
     void Attack(Player _player)
     {
-        _player.GetDamage(damage);
+        _player.GetDamage(damage, isCritical);
         per--;
 
         if(per<1){

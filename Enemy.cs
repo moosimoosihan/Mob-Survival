@@ -108,14 +108,14 @@ public class Enemy : CharacterStatus
 
     }
 
-    public virtual bool GetDamage(float _damage, float knockBackPower)
+    public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical)
     {
         if (curHP <= 0)
             return false;
 
         //데미지 구현 구간
         if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject);
+            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical);
 
         curHP -= _damage;
 
@@ -201,7 +201,7 @@ public class Enemy : CharacterStatus
     }
     void Attack(Player _player)
     {
-        _player.GetDamage(attackDamage);
+        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), attackDamage,out bool isCritical), isCritical);
         isAttackable = false;
 
         if (gameObject.activeSelf)

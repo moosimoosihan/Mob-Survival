@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterStatus : MonoBehaviour
@@ -7,6 +5,8 @@ public class CharacterStatus : MonoBehaviour
     public float maxHP;
     public float curHP;
     public float speed;
+    public float critRate;
+    public float critDamage = 1;
 
     public float attackDamage;
 

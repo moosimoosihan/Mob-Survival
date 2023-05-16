@@ -81,14 +81,14 @@ public class GoblinBoss : Enemy
         missileDamage = data.attackDamage/2;
         bulletSpeed = 3;
     }
-    public override bool GetDamage(float _damage,float knockBackPower)
+    public override bool GetDamage(float _damage,float knockBackPower, bool _isCritical)
     {
         if (curHP <= 0)
             return false;
 
         //데미지 구현 구간
         if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject);
+            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical);
 
         curHP -= _damage;
 
@@ -198,7 +198,7 @@ public class GoblinBoss : Enemy
                 yield return new WaitForSeconds(0.5f);
                 GameObject _bullet = GameManager.instance.pool.Get(bullet);
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
-                bulletLogic.Init(missileDamage, 1);
+                bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                 _bullet.transform.position = transform.position;
                 Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
                 Vector2 dirVec = scaner.nearestTarget.transform.position - transform.position;
@@ -229,7 +229,7 @@ public class GoblinBoss : Enemy
                 for(int y=0;y<curRound;y++){
                     GameObject _bullet = GameManager.instance.pool.Get(bullet);
                     EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
-                    bulletLogic.Init(missileDamage, 1);
+                    bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                     _bullet.transform.position = transform.position;
                     bullet.transform.rotation = Quaternion.identity;
 

@@ -14,7 +14,7 @@ public class MeleeWeapon : Weapon
 
     public override void InitWeapon()
     {
-        delay = 1;
+
     }
 
     public override void UpdateWeapon()
@@ -68,6 +68,6 @@ public class MeleeWeapon : Weapon
 
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(damage, count, Vector3.zero, knockBackPower);
+        bullet.GetComponent<Bullet>().Fire( DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, isCritical);
     }
 }

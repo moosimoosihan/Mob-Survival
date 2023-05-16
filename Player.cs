@@ -77,6 +77,8 @@ public class Player : CharacterStatus
         hpRegen = data.hpRegen;
         evasion = data.evasion;
         heal = data.heal;
+        critRate = data.critRate;
+        critDamage = data.critDamage;
     }
     void FixedUpdate()
     {
@@ -122,26 +124,28 @@ public class Player : CharacterStatus
         //spriter.flipX = inputVec.x > 0;
     }
 
-    public void GetDamage(float _damage)
+    public void GetDamage(float _damage, bool _isCritical)
     {
         if (playerDead || !GameManager.instance.isPlay || isDamaged)
             return;
 
+        double dam = 0;
         if(_damage>0){
+            dam = _damage/(1+def*0.01);
             // 회피
-            float ran = Random.Range(0,101);
-            if(evasion*100>ran){
+            float ran = Random.Range(0,100);
+            if(evasion*100 > ran){
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
                 StartCoroutine(DamageDelay());
                 return;
             }
-        }        
+        } else {
+            dam = _damage;
+        }
         
-        double dam = 0;
-        dam = _damage/(1+def*0.01);
         curHP -= System.Convert.ToSingle(dam);
-        DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject);
+        DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical);
         StartCoroutine(DamageDelay());
 
         if (curHP < 0)

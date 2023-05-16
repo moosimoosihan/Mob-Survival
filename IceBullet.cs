@@ -21,12 +21,12 @@ public class IceBullet : Bullet
                 {
                     detectedEnemyList.Add(detectedEnemy);
                     if (detectedEnemy.gameObject.activeSelf)
-                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower);
+                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
                 }
             }
             else
             {
-                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower);
+                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
             }
             // 얼음 장판 소환
             Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
