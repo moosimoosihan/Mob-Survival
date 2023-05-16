@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6598042673882971420
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6598042673882971410}
+  - component: {fileID: 6598042673882971421}
+  m_Layer: 0
+  m_Name: DamageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6598042673882971410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598042673882971420}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6598042673882971421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6598042673882971420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fea0418c86c2a842bee5aac8023ceb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberSprites:
+  - {fileID: 21300000, guid: c12ade09143611440a60c6175d55521a, type: 3}
+  - {fileID: 21300000, guid: 6912f189ceb9bac42883f0a43061e67a, type: 3}
+  - {fileID: 21300000, guid: 27aa1e68fd939e940a4cb03a8c385855, type: 3}
+  - {fileID: 21300000, guid: 12d39bd19fe625449884be51d2c8da85, type: 3}
+  - {fileID: 21300000, guid: 7ea1c7e404c132d458b8c9a919fbd6cf, type: 3}
+  - {fileID: 21300000, guid: 35ed814fb76671041bff39c1c1ead3ec, type: 3}
+  - {fileID: 21300000, guid: 223be7aebe8078e4c878dd7e40443686, type: 3}
+  - {fileID: 21300000, guid: 7c073520f62b2c240bddcbd195984159, type: 3}
+  - {fileID: 21300000, guid: 05e54a7d36dc2b2499ba3083b31767fb, type: 3}
+  - {fileID: 21300000, guid: 482ceb601cf738a43ad0270c17dcdb7a, type: 3}
+  scoreLabelPrefab: {fileID: 7666414436857779094, guid: b5f01b0ea17398c4580f4a0dd25e7e8c, type: 3}
+  criticalPrefab: {fileID: 0}
+  labelMoveUpAnimationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

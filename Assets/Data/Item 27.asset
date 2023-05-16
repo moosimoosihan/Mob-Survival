@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6935b804d57c8841ac2943c8c03627d, type: 3}
+  m_Name: Item 27
+  m_EditorClassIdentifier: 
+  itemType: 27
+  isLevelUp: 0
+  level: 0
+  value1: 0
+  value2: 0
+  itemName: "\uAD8111"
+  itemTypeName: 1
+  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC774 \uAE30\uBCF8 \uACF5\uACA9\uC5D0
+    \uD654\uC0B4\uC744 2\uAC1C \uB354 \uCD94\uAC00\uD568 (\uAE30\uBCF8 \uACF5\uACA9\uC5D0\uC11C
+    45\uB3C4 \uAC01\uB3C4\uB85C 3\uBC1C\uC744 \uB3D9\uC2DC\uC5D0 \uC3D8\uBA70 \uAC01
+    \uD654\uC0B4\uC5D0 \uCE58\uBA85\uD0C0\uB97C \uB530\uB85C \uBD80\uC5EC)"

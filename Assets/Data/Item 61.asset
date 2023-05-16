@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6935b804d57c8841ac2943c8c03627d, type: 3}
+  m_Name: Item 61
+  m_EditorClassIdentifier: 
+  itemType: 61
+  isLevelUp: 0
+  level: 0
+  value1: 0.01
+  value2: 0
+  itemName: "\uC0AC"
+  itemTypeName: 2
+  itemDesc: "\uBCF4\uD638\uB9C9\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC758 \uACF5\uACA9\uB825\uACFC
+    \uACF5\uACA9\uC18D\uB3C4\uAC00 {0} % \uCD94\uAC00\uB428"
