@@ -156,7 +156,25 @@ public class Player : CharacterStatus
             curHP = 0;
             //죽음
             SetAnimationState(AnimationState.Death);
-            //gameObject.SetActive(false);    //애니메이션 없으면 그냥 사라지게
+
+            int livePlayerCount = 0;
+            for(int i=0;i<GameManager.instance.players.Length;i++){
+                if(!GameManager.instance.players[i].playerDead){
+                    livePlayerCount++;
+                }
+            }
+            
+            if(livePlayerCount==0){ // 전부 죽었을 경우
+                // 부활
+
+                // 게임오버
+
+                // 다시하기
+            }
+
+            if(inputEnabled && livePlayerCount > 0){
+                GameManager.instance.playerControl.NextPlyaer();
+            }
         }
     }
 

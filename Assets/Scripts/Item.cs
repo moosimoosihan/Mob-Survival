@@ -10,7 +10,7 @@ public class Item : MonoBehaviour
     {
         if(isMag){
             Vector3 nextPos = GameManager.instance.playerControl.mainCharacter.transform.transform.position - transform.position;
-            transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.playerControl.mainCharacter.transform.position, Time.deltaTime * 5f);
+            transform.position = Vector3.MoveTowards(transform.position, GameManager.instance.playerControl.mainCharacter.transform.position, Time.deltaTime * 10f);
         }
     }
     public void Init(ItemData data){

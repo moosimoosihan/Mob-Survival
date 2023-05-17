@@ -22,28 +22,54 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         if(GameManager.instance.players.Length > 1){ // 1명 이상일 경우 (2명 이상이라도 나머지가 죽어서 1명이 되는경우도 포함해야 함!)
-            if(Input.GetKeyDown(KeyCode.E)){ // q를 눌렀을 경우
-                chatNum++;
-                if(chatNum>GameManager.instance.players.Length - 1){
-                    chatNum = 0;
-                }
-                mainCharacter = GameManager.instance.players[chatNum].gameObject;
-                CamSwitch(mainCharacter);
-                ControlSwitch(mainCharacter);
-            } else if(Input.GetKeyDown(KeyCode.Q)){ // e 를 눌렀을 경우
-                chatNum--;
-                if(chatNum<0){
-                    chatNum = GameManager.instance.players.Length - 1;
-                }
-                mainCharacter = GameManager.instance.players[chatNum].gameObject;
-                CamSwitch(mainCharacter);
-                ControlSwitch(mainCharacter);
+            if(Input.GetKeyDown(KeyCode.E))
+            { // q를 눌렀을 경우
+                NextPlyaer();
+            }
+            else if(Input.GetKeyDown(KeyCode.Q))
+            { // e 를 눌렀을 경우
+                BackPlayer();
             }
         }
 
         // 다른곳으로 빼고싶은데 처음 초기화시 이상한 곳으로 가는 현상이 있음! ㅠㅠ
         selectP.position = playerRectTransforms[chatNum].position;
     }
+
+    public void BackPlayer()
+    {
+        chatNum--;
+        if (chatNum < 0)
+        {
+            chatNum = GameManager.instance.players.Length - 1;
+        }
+        if (GameManager.instance.players[chatNum].playerDead)
+        {
+            BackPlayer();
+            return;
+        }
+        mainCharacter = GameManager.instance.players[chatNum].gameObject;
+        CamSwitch(mainCharacter);
+        ControlSwitch(mainCharacter);
+    }
+
+    public void NextPlyaer()
+    {
+        chatNum++;
+        if (chatNum > GameManager.instance.players.Length - 1)
+        {
+            chatNum = 0;
+        }
+        if (GameManager.instance.players[chatNum].playerDead)
+        {
+            NextPlyaer();
+            return;
+        }
+        mainCharacter = GameManager.instance.players[chatNum].gameObject;
+        CamSwitch(mainCharacter);
+        ControlSwitch(mainCharacter);
+    }
+
     void CamSwitch(GameObject folplayer)
     {
         cinevirtual.Follow = folplayer.transform;
