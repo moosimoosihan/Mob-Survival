@@ -22,15 +22,15 @@ public class CharacterAI : MonoBehaviour
     [SerializeField]
     State curState = State.Init;
 
-    //???? ?? ????
+    //따라다닐 메인 오브젝트
     public GameObject mainCharacter;
 
     [SerializeField]
-    float distWithinMainCharacter;  //?? ???? ?? ??
+    float distWithinMainCharacter;  //메인 캐릭과의 거리 유지
     [SerializeField]
-    float distAwayFromEnemy;    //????? ?? ??
+    float distAwayFromEnemy;    //몬스터와의 거리 유지
     [SerializeField]
-    float playerRadius;         //???? ???? ??
+    float playerRadius;         //플레이어 콜라이더 반경
 
     [SerializeField]
     Vector3 dir;
@@ -103,7 +103,7 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //??? ??? ?? ?? ??? ?? ??
+    //백터를 원하는 각도 만큼 기울여 주는 함수
     Vector3 EulerAngleVector(Vector3 _dir, float _angle)
     {
         float tempAddRadian = _angle * Mathf.Deg2Rad;
@@ -113,7 +113,7 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //?? ?? ??? ?? 2?? ???? ??? ?? ???? ??? ??
+    //이동 방향 좌우로 센서 2개씩 부착해서 닿으면 반대 방향으로 조금씩 틀기
     void UpdateObstacleSensors()
     {
         Vector3 tempStartPos;
@@ -121,7 +121,7 @@ public class CharacterAI : MonoBehaviour
         int tempRand = Random.Range(1, 10001);
         if (tempRand <= 5000)
         {
-            //?? ??1 ? ??? ????
+            //좌측 센서1 에 장애물 발견하면
             Vector3 leftSensorDir = EulerAngleVector(dir, -20);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.75f);
@@ -130,10 +130,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??1??");
+                //Debug.Log("좌측1탐지");
             }
 
-            //?? ??2 ? ??? ????
+            //좌측 센서2 에 장애물 발견하면
             leftSensorDir = EulerAngleVector(dir, -60);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.5f);
@@ -142,10 +142,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??2??");
+                //Debug.Log("좌측2탐지");
             }
 
-            //?? ??1 ? ??? ????
+            //우측 센서1 에 장애물 발견하면
             Vector3 rightSensorDir = EulerAngleVector(dir, 20);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.75f);
@@ -154,10 +154,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??1 ??");
+                //Debug.Log("우측1 탐지");
             }
 
-            //?? ??2 ? ??? ????
+            //우측 센서2 에 장애물 발견하면
             rightSensorDir = EulerAngleVector(dir, 60);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.5f);
@@ -166,12 +166,12 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right)) 
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??2 ??");
+                //Debug.Log("우측2 탐지");
             }
         }
         else
         {
-            //?? ??1 ? ??? ????
+            //우측 센서1 에 장애물 발견하면
             Vector3 rightSensorDir = EulerAngleVector(dir, 20);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.75f);
@@ -180,10 +180,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??1 ??");
+                //Debug.Log("우측1 탐지");
             }
 
-            //?? ??2 ? ??? ????
+            //우측 센서2 에 장애물 발견하면
             rightSensorDir = EulerAngleVector(dir, 60);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.5f);
@@ -192,10 +192,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??2 ??");
+                //Debug.Log("우측2 탐지");
             }
 
-            //?? ??1 ? ??? ????
+            //좌측 센서1 에 장애물 발견하면
             Vector3 leftSensorDir = EulerAngleVector(dir, -20);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.75f);
@@ -204,10 +204,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??1??");
+                //Debug.Log("좌측1탐지");
             }
 
-            //?? ??2 ? ??? ????
+            //좌측 센서2 에 장애물 발견하면
             leftSensorDir = EulerAngleVector(dir, -60);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.5f);
@@ -216,7 +216,7 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("??2??");
+                //Debug.Log("좌측2탐지");
             }
 
         }
@@ -227,15 +227,15 @@ public class CharacterAI : MonoBehaviour
         int collisionCount = 0;
         for (int i = 0; i < _hit2ds.Length; i++)
         {
-            // ??   //??? ???  ???? ?? ??????
+            // 총알   //나중엔 적총알  플레이어 총알 구분해야할듯
             if (_hit2ds[i].collider.CompareTag("Bullet"))
                 continue;
 
-            // ??
+            // 자신
             if (_hit2ds[i].collider == selfColl)
                 continue;
 
-            //???? ???
+            //하나라도 충돌시
             collisionCount++;
             break;
         }
@@ -247,10 +247,10 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //?? ????
-    //1. ??? / ????
-    //2. ? ?? / ??????
-    //3. ????? ??
+    //방향 업데이트
+    //1. 패트롤 / 멈춰잇기
+    //2. 적 쫒기 / 뒷걸음질치기
+    //3. 메인캐릭터 쫒기
     Enemy scannedEnemy;
     float patrolTime = 2;
     float patrolTimer = 0;
@@ -259,7 +259,7 @@ public class CharacterAI : MonoBehaviour
 
     void UpdateDirection()
     {
-        //????
+        //배회하기
         patrolTimer += Time.deltaTime;
         if(patrolTimer >= patrolTime)
         {
@@ -282,25 +282,25 @@ public class CharacterAI : MonoBehaviour
                 isChasingEnemy = false;
             }
 
-            //Debug.Log("??");
+            //Debug.Log("배회");
         }
        
 
-        //???? ??? ???? ??? ??
+        //몬스터가 캐릭터 반경내에 들어온 경우
         if (scanner.nearestTarget != null)
         {
             scannedEnemy = scanner.nearestTarget.GetComponent<Enemy>();
 
-            //?? ?? ??? ??? ??
+            //적이 이미 근처에 있으면 스탑
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius > distAwayFromEnemy &&
                 Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius < distAwayFromEnemy)
             {
                 isMoving = false;
                 isChasingEnemy = true;
-                //Debug.Log("??");
+                //Debug.Log("멈춤");
             }
 
-            //??????? ?? ??? ???? ??? ?? ??
+            //메인캐릭터와의 반경 내에서 몬스터를 탐지한 경우 쫒기
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius > distAwayFromEnemy &&
                 Vector3.Distance(scanner.nearestTarget.position, mainCharacter.transform.position) - scannedEnemy.radius <= distWithinMainCharacter)
             {
@@ -309,10 +309,10 @@ public class CharacterAI : MonoBehaviour
                 dir = Vector3.Lerp(dir, chaseDir, Time.fixedDeltaTime * dirShiftPower);
                 isMoving = true;
                 isChasingEnemy = true;
-                //Debug.Log("??? ??");
+                //Debug.Log("몬스터 쫒기");
             }
                         
-            //???? ??? ??? ????
+            //몬스터가 가까이 왓으면 뒷걸음질
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius < distAwayFromEnemy)
             {
                 Vector2 backDir = transform.position - scannedEnemy.transform.position;
@@ -320,12 +320,12 @@ public class CharacterAI : MonoBehaviour
                 dir = Vector3.Lerp(dir, backDir, Time.fixedDeltaTime * dirShiftPower * 5);
                 isMoving = true;
                 isChasingEnemy = true;
-                //Debug.Log("??");
+                //Debug.Log("ㅌㅌ");
             }
         }
 
 
-        //?? ??? ???? ????
+        //메인 캐릭과 멀어지면 따라가기
         if (Vector3.Distance(transform.position, mainCharacter.transform.position) > distWithinMainCharacter)
         {
             Vector2 followDir = mainCharacter.transform.position - transform.position;
@@ -333,7 +333,7 @@ public class CharacterAI : MonoBehaviour
             dir = Vector3.Lerp(dir, followDir, Time.fixedDeltaTime * dirShiftPower);
             isMoving = true;
             isChasingEnemy = false;
-            //Debug.Log("??");
+            //Debug.Log("복귀");
         }
 
         if (isMoving)
