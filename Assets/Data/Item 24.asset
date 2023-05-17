@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uAD818"
+  itemName: "\uD638\uD06C\uC544\uC774"
   itemTypeName: 1
-  itemDesc: "\uCE58\uBA85\uD0C0 \uD655\uB960 20% \uC99D\uAC00 \uCE58\uBA85\uD0C0
-    \uD53C\uD574 70% \uC99D\uAC00"
+  itemDesc: "Crit Rate 20%\uC640 Crit Damage 70% \uC99D\uAC00"

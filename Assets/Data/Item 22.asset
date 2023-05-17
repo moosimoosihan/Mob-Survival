@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uAD816"
+  itemName: "\uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00(\uC561\uD2F0\uBE0C)"
   itemTypeName: 0
-  itemDesc: "\uCE58\uBA85\uD0C0 \uBC1C\uC0DD\uC2DC \uC561\uD2F0\uBE0C \uC2A4\uD0AC
-    1\uCD08\uC529 \uCFE8\uB2E4\uC6B4 \uAC10\uC18C"
+  itemDesc: "\uC561\uD2F0\uBE0C\uC758 BuffTime 20\uCD08 \uC99D\uAC00"

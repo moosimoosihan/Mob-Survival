@@ -15,9 +15,7 @@ MonoBehaviour:
   itemType: 31
   isLevelUp: 0
   level: 0
-  value1: 0.01
-  value2: 0
-  itemName: "\uAD8115"
+  value: 0.01
+  itemName: "\uC561\uD2F0\uBE0C \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC758 \uCE58\uBA85\uD0C0 \uD655\uB960
-    {0} % \r\uCD94\uAC00 \uC99D\uAC00"
+  itemDesc: "\uC561\uD2F0\uBE0C\uC758 Crit Rate \uCD94\uAC00 {0}% \uC99D\uAC00"

@@ -15,8 +15,7 @@ MonoBehaviour:
   itemType: 28
   isLevelUp: 0
   level: 0
-  value1: 0.05
-  value2: 0.05
+  value: 0.05
   itemName: "\uAD8112"
   itemTypeName: 2
-  itemDesc: "\uACF5\uACA9\uB825 {0} %\uC640 \uACF5\uACA9 \uC18D\uB3C4 {1} % \uC99D\uAC00"
+  itemDesc: "Damage,Att Speed {0}% \uC99D\uAC00"

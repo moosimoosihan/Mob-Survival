@@ -14,8 +14,7 @@ public class LevelItemData : ScriptableObject
     public ItemType itemType;
     public bool isLevelUp = false;
     public int level;
-    public float value1;
-    public float value2;
+    public float value;
     public string itemName;
     public ItemTypeName itemTypeName;
     [TextArea]

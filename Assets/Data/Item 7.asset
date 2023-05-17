@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC6A97"
+  itemName: "\uCFE8\uB2E4\uC6B4 \uAC10\uC18C(\uC6A9\uC0AC\uC758 \uC77C\uACA9)"
   itemTypeName: 0
-  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC774 10\uCD08\uAC04 \uBC29\uC5B4\uB825\uC744
-    15% \uAC10\uC18C \uC2DC\uD0A4\uBA70 \uCFE8\uB2E4\uC6B4 10\uCD08 \uAC10\uC18C"
+  itemDesc: "\uC6A9\uC0AC\uC758 \uC77C\uACA9\uC758 Cooldown 20\uCD08 \uAC10\uC18C"

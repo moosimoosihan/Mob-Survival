@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC0AC"
+  itemName: "\uD30C\uD2F0\uBC84\uD504(\uC0AC\uC81C)"
   itemTypeName: 0
-  itemDesc: "\uBCF4\uD638\uB9C9\uC774 \uC804\uCCB4 \uC544\uAD70\uC5D0\uAC8C \uC801\uC6A9\uB418\uBA70
-    \uCD5C\uB300 5\uC911\uCCA9\uC2DC 5%\uB9CC\uD07C \uBCF4\uD638\uB9C9\uC774 \uCD94\uAC00\uB428"
+  itemDesc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 Damage 15%, Defense 15% \uC99D\uAC00 "

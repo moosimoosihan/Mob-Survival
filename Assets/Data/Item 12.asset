@@ -15,9 +15,7 @@ MonoBehaviour:
   itemType: 12
   isLevelUp: 0
   level: 0
-  value1: 0.05
-  value2: 0.05
-  itemName: "\uC6A912"
+  value: 0.05
+  itemName: "\uBCA0\uAE30 \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uACF5\uACA9\uB825 {0} %\uC640 \uACF5\uACA9 \uC0AC\uAC70\uB9AC\uB97C
-    {1} % \uC99D\uAC00\uC2DC\uD0B4"
+  itemDesc: "Damage,Att Range {0}% \uC99D\uAC00"

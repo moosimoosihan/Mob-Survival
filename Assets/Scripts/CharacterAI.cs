@@ -19,15 +19,18 @@ public class CharacterAI : MonoBehaviour
     float speed;
     float curSpeed;
 
-    //??Ｄ?╞?╞? ╱身?? ０?足??＝芋Ｙ
+    [SerializeField]
+    State curState = State.Init;
+
+    //???? ?? ????
     public GameObject mainCharacter;
 
     [SerializeField]
-    float distWithinMainCharacter;  //╱身?? ?昆╱?﹉??? ﹉?╱Ｙ ????
+    float distWithinMainCharacter;  //?? ???? ?? ??
     [SerializeField]
-    float distAwayFromEnemy;    //╱?卦足??０??? ﹉?╱Ｙ ????
+    float distAwayFromEnemy;    //????? ?? ??
     [SerializeField]
-    float playerRadius;         //??﹞易??取? ??Ｄ???╞? 易?﹉屆
+    float playerRadius;         //???? ???? ??
 
     [SerializeField]
     Vector3 dir;
@@ -55,7 +58,6 @@ public class CharacterAI : MonoBehaviour
         playerScript = GetComponent<Player>();
 
         playerRadius = (selfColl as CapsuleCollider2D).size.x * transform.localScale.x / 2;
-        speed = playerScript.speed;
     }
 
     bool isRunning = true;
@@ -101,7 +103,7 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //易???╱? ０帚??╞? ﹉??? ╱╱?〝 ▽?０?０? ??╞? ??卹?
+    //??? ??? ?? ?? ??? ?? ??
     Vector3 EulerAngleVector(Vector3 _dir, float _angle)
     {
         float tempAddRadian = _angle * Mathf.Deg2Rad;
@@ -111,7 +113,7 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //???０ 易屆?? ??０?﹞? 卹取卹〝 2﹉昆取０ 足??帚?赤卹〝 ╞??╱╱? 易?╞? 易屆???╱﹞? ?Ｄ▽?取０ 芋昌▽?
+    //?? ?? ??? ?? 2?? ???? ??? ?? ???? ??? ??
     void UpdateObstacleSensors()
     {
         Vector3 tempStartPos;
@@ -119,7 +121,7 @@ public class CharacterAI : MonoBehaviour
         int tempRand = Random.Range(1, 10001);
         if (tempRand <= 5000)
         {
-            //???帚 卹取卹〝1 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??1 ? ??? ????
             Vector3 leftSensorDir = EulerAngleVector(dir, -20);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.75f);
@@ -128,10 +130,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("???帚1?卦??");
+                //Debug.Log("??1??");
             }
 
-            //???帚 卹取卹〝2 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??2 ? ??? ????
             leftSensorDir = EulerAngleVector(dir, -60);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.5f);
@@ -140,10 +142,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("???帚2?卦??");
+                //Debug.Log("??2??");
             }
 
-            //０??帚 卹取卹〝1 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??1 ? ??? ????
             Vector3 rightSensorDir = EulerAngleVector(dir, 20);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.75f);
@@ -152,10 +154,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("０??帚1 ?卦??");
+                //Debug.Log("??1 ??");
             }
 
-            //０??帚 卹取卹〝2 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??2 ? ??? ????
             rightSensorDir = EulerAngleVector(dir, 60);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.5f);
@@ -164,12 +166,12 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right)) 
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("０??帚2 ?卦??");
+                //Debug.Log("??2 ??");
             }
         }
         else
         {
-            //０??帚 卹取卹〝1 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??1 ? ??? ????
             Vector3 rightSensorDir = EulerAngleVector(dir, 20);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.75f);
@@ -178,10 +180,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("０??帚1 ?卦??");
+                //Debug.Log("??1 ??");
             }
 
-            //０??帚 卹取卹〝2 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??2 ? ??? ????
             rightSensorDir = EulerAngleVector(dir, 60);
             tempStartPos = transform.position + rightSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Right = Physics2D.RaycastAll(tempStartPos, rightSensorDir, sensorDist * 0.5f);
@@ -190,10 +192,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Right))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, -80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("０??帚2 ?卦??");
+                //Debug.Log("??2 ??");
             }
 
-            //???帚 卹取卹〝1 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??1 ? ??? ????
             Vector3 leftSensorDir = EulerAngleVector(dir, -20);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             RaycastHit2D[] hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.75f);
@@ -202,10 +204,10 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 40f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("???帚1?卦??");
+                //Debug.Log("??1??");
             }
 
-            //???帚 卹取卹〝2 ０╳ ??取?易﹉ 易帕﹉帕??╱?
+            //?? ??2 ? ??? ????
             leftSensorDir = EulerAngleVector(dir, -60);
             tempStartPos = transform.position + leftSensorDir.normalized * playerRadius * 1.25f;
             hit2ds_Left = Physics2D.RaycastAll(tempStartPos, leftSensorDir, sensorDist * 0.5f);
@@ -214,7 +216,7 @@ public class CharacterAI : MonoBehaviour
             if (CheckSensorColliders(hit2ds_Left))
             {
                 dir = Vector3.Lerp(dir, EulerAngleVector(dir, 80f), Time.fixedDeltaTime * dirShiftPower);
-                //Debug.Log("???帚2?卦??");
+                //Debug.Log("??2??");
             }
 
         }
@@ -225,15 +227,15 @@ public class CharacterAI : MonoBehaviour
         int collisionCount = 0;
         for (int i = 0; i < _hit2ds.Length; i++)
         {
-            // ??取?   //昆見?帕０? ????取?  ??﹞易??取? ??取? ▽╱足芍?赤取帕????
+            // ??   //??? ???  ???? ?? ??????
             if (_hit2ds[i].collider.CompareTag("Bullet"))
                 continue;
 
-            // ??卦?
+            // ??
             if (_hit2ds[i].collider == selfColl)
                 continue;
 
-            //??昆見Ｄ??? ?屆?易卦?
+            //???? ???
             collisionCount++;
             break;
         }
@@ -245,10 +247,10 @@ public class CharacterAI : MonoBehaviour
     }
 
 
-    //易屆?? 取㊣????芋Ｙ
-    //1. 芋芍芋Ｙ﹞? / ╱赤????▽?
-    //2. ?? ?i▽? / ?身﹉??卦???╳▽?
-    //3. ╱身???昆╱??? ?i▽?
+    //?? ????
+    //1. ??? / ????
+    //2. ? ?? / ??????
+    //3. ????? ??
     Enemy scannedEnemy;
     float patrolTime = 2;
     float patrolTimer = 0;
@@ -257,7 +259,7 @@ public class CharacterAI : MonoBehaviour
 
     void UpdateDirection()
     {
-        //易??╱??▽?
+        //????
         patrolTimer += Time.deltaTime;
         if(patrolTimer >= patrolTime)
         {
@@ -280,25 +282,25 @@ public class CharacterAI : MonoBehaviour
                 isChasingEnemy = false;
             }
 
-            //Debug.Log("易??╱");
+            //Debug.Log("??");
         }
        
 
-        //╱?卦足??﹉╳ ?昆╱??? 易?﹉屆昆?０╳ ??取?０? ﹉屆０?
+        //???? ??? ???? ??? ??
         if (scanner.nearestTarget != null)
         {
             scannedEnemy = scanner.nearestTarget.GetComponent<Enemy>();
 
-            //???? ??易? ▽??昆０╳ ???╱╱? 卦足?取
+            //?? ?? ??? ??? ??
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius > distAwayFromEnemy &&
                 Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius < distAwayFromEnemy)
             {
                 isMoving = false;
                 isChasingEnemy = true;
-                //Debug.Log("╱赤??");
+                //Debug.Log("??");
             }
 
-            //╱身???昆╱???０??? 易?﹉屆 昆?０╳卹〝 ╱?卦足??╱? ?卦???? ﹉屆０? ?i▽?
+            //??????? ?? ??? ???? ??? ?? ??
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius > distAwayFromEnemy &&
                 Vector3.Distance(scanner.nearestTarget.position, mainCharacter.transform.position) - scannedEnemy.radius <= distWithinMainCharacter)
             {
@@ -307,10 +309,10 @@ public class CharacterAI : MonoBehaviour
                 dir = Vector3.Lerp(dir, chaseDir, Time.fixedDeltaTime * dirShiftPower);
                 isMoving = true;
                 isChasingEnemy = true;
-                //Debug.Log("╱?卦足?? ?i▽?");
+                //Debug.Log("??? ??");
             }
                         
-            //╱?卦足??﹉╳ ﹉╳▽??? ０??╱╱? ?身﹉??卦??
+            //???? ??? ??? ????
             if (Vector3.Distance(transform.position, scanner.nearestTarget.position) - scannedEnemy.radius - playerRadius < distAwayFromEnemy)
             {
                 Vector2 backDir = transform.position - scannedEnemy.transform.position;
@@ -318,12 +320,12 @@ public class CharacterAI : MonoBehaviour
                 dir = Vector3.Lerp(dir, backDir, Time.fixedDeltaTime * dirShiftPower * 5);
                 isMoving = true;
                 isChasingEnemy = true;
-                //Debug.Log("５卹５卹");
+                //Debug.Log("??");
             }
         }
 
 
-        //╱身?? ?昆╱?﹉? ╱?取???╱? ??Ｄ?﹉╳▽?
+        //?? ??? ???? ????
         if (Vector3.Distance(transform.position, mainCharacter.transform.position) > distWithinMainCharacter)
         {
             Vector2 followDir = mainCharacter.transform.position - transform.position;
@@ -331,7 +333,7 @@ public class CharacterAI : MonoBehaviour
             dir = Vector3.Lerp(dir, followDir, Time.fixedDeltaTime * dirShiftPower);
             isMoving = true;
             isChasingEnemy = false;
-            //Debug.Log("足易▽?");
+            //Debug.Log("??");
         }
 
         if (isMoving)

@@ -15,9 +15,7 @@ MonoBehaviour:
   itemType: 46
   isLevelUp: 0
   level: 0
-  value1: 0.02
-  value2: 0
-  itemName: "\uD604"
+  value: 0.01
+  itemName: "\uBE59\uACB0 \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "4\uC911\uCCA9 \uBE59\uACB0\uB41C \uC801\uC758 \uC774\uB3D9\uC18D\uB3C4\uC640
-    \uACF5\uACA9\uC18D\uB3C4\uB97C {0} % \uAC10\uC18C"
+  itemDesc: "\uC774\uB3D9\uC18D\uB3C4 1% \uCD94\uAC00 \uAC10\uC18C"

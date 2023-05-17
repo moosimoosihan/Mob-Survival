@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uAD811"
+  itemName: "\uBE60\uB978 \uACF5\uACA9"
   itemTypeName: 0
-  itemDesc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 \uACF5\uACA9 \uC18D\uB3C4 25%\uB97C
-    \uC99D\uAC00\uC2DC\uD0B4"
+  itemDesc: "Att Speed 50% \uC99D\uAC00"

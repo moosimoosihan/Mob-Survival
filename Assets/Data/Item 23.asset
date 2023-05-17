@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uAD817"
+  itemName: "\uCD94\uAC00 \uCE58\uBA85 \uBC84\uD504(\uC561\uD2F0\uBE0C)"
   itemTypeName: 0
-  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC774 \uCE58\uBA85\uD0C0 \uD53C\uD574\r
-    200% \uC99D\uAC00"
+  itemDesc: "\uC561\uD2F0\uBE0C\uAC00 Critical Damage 100%\uB3C4 \uC99D\uAC00\uC2DC\uD0B4"

@@ -15,8 +15,7 @@ MonoBehaviour:
   itemType: 60
   isLevelUp: 0
   level: 0
-  value1: 0.1
-  value2: 0
-  itemName: "\uC0AC"
+  value: 0.1
+  itemName: "\uD328\uC2DC\uBE0C 1 \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uCCA0\uD1F4\uC758 \uACF5\uACA9 \uC18D\uB3C4 {0} % \uC99D\uAC00"
+  itemDesc: "Att Speed {0}% \uC99D\uAC00"

@@ -15,9 +15,8 @@ MonoBehaviour:
   itemType: 30
   isLevelUp: 0
   level: 0
-  value1: 0.01
-  value2: 0
-  itemName: "\uAD8114"
+  value: 0.01
+  itemName: "\uD328\uC2DC\uBE0C2 \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uD328\uC2DC\uBE0C 2\uC758 \uCE58\uBA85\uD0C0 \uBC1C\uC0DD\uC2DC \uACF5\uACA9\uC18D\uB3C4
-    {0} % \uCD94\uAC00 \uC99D\uAC00"
+  itemDesc: "\uD328\uC2DC\uBE0C2\uC758 \uCE58\uBA85\uD0C0 \uBC1C\uC0DD\uC2DC Att
+    Speed {0}% \uCD94\uAC00 \uC99D\uAC00"

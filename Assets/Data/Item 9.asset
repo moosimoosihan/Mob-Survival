@@ -17,8 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC6A99"
+  itemName: "\uD76C\uC0DD\uC815\uC2E0"
   itemTypeName: 1
-  itemDesc: "\uBC1B\uB294 \uD53C\uD574\uB97C 10% \uACBD\uAC10\uD558\uBA70 \uD30C\uD2F0\uC6D0\uC774
-    \uBC1B\uB294 \uD53C\uD574 \uC808\uBC18\uC744 \uC6A9\uC0AC\uAC00 \uB300\uC2E0
-    \uBC1B\uC74C"
+  itemDesc: "Damage Reduction 10% \uC99D\uAC00\uD558\uBA70 \uD30C\uD2F0\uC6D0\uC774
+    \uBC1B\uB294 \uB370\uBBF8\uC9C0 50%\uB97C \uC6A9\uC0AC\uAC00 \uB300\uC2E0 \uBC1B\uC74C"

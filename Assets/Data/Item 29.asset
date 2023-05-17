@@ -15,8 +15,7 @@ MonoBehaviour:
   itemType: 29
   isLevelUp: 0
   level: 0
-  value1: 1
-  value2: 0
-  itemName: "\uAD8113"
+  value: 1
+  itemName: "\uC740\uC2E0 \uAC15\uD654"
   itemTypeName: 2
   itemDesc: "\uC740\uC2E0\uC2DC \uBB34\uC801\uC2DC\uAC04 {0} \uCD08 \uC99D\uAC00"

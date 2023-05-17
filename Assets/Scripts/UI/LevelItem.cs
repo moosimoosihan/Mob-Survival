@@ -28,16 +28,8 @@ public class LevelItem : MonoBehaviour
     {
 
         switch(data.itemType){
-            
-            case LevelItemData.ItemType.용사12:
             case LevelItemData.ItemType.궁수12:
-            case LevelItemData.ItemType.사제14:
-                if(level==10){
-                    itemInit("골드 50 획득", "골드", "골드");
-                } else {
-                    itemInit(string.Format(data.itemDesc, data.value1*100*(level+1), data.value2*100*(level+1)), data.itemName, data.itemTypeName.ToString());
-                }
-                break;
+            case LevelItemData.ItemType.용사12:
             case LevelItemData.ItemType.용사13:
             case LevelItemData.ItemType.용사14:
             case LevelItemData.ItemType.용사15:
@@ -49,17 +41,18 @@ public class LevelItem : MonoBehaviour
             case LevelItemData.ItemType.현자15:
             case LevelItemData.ItemType.사제12:
             case LevelItemData.ItemType.사제13:
+            case LevelItemData.ItemType.사제14:
+            case LevelItemData.ItemType.사제15:
                 if(level==10)
                 {
                     itemInit("골드 50 획득", "골드", "골드");
                 }
                 else {
-                    itemInit(string.Format(data.itemDesc, data.value1*100*(level+1)), data.itemName, data.itemTypeName.ToString());
+                    itemInit(string.Format(data.itemDesc, data.value*100*(level+1)), data.itemName, data.itemTypeName.ToString());
                 }
                 break;
             case LevelItemData.ItemType.궁수13:
-            case LevelItemData.ItemType.사제15:
-            itemInit(string.Format(data.itemDesc, data.value1*(level+1)), data.itemName, data.itemTypeName.ToString());
+            itemInit(string.Format(data.itemDesc, data.value*(level+1)), data.itemName, data.itemTypeName.ToString());
                 break;
                 //마지막 아이템
             case LevelItemData.ItemType.빈칸:

@@ -17,7 +17,6 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uD604"
+  itemName: "\uD30C\uD2F0\uBC84\uD504(\uD604\uC790)"
   itemTypeName: 0
-  itemDesc: "\uB0C9\uAE30 \uC9C0\uB300\uC758 \uBC94\uC704\uAC00 100% \uC99D\uAC00\uD558\uBA70
-    \uC9C0\uC18D\uC2DC\uAC04 5\uCD08 \uC0C1\uC2B9"
+  itemDesc: "Add Exp 25%\uC99D\uAC00"

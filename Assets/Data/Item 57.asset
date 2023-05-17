@@ -17,9 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC0AC"
+  itemName: "\uCD95\uBCF5"
   itemTypeName: 1
   itemDesc: "\uC544\uAD70\uB4E4\uC774 15\uCD08\uB9C8\uB2E4 5\uCD08\uAC04 \uC720\uC9C0\uB418\uB294
-    \uBC84\uD504\uB4E4\uC744 \uD68D\uB4DD\uD568 (\uACF5\uACA9\uB825 15%, \uACF5\uACA9\uC18D\uB3C4
-    15%, \uCE58\uBA85\uD0C0 \uD53C\uD574\uC640 \uD655\uB960 10%, \uBC29\uC5B4\uB825
-    15%)"
+    \uBC84\uD504\uB97C \uD68D\uB4DD\uD568"

@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC6A9\uC0AC1"
+  itemName: "\uC790\uAC00\uD68C\uBCF5"
   itemTypeName: 0
-  itemDesc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 \uBC1B\uB294 \uD53C\uD574 10%\uB97C\r
-    \uACBD\uAC10\uC2DC\uD0B4"
+  itemDesc: "HP 25%\uC774\uD558\uC2DC 5\uCD08\uB3D9\uC548 1\uCD08\uB9C8\uB2E4 10%
+    HP\uD68C\uBCF5 (\uCD1D 50% HP) 60\uCD08 \uCFE8\uB2E4\uC6B4"

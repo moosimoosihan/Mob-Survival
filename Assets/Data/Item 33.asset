@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uD604"
+  itemName: "\uD22C\uC0AC\uCCB4 \uAC15\uD654(\uD328\uC2DC\uBE0C1)"
   itemTypeName: 0
-  itemDesc: "\uB808\uBCA8 \uC5C5\uC5D0 \uD544\uC694\uD55C \uACBD\uD5D8\uCE58 25%
-    \uAC10\uC18C"
+  itemDesc: "Damage 50% \uC99D\uAC00\uD558\uBA70 \uD328\uC2DC\uBE0C1\uC758 Attack
+    Range 50%\uC99D\uAC00"

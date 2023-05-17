@@ -15,9 +15,7 @@ MonoBehaviour:
   itemType: 47
   isLevelUp: 0
   level: 0
-  value1: 0.15
-  value2: 0
-  itemName: "\uD604"
+  value: 0.15
+  itemName: "\uC561\uD2F0\uBE0C \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC758 \uACF5\uACA9\uB825\uC744 {0} %
-    \uC99D\uAC00\uC2DC\uD0B4"
+  itemDesc: "Active Damage {0}% \uC99D\uAC00"

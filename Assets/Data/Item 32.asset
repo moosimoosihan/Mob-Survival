@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uD604"
+  itemName: "\uD22C\uC0AC\uCCB4 \uCD94\uAC00(\uD328\uC2DC\uBE0C1)"
   itemTypeName: 0
-  itemDesc: "\uC5BC\uC74C \uAD6C\uCCB4\uC758 \uACF5\uACA9 \uC18D\uB3C4\uAC00 50%
-    \uC99D\uAC00\uD558\uBA70 \uD22C\uC0AC\uCCB4 \uC218 1\uAC1C \uC99D\uAC00"
+  itemDesc: "Att Speed 50% \uC99D\uAC00\uD558\uBA70 \uD328\uC2DC\uBE0C1\uC758 ProjectileNumber
+    1\uAC1C\uC99D\uAC00"

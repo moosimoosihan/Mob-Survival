@@ -15,8 +15,7 @@ MonoBehaviour:
   itemType: 13
   isLevelUp: 0
   level: 0
-  value1: 0.03
-  value2: 0
-  itemName: "\uC6A913"
+  value: 0.03
+  itemName: "\uACBD\uAC10\uB41C \uD53C\uD574 \uC99D\uAC00"
   itemTypeName: 2
-  itemDesc: "\uBC1B\uB294 \uD53C\uD574 {0} % \uACBD\uAC10\uC2DC\uD0B4"
+  itemDesc: "Damage Reduction {0}% \uC99D\uAC00"

@@ -17,7 +17,7 @@ MonoBehaviour:
   level: 0
   value1: 0
   value2: 0
-  itemName: "\uC0AC"
+  itemName: "\uC561\uD2F0\uBE0C \uAC15\uD654"
   itemTypeName: 0
   itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC5D0\uAC8C
-    10\uCD08\uAC04 \uACF5\uACA9\uB825\uACFC \uACF5\uACA9\uC18D\uB3C4 50% \uC99D\uAC00"
+    10\uCD08\uAC10 Damage 50%, Att Speed 50% \uC99D\uAC00"

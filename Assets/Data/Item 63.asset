@@ -15,9 +15,7 @@ MonoBehaviour:
   itemType: 63
   isLevelUp: 0
   level: 0
-  value1: 2
-  value2: 0
-  itemName: "\uC0AC"
+  value: 0.01
+  itemName: "\uC561\uD2F0\uBE0C \uAC15\uD654"
   itemTypeName: 2
-  itemDesc: "\uC561\uD2F0\uBE0C \uC2A4\uD0AC\uC758 \uCFE8\uB2E4\uC6B4 {0} \uCD08
-    \uAC10\uC18C"
+  itemDesc: "Active CoolDown {0}% \uAC10\uC18C"
