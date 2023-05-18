@@ -84,11 +84,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1e3b723cd66c5640a1d5150c3f607fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffectPrefab: {fileID: 0}
   damage: 0
   per: 0
+  knockBackPower: 0
+  isCritical: 0
   duration: 0.5
   attackRadius: 1
-  detectionAngle: 200
+  detectionAngle: 0
   drawRay: 1
 --- !u!1 &8710447557592290794
 GameObject:

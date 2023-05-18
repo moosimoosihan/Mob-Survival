@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4303482792683120297
 Transform:
   m_ObjectHideFlags: 0
@@ -141,6 +141,8 @@ MonoBehaviour:
   maxHP: 0
   curHP: 0
   speed: 0
+  critRate: 0
+  critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 0
   animCon: []
@@ -238,7 +240,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 596dec89b8d6461448bb4edd3cf1fe57, type: 2}
+  - {fileID: 2100000, guid: 2c737c259a9cb9b4b9399aca89ac5540, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -272,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: b8de1a87a16dd4846a28911b2e7d51df, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: d4c2e0890da42ed42944b9d8061f402d, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0

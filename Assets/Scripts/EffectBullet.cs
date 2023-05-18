@@ -6,7 +6,7 @@ public class EffectBullet : Bullet
     [SerializeField]
     float attackRadius = 0;
     [SerializeField]
-    float detectionAngle = 0;
+    public float detectionAngle = 0;
 
     Vector3 dir = Vector3.right;
     protected List<Enemy> enemyList = new List<Enemy>();

@@ -10,8 +10,15 @@ public class MeleeWeapon : Weapon
     [SerializeField]
     float spawnDistance = 0;
 
+    [SerializeField]
+    public float detectionAngle = 0;
+    public float curDetectionAngle = 0;
+
     List<float> distanceList = new List<float>();
 
+    private void Awake() {
+        curDetectionAngle = detectionAngle;
+    }
     public override void InitWeapon()
     {
 
@@ -69,5 +76,6 @@ public class MeleeWeapon : Weapon
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Fire( DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, isCritical);
+        bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
     }
 }

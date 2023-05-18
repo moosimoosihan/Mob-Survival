@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1716169261391423435
 Transform:
   m_ObjectHideFlags: 0
@@ -140,6 +140,8 @@ MonoBehaviour:
   maxHP: 0
   curHP: 0
   speed: 0
+  critRate: 0
+  critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 1
   animCon: []
@@ -153,7 +155,6 @@ MonoBehaviour:
   coll: {fileID: 0}
   spriter: {fileID: 0}
   anim: {fileID: 0}
-  childTransform: {fileID: 0}
   scaner: {fileID: 0}
 --- !u!1 &7196887109487237926
 GameObject:

@@ -130,7 +130,7 @@ public class LevelUp : MonoBehaviour
         itemTypeText.verticalOverflow = VerticalWrapMode.Overflow;
 
         items[y + (i * (maxLen))] = item.AddComponent<LevelItem>();
-        items[y + (i * (maxLen))].playerNum = playerNum;
+        items[y + (i * (maxLen))].playerNum = i;
         items[y + (i * (maxLen))].data = isblank? data[data.Length-1] : data[y + (playerNum * (maxLen))];
         items[y + (i * (maxLen))].Init();
         item.GetComponent<Button>().onClick.AddListener(items[y + (i * (maxLen))].GetComponent<LevelItem>().OnClick);

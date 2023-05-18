@@ -58,6 +58,7 @@ public class CharacterAI : MonoBehaviour
         playerScript = GetComponent<Player>();
 
         playerRadius = (selfColl as CapsuleCollider2D).size.x * transform.localScale.x / 2;
+        speed = playerScript.speed;
     }
 
     bool isRunning = true;
