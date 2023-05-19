@@ -100,7 +100,7 @@ public class LevelItem : MonoBehaviour
             case LevelItemData.ItemType.용사0:
                 // 베기의 RangeType QuarterCircle 에서 HalfCircle로 변경, AttackRange 50%증가
                 isLevelUp = true;
-                GameManager.instance.players[playerNum].gameObject.GetComponentsInChildren<MeleeWeapon>()[0].curDetectionAngle =  GameManager.instance.players[playerNum].gameObject.GetComponentsInChildren<MeleeWeapon>()[0].detectionAngle * 1.5f;
+                GameManager.instance.players[playerNum].gameObject.GetComponentsInChildren<MeleeWeapon>()[0].curDetectionAngle +=  (GameManager.instance.players[playerNum].gameObject.GetComponentsInChildren<MeleeWeapon>()[0].detectionAngle * 1.5f) - GameManager.instance.players[playerNum].gameObject.GetComponentsInChildren<MeleeWeapon>()[0].detectionAngle;
                 break;
                 
             case LevelItemData.ItemType.용사1:
