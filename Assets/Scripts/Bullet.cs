@@ -73,8 +73,15 @@ public class Bullet : MonoBehaviour
 
     public virtual void OnTriggerEnter2DUpdate(Collider2D collision)
     {
-        if (!collision.CompareTag("Enemy") || per == -1)
+        if(per == -1)
             return;
+
+        if (!collision.CompareTag("Enemy")){
+            if(collision.CompareTag("Wall")){
+                DeActivate(0);
+            }
+            return;
+        }
 
         bool tempIsHit = false;
         if (collision != null)
