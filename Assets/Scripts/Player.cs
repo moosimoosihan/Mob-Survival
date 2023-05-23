@@ -131,27 +131,27 @@ public class Player : CharacterStatus
         if (playerDead || !GameManager.instance.isPlay || isDamaged)
             return;
 
-        isDamaged = true;
         double dam = 0;
         if(_damage>0){
+            isDamaged = true;
+            StartCoroutine(DamageDelay());
             dam = _damage/(1+def*0.01);
             // 회피
             float ran = Random.Range(0,100);
             if(evasion*100 > ran){
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
-                StartCoroutine(DamageDelay());
                 return;
-            }
+            }    
         } else {
+            // 회복의 경우
             dam = _damage;
         }
         
         curHP -= System.Convert.ToSingle(dam);
-        DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical);
-        StartCoroutine(DamageDelay());
+        DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
 
-        if (curHP < 0)
+        if (curHP <= 0)
         {
             curHP = 0;
             //죽음

@@ -88,7 +88,7 @@ public class GoblinBoss : Enemy
 
         //데미지 구현 구간
         if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical);
+            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
 
         curHP -= _damage;
 

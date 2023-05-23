@@ -63,11 +63,11 @@ public class DamageManager : Singleton<DamageManager>
         return tempLabel;
     }
 
-    public void ShowDamageLabelOnObj(int _damage, GameObject _OnObj, bool _isCritical)
+    public void ShowDamageLabelOnObj(int _damage, GameObject _OnObj, bool _isCritical, bool _isPlayerDamge)
     {
         GameObject tempScoreLabelObj = GetLabelFromPool();
         tempScoreLabelObj.SetActive(true);
-        tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_damage, _OnObj, _isCritical);
+        tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_damage, _OnObj, _isCritical, _isPlayerDamge);
     }
     public void ShowMessageLabelOnObj(DamageLabel.Message _message, GameObject _OnObj)
     {

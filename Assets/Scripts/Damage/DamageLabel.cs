@@ -13,11 +13,14 @@ public class DamageLabel : MonoBehaviour
     int curDamage = 0;
     [SerializeField]
     Vector3 originScale;
-    bool isHeal = false;
+    bool isHeal;
+    bool isPlayerDamge;
 
 
-    public void UpdateScore(int _newDamage)
+    public void UpdateScore(int _newDamage, bool _isPlayerDamge)
     {
+        isPlayerDamge = _isPlayerDamge;
+
         if(_newDamage<=0){
             // Èú·Î ºÐ·ù
             isHeal = true;
@@ -38,7 +41,7 @@ public class DamageLabel : MonoBehaviour
         for (int i = 0; i < degits.Length; i++)
         {
             curScoreSpriteRenderers[i].sprite = CheckCurrentDegitAndUpperDegitExist(ref degits, i, degits.Length - 1) ? DamageManager.Instance.numberSprites[degits[i]] : null;
-            curScoreSpriteRenderers[i].color = isHeal ? new Color(0,1,0) :  new Color(1,1,1);
+            curScoreSpriteRenderers[i].color = isHeal ? new Color(0,1,0) :  isPlayerDamge? new Color(1,0,0) : new Color(1,1,1);
         }
 
         if(curDamage < 10)
@@ -104,9 +107,9 @@ public class DamageLabel : MonoBehaviour
         return false;
     }
 
-    public void ShowDamageAnimation(int _damage, GameObject _OnObj, bool _isCritical)
+    public void ShowDamageAnimation(int _damage, GameObject _OnObj, bool _isCritical, bool _isPlayerDamge)
     {
-        UpdateScore(_damage);
+        UpdateScore(_damage, _isPlayerDamge);
         StartCoroutine(CoSpawnDamageLabel(_OnObj, _isCritical));
     }
     public void ShowDamageAnimation(Message _message, GameObject _OnObj)
