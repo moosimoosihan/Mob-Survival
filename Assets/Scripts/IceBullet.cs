@@ -4,6 +4,7 @@ public class IceBullet : Bullet
 {
     public GameObject projectilePrefab;
     public float groundDamage;
+    public float groundDuration;
 
     public virtual void OnTriggerEnter2D(Collider2D collision){
         if(per == -1)
@@ -55,6 +56,6 @@ public class IceBullet : Bullet
         // 얼음 장판 소환
         Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
         bullet.position = transform.position;
-        bullet.GetComponent<Bullet>().Init(groundDamage, -1, 0, false, true);
+        bullet.GetComponent<Bullet>().Init(groundDamage, -1, 0, groundDuration, false, true);
     }
 }

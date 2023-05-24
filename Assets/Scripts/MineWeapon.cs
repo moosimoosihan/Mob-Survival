@@ -10,8 +10,7 @@ public class MineWeapon : Weapon
     [SerializeField]
     int curCreatCount = 0;
     [SerializeField]
-    protected float duration = 5;
-
+    float weaponDuration;
     public override void InitWeapon()
     {
         delay = 1;
@@ -55,8 +54,8 @@ public class MineWeapon : Weapon
             createdMineList.Add(mineBullet.gameObject);
         }
 
-        bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), -1, knockBackPower, isCritical);
-        bulletScript.DeActivate(duration);
+        bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), -1, duration, knockBackPower, isCritical);
+        bulletScript.DeActivate(weaponDuration);
     }
 
     bool FireCheck()

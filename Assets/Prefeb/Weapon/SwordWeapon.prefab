@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6857669930323094735}
   - component: {fileID: 6857669930323094737}
   m_Layer: 0
-  m_Name: Sword
+  m_Name: SwordWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,11 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2db48f5f3e9b08344a95cd2741aa2ce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 0
   count: 0
   delay: 0
   knockBackPower: 0
+  duration: 0
   projectilePrefab: {fileID: 6913359753101659238, guid: e5cd41f3731606f4388ef0239fc910d7, type: 3}
   targetLayerMaskName: Enemy
-  detectRadius: 1
-  spawnDistance: 0.5
+  detectRadius: 0
+  spawnDistance: 0
+  detectionAngle: 0
+  curDetectionAngle: 0

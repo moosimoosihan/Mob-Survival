@@ -59,7 +59,7 @@ public class EffectBullet : Bullet
         return result;
     }
 
-    public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
+    public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         if (enemyList.Count > 0)
             enemyList.Clear();
@@ -78,7 +78,7 @@ public class EffectBullet : Bullet
 
         if(_deActivate)
         {
-            DeActivate(duration);
+            DeActivate(_duration);
         }
     }
 

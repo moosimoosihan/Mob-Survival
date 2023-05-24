@@ -12,6 +12,9 @@ public class MineBullet : EffectBullet
     [SerializeField]
     float detectRadius = 0;
 
+    public float duration;
+    public float mineDuration;
+
     bool isExplode = false;
 
     private void OnEnable()
@@ -31,7 +34,7 @@ public class MineBullet : EffectBullet
                 isExplode = true;
                 explosionEffect.SetActive(true);
                 mineObj.SetActive(false);
-                Fire(damage, -1, Vector3.zero, knockBackPower, false);
+                Fire(damage, -1, Vector3.zero, knockBackPower, mineDuration, false);
                 DeActivate(duration);
             }
         }        

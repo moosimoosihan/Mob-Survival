@@ -36,7 +36,7 @@ public class ExeWeapon : Weapon
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         Vector3 ranVec = new Vector3(Random.Range(-distX, distX), distY, 0);
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), count, ranVec, knockBackPower, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), count, ranVec, knockBackPower, duration, isCritical);
     }
 
 }
