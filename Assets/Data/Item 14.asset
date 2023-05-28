@@ -15,7 +15,7 @@ MonoBehaviour:
   itemType: 14
   isLevelUp: 0
   level: 0
-  value: 0.01
+  value: 0.001
   itemName: "\uD654\uC0C1\uD53C\uD574 \uAC15\uD654"
   itemTypeName: 2
   itemDesc: "\uD654\uC0C1 \uACF5\uACA9\uC758 \uB370\uBBF8\uC9C0 {0} % \uC99D\uAC00"

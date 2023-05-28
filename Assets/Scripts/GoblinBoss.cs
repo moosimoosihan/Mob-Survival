@@ -57,11 +57,11 @@ public class GoblinBoss : Enemy
         if (target.position.x > rigid.position.x)
         {
             //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-2, 2, 2);
+            transform.localScale = new Vector3(-1,1,1);
         }
         else
         {
-            transform.localScale = new Vector3(2, 2, 2);
+            transform.localScale = new Vector3(1, 1, 1);
         }
     }
     public override void _OnEnable()
