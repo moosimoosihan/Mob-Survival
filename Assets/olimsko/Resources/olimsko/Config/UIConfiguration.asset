@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9103126aca520fe43b9c72d11a8398ce, type: 3}
+  m_Name: UIConfiguration
+  m_EditorClassIdentifier: 
+  UIRenderMode: 0
+  CustomUICamera: {fileID: 2476777451407253184, guid: d2083aef1d2329f49a1c2604e500e4d6, type: 3}
+  DefaultScreenSize: {x: 3840, y: 2160}
+  Match: 1
+  AutoSpawnInputSystem: 1
+  CustomInputSystem: {fileID: 3844666986492774167, guid: 5a584f7ed04dc864db5f1e7779cf8c06, type: 3}
+  UseHideHotKey: 1
+  HideHotKeyCode: 27
+  UINameWhenNoHotKeyList: 
+  OverrideObjectLayer: 1
+  ObjectLayer: 5
+  MakeScriptWhenAddPrefab: 1
+  ListPrefabs: []
