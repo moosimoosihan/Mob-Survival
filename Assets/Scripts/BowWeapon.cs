@@ -4,7 +4,7 @@ public class BowWeapon : Weapon
 {
     public override void InitWeapon()
     {
-        delay = 1;
+
     }
 
     public override void UpdateWeapon()
@@ -30,6 +30,7 @@ public class BowWeapon : Weapon
 
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.GetComponent<Bullet>().speed = bulletSpeed;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
     }
 

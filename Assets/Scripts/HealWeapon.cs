@@ -15,34 +15,32 @@ public class HealWeapon : Weapon
         }
     }
     void Fire(){
-        int playerNum = 0;
-        float minHealth = GameManager.instance.players[playerNum].maxHP;
+        Player minHealthPlayer = GameManager.instance.players[0];
 
         // 가장 체력이 적은 아군을 탐지
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
-            if (GameManager.instance.players[i].curHP > 0 && GameManager.instance.players[i].curHP < minHealth)
+            if (GameManager.instance.players[i].curHP > 0 && GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP < minHealthPlayer.curHP/minHealthPlayer.maxHP)
             {
-                minHealth = GameManager.instance.players[i].curHP;
-                playerNum = i;
+                minHealthPlayer = GameManager.instance.players[i];
             }
         }
 
-        if (GameManager.instance.players[playerNum].gameObject.activeSelf)
+        if (minHealthPlayer.gameObject.activeSelf)
         {
-            GameManager.instance.players[playerNum].GetDamage(-damage, false);
+            minHealthPlayer.GetDamage(-damage, false);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
-            if (GameManager.instance.players[playerNum].curHP > GameManager.instance.players[playerNum].maxHP)
+            if (minHealthPlayer.curHP > minHealthPlayer.maxHP)
             {
-                GameManager.instance.players[playerNum].curHP = GameManager.instance.players[playerNum].maxHP;
+                minHealthPlayer.curHP = minHealthPlayer.maxHP;
             }
 
             // 체력 회복 이펙트 생성
             Transform healEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
             Bullet healScript = healEffect.GetComponent<Bullet>();
             healScript.Fire(0, -1, Vector3.zero, 0, duration, false, true, false);
-            healEffect.position = GameManager.instance.players[playerNum].transform.position;
+            healEffect.position = minHealthPlayer.transform.position;
             //healEffect.SetParent(GameManager.instance.players[playerNum].transform);
             //healEffect.localPosition = Vector3.zero;
             //healEffect.rotation = Quaternion.identity;

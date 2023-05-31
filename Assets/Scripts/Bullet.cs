@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     GameObject hitEffectPrefab;
 
     public float damage;
+    public float speed;
     public int per;
     public float knockBackPower;
     protected bool hitOnlyOnce = true;
@@ -49,7 +50,7 @@ public class Bullet : MonoBehaviour
 
         if (per > -1)
         {
-            rigid.velocity = _dir * 15f;
+            rigid.velocity = _dir * speed;
         }
 
         //duration이후에 총알 비활성화

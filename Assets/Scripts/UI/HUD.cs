@@ -3,17 +3,19 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill }
+    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill, ActiveSkill }
     public InfoYType type;
     public int playerNum;
 
     Text myText;
     Slider mySlider;
+    Image myImage;
 
     void Awake()
     {
         myText = GetComponent<Text>();
         mySlider = GetComponent<Slider>();
+        myImage = GetComponent<Image>();
     }
 
     void LateUpdate()
@@ -49,6 +51,9 @@ public class HUD : MonoBehaviour
                 break;
             case InfoYType.Life:
                 myText.text = string.Format("{0:F0}",GameManager.instance.life);
+                break;
+            case InfoYType.ActiveSkill:
+                myImage.fillAmount = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer/GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
                 break;
         }
     }

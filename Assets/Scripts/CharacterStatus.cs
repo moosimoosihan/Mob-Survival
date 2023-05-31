@@ -13,7 +13,7 @@ public class CharacterStatus : MonoBehaviour
     [SerializeField]
     bool createFollowingHpBar;
 
-    protected void CreateFollowingHpBar()
+    public void CreateFollowingHpBar()
     {
         if (createFollowingHpBar)
         {

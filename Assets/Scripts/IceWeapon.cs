@@ -6,7 +6,7 @@ public class IceWeapon : Weapon
     public float groundDamage;
     public float groundDuration;
     public override void InitWeapon(){
-        delay = 5;
+        
     }
     public override void UpdateWeapon(){
         timer += Time.deltaTime;
@@ -29,10 +29,12 @@ public class IceWeapon : Weapon
 
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
         bullet.GetComponent<IceBullet>().projectilePrefab = iceGroundPrefab;
         bullet.GetComponent<IceBullet>().groundDamage = groundDamage;
         bullet.GetComponent<IceBullet>().groundDuration = groundDuration;
+        bullet.GetComponent<IceBullet>().speed = bulletSpeed;
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
+        
     }
 
 }
