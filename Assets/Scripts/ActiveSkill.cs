@@ -2,13 +2,6 @@ using UnityEngine;
 
 public abstract class ActiveSkill : MonoBehaviour
 {
-    // 사거리가 있는 스킬의 경우
-    // 왼쪽클릭시 시전 사거리 표시
-    // 마우스를 따라 사거리 이동
-    // 왼쪽클릭시 시전
-
-    // 즉시 시전의 경우
-    // 왼쪽클릭시 시전
     public bool isActive;
     public bool areaOn;
     public GameObject skillArea;
@@ -28,8 +21,24 @@ public abstract class ActiveSkill : MonoBehaviour
         if(isActive && timer < delay){
             timer += Time.deltaTime;
         }
-        ActiveSkillUpdate();
+        if(!player.inputEnabled || !GameManager.instance.isPlay){
+            AreaOff();
+            return;
+        }
+        if(KeyDown()){
+            ActiveSkillUpdate();
+        }
+        AreaUpdate();
     }
     public abstract void ActiveSkillUpdate();
     public abstract void ActiveSkillInit();
+    public abstract void AreaUpdate();
+    public abstract void AreaOff();
+    public bool KeyDown(){
+        if(!isActive && Input.GetKeyDown(KeyCode.Mouse0)){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

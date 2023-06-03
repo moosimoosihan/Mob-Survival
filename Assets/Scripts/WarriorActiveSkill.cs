@@ -11,19 +11,12 @@ public class WarriorActiveSkill : ActiveSkill
         skillArea = transform.GetChild(0).gameObject;
         player = GetComponentInParent<Player>();
     }
-    public override void ActiveSkillUpdate(){
-        if(!player.inputEnabled || !GameManager.instance.isPlay){
-            areaOn = false;
-            skillArea.SetActive(areaOn);
-            return;
-        }
-        
-        if(!isActive && areaOn && Input.GetKeyDown(KeyCode.Mouse0)){
-            Debug.Log("전사 스킬 시전");
-            StartCoroutine(SkillDelay());
-            Skill(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-        }
-
+    public override void AreaOff()
+    {
+        areaOn = false;
+        skillArea.SetActive(areaOn);
+    }
+    public override void AreaUpdate(){
         if(!isActive && Input.GetKeyDown(KeyCode.Mouse0)){
             areaOn = true;
         } else if(areaOn && Input.GetKeyDown(KeyCode.Mouse1)){
@@ -38,6 +31,13 @@ public class WarriorActiveSkill : ActiveSkill
         Vector3 direction = mousePos - skillArea.transform.position;
         Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction);
         skillArea.transform.rotation = rotation;
+    }
+    public override void ActiveSkillUpdate(){        
+        if(areaOn){
+            Debug.Log("전사 스킬 시전");
+            StartCoroutine(SkillDelay());
+            Skill(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        }
     }
     IEnumerator SkillDelay(){
         timer = 0;

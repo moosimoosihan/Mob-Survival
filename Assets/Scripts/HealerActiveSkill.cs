@@ -7,15 +7,12 @@ public class HealerActiveSkill : ActiveSkill
         skillArea = null;
         player = GetComponentInParent<Player>();
     }
-    public override void ActiveSkillUpdate(){
-        if(!player.inputEnabled || !GameManager.instance.isPlay)
-            return;
-            
-        if(!isActive && Input.GetKeyDown(KeyCode.Mouse0)){
-            Debug.Log("사제 액티브 스킬 시전");
-            StartCoroutine(SkillDelay());
-            Skill();
-        }
+    public override void AreaOff(){}
+    public override void AreaUpdate(){}
+    public override void ActiveSkillUpdate(){    
+        Debug.Log("사제 액티브 스킬 시전");
+        StartCoroutine(SkillDelay());
+        Skill();
     }
     IEnumerator SkillDelay(){
         timer = 0;
