@@ -170,7 +170,7 @@ GameObject:
   - component: {fileID: 9178175653398265328}
   - component: {fileID: 9178175653398265331}
   m_Layer: 6
-  m_Name: SlimeBoss
+  m_Name: Giant Slime
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
