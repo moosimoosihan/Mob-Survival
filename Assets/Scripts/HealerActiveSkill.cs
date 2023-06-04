@@ -25,20 +25,27 @@ public class HealerActiveSkill : ActiveSkill
         for(int i=0;i<GameManager.instance.players.Length;i++){
             if(GameManager.instance.players[i].playerDead){
                 // 죽은 캐릭터일 경우 전부 회복 및 부활 및 스킬 쿨타임 초기화
-                GameManager.instance.players[i].curHP = GameManager.instance.players[i].maxHP;
-                GameManager.instance.players[i].playerDead = false;
-                GameManager.instance.players[i].collider2D.enabled = true;
-                GameManager.instance.players[i].CreateFollowingHpBar();
+                minHealthPlayer = GameManager.instance.players[i];
+                minHealthPlayer.curHP = minHealthPlayer.maxHP;
+                minHealthPlayer.playerDead = false;
+                minHealthPlayer.collider2D.enabled = true;
+                minHealthPlayer.CreateFollowingHpBar();
+                if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive){
+                    minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopAllCoroutines();
+                    minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
+                    minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
+                }
                 return;
-            }
-            if(GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP<minHealthPlayer.curHP/minHealthPlayer.maxHP){
+            } else if (GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP<minHealthPlayer.curHP/minHealthPlayer.maxHP){
                 minHealthPlayer = GameManager.instance.players[i];
             }
         }
-        // 체력이 제일 적은 캐릭터 전부 회복 및 스킬 쿨타임 초기화
+        // 전부 회복 및 부활 및 스킬 쿨타임 초기화
         minHealthPlayer.curHP = minHealthPlayer.maxHP;
-
-        if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive && minHealthPlayer != player){
+        minHealthPlayer.playerDead = false;
+        minHealthPlayer.collider2D.enabled = true;
+        minHealthPlayer.CreateFollowingHpBar();
+        if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive){
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopAllCoroutines();
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
