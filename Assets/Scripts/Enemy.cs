@@ -17,6 +17,7 @@ public class Enemy : CharacterStatus
     public SpriteRenderer spriter;
     public Animator anim;
     WaitForFixedUpdate wait;
+    public float attackDelay;
 
     public Scaner scaner;
     bool isAttackable = true;
@@ -84,8 +85,8 @@ public class Enemy : CharacterStatus
         isLive = true;
         coll.enabled = true;
         rigid.simulated = true;
-        spriter.sortingOrder = 2;
-        //anim.SetBool("Dead",false);
+        // spriter.sortingOrder = 2;
+        // anim.SetBool("Dead",false);
         curHP = maxHP;
     }
     public virtual void Init(enemySpawnData data)

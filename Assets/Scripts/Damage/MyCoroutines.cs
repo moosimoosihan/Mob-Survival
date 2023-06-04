@@ -4,6 +4,29 @@ using UnityEngine;
 
 public static class MyCoroutines
 {
+    public static IEnumerator CoLocalScale(GameObject _obj, float _toScale, float _totalTime)
+    {
+        Vector3 startScale = _obj.transform.localScale;
+        Vector3 targetScale = new Vector3(_toScale, _toScale, _toScale);
+        float timer = 0;
+
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer < _totalTime)
+            {
+                _obj.transform.localScale = Vector3.Lerp(startScale, targetScale, timer / _totalTime);
+            }
+            else
+            {
+                _obj.transform.localScale = targetScale;
+                break;
+            }
+
+            yield return null;
+        }
+    }
+
     public static IEnumerator CoChangeSize(GameObject _obj, float _fromScale, float _toScale, float _totalTime)
     {
         Vector3 startScale = new Vector3(_fromScale, _fromScale, 1);

@@ -268,7 +268,7 @@ MonoBehaviour:
   critRate: 0
   critDamage: 2
   attackDamage: 0
-  createFollowingHpBar: 0
+  createFollowingHpBar: 1
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
