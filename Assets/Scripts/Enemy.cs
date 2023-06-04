@@ -133,7 +133,7 @@ public class Enemy : CharacterStatus
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
-            spriter.sortingOrder = 1;
+            // spriter.sortingOrder = 1;
             //anim.SetBool("Dead",true);
             GameManager.instance.kill++;
             
