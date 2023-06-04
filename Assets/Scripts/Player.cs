@@ -189,7 +189,7 @@ public class Player : CharacterStatus
            skeletonAnimation.AnimationName = "run";
         else if (_aniState == AnimationState.Death)
         {
-           skeletonAnimation.AnimationName = "death_roop";
+           skeletonAnimation.AnimationName = "death_loop";
            playerDead = true;
            gameObject.layer = LayerMask.NameToLayer("Default");
            weaponTransform.gameObject.SetActive(false);

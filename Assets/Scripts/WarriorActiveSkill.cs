@@ -4,6 +4,7 @@ using UnityEngine;
 public class WarriorActiveSkill : ActiveSkill
 {
     public float damage;
+    public int count;
     public float bulletSpeed;
     public float knockBackPower;
     public float bulletDuration;
@@ -57,6 +58,6 @@ public class WarriorActiveSkill : ActiveSkill
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), 10, dir, knockBackPower, bulletDuration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), count, dir, knockBackPower, bulletDuration, isCritical);
     }
 }
