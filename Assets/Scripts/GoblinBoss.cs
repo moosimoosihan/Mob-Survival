@@ -1,3 +1,4 @@
+using Spine.Unity;
 using System.Collections;
 using UnityEngine;
 
@@ -17,8 +18,12 @@ public class GoblinBoss : Enemy
     public int bossPatternLen = 2;
     public int[] patternNum = { 5, 5 }; // 패턴 반복 할 횟수
     public float bulletSpeed;
-    public GameObject particle;
-    
+    public enum AnimationState
+    {
+        Move,
+        Skill
+    }
+    SkeletonAnimation skeletonAnimation;
     public override void _Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -29,10 +34,11 @@ public class GoblinBoss : Enemy
         scaner = GetComponent<Scaner>();
 
         //childTransform = transform.GetChild(0).transform;
-        bullet = transform.GetChild(0).gameObject;
-        particle = transform.GetChild(2).gameObject;
+        bullet = transform.GetChild(1).gameObject;
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
+        skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
+        SetAnimationState(AnimationState.Move);
     }
     public override void _FixedUpdate()
     {
@@ -40,7 +46,7 @@ public class GoblinBoss : Enemy
         if (!isLive || knockBack || scaner.nearestTarget == null || isAttack){
             rigid.velocity = Vector2.zero;
             return;
-        }
+        } 
 
         target = scaner.nearestTarget.GetComponent<Rigidbody2D>();
 
@@ -216,10 +222,9 @@ public class GoblinBoss : Enemy
             isAttack = true;
             yield return null;
             // 기 모으기
-            particle.SetActive(true);
-            particle.GetComponent<ParticleSystem>().Play();
-            yield return new WaitForSeconds(3f);
-            particle.SetActive(false);
+            SetAnimationState(AnimationState.Skill);
+            yield return new WaitForSeconds(4f);
+            SetAnimationState(AnimationState.Move);
             // 발사
             for(int i=0; i< patternNum[1];i++){
                 yield return new WaitForSeconds(1f);
@@ -252,5 +257,14 @@ public class GoblinBoss : Enemy
         yield return new WaitForSeconds(5f);
         bossState = BossState.Check;
         isAttack = false;
+    }
+    public void SetAnimationState(AnimationState _aniState){
+        if(skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
+            return;
+        
+        if(_aniState == AnimationState.Move)
+            skeletonAnimation.AnimationName = "move";
+        else if (_aniState == AnimationState.Skill)
+            skeletonAnimation.AnimationName = "skill";
     }
 }

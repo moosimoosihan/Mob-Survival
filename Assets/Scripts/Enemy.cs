@@ -25,6 +25,7 @@ public class Enemy : CharacterStatus
     void Awake()
     {
         _Awake();
+        CreateFollowingHpBar();
     }    
     public virtual void _Awake()
     {
