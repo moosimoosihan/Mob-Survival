@@ -45,7 +45,7 @@ public class HealerActiveSkill : ActiveSkill
         minHealthPlayer.playerDead = false;
         minHealthPlayer.collider2D.enabled = true;
         minHealthPlayer.CreateFollowingHpBar();
-        if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive){
+        if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive && minHealthPlayer != player){
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopAllCoroutines();
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
