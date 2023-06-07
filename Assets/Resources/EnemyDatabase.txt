@@ -7,7 +7,7 @@ Moth	10	8	10
 Goblin	100	2	20
 Poison Moth	10	8	5
 Toad	150	2	5
-Giant Slime	1000	4	20
+Giant Slime	1000	0	20
 Golem	5000	2	50
 Goblin Mage	5000	4	100
 Goblin King	10000	8	150

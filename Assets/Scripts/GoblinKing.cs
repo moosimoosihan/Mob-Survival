@@ -2,26 +2,29 @@ using System.Collections;
 using UnityEngine;
 using Spine.Unity;
 
-public class GolemBoss : Enemy
+public class GoblinKing : Enemy
 {
-   [Header("보스 정보")]
+    [Header("보스 정보")]
     public float missileDamage;
     public GameObject bulletArea;
     public GameObject bullet;
     WaitForFixedUpdate wait;
-    public float skillDelay;
+    public float skillDelay = 20;
     public float timer;
 
     bool isAttack = false;
     bool isCheck = false;
+    bool bossPowerUp;
 
-    public enum BossState{ Check, MoveToPlayer, Fire, Rest }
+    public enum BossState{ Check, MoveToPlayer, Fire1, Fire2, Fire3, Rest }
     [Header("보스 패턴 정보")]
     public BossState bossState;
     public enum AnimationState
     {
         Move,
-        Skill
+        Skill1,
+        Skill2,
+        Skill3
     }
     SkeletonAnimation skeletonAnimation;
     public override void _Awake()
@@ -38,7 +41,7 @@ public class GolemBoss : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         bulletArea = transform.GetChild(1).gameObject;
         bullet = transform.GetChild(2).gameObject;
-        skillDelay = 10;
+        skillDelay = 20;
         StartCoroutine(BossStateMachine());
     }
     public override void _FixedUpdate()
@@ -66,11 +69,11 @@ public class GolemBoss : Enemy
         if (target.position.x > rigid.position.x)
         {
             //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-2,2,2);
         }
         else
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.localScale = new Vector3(2,2,2);
         }
     }
     public override void _OnEnable()
@@ -99,6 +102,10 @@ public class GolemBoss : Enemy
             DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
 
         curHP -= _damage;
+
+        if(curHP < maxHP/2){
+            bossPowerUp = true;
+        }
 
         // 보스 넉백 x?
         // if (gameObject.activeSelf)
@@ -157,8 +164,14 @@ public class GolemBoss : Enemy
                 case BossState.MoveToPlayer:
                     yield return StartCoroutine(MoveToPlayer());
                     break;
-                case BossState.Fire:
-                    yield return StartCoroutine(Fire());
+                case BossState.Fire1:
+                    yield return StartCoroutine(Fire1());
+                    break;
+                case BossState.Fire2:
+                    yield return StartCoroutine(Fire2());
+                    break;
+                case BossState.Fire3:
+                    yield return StartCoroutine(Fire3());
                     break;
                 case BossState.Rest:
                     yield return StartCoroutine(Rest());
@@ -190,26 +203,47 @@ public class GolemBoss : Enemy
                 yield return null;
             }
         }
-        yield return bossState = timer >= skillDelay ? BossState.Fire : BossState.Check;
+        if(timer > skillDelay){
+            yield return bossState = BossState.Fire2;
+        } else {
+            yield return bossState = bossPowerUp ? BossState.Fire3 : BossState.Fire1;
+        }
     }
-    IEnumerator Fire(){
+    IEnumerator Fire1(){
         if(scaner.nearestTarget != null){
             // 플레이어 쪽으로 내려 찍기
+            isCheck = false;
+            yield return null;
+            
+            SetAnimationState(AnimationState.Skill1);
+            // 범위 표시
+            StartCoroutine(AreaOn());
+
+            yield return new WaitForSeconds(2.45f);
+            // 발사
+            bulletArea.gameObject.SetActive(false);
+            BulletFire();
+            
+            yield return new WaitForSeconds(2.683f);
+            bossState = BossState.Rest;
+            SetAnimationState(AnimationState.Move);
+        } else {
+            yield return bossState = BossState.Check;
+        }
+    }
+    IEnumerator Fire2(){
+        if(scaner.nearestTarget != null){
+            // 아군 버프
             isAttack = true;
             timer = 0;
             isCheck = false;
             yield return null;
             
-            SetAnimationState(AnimationState.Skill);
-            // 범위 표시
-            StartCoroutine(AreaOn());
-
-            yield return new WaitForSeconds(3.3f);
-            // 발사
-            bulletArea.gameObject.SetActive(false);
-            BulletFire();
-            
-            yield return new WaitForSeconds(1.033f);
+            SetAnimationState(AnimationState.Skill2);
+            yield return new WaitForSeconds(2.3f);
+            // 버프
+            EnemyBuff();
+            yield return new WaitForSeconds(0.8f);
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
         } else {
@@ -217,9 +251,32 @@ public class GolemBoss : Enemy
             isAttack = false;
         }
     }
+    IEnumerator Fire3(){
+        if(scaner.nearestTarget != null){
+            // 플레이어 쪽으로 세번 내려 찍기
+            isCheck = false;
+            yield return null;
+            
+            SetAnimationState(AnimationState.Skill3);
+            // 범위 표시
+            StartCoroutine(AreaOn());
+
+            yield return new WaitForSeconds(2.45f);
+            // 발사
+            bulletArea.gameObject.SetActive(false);
+            StartCoroutine(BossPowerFire());
+            
+            yield return new WaitForSeconds(2.683f);
+            bossState = BossState.Rest;
+            SetAnimationState(AnimationState.Move);
+        } else {
+            yield return bossState = BossState.Check;
+        }
+    }
+
     IEnumerator Rest(){
         // 잠깐 가만히 서서 쉬는 타임
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         bossState = BossState.Check;
         isAttack = false;
     }
@@ -229,8 +286,12 @@ public class GolemBoss : Enemy
         
         if(_aniState == AnimationState.Move)
             skeletonAnimation.AnimationName = "move";
-        else if (_aniState == AnimationState.Skill)
-            skeletonAnimation.AnimationName = "skill";
+        else if (_aniState == AnimationState.Skill1)
+            skeletonAnimation.AnimationName = "skill1";
+        else if (_aniState == AnimationState.Skill2)
+            skeletonAnimation.AnimationName = "skill2";
+        else if (_aniState == AnimationState.Skill3)
+            skeletonAnimation.AnimationName = "skill3";
     }
     private void OnDisable()
     {
@@ -242,30 +303,33 @@ public class GolemBoss : Enemy
         }
     }
     IEnumerator AreaOn(){
-        // x 스캐일 0~30까지 3.5초 동안 커지기
-        float time = 3.3f;
+        float time = 2.45f;
         bulletArea.gameObject.SetActive(true);
-        for(int i=0;i<60;i++){
-            yield return new WaitForSeconds(time/60);
-            bulletArea.transform.localScale = new Vector2 (i/2,8f);
+        for(int i=0;i<time*60;i++){
+            bulletArea.transform.localScale = new Vector2 ((i/(time*60))*7,(i/(time*60))*7);
+            yield return null;
         }
-        bulletArea.transform.localScale = new Vector2 (0,8f);
-        bulletArea.gameObject.SetActive(false);
     }
     void BulletFire(){
-        // 26까지가 최대
         float time = 0.5f;
-        bool left = false;
-        bullet.gameObject.SetActive(true);
-        
+        bullet.gameObject.SetActive(true);        
         EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
         bulletScript.duration = time;
         bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical);
-        if(target.position.x<transform.position.x)
-            left = true;
-                        
-        bullet.transform.position = new Vector2(left? transform.position.x - 4 : transform.position.x + 4, transform.position.y + 4);
-        Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
-        rigid.AddForce((left? Vector2.left : Vector2.right) * 50, ForceMode2D.Impulse);
+    }
+    IEnumerator BossPowerFire(){
+        for(int i=0;i<3;i++){
+            yield return new WaitForSeconds(0.2f);
+            float time = 0.2f;
+            bullet.gameObject.SetActive(true);
+            EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
+            bulletScript.duration = time;
+            bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical);
+            yield return new WaitForSeconds(time);
+            bullet.gameObject.SetActive(false);
+        }
+    }
+    void EnemyBuff(){
+
     }
 }

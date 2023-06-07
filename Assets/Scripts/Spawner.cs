@@ -95,11 +95,7 @@ public class Spawner : MonoBehaviour
         enemy.SetActive(true);
         if(enemy.GetComponent<Enemy>()){
             enemy.GetComponent<Enemy>().Init(enemySpawnDataList[monsterIndex]);
-        } else {
-            enemy.GetComponent<GoblinBoss>().Init(enemySpawnDataList[monsterIndex]);
         }
-        
-
     }
 
     //Sprite GetSpriteImgFromResourceFolder(string _folderName, string _spriteName)

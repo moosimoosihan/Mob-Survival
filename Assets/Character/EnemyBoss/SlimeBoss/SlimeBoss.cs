@@ -66,6 +66,19 @@ public class SlimeBoss : Enemy
                 }
             }
         }
+        
+        if (!isLive || scaner.nearestTarget == null || target == null || !GameManager.instance.isPlay)
+            return;
+
+        if (target.position.x > rigid.position.x)
+        {
+            //Å¸°Ù ¿ÞÂÊ¿¡ ÀÖ´Â °æ¿ì
+            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            gameObject.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     bool isReady = true;

@@ -23,6 +23,8 @@ public class GoblinBoss : Enemy
         Move,
         Skill
     }
+    float timer;
+    float skillDelay;
     SkeletonAnimation skeletonAnimation;
     public override void _Awake()
     {
@@ -41,6 +43,8 @@ public class GoblinBoss : Enemy
     }
     public override void _FixedUpdate()
     {
+        timer += Time.fixedDeltaTime;
+
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
         if (!isLive || knockBack || scaner.nearestTarget == null || isAttack){
             rigid.velocity = Vector2.zero;
@@ -179,7 +183,7 @@ public class GoblinBoss : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 5f){
+        while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 15f){
             if(scaner.nearestTarget != null){
                 yield return bossState = BossState.Check;
                 isAttack = false;
@@ -191,7 +195,8 @@ public class GoblinBoss : Enemy
             }
         }
         int ran = Random.Range(0,bossPatternLen);
-        yield return bossState = ran == 0 ? BossState.NormalFire : BossState.CircleFire;
+        yield return bossState = timer >= skillDelay ? (ran == 0 ? BossState.NormalFire : BossState.CircleFire) : BossState.Check;
+        timer = 0;
         isCheck = false;
     }
     IEnumerator NormalFire(){
@@ -211,6 +216,7 @@ public class GoblinBoss : Enemy
                 rigid.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
             }
             yield return bossState = BossState.Rest;
+            skillDelay = 2;
         } else {
             yield return bossState = BossState.Check;
             isAttack = false;
@@ -248,6 +254,7 @@ public class GoblinBoss : Enemy
                 bossState = BossState.Rest;
                 SetAnimationState(AnimationState.Move);
             }
+            skillDelay = 15;
         } else {
             yield return bossState = BossState.Check;
             isAttack = false;
@@ -255,7 +262,7 @@ public class GoblinBoss : Enemy
     }
     IEnumerator Rest(){
         // 잠깐 가만히 서서 쉬는 타임
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         bossState = BossState.Check;
         isAttack = false;
     }
