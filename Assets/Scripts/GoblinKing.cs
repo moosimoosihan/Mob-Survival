@@ -305,10 +305,7 @@ public class GoblinKing : Enemy
     IEnumerator AreaOn(){
         float time = 2.45f;
         bulletArea.gameObject.SetActive(true);
-        for(int i=0;i<time*60;i++){
-            bulletArea.transform.localScale = new Vector2 ((i/(time*60))*7,(i/(time*60))*7);
-            yield return null;
-        }
+        yield return new WaitForSeconds(time);
     }
     void BulletFire(){
         float time = 0.5f;

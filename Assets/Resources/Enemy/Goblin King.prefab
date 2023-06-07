@@ -197,7 +197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8241271921613353913}
   - component: {fileID: 1264594775669299790}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: BulletArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ Transform:
   m_GameObject: {fileID: 3637102257813566209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 2, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7284292169425701002}
@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 5954547209771323051}
   - component: {fileID: 221076803873240317}
   - component: {fileID: 7339988037594033034}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Bullet
   m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
