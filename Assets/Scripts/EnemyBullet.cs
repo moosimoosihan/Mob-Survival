@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
     public float damage;
     public int per;
     public bool isCritical;
-    protected float duration = 5;
+    public float duration;
 
     public void Init(float _damage, int _per, bool _isCritical)
     {

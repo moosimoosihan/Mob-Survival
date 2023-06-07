@@ -33,7 +33,6 @@ public class GoblinBoss : Enemy
         wait = new WaitForFixedUpdate();
         scaner = GetComponent<Scaner>();
 
-        //childTransform = transform.GetChild(0).transform;
         bullet = transform.GetChild(1).gameObject;
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
@@ -204,6 +203,7 @@ public class GoblinBoss : Enemy
                 yield return new WaitForSeconds(0.5f);
                 GameObject _bullet = GameManager.instance.pool.Get(bullet);
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
+                bulletLogic.duration = 5f;
                 bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                 _bullet.transform.position = transform.position;
                 Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
@@ -224,7 +224,6 @@ public class GoblinBoss : Enemy
             // 기 모으기
             SetAnimationState(AnimationState.Skill);
             yield return new WaitForSeconds(4f);
-            SetAnimationState(AnimationState.Move);
             // 발사
             for(int i=0; i< patternNum[1];i++){
                 yield return new WaitForSeconds(1f);
@@ -245,7 +244,9 @@ public class GoblinBoss : Enemy
                     Vector3 rotVec = Vector3.forward * 360 * y / curRound + Vector3.forward * 90;
                     bullet.transform.Rotate(rotVec);
                 }
-                yield return bossState = BossState.Rest;
+                yield return new WaitForSeconds(0.4f);
+                bossState = BossState.Rest;
+                SetAnimationState(AnimationState.Move);
             }
         } else {
             yield return bossState = BossState.Check;
@@ -258,7 +259,7 @@ public class GoblinBoss : Enemy
         bossState = BossState.Check;
         isAttack = false;
     }
-    public void SetAnimationState(AnimationState _aniState){
+    void SetAnimationState(AnimationState _aniState){
         if(skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
             return;
         
