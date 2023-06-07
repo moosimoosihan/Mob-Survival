@@ -33,7 +33,7 @@ public class HUD : MonoBehaviour
                 myText.text = string.Format("{0:F0}",GameManager.instance.kill);
                 break;
             case InfoYType.BossKill:
-                myText.text = string.Format("{0:F0}/4",GameManager.instance.BossKill);
+                myText.text = string.Format("{0:F0}/4",GameManager.instance.bossKill);
                 break;
             case InfoYType.Time:
                 float remainTime = GameManager.instance.gameTime;

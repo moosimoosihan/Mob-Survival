@@ -114,9 +114,8 @@ public class GolemBoss : Enemy
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
-            spriter.sortingOrder = 1;
             
-            GameManager.instance.BossKill++;
+            GameManager.instance.bossKill++;
             
             // 경험치 아이템 생성
             GameObject expItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[0].itemPrefab);

@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("플레이어 정보")]    
     public int level;
     public int kill;
-    public int BossKill;
+    public int bossKill;
     public float exp;
     public int gold;
     public int[] nextExp;
