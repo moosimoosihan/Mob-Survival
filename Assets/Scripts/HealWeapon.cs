@@ -4,12 +4,12 @@ public class HealWeapon : Weapon
 {
     public override void InitWeapon()
     {
-        delay = 5;
+        
     }
     public override void UpdateWeapon()
     {
         timer += Time.deltaTime;
-        if(timer > delay){
+        if(timer > curDelay){
             Fire();
             timer = 0f;
         }

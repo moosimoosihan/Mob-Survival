@@ -25,6 +25,7 @@ public abstract class Weapon : MonoBehaviour
     
     void Start()
     {
+        curDelay = delay;
         InitWeapon();
     }
 

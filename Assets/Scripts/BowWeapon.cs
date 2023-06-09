@@ -4,7 +4,7 @@ public class BowWeapon : Weapon
 {
     public override void InitWeapon()
     {
-        curDelay = delay;
+        
     }
 
     public override void UpdateWeapon()

@@ -8,7 +8,6 @@ public class ArcherPassive : Weapon
     public float buffTime;
     public override void InitWeapon()
     {
-        curDelay = delay;
         bowWeapon = player.GetComponentInChildren<BowWeapon>();
     }
 

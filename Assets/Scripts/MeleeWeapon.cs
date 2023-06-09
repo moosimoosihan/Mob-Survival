@@ -14,6 +14,10 @@ public class MeleeWeapon : Weapon
     public float detectionAngle = 0;
     public float curDetectionAngle = 0;
 
+    public bool warriorFire;
+    public float warriorFireDamge;
+    public float warriorFireTime;
+
     List<float> distanceList = new List<float>();
 
     private void Awake() {
@@ -27,7 +31,7 @@ public class MeleeWeapon : Weapon
     public override void UpdateWeapon()
     {
         timer += Time.deltaTime;
-        if (timer > delay)
+        if (timer > curDelay)
         {
             //근처에 적을 탐지 했을때
             Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, detectRadius, 1 << LayerMask.NameToLayer(targetLayerMaskName));
@@ -75,7 +79,13 @@ public class MeleeWeapon : Weapon
 
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire( DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
+
+        if(warriorFire){
+            bullet.GetComponent<Bullet>().warriorFire = true;
+            bullet.GetComponent<Bullet>().warriorFireDamge = warriorFireDamge;
+            bullet.GetComponent<Bullet>().warriorFireTime = warriorFireTime;
+        }
     }
 }

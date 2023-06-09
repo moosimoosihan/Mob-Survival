@@ -11,6 +11,7 @@ public class Enemy : CharacterStatus
     public bool isLive;
     public bool knockBack;
     public float power = 1;
+    
 
     public Rigidbody2D rigid;
     public Collider2D coll;
@@ -22,6 +23,10 @@ public class Enemy : CharacterStatus
     public Scaner scaner;
     bool isAttackable = true;
 
+    public float fireDeBuffTime;
+    public bool isFire;
+    float fireTime;
+    public float curFireDamage;
     void Awake()
     {
         _Awake();
@@ -38,6 +43,20 @@ public class Enemy : CharacterStatus
 
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
+    }
+
+    void Update()
+    {
+        if(!isLive || !GameManager.instance.isPlay)
+            return;
+
+        if(isFire){
+            fireTime += Time.deltaTime;
+            if(fireTime >= 1){
+                fireTime = 0;
+                GetDamage(curFireDamage, 0, false);
+            }
+        }
     }
 
     void FixedUpdate()
@@ -86,8 +105,7 @@ public class Enemy : CharacterStatus
         isLive = true;
         coll.enabled = true;
         rigid.simulated = true;
-        // spriter.sortingOrder = 2;
-        // anim.SetBool("Dead",false);
+        isFire = false;
         curHP = maxHP;
     }
     public virtual void Init(enemySpawnData data)
@@ -215,5 +233,17 @@ public class Enemy : CharacterStatus
             0
             ));
         }
+    }
+    public IEnumerator WarriorFireOn(float _damage, float _debuffTime){
+        isFire = true;
+        fireTime = 0;
+        curFireDamage = _damage;
+        fireDeBuffTime = _debuffTime;
+        while(fireDeBuffTime>0){
+            fireDeBuffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        fireDeBuffTime = 0;
+        isFire = false;
     }
 }

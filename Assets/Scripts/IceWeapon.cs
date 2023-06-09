@@ -10,7 +10,7 @@ public class IceWeapon : Weapon
     }
     public override void UpdateWeapon(){
         timer += Time.deltaTime;
-        if (timer > delay)
+        if (timer > curDelay)
         {
             timer = 0f;
             Fire();

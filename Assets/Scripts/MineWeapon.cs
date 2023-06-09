@@ -13,14 +13,14 @@ public class MineWeapon : Weapon
     float weaponDuration;
     public override void InitWeapon()
     {
-        delay = 1;
+        
     }
 
     public override void UpdateWeapon()
     {
         // 지뢰를 생성 할 수 있다면 생성        
         timer += Time.deltaTime;
-        if (timer > delay)
+        if (timer > curDelay)
         {
             bool ret = FireCheck();
             if (ret)

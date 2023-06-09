@@ -8,6 +8,11 @@ public class WarriorActiveSkill : ActiveSkill
     public float bulletSpeed;
     public float knockBackPower;
     public float bulletDuration;
+
+    public bool warriorFire;
+    public float warriorFireDamge;
+    public float warriorFireTime;
+
     public override void ActiveSkillInit(){
         skillArea = transform.GetChild(0).gameObject;
         player = GetComponentInParent<Player>();
@@ -57,7 +62,14 @@ public class WarriorActiveSkill : ActiveSkill
 
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), count, dir, knockBackPower, bulletDuration, isCritical);
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+        bulletScript.speed = bulletSpeed;
+        bulletScript.Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), count, dir, knockBackPower, bulletDuration, isCritical);
+
+        if(warriorFire){
+            bulletScript.warriorFire = true;
+            bulletScript.warriorFireDamge = warriorFireDamge;
+            bulletScript.warriorFireTime = warriorFireTime;
+        }
     }
 }

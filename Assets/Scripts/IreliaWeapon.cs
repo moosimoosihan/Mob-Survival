@@ -29,7 +29,7 @@ public class IreliaWeapon : Weapon
 
     public override void InitWeapon()
     {
-        delay = 1;
+        
     }
 
     public override void UpdateWeapon()
@@ -39,7 +39,7 @@ public class IreliaWeapon : Weapon
         {
             //발사
             timer += Time.deltaTime;
-            if (timer > delay)
+            if (timer > curDelay)
             {
                 if (Fire())
                 {
@@ -52,7 +52,7 @@ public class IreliaWeapon : Weapon
         {
             //생성
             timer += Time.deltaTime;
-            if (timer > delay)
+            if (timer > curDelay)
             {
                 if(CreateBullets())
                 {

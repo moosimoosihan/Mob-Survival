@@ -9,13 +9,13 @@ public class ExeWeapon : Weapon
 
     public override void InitWeapon()
     {
-        delay = 1;
+        
     }
 
     public override void UpdateWeapon()
     {
         timer += Time.deltaTime;
-        if (timer > delay)
+        if (timer > curDelay)
         {
             timer = 0f;
             Fire();

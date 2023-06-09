@@ -16,6 +16,10 @@ public class Bullet : MonoBehaviour
     protected Rigidbody2D rigid;
     protected List<Enemy> detectedEnemyList = new List<Enemy>();
 
+    public bool warriorFire;
+    public float warriorFireDamge;
+    public float warriorFireTime;
+
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -97,14 +101,32 @@ public class Bullet : MonoBehaviour
                 if (detectedEnemyList.Contains(detectedEnemy) == false)
                 {
                     detectedEnemyList.Add(detectedEnemy);
-                    if (detectedEnemy.gameObject.activeSelf)
+                    if (detectedEnemy.gameObject.activeSelf){
                         tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                    
+                        if(warriorFire){
+                            if(!detectedEnemy.isFire){
+                                StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
+                            } else {
+                                detectedEnemy.fireDeBuffTime = warriorFireTime;
+                            }
+                        }
+                    }
                 }
             }
             else
             {
                 tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
-            }            
+                    if(warriorFire){
+                        if(!detectedEnemy.isFire){
+                            StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
+                        } else {
+                            detectedEnemy.fireDeBuffTime = warriorFireTime;
+                        }
+                    }
+            }
+
+
         }
 
         //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
