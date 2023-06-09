@@ -5,6 +5,7 @@ public class ArcherActiveSkill : ActiveSkill
 {
     public float skillDuration;
     bool isActivate;
+    public float buffTime;
     public override void ActiveSkillInit(){
         skillArea = null;
         player = GetComponentInParent<Player>();
@@ -16,6 +17,8 @@ public class ArcherActiveSkill : ActiveSkill
         StartCoroutine(SkillDelay());
         if(!isActivate){
             StartCoroutine(Skill());
+        } else {
+            buffTime = skillDuration;
         }
     }
     IEnumerator SkillDelay(){
@@ -27,7 +30,12 @@ public class ArcherActiveSkill : ActiveSkill
     IEnumerator Skill(){
         isActivate = true;
         player.critRate += 0.3f;
-        yield return new WaitForSeconds(skillDuration);
+        buffTime = skillDuration;
+        while(buffTime>0){
+            buffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        buffTime = 0;
         player.critRate -= 0.3f;
         isActivate = false;
     }

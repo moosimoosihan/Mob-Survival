@@ -5,6 +5,7 @@ public class ArcherPassive : Weapon
 {
     BowWeapon bowWeapon;
     public bool isActivate;
+    public float buffTime;
     public override void InitWeapon()
     {
         curDelay = delay;
@@ -21,12 +22,18 @@ public class ArcherPassive : Weapon
     public void Activate(){
         if(!isActivate){
             StopCoroutine(BuffDelay());
+        } else if(isActivate) {
+            buffTime = curDelay;
         }
     }
     IEnumerator BuffDelay(){
         isActivate = true;
         bowWeapon.curDelay -=  bowWeapon.delay * damage;
-        yield return new WaitForSeconds(curDelay);
+        buffTime = curDelay;
+        while(buffTime>0){
+            buffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
         bowWeapon.curDelay +=  bowWeapon.delay * damage;
         isActivate = false;
     }
