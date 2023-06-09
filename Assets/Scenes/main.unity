@@ -14216,6 +14216,7 @@ MonoBehaviour:
   timer: 0
   projectilePrefab: {fileID: 0}
   skillDuration: 10
+  buffTime: 0
 --- !u!1 &1700834393
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ArcherPassive : Weapon
 {
-    BowWeapon bowWeapon;
+    public BowWeapon bowWeapon;
     public bool isActivate;
     public float buffTime;
     public override void InitWeapon()
@@ -19,9 +19,9 @@ public class ArcherPassive : Weapon
             Activate();
         }
     }
-    public void Activate(){
+    void Activate(){
         if(!isActivate){
-            StopCoroutine(BuffDelay());
+            StartCoroutine(BuffDelay());
         } else if(isActivate) {
             buffTime = curDelay;
         }
@@ -34,6 +34,7 @@ public class ArcherPassive : Weapon
             buffTime -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
+        buffTime = 0;
         bowWeapon.curDelay +=  bowWeapon.delay * damage;
         isActivate = false;
     }
