@@ -6,9 +6,11 @@ public abstract class Weapon : MonoBehaviour
     public float damage;
     public int count;
     public float delay;
+    public float curDelay;
     public float bulletSpeed;
     public float knockBackPower;
     public float duration;
+    public bool isCritical;
     
     protected float timer;
     protected Player player;
@@ -30,7 +32,6 @@ public abstract class Weapon : MonoBehaviour
     {
         UpdateWeapon();
     }
-
     public void LevelUp()
     {
 

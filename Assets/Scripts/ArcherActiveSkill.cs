@@ -4,6 +4,7 @@ using UnityEngine;
 public class ArcherActiveSkill : ActiveSkill
 {
     public float skillDuration;
+    bool isActivate;
     public override void ActiveSkillInit(){
         skillArea = null;
         player = GetComponentInParent<Player>();
@@ -13,7 +14,9 @@ public class ArcherActiveSkill : ActiveSkill
     public override void ActiveSkillUpdate(){
         Debug.Log("궁수 액티브 스킬 시전");
         StartCoroutine(SkillDelay());
-        StartCoroutine(Skill());
+        if(!isActivate){
+            StartCoroutine(Skill());
+        }
     }
     IEnumerator SkillDelay(){
         timer = 0;
@@ -22,8 +25,10 @@ public class ArcherActiveSkill : ActiveSkill
         isActive = false;
     }
     IEnumerator Skill(){
+        isActivate = true;
         player.critRate += 0.3f;
         yield return new WaitForSeconds(skillDuration);
         player.critRate -= 0.3f;
+        isActivate = false;
     }
 }

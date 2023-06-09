@@ -4,13 +4,13 @@ public class BowWeapon : Weapon
 {
     public override void InitWeapon()
     {
-
+        curDelay = delay;
     }
 
     public override void UpdateWeapon()
     {
         timer += Time.deltaTime;
-        if (timer > delay)
+        if (timer > curDelay)
         {
             timer = 0f;
             Fire();
@@ -32,6 +32,6 @@ public class BowWeapon : Weapon
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
+        this.isCritical = isCritical;
     }
-
 }
