@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: c9787e31ea28d9645be7a4b46a5186ad, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: 95676a1e172338b42b44db9ecc4d1ca8, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0
@@ -281,7 +281,11 @@ MonoBehaviour:
   coll: {fileID: 0}
   spriter: {fileID: 0}
   anim: {fileID: 0}
+  attackDelay: 0
   scaner: {fileID: 0}
+  fireDeBuffTime: 0
+  isFire: 0
+  curFireDamage: 0
 --- !u!114 &3036120048931217877
 MonoBehaviour:
   m_ObjectHideFlags: 0

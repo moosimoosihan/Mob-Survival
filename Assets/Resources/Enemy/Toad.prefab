@@ -156,7 +156,11 @@ MonoBehaviour:
   coll: {fileID: 0}
   spriter: {fileID: 0}
   anim: {fileID: 0}
+  attackDelay: 0
   scaner: {fileID: 0}
+  fireDeBuffTime: 0
+  isFire: 0
+  curFireDamage: 0
 --- !u!114 &99869157839475476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,10 +244,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f453c759bcaa71e41ad952a364437878, type: 2}
-  - {fileID: 2100000, guid: 18566626f50916a47940b88c28fa77b6, type: 2}
-  - {fileID: 2100000, guid: 3550d29079fe3674b9740fe8c209a047, type: 2}
-  - {fileID: 2100000, guid: f453c759bcaa71e41ad952a364437878, type: 2}
+  - {fileID: 2100000, guid: 4ec458b4ecf5bda4e9a29b50b8c4fe3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonDataAsset: {fileID: 11400000, guid: f26f2cef5a892b247882ee9bd2923573, type: 2}
+  skeletonDataAsset: {fileID: 11400000, guid: a83bca17c07cac249949aaed2e57e232, type: 2}
   initialSkinName: 
   fixPrefabOverrideViaMeshFilter: 2
   initialFlipX: 0

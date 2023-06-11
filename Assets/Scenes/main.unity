@@ -1430,7 +1430,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  curState: 0
   mainCharacter: {fileID: 110158270}
   distWithinMainCharacter: 6
   distAwayFromEnemy: 3
@@ -2142,7 +2141,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  curState: 0
   mainCharacter: {fileID: 177339301}
   distWithinMainCharacter: 6
   distAwayFromEnemy: 3
@@ -5572,7 +5570,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  curState: 0
   mainCharacter: {fileID: 658571940}
   distWithinMainCharacter: 6
   distAwayFromEnemy: 3
@@ -7367,7 +7364,7 @@ Transform:
   m_GameObject: {fileID: 875944258}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 654440363}
@@ -11657,7 +11654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  curState: 0
   mainCharacter: {fileID: 1325933064}
   distWithinMainCharacter: 6
   distAwayFromEnemy: 3
