@@ -78,7 +78,7 @@ public class EffectBullet : Bullet
                 if(!enemyList[i].isFire){
                     StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime));
                 } else {
-                    enemyList[i].fireDeBuffTime = warriorFireTime;
+                    enemyList[i].FireInit(warriorFireDamge, warriorFireTime);
                 }
             }
         }

@@ -112,7 +112,7 @@ public class Bullet : MonoBehaviour
                             if(!detectedEnemy.isFire){
                                 StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
                             } else {
-                                detectedEnemy.fireDeBuffTime = warriorFireTime;
+                                detectedEnemy.FireInit(warriorFireDamge, warriorFireTime);
                             }
                         }
                     }
@@ -125,7 +125,7 @@ public class Bullet : MonoBehaviour
                     if(!detectedEnemy.isFire){
                         StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
                     } else {
-                        detectedEnemy.fireDeBuffTime = warriorFireTime;
+                        detectedEnemy.FireInit(warriorFireDamge, warriorFireTime);
                     }
                 }
             }

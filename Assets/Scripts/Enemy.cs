@@ -234,16 +234,23 @@ public class Enemy : CharacterStatus
             ));
         }
     }
-    public IEnumerator WarriorFireOn(float _damage, float _debuffTime){
+    public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
+    {
         isFire = true;
         fireTime = 0;
-        curFireDamage = _damage;
-        fireDeBuffTime = _debuffTime;
-        while(fireDeBuffTime>0){
+        FireInit(_damage, _debuffTime);
+        while (fireDeBuffTime > 0)
+        {
             fireDeBuffTime -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         fireDeBuffTime = 0;
         isFire = false;
+    }
+
+    public void FireInit(float _damage, float _debuffTime)
+    {
+        curFireDamage = _damage;
+        fireDeBuffTime = _debuffTime;
     }
 }
