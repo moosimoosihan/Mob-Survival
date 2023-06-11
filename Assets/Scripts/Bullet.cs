@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour
     public float speed;
     public int per;
     public float knockBackPower;
+    public bool throwBullet;
     protected bool hitOnlyOnce = true;
     public bool isCritical;
     protected Rigidbody2D rigid;
@@ -77,6 +78,9 @@ public class Bullet : MonoBehaviour
             return;
 
         if (!collision.CompareTag("Enemy")){
+            if(throwBullet)
+                return;
+            
             if(collision.CompareTag("Wall")){
                 DeActivate(0);
             }
@@ -117,20 +121,18 @@ public class Bullet : MonoBehaviour
             else
             {
                 tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
-                    if(warriorFire){
-                        if(!detectedEnemy.isFire){
-                            StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
-                        } else {
-                            detectedEnemy.fireDeBuffTime = warriorFireTime;
-                        }
+                if(warriorFire){
+                    if(!detectedEnemy.isFire){
+                        StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
+                    } else {
+                        detectedEnemy.fireDeBuffTime = warriorFireTime;
                     }
+                }
             }
-
-
         }
 
         //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
-        if(tempIsHit)
+        if(tempIsHit && !throwBullet)
             per--;
 
         if (per == -1)
