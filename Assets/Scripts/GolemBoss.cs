@@ -244,11 +244,8 @@ public class GolemBoss : Enemy
         // x 스캐일 0~30까지 3.5초 동안 커지기
         float time = 3.3f;
         bulletArea.gameObject.SetActive(true);
-        for(int i=0;i<60;i++){
-            yield return new WaitForSeconds(time/60);
-            bulletArea.transform.localScale = new Vector2 (i/2,8f);
-        }
-        bulletArea.transform.localScale = new Vector2 (0,8f);
+        StartCoroutine(MyCoroutines.CoChangeSizeX(bulletArea, 0, 30, time));
+        yield return new WaitForSeconds(time);
         bulletArea.gameObject.SetActive(false);
     }
     void BulletFire(){
