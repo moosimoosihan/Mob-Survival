@@ -64,7 +64,8 @@ public class WarriorActiveSkill : ActiveSkill
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.speed = bulletSpeed;
-        bulletScript.Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), count, dir, knockBackPower, bulletDuration, isCritical);
+        bulletScript.Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), -1, dir, knockBackPower, bulletDuration, isCritical);
+        bullet.GetComponent<Rigidbody2D>().velocity = dir * bulletSpeed;
 
         if(warriorFire){
             bulletScript.warriorFire = true;
