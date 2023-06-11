@@ -2,25 +2,12 @@ using UnityEngine;
 
 public class CharacterAI : MonoBehaviour
 {
-    public enum State
-    {
-        Init,
-        Idle,
-        Move,
-        Patrol,
-        Stop,
-        Dead
-    }
-
     Rigidbody2D rigid;
     Scaner scanner;
 
     [SerializeField]
     float speed;
     float curSpeed;
-
-    [SerializeField]
-    State curState = State.Init;
 
     //따라다닐 메인 오브젝트
     public GameObject mainCharacter;
@@ -234,6 +221,14 @@ public class CharacterAI : MonoBehaviour
 
             // 자신
             if (_hit2ds[i].collider == selfColl)
+                continue;
+
+            // 벽
+            if (_hit2ds[i].collider.CompareTag("Wall"))
+                continue;
+
+            // 플레이어
+            if (_hit2ds[i].collider.CompareTag("Player"))
                 continue;
 
             //하나라도 충돌시
