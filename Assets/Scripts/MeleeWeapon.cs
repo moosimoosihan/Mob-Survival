@@ -4,11 +4,11 @@ using UnityEngine;
 public class MeleeWeapon : Weapon
 {
     [SerializeField]
-    string targetLayerMaskName = "Enemy";
+    public string targetLayerMaskName = "Enemy";
     [SerializeField]
-    float detectRadius = 0;
+    public float detectRadius = 0;
     [SerializeField]
-    float spawnDistance = 0;
+    public float spawnDistance = 0;
 
     [SerializeField]
     public float detectionAngle = 0;
@@ -18,7 +18,7 @@ public class MeleeWeapon : Weapon
     public float warriorFireDamge;
     public float warriorFireTime;
 
-    List<float> distanceList = new List<float>();
+    public List<float> distanceList = new List<float>();
 
     private void Awake() {
         curDetectionAngle = detectionAngle;
@@ -81,11 +81,5 @@ public class MeleeWeapon : Weapon
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
-
-        if(warriorFire){
-            bullet.GetComponent<Bullet>().warriorFire = true;
-            bullet.GetComponent<Bullet>().warriorFireDamge = warriorFireDamge;
-            bullet.GetComponent<Bullet>().warriorFireTime = warriorFireTime;
-        }
     }
 }

@@ -73,14 +73,6 @@ public class EffectBullet : Bullet
         for (int i = 0; i < enemyList.Count; i++)
         {
             enemyList[i].GetDamage(damage, knockBackPower, isCritical);
-
-            if(warriorFire){
-                if(!enemyList[i].isFire){
-                    StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime));
-                } else {
-                    enemyList[i].FireInit(warriorFireDamge, warriorFireTime);
-                }
-            }
         }
 
         if(_deActivate)

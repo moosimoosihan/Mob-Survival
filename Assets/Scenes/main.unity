@@ -12600,6 +12600,54 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1333724563}
     m_Modifications:
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: count
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: warriorFire
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: detectRadius
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: spawnDistance
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: detectionAngle
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: knockBackPower
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: warriorFireTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6913359753101659238, guid: d3593de0930d9e2488a889cc4b5cc6e1, type: 3}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: warriorFireDamge
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094734, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: m_Name
       value: Sword
@@ -12656,42 +12704,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: count
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: delay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: damage
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: duration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: detectRadius
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: spawnDistance
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: detectionAngle
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: knockBackPower
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 6913359753101659238, guid: e5cd41f3731606f4388ef0239fc910d7, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
 --- !u!1 &1434189740

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
-    GameObject hitEffectPrefab;
+    public GameObject hitEffectPrefab;
 
     public float damage;
     public float speed;
@@ -16,10 +16,6 @@ public class Bullet : MonoBehaviour
     public bool isCritical;
     protected Rigidbody2D rigid;
     protected List<Enemy> detectedEnemyList = new List<Enemy>();
-
-    public bool warriorFire;
-    public float warriorFireDamge;
-    public float warriorFireTime;
 
     void Awake()
     {
@@ -107,27 +103,12 @@ public class Bullet : MonoBehaviour
                     detectedEnemyList.Add(detectedEnemy);
                     if (detectedEnemy.gameObject.activeSelf){
                         tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
-                    
-                        if(warriorFire){
-                            if(!detectedEnemy.isFire){
-                                StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
-                            } else {
-                                detectedEnemy.FireInit(warriorFireDamge, warriorFireTime);
-                            }
-                        }
                     }
                 }
             }
             else
             {
                 tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
-                if(warriorFire){
-                    if(!detectedEnemy.isFire){
-                        StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
-                    } else {
-                        detectedEnemy.FireInit(warriorFireDamge, warriorFireTime);
-                    }
-                }
             }
         }
 
@@ -158,5 +139,4 @@ public class Bullet : MonoBehaviour
         yield return new WaitForSeconds(_delay);
         _action.Invoke();
     }
-
 }
