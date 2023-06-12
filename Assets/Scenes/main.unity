@@ -1529,7 +1529,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110158270}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -2240,7 +2240,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177339301}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -5669,7 +5669,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658571940}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -6100,11 +6100,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: delay
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: damage
-      value: 5
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: duration
@@ -7258,11 +7258,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: delay
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: damage
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: duration
@@ -7270,7 +7270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: bulletSpeed
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: knockBackPower
@@ -9579,7 +9579,7 @@ Transform:
   m_GameObject: {fileID: 1117757836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 5, z: 1}
+  m_LocalScale: {x: 10, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1257434811}
@@ -11753,7 +11753,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1325933064}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -12658,11 +12658,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: delay
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: damage
-      value: 10
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094737, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: duration
@@ -17768,7 +17768,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8410804102997040322, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: bulletSpeed
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8410804102997040322, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: groundDamage

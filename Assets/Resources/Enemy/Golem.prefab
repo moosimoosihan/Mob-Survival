@@ -275,7 +275,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -316,6 +316,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   attackDelay: 0
   scaner: {fileID: 0}
+  fireDeBuffTime: 0
+  isFire: 0
+  curFireDamage: 0
   missileDamage: 0
   bulletArea: {fileID: 0}
   bullet: {fileID: 0}

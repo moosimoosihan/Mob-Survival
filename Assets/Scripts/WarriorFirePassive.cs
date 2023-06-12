@@ -20,12 +20,12 @@ public class WarriorFirePassive : Weapon
         }
     }
     private void OnDisable() {
-        if(player.GetComponentInChildren<MeleeWeapon>().warriorFire){
-            player.GetComponentInChildren<MeleeWeapon>().warriorFire = false;
+        if(player.GetComponentInChildren<MeleeWeapon>(true).warriorFire){
+            player.GetComponentInChildren<MeleeWeapon>(true).warriorFire = false;
         }
 
-        if(player.GetComponentInChildren<WarriorActiveSkill>().warriorFire){
-            player.GetComponentInChildren<WarriorActiveSkill>().warriorFire = false;
+        if(player.GetComponentInChildren<WarriorActiveSkill>(true).warriorFire){
+            player.GetComponentInChildren<WarriorActiveSkill>(true).warriorFire = false;
         }
     }
 }
