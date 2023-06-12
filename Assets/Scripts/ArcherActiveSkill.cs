@@ -29,6 +29,10 @@ public class ArcherActiveSkill : ActiveSkill
     }
     IEnumerator Skill(){
         isActivate = true;
+        GameObject effect = GameManager.instance.pool.Get(projectilePrefab);
+        effect.transform.SetParent(transform);
+        effect.transform.position = transform.position;
+
         player.critRate += 0.3f;
         buffTime = skillDuration;
         while(buffTime>0){
@@ -37,6 +41,7 @@ public class ArcherActiveSkill : ActiveSkill
         }
         buffTime = 0;
         player.critRate -= 0.3f;
+        effect.gameObject.SetActive(false);
         isActivate = false;
     }
 }

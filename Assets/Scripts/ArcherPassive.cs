@@ -27,6 +27,10 @@ public class ArcherPassive : Weapon
     }
     IEnumerator BuffDelay(){
         isActivate = true;
+        GameObject effect = GameManager.instance.pool.Get(projectilePrefab);
+        effect.transform.SetParent(transform);
+        effect.transform.position = transform.position;
+
         bowWeapon.curDelay -=  bowWeapon.delay * damage;
         buffTime = curDelay;
         while(buffTime>0){
@@ -35,6 +39,7 @@ public class ArcherPassive : Weapon
         }
         buffTime = 0;
         bowWeapon.curDelay +=  bowWeapon.delay * damage;
+        effect.gameObject.SetActive(false);
         isActivate = false;
     }
 }

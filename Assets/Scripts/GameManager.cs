@@ -33,6 +33,10 @@ public class GameManager : MonoBehaviour
     [Header("UI Sprite")]
     public Sprite[] playerSptrite;
 
+    // 임시
+    [Header("이펙트 프리펩")]
+    public GameObject burnEffect;
+
     void Awake()
     {
         instance = this;

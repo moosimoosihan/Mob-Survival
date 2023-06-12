@@ -27,6 +27,7 @@ public class Enemy : CharacterStatus
     public bool isFire;
     float fireTime;
     public float curFireDamage;
+    GameObject effect;
     void Awake()
     {
         _Awake();
@@ -107,6 +108,10 @@ public class Enemy : CharacterStatus
         rigid.simulated = true;
         isFire = false;
         curHP = maxHP;
+
+        if(effect != null && effect.gameObject.activeSelf){
+            effect.gameObject.SetActive(false);
+        }
     }
     public virtual void Init(enemySpawnData data)
     {
@@ -237,6 +242,10 @@ public class Enemy : CharacterStatus
     public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
     {
         isFire = true;
+        effect = GameManager.instance.pool.Get(GameManager.instance.burnEffect);
+        effect.transform.SetParent(transform);
+        effect.transform.position = transform.position;
+
         fireTime = 0;
         FireInit(_damage, _debuffTime);
         while (fireDeBuffTime > 0)
@@ -245,6 +254,7 @@ public class Enemy : CharacterStatus
             yield return new WaitForSeconds(0.1f);
         }
         fireDeBuffTime = 0;
+        effect.gameObject.SetActive(false);
         isFire = false;
     }
 
