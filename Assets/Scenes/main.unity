@@ -12740,7 +12740,7 @@ MonoBehaviour:
   delay: 300
   player: {fileID: 0}
   timer: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 8053629336657862800, guid: 1b1eafa4b67ab40279414ba275476020, type: 3}
 --- !u!4 &1441991462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6857669930323094735, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
