@@ -61,7 +61,7 @@ public class WarriorActiveSkill : ActiveSkill
         Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
 
         bullet.position = transform.position;
-        bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.rotation = Quaternion.FromToRotation(Vector3.left, dir);
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.speed = bulletSpeed;
         bulletScript.throwBullet = true;

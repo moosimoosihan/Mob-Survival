@@ -48,6 +48,27 @@ public static class MyCoroutines
             yield return null;
         }
     }
+    public static IEnumerator CoChangeSizeX(GameObject _obj, float _fromScale, float _toScale, float _totalTime)
+    {
+        Vector3 startScale = new Vector3(_fromScale, _obj.transform.localScale.y, 1);
+        Vector3 targetScale = new Vector3(_toScale, _obj.transform.localScale.y, 1);
+        float timer = 0;
+        while (true)
+        {
+            timer += Time.deltaTime;
+            if (timer < _totalTime)
+            {
+                _obj.transform.localScale = Vector3.Lerp(startScale, targetScale, timer / _totalTime);
+            }
+            else
+            {
+                _obj.transform.localScale = targetScale;
+                break;
+            }
+
+            yield return null;
+        }
+    }
     public static IEnumerator CoShakeObj(GameObject _obj, float _shakeAmount, float _shakeTime = 0.25f)
     {
         Vector3 originPos = _obj.transform.position;

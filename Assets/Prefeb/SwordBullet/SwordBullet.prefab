@@ -86,10 +86,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitEffectPrefab: {fileID: 0}
   damage: 0
+  speed: 0
   per: 0
   knockBackPower: 0
+  throwBullet: 0
   isCritical: 0
-  duration: 0.5
+  warriorFire: 0
+  warriorFireDamge: 0
+  warriorFireTime: 0
   attackRadius: 1
   detectionAngle: 0
   drawRay: 1
@@ -146,7 +150,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a3f399dda415fd442a6129ca612c2678, type: 2}
+  - {fileID: 2100000, guid: f31df492c578a044e93f38806e110d44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

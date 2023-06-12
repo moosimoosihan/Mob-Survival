@@ -35,6 +35,11 @@ public class HealerActiveSkill : ActiveSkill
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
                 }
+                // 회생 이펙트 생성
+                Transform revivalEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
+                Bullet revivalScript = revivalEffect.GetComponent<Bullet>();
+                revivalScript.Fire(0, -1, Vector3.zero, 0, 1, false, true, false);
+                revivalEffect.position = minHealthPlayer.transform.position;
                 return;
             } else if (GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP<minHealthPlayer.curHP/minHealthPlayer.maxHP){
                 minHealthPlayer = GameManager.instance.players[i];
