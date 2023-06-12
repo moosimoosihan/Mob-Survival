@@ -4956,7 +4956,7 @@ Transform:
   - {fileID: 658571941}
   - {fileID: 1325933065}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &548832558
 GameObject:
@@ -12177,6 +12177,10 @@ PrefabInstance:
       propertyPath: damage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8864418049405222932, guid: 3a0b97113e1142f44ac3b023ca1eb2de, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2401310057500348727, guid: 3a0b97113e1142f44ac3b023ca1eb2de, type: 3}
       propertyPath: m_Name
       value: WarriorFirePassive
@@ -14872,7 +14876,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1790722839
 GameObject:
@@ -16711,7 +16715,7 @@ RectTransform:
   - {fileID: 1421940180}
   - {fileID: 1412637650}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16928,7 +16932,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2033438851
 MonoBehaviour:
@@ -17748,7 +17752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8410804102997040322, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: delay
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8410804102997040322, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: speed
