@@ -182,21 +182,25 @@ public class GoblinBoss : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 15f){
-            if(scaner.nearestTarget != null){
-                yield return bossState = BossState.Check;
-                isAttack = false;
-                break;
-            } else {
-                isAttack = false;
-                isCheck = true;
-                yield return null;
+        if(scaner.nearestTarget){
+            while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 15f){
+                if(scaner.nearestTarget != null){
+                    yield return bossState = BossState.Check;
+                    isAttack = false;
+                    break;
+                } else {
+                    isAttack = false;
+                    isCheck = true;
+                    yield return null;
+                }
             }
+            int ran = Random.Range(0,bossPatternLen);
+            yield return bossState = timer >= skillDelay ? (ran == 0 ? BossState.NormalFire : BossState.CircleFire) : BossState.Check;
+            timer = 0;
+            isCheck = false;
+        } else {
+            yield return bossState = BossState.Check;
         }
-        int ran = Random.Range(0,bossPatternLen);
-        yield return bossState = timer >= skillDelay ? (ran == 0 ? BossState.NormalFire : BossState.CircleFire) : BossState.Check;
-        timer = 0;
-        isCheck = false;
     }
     IEnumerator NormalFire(){
         if(scaner.nearestTarget != null){

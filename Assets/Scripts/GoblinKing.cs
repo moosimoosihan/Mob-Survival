@@ -191,21 +191,25 @@ public class GoblinKing : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 10f){
-            if(scaner.nearestTarget != null){
-                yield return bossState = BossState.Check;
-                isAttack = false;
-                break;
-            } else {
-                isAttack = false;
-                isCheck = true;
-                yield return null;
+        if(scaner.nearestTarget){
+            while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 10f){
+                if(scaner.nearestTarget != null){
+                    yield return bossState = BossState.Check;
+                    isAttack = false;
+                    break;
+                } else {
+                    isAttack = false;
+                    isCheck = true;
+                    yield return null;
+                }
             }
-        }
-        if(timer > skillDelay){
-            yield return bossState = BossState.Fire2;
+            if(timer > skillDelay){
+                yield return bossState = BossState.Fire2;
+            } else {
+                yield return bossState = bossPowerUp ? BossState.Fire3 : BossState.Fire1;
+            }
         } else {
-            yield return bossState = bossPowerUp ? BossState.Fire3 : BossState.Fire1;
+            yield return bossState = BossState.Check;
         }
     }
     IEnumerator Fire1(){

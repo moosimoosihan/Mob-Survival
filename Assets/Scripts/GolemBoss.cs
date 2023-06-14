@@ -178,18 +178,22 @@ public class GolemBoss : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 10f){
-            if(scaner.nearestTarget != null){
-                yield return bossState = BossState.Check;
-                isAttack = false;
-                break;
-            } else {
-                isAttack = false;
-                isCheck = true;
-                yield return null;
+        if(scaner.nearestTarget){
+            while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 10f){
+                if(scaner.nearestTarget != null){
+                    yield return bossState = BossState.Check;
+                    isAttack = false;
+                    break;
+                } else {
+                    isAttack = false;
+                    isCheck = true;
+                    yield return null;
+                }
             }
+            yield return bossState = timer >= skillDelay ? BossState.Fire : BossState.Check;
+        } else {
+            yield return bossState = BossState.Check;
         }
-        yield return bossState = timer >= skillDelay ? BossState.Fire : BossState.Check;
     }
     IEnumerator Fire(){
         if(scaner.nearestTarget != null){
