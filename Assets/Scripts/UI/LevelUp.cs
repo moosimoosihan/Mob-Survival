@@ -133,8 +133,12 @@ public class LevelUp : MonoBehaviour
         items[y + (i * (maxLen))].playerNum = i;
         items[y + (i * (maxLen))].data = isblank? data[data.Length-1] : data[y + (playerNum * (maxLen))];
         items[y + (i * (maxLen))].Init();
-        item.GetComponent<Button>().onClick.AddListener(items[y + (i * (maxLen))].GetComponent<LevelItem>().OnClick);
-        item.GetComponent<Button>().onClick.AddListener(Hide);
+        Button button = item.GetComponent<Button>();
+        Navigation navigation = button.navigation;
+        navigation.mode = Navigation.Mode.None;
+        button.navigation = navigation;
+        button.onClick.AddListener(items[y + (i * (maxLen))].GetComponent<LevelItem>().OnClick);
+        button.onClick.AddListener(Hide);
     }
 
     public void Show(){
