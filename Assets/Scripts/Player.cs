@@ -142,12 +142,30 @@ public class Player : CharacterStatus
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
                 return;
-            }    
+            }
+
+            //보호막이 있을 경우 보호막이 먼저 깎인다.
+            if(curShield>0){
+                if(curShield>=dam){
+                    curShield -= System.Convert.ToSingle(dam);
+                    dam = 0;
+                } else {
+                    dam -= curShield;
+                    curShield = 0;
+                }
+                if(curShield <= 0){
+                    if(isShield){
+                        StopCoroutine(ShieldOn());
+                        isShield = false;
+                        shieldCurTime = 0;
+                    }
+                }
+            }
         } else {
             // 회복의 경우
             dam = _damage;
-        }
-        
+        }       
+
         curHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
 

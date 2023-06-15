@@ -1503,6 +1503,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 0
@@ -2214,6 +2219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 0
@@ -5643,6 +5653,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 3
   critRate: 0
   critDamage: 0
@@ -6046,6 +6061,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1730524818}
     m_Modifications:
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: count
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: damage
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: shiledTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: detectRadius
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: shiledAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: spawnDistance
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: detectionAngle
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: knockBackPower
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 6913359753101659238, guid: e5cd41f3731606f4388ef0239fc910d7, type: 3}
     - target: {fileID: 6857669930323094734, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: m_Name
       value: Mace
@@ -6093,38 +6152,6 @@ PrefabInstance:
     - target: {fileID: 6857669930323094735, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: count
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: delay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: damage
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: duration
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: detectRadius
-      value: 1.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: spawnDistance
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: detectionAngle
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6857669930323094737, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
-      propertyPath: knockBackPower
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
@@ -6447,6 +6474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBarPrefab: {fileID: 1176126065089691786, guid: 1b2c6f4e68d014645b8437f1844dbf7c, type: 3}
+  sdBarPrefab: {fileID: 1176126065089691786, guid: 2e0d1008a03dc7b44a1105af0a0c8c44, type: 3}
   poolGroup: {fileID: 33676621}
 --- !u!1 &767172099
 GameObject:
@@ -11731,6 +11759,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 0
@@ -15514,7 +15547,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 40, y: 30}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1860022341
 GameObject:

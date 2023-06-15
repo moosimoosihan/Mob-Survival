@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill, ActiveSkill }
+    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill, ActiveSkill, Sheild }
     public InfoYType type;
     public int playerNum;
 
@@ -54,6 +54,11 @@ public class HUD : MonoBehaviour
                 break;
             case InfoYType.ActiveSkill:
                 myImage.fillAmount = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer/GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
+                break;
+            case InfoYType.Sheild:
+                float curShield = GameManager.instance.players[playerNum].curShield;
+                float maxShield = GameManager.instance.players[playerNum].maxShield;
+                mySlider.value = curShield/maxShield;
                 break;
         }
     }

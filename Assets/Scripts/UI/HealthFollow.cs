@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class HealthFollow : MonoBehaviour
 {
+    public bool isShield;
     GameObject targetObj;
     RectTransform rect;
     float curSliderValue;
@@ -22,7 +23,7 @@ public class HealthFollow : MonoBehaviour
     {
         rect.position = Camera.main.WorldToScreenPoint(targetObj.transform.position);
 
-        curSliderValue = characterStatus.curHP / characterStatus.maxHP;
+        curSliderValue = isShield? characterStatus.curShield / characterStatus.maxShield : characterStatus.curHP / characterStatus.maxHP;
         fillSlider.value = curSliderValue;
 
         if (curSliderValue <= 0)

@@ -69,7 +69,7 @@ public class MeleeWeapon : Weapon
         }
     }
 
-    void Fire(Transform _targetTransform)
+    public virtual void Fire(Transform _targetTransform)
     {
         Vector3 targetPos = _targetTransform.position;
         Vector3 dir = targetPos - transform.position;

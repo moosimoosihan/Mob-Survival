@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +5,9 @@ public class FollowingBarManager : MonoBehaviour
 {
     [SerializeField]
     GameObject hpBarPrefab;
+
+    [SerializeField]
+    GameObject sdBarPrefab;
 
     [SerializeField]
     GameObject poolGroup;
@@ -47,6 +49,11 @@ public class FollowingBarManager : MonoBehaviour
     public GameObject CreateFollowingHpBar()
     {
         GameObject tempObj = Get(hpBarPrefab);
+        return tempObj;
+    }
+    public GameObject CreateFollowingSdBar()
+    {
+        GameObject tempObj = Get(sdBarPrefab);
         return tempObj;
     }
 }
