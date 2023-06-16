@@ -77,7 +77,8 @@ public class LevelUp : MonoBehaviour
         nameUIRectTransform.SetParent(item.transform);
         nameUIRectTransform.localScale = Vector3.one;
         nameUIRectTransform.sizeDelta = new Vector2(nameUIRectTransform.sizeDelta.x , 150);
-        Image itemSkillNameUI = skillNameUI.AddComponent<Image>();      
+        Image itemSkillNameUI = skillNameUI.AddComponent<Image>();
+        itemSkillNameUI.raycastTarget = false;
 
         GameObject skillNameTextItem = new GameObject("SkillNameText");
         RectTransform nameTextRectTransform = skillNameTextItem.AddComponent<RectTransform>();        
@@ -91,7 +92,7 @@ public class LevelUp : MonoBehaviour
         itemSkillText.fontStyle = FontStyle.Bold;
         itemSkillText.horizontalOverflow = HorizontalWrapMode.Overflow;
         itemSkillText.verticalOverflow = VerticalWrapMode.Overflow;
-        
+        itemSkillText.raycastTarget = false;
 
         // 스킬 설명
         GameObject descTextItem = new GameObject("SkillDescText");
@@ -107,6 +108,7 @@ public class LevelUp : MonoBehaviour
         itemDescText.fontStyle = FontStyle.Bold;
         itemDescText.horizontalOverflow = HorizontalWrapMode.Wrap;
         itemDescText.verticalOverflow = VerticalWrapMode.Overflow;
+        itemDescText.raycastTarget = false;
 
         // item 하위에 스킬타입 오브젝트 넣기
         GameObject skillTypeUI = new GameObject("SkillTypeUI");
