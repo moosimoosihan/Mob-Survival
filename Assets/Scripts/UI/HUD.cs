@@ -56,9 +56,13 @@ public class HUD : MonoBehaviour
                 myImage.fillAmount = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer/GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
                 break;
             case InfoYType.Sheild:
-                float curShield = GameManager.instance.players[playerNum].curShield;
-                float maxShield = GameManager.instance.players[playerNum].maxShield;
-                mySlider.value = curShield/maxShield;
+                if(GameManager.instance.players[playerNum].curShield>0){
+                    float curShield = GameManager.instance.players[playerNum].curShield;
+                    float maxShield = GameManager.instance.players[playerNum].maxShield;
+                    mySlider.value = curShield/maxShield;
+                } else {
+                    mySlider.value = 0;
+                }
                 break;
         }
     }
