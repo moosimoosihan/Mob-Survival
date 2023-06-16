@@ -6104,7 +6104,7 @@ PrefabInstance:
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: projectilePrefab
       value: 
-      objectReference: {fileID: 6913359753101659238, guid: e5cd41f3731606f4388ef0239fc910d7, type: 3}
+      objectReference: {fileID: 6913359753101659238, guid: 9a52e978d095c9f42baf8579834e62f3, type: 3}
     - target: {fileID: 6857669930323094734, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: m_Name
       value: Mace

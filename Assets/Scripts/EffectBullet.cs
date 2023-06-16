@@ -31,7 +31,7 @@ public class EffectBullet : Bullet
         return result;
     }
 
-    protected List<Enemy> GetEnemies()
+    public List<Enemy> GetEnemies()
     {
         List<Enemy> result = new List<Enemy>();
 
