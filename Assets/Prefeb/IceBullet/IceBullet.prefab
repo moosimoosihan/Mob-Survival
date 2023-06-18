@@ -189,16 +189,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79d7e511d88c7a34982351a4540f2824, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEffectPrefab: {fileID: 0}
+  hitEffectPrefab: {fileID: 6196218399175912062, guid: 7447e66637434bd4abf68784b2128637, type: 3}
   damage: 0
   speed: 0
   per: 0
   knockBackPower: 0
   throwBullet: 0
   isCritical: 0
-  warriorFire: 0
-  warriorFireDamge: 0
-  warriorFireTime: 0
   projectilePrefab: {fileID: 0}
   groundDamage: 0
   groundDuration: 0

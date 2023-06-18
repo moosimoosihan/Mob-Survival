@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 60;
         instance = this;
 
         // 플레이어 묶음에서 현재 있는 플레이어 갯수를 가져오기

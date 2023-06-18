@@ -298,6 +298,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 2
