@@ -26,7 +26,11 @@ public class MaceBullet : EffectBullet
                 player.shieldTime = shiledTime;
                 player.StartCoroutine(player.ShieldOn());
             } else {
-                player.curShield = shiledAmount;
+                if(player.maxShield<(shiledAmount + player.curShield)){
+                    player.curShield = player.maxShield;
+                } else {
+                    player.curShield += shiledAmount;
+                }
                 player.shieldTime = shiledTime;
             }
         }
