@@ -183,10 +183,6 @@ public class Player : CharacterStatus
             }
             
             if(livePlayerCount==0){ // 전부 죽었을 경우
-
-                //임시
-                GameManager.instance.gameOverObj.SetActive(true);
-                
                 // 부활
 
                 // 게임오버
