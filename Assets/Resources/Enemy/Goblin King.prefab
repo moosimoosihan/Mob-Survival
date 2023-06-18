@@ -142,6 +142,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 2
@@ -200,6 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8241271921613353913}
   - component: {fileID: 1264594775669299790}
+  - component: {fileID: 5524564108325875462}
   m_Layer: 0
   m_Name: BulletArea
   m_TagString: Untagged
@@ -215,8 +221,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3637102257813566209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: 2, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 1}
+  m_LocalPosition: {x: -1.21, y: 2.15, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7284292169425701002}
@@ -242,7 +248,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f31df492c578a044e93f38806e110d44, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,8 +269,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.5882353}
+  m_Sprite: {fileID: -279140349, guid: 71c6d60746a97484c8346c6f839c5f02, type: 3}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -274,6 +280,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &5524564108325875462
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3637102257813566209}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 97169dd537acdbd4694dd5d05c6ed0c0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4120452131126143064
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,8 +310,8 @@ GameObject:
   m_Component:
   - component: {fileID: 595531769673231051}
   - component: {fileID: 5954547209771323051}
-  - component: {fileID: 221076803873240317}
   - component: {fileID: 7339988037594033034}
+  - component: {fileID: 7317280670585732435}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: EnemyBullet
@@ -324,22 +350,6 @@ MonoBehaviour:
   per: 0
   isCritical: 0
   duration: 0
---- !u!58 &221076803873240317
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4120452131126143064}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!50 &7339988037594033034
 Rigidbody2D:
   serializedVersion: 4
@@ -361,6 +371,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!60 &7317280670585732435
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120452131126143064}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.2641371, y: 0.41543412}
+      - {x: -0.51804495, y: 0.17045319}
+      - {x: -0.55314416, y: -0.4019861}
+      - {x: -0.11216368, y: -0.4019646}
+      - {x: -0.15244043, y: -0.07118874}
+      - {x: 0.041843086, y: 0.16255768}
+      - {x: 0.2885923, y: 0.15622392}
+      - {x: 0.5059459, y: -0.046567634}
+      - {x: 0.43623132, y: 0.27784228}
+      - {x: 0.16297525, y: 0.45624116}
 --- !u!1 &6194105338296444735
 GameObject:
   m_ObjectHideFlags: 0

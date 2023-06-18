@@ -1,0 +1,1247 @@
+fileFormatVersion: 2
+guid: 71c6d60746a97484c8346c6f839c5f02
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 327328d83286235459d33f09e091703b
+      internalID: -279140349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e35179dd7103ad4a9f5c0294de6fa94
+      internalID: 2011687102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48af71612ac2f6f458f892abc7fa2650
+      internalID: -273680349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93d169dfd0ee944395280ab8fb605b4
+      internalID: -1539769114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 137507f6849226e4c8a5a8892c6f4073
+      internalID: -1584173733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 1290
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ceceed4347222a4385d27c4c388ebf7
+      internalID: -2039669696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 1548
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0411e58b75b73164b8b87ac40ef7215e
+      internalID: 132004160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1806
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6527a517bfa250c4783bfe33ce5ee592
+      internalID: -2142441278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 2064
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 633c6931256a1774baecd593b9ea2614
+      internalID: 725524336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 2322
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 454ccf71131551140945005201cce1dc
+      internalID: -921125635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 2580
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c0b515ae3299140b04419e7191a941
+      internalID: 660813571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 2838
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690e052c8a221034e8a310b59c6fe95c
+      internalID: 1275395001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 3096
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa66bad3443a35b45bbe5c5580fbc790
+      internalID: 2135616382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 3354
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eecad02b6d33941a0784d482cf9ad1
+      internalID: -941613771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 3612
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b61f2c4928b7cd4cb5eb97b29896b88
+      internalID: 23649034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 3870
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24812d4871262fe45b2ac6ecd85c8d84
+      internalID: -790460511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 4128
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f155409f83b3f5649af7249206889342
+      internalID: -1650642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 4386
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27bd248530e81934f8ec5973f80d52e7
+      internalID: 1712376701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 4644
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3366a43806a5bdb44875f36f1e9885e7
+      internalID: -1004887390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 4902
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc2bc0cff77cf8148877aba23d7df8b3
+      internalID: 1938065703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 5160
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb3e1d9d96aae1640a2e6b7db1f29797
+      internalID: 824605206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_21
+      rect:
+        serializedVersion: 2
+        x: 5418
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563dd12612caf8543841f2587cccd6c1
+      internalID: 1982497120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_22
+      rect:
+        serializedVersion: 2
+        x: 5676
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c76ead963e8b14b95b2ac47e3716b1
+      internalID: -1034874892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_23
+      rect:
+        serializedVersion: 2
+        x: 5934
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4cdf5fd440a8d647b7b6a76f5179acb
+      internalID: -2048103652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 6192
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07799837c275a2e4fb8e177c3dcda2f5
+      internalID: -1264586652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 6450
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3ece1d892ef0f84984eb011193efb3a
+      internalID: -237274572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 6708
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d229a803ffefd4043a13c4d52a49c121
+      internalID: 1550708059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 6966
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d232a7716dbba8840876b056cdf2aa27
+      internalID: -41263061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_28
+      rect:
+        serializedVersion: 2
+        x: 7224
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5c4fb97fc574474a94d63e788a57106
+      internalID: 1968416028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 7482
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250d2cd92a3e39248ae8d6ae940aa448
+      internalID: -1202584823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_30
+      rect:
+        serializedVersion: 2
+        x: 7740
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72a2747e5b44e4e4398b9c160015e663
+      internalID: 641509665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 7998
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 337e3c1ed8444da4bb62053ae7206dc2
+      internalID: -907936085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 8256
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e5bfd84b8bd0a445bc9f43ffc3a198f
+      internalID: -1554499378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 8514
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71d37376a1606434baf4b6028e1515f4
+      internalID: -573682890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_34
+      rect:
+        serializedVersion: 2
+        x: 8772
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6f2053fefd4284eb5c84e77df290e0
+      internalID: 64841467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 9030
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2b0827689568d4882b1223c0e4fd8f
+      internalID: -258012490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_36
+      rect:
+        serializedVersion: 2
+        x: 9288
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2589aa0fbc79164580acbc1719c3cf5
+      internalID: 1128563335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 9546
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8ee66b2b721df47a9ec7e5867d79c5
+      internalID: 657970670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 9804
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e880a07f12e2374cbe01dd78a4b3fba
+      internalID: 2027894044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 10062
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec8f11d8fd76744e9deb6f3094a5585
+      internalID: -130213801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 10320
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcb09da76d3202844a3e118bc7849c8e
+      internalID: -1698312943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_41
+      rect:
+        serializedVersion: 2
+        x: 10578
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7f7ddb17c224024f82968321fa5fb5d
+      internalID: 604968087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_42
+      rect:
+        serializedVersion: 2
+        x: 10836
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50f3d0740293a9449babd2c976a72de7
+      internalID: -402154205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 11094
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b77fecc086660654491eff07aa584eb2
+      internalID: -1172197927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 11352
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9174ece6d0001f843bfd32bd233be9c9
+      internalID: 948219757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_45
+      rect:
+        serializedVersion: 2
+        x: 11610
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46993ac5ede90124caedc42504ec5f05
+      internalID: -564137898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_46
+      rect:
+        serializedVersion: 2
+        x: 11868
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a66d9a0159aaf14d97ad2f9e59c8a0b
+      internalID: 1460961406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_47
+      rect:
+        serializedVersion: 2
+        x: 12126
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ad4957ab6db8764599e2aa9704700ae
+      internalID: 509349743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_48
+      rect:
+        serializedVersion: 2
+        x: 12384
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18f3c437fcbaa334da60f3df5742eb1f
+      internalID: -1049161986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: goblinking_effect-Sheet_49
+      rect:
+        serializedVersion: 2
+        x: 12642
+        y: 0
+        width: 258
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 427672617b0034349b4da4f6401002c3
+      internalID: 741583394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      goblinking_effect-Sheet_11: 1275395001
+      goblinking_effect-Sheet_28: 1968416028
+      goblinking_effect-Sheet_46: 1460961406
+      goblinking_effect-Sheet_34: 64841467
+      goblinking_effect-Sheet_39: -130213801
+      goblinking_effect-Sheet_18: -1004887390
+      goblinking_effect-Sheet_8: 725524336
+      goblinking_effect-Sheet_49: 741583394
+      goblinking_effect-Sheet_21: 1982497120
+      goblinking_effect-Sheet_23: -2048103652
+      goblinking_effect-Sheet_9: -921125635
+      goblinking_effect-Sheet_43: -1172197927
+      goblinking_effect-Sheet_32: -1554499378
+      goblinking_effect-Sheet_45: -564137898
+      goblinking_effect-Sheet_27: -41263061
+      goblinking_effect-Sheet_3: -1539769114
+      goblinking_effect-Sheet_47: 509349743
+      goblinking_effect-Sheet_17: 1712376701
+      goblinking_effect-Sheet_29: -1202584823
+      goblinking_effect-Sheet_2: -273680349
+      goblinking_effect-Sheet_16: -1650642
+      goblinking_effect-Sheet_25: -237274572
+      goblinking_effect-Sheet_26: 1550708059
+      goblinking_effect-Sheet_40: -1698312943
+      goblinking_effect-Sheet_0: -279140349
+      goblinking_effect-Sheet_13: -941613771
+      goblinking_effect-Sheet_38: 2027894044
+      goblinking_effect-Sheet_5: -2039669696
+      goblinking_effect-Sheet_7: -2142441278
+      goblinking_effect-Sheet_42: -402154205
+      goblinking_effect-Sheet_48: -1049161986
+      goblinking_effect-Sheet_44: 948219757
+      goblinking_effect-Sheet_20: 824605206
+      goblinking_effect-Sheet_24: -1264586652
+      goblinking_effect-Sheet_14: 23649034
+      goblinking_effect-Sheet_41: 604968087
+      goblinking_effect-Sheet_31: -907936085
+      goblinking_effect-Sheet_35: -258012490
+      goblinking_effect-Sheet_10: 660813571
+      goblinking_effect-Sheet_37: 657970670
+      goblinking_effect-Sheet_19: 1938065703
+      goblinking_effect-Sheet_4: -1584173733
+      goblinking_effect-Sheet_22: -1034874892
+      goblinking_effect-Sheet_36: 1128563335
+      goblinking_effect-Sheet_6: 132004160
+      goblinking_effect-Sheet_33: -573682890
+      goblinking_effect-Sheet_30: 641509665
+      goblinking_effect-Sheet_15: -790460511
+      goblinking_effect-Sheet_1: 2011687102
+      goblinking_effect-Sheet_12: 2135616382
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class GameManager : MonoBehaviour
     public ItemManager itemManager;
     public LevelUp uiLevelUp;
     [Header("UI Sprite")]
+    public GameObject gameOverObj;
     public Sprite[] playerSptrite;
 
     // 임시
@@ -130,6 +132,9 @@ public class GameManager : MonoBehaviour
     public void Resume(){
         isPlay = true;
         Time.timeScale = 1;
+    }
+    public void Replay(){
+        SceneManager.LoadScene(0);
     }
 }
 [System.Serializable]

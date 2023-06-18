@@ -220,7 +220,7 @@ public class GoblinKing : Enemy
             
             SetAnimationState(AnimationState.Skill1);
             // 범위 표시
-            StartCoroutine(AreaOn());
+            bulletArea.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(2.45f);
             // 발사
@@ -262,7 +262,7 @@ public class GoblinKing : Enemy
             
             SetAnimationState(AnimationState.Skill3);
             // 범위 표시
-            StartCoroutine(AreaOn());
+            bulletArea.gameObject.SetActive(true);
 
             yield return new WaitForSeconds(2.45f);
             // 발사
@@ -304,11 +304,6 @@ public class GoblinKing : Enemy
         if(bulletArea != null && bulletArea.activeSelf){
             bulletArea.SetActive(false);
         }
-    }
-    IEnumerator AreaOn(){
-        float time = 2.45f;
-        bulletArea.gameObject.SetActive(true);
-        yield return new WaitForSeconds(time);
     }
     void BulletFire(){
         float time = 0.5f;
