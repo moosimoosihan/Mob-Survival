@@ -17,7 +17,7 @@ public class HealWeapon : Weapon
     void Fire(){
         Player minHealthPlayer = GameManager.instance.players[0];
 
-        // 가장 체력이 적은 아군을 탐지
+        // 가장 체력이 낮은 아군을 탐지
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
             if (GameManager.instance.players[i].curHP > 0 && GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP < minHealthPlayer.curHP/minHealthPlayer.maxHP)
@@ -41,9 +41,6 @@ public class HealWeapon : Weapon
             Bullet healScript = healEffect.GetComponent<Bullet>();
             healScript.Fire(0, -1, Vector3.zero, 0, duration, false, true, false);
             healEffect.position = minHealthPlayer.transform.position;
-            //healEffect.SetParent(GameManager.instance.players[playerNum].transform);
-            //healEffect.localPosition = Vector3.zero;
-            //healEffect.rotation = Quaternion.identity;
         }
     }
 }
