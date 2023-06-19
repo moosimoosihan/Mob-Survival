@@ -1522,6 +1522,7 @@ MonoBehaviour:
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  weaponTransform: {fileID: 0}
   def: 0
   heal: 0
   hpRegen: 0
@@ -2238,6 +2239,7 @@ MonoBehaviour:
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  weaponTransform: {fileID: 0}
   def: 0
   heal: 0
   hpRegen: 0
@@ -4807,7 +4809,7 @@ MonoBehaviour:
   damage: 50
   count: 20
   bulletSpeed: 5
-  knockBackPower: 3
+  knockBackPower: 20
   bulletDuration: 5
   warriorFire: 0
   warriorFireDamge: 0
@@ -6024,6 +6026,7 @@ MonoBehaviour:
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  weaponTransform: {fileID: 0}
   def: 0
   heal: 0
   hpRegen: 0
@@ -12938,6 +12941,7 @@ MonoBehaviour:
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  weaponTransform: {fileID: 0}
   def: 0
   heal: 0
   hpRegen: 0

@@ -78,7 +78,8 @@ public class CharacterAI : MonoBehaviour
             {
                 childTransform.localScale = new Vector3(-1, 1, 1);
             }
-            gameObject.GetComponent<Player>().StopToWall(moveVec);
+            // 현재 다이나믹으로 했을 경우 필요 없음
+            //gameObject.GetComponent<Player>().StopToWall(moveVec);
             rigid.MovePosition(gameObject.GetComponent<Player>().isBorder? rigid.position : rigid.position + moveVec);
         }
     }

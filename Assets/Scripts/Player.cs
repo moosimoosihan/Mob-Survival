@@ -84,7 +84,8 @@ public class Player : CharacterStatus
 
         if(inputEnabled)
         {
-            StopToWall(inputVec);
+            // 현재 다이나믹으로 했을 경우 필요 없음
+            //StopToWall(inputVec);
             Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
             rigid.MovePosition(isBorder? rigid.position : rigid.position + nextVec);
 
@@ -96,6 +97,8 @@ public class Player : CharacterStatus
             {
                 SetAnimationState(AnimationState.Idle);
             }
+        } else {
+            inputVec = Vector2.zero;
         }
     }
     public void StopToWall(Vector2 _inputVec)
