@@ -7,6 +7,7 @@ public class GolemBoss : Enemy
    [Header("보스 정보")]
     public float missileDamage;
     public GameObject bulletArea;
+    public GameObject bulletAreaBack;
     public GameObject bullet;
     WaitForFixedUpdate wait;
     public float skillDelay;
@@ -38,6 +39,7 @@ public class GolemBoss : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         bulletArea = transform.GetChild(1).gameObject;
         bullet = transform.GetChild(2).gameObject;
+        bulletAreaBack = transform.GetChild(3).gameObject;
         skillDelay = 10;
         StartCoroutine(BossStateMachine());
     }
@@ -247,9 +249,11 @@ public class GolemBoss : Enemy
     IEnumerator AreaOn(){
         // x 스캐일 0~30까지 3.5초 동안 커지기
         float time = 3.3f;
+        bulletAreaBack.gameObject.SetActive(true);
         bulletArea.gameObject.SetActive(true);
         StartCoroutine(MyCoroutines.CoChangeSizeX(bulletArea, 0, 30, time));
         yield return new WaitForSeconds(time);
+        bulletAreaBack.gameObject.SetActive(false);
         bulletArea.gameObject.SetActive(false);
     }
     void BulletFire(){
