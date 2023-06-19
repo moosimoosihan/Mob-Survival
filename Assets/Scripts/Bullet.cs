@@ -112,6 +112,9 @@ public class Bullet : MonoBehaviour
             }
         }
 
+        // 피격 이후 생성하는 총알의 경우
+        CreateBullet();
+
         //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
         if(tempIsHit && !throwBullet)
             per--;
@@ -121,6 +124,9 @@ public class Bullet : MonoBehaviour
             rigid.velocity = Vector2.zero;
             DeActivate(0);
         }
+    }
+    public virtual void CreateBullet(){
+
     }
 
     public virtual void DeActivate(float _inTime)
