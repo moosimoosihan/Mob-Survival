@@ -35,6 +35,7 @@ public class HealerActiveSkill : ActiveSkill
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
                 }
+                minHealthPlayer.weaponTransform.gameObject.SetActive(true);
                 // 회생 이펙트 생성
                 Transform revivalEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
                 Bullet revivalScript = revivalEffect.GetComponent<Bullet>();
@@ -45,7 +46,7 @@ public class HealerActiveSkill : ActiveSkill
                 minHealthPlayer = GameManager.instance.players[i];
             }
         }
-        // 전부 회복 및 부활 및 스킬 쿨타임 초기화
+        // 전부 회복 및 스킬 쿨타임 초기화
         minHealthPlayer.curHP = minHealthPlayer.maxHP;
         minHealthPlayer.playerDead = false;
         minHealthPlayer.collider2D.enabled = true;

@@ -3,8 +3,12 @@ using UnityEngine;
 public class MaceBullet : EffectBullet
 {
     public Player player;
+    Player minHealthPlayer;
     public float shiledAmount;
     public float shiledTime;
+    private void Awake() {
+        minHealthPlayer = player;        
+    }
     public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         if (enemyList.Count > 0)
@@ -35,14 +39,17 @@ public class MaceBullet : EffectBullet
                 player.shieldTime = shiledTime;
             }
 
-            Player minHealthPlayer = GameManager.instance.players[0];
+            // 죽지않았고 사제가 아니면서 가장 체력이 낮은 아군을 탐지
+            Player[] playersList =  GameManager.instance.players;
+            float minHeath = 1.1f;
 
             // 가장 체력이 낮은 아군을 탐지
             for (int y = 0; y < GameManager.instance.players.Length; y++)
             {
-                if (GameManager.instance.players[y].curHP > 0 && GameManager.instance.players[i].curHP/GameManager.instance.players[y].maxHP < minHealthPlayer.curHP/minHealthPlayer.maxHP)
+                if (!playersList[y].playerDead && playersList[y] != player && playersList[y].curHP/playersList[y].maxHP<minHeath)
                 {
                     minHealthPlayer = GameManager.instance.players[y];
+                    minHeath = playersList[y].curHP/playersList[y].maxHP;
                 }
             }
 

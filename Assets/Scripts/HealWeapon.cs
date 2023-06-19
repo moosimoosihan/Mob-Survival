@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class HealWeapon : Weapon
 {
+    Player minHealthPlayer;
     public override void InitWeapon()
     {
-        
+        minHealthPlayer = player;
     }
     public override void UpdateWeapon()
     {
@@ -15,14 +16,16 @@ public class HealWeapon : Weapon
         }
     }
     void Fire(){
-        Player minHealthPlayer = GameManager.instance.players[0];
+        Player[] playersList =  GameManager.instance.players;
+        float minHeath = 1.1f;
 
         // 가장 체력이 낮은 아군을 탐지
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
-            if (GameManager.instance.players[i].curHP > 0 && GameManager.instance.players[i].curHP/GameManager.instance.players[i].maxHP < minHealthPlayer.curHP/minHealthPlayer.maxHP)
+            if (!playersList[i].playerDead && playersList[i].curHP/playersList[i].maxHP<minHeath)
             {
                 minHealthPlayer = GameManager.instance.players[i];
+                minHeath = playersList[i].curHP/playersList[i].maxHP;
             }
         }
 

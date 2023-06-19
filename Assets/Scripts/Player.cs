@@ -31,7 +31,7 @@ public class Player : CharacterStatus
     public bool inputEnabled;
     public new Collider2D collider2D;
     Transform childTransform;
-    Transform weaponTransform;
+    public Transform weaponTransform;
     [Header("플레이어 스탯 설정")]
     public int def;
     public float heal;
