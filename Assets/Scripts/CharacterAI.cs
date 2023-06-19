@@ -12,8 +12,7 @@ public class CharacterAI : MonoBehaviour
     //따라다닐 메인 오브젝트
     public GameObject mainCharacter;
 
-    [SerializeField]
-    float distWithinMainCharacter;  //메인 캐릭과의 거리 유지
+    public float distWithinMainCharacter;  //메인 캐릭과의 거리 유지
     [SerializeField]
     float distAwayFromEnemy;    //몬스터와의 거리 유지
     [SerializeField]
@@ -36,6 +35,9 @@ public class CharacterAI : MonoBehaviour
 
     Player playerScript;
 
+    public float limitTime;
+    float timer;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -46,6 +48,7 @@ public class CharacterAI : MonoBehaviour
 
         playerRadius = (selfColl as CapsuleCollider2D).size.x * transform.localScale.x / 2;
         speed = playerScript.speed;
+        timer = limitTime;
     }
 
     bool isRunning = true;
@@ -331,6 +334,15 @@ public class CharacterAI : MonoBehaviour
             isMoving = true;
             isChasingEnemy = false;
             //Debug.Log("복귀");
+            
+            // 살아있으나 메인캐릭터와 멀어진 시간이 길다면 메인캐릭터 주변으로 복귀
+            timer -= Time.fixedDeltaTime;
+            if(timer < 0){
+                gameObject.transform.position = GameManager.instance.playerControl.mainCharacter.transform.position;
+                timer = limitTime;
+            }
+        } else { 
+            timer = limitTime;
         }
 
         if (isMoving)

@@ -26,16 +26,16 @@ public class HealerActiveSkill : ActiveSkill
             if(GameManager.instance.players[i].playerDead){
                 // 죽은 캐릭터일 경우 전부 회복 및 부활 및 스킬 쿨타임 초기화
                 minHealthPlayer = GameManager.instance.players[i];
-                minHealthPlayer.curHP = minHealthPlayer.maxHP;
-                minHealthPlayer.playerDead = false;
-                minHealthPlayer.collider2D.enabled = true;
-                minHealthPlayer.CreateFollowingHpBar();
+                minHealthPlayer.Revival();
                 if(minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive){
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopAllCoroutines();
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
                 }
-                minHealthPlayer.weaponTransform.gameObject.SetActive(true);
+                if(Vector3.Distance(GameManager.instance.playerControl.mainCharacter.transform.position, minHealthPlayer.transform.position)>minHealthPlayer.gameObject.GetComponent<CharacterAI>().distWithinMainCharacter){
+                    // 멀리서 부활했을 경우 플레이어 이동
+                    minHealthPlayer.transform.position = GameManager.instance.playerControl.mainCharacter.transform.position;
+                }
                 // 회생 이펙트 생성
                 Transform revivalEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
                 Bullet revivalScript = revivalEffect.GetComponent<Bullet>();

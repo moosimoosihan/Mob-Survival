@@ -1438,6 +1438,7 @@ MonoBehaviour:
   moveVec: {x: 0, y: 0}
   sensorDist: 2.25
   dirShiftPower: 0.4
+  limitTime: 5
 --- !u!114 &110158272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2155,6 +2156,7 @@ MonoBehaviour:
   moveVec: {x: 0, y: 0}
   sensorDist: 2.25
   dirShiftPower: 0.4
+  limitTime: 5
 --- !u!114 &177339304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5942,6 +5944,7 @@ MonoBehaviour:
   moveVec: {x: 0, y: 0}
   sensorDist: 2.25
   dirShiftPower: 0.4
+  limitTime: 5
 --- !u!114 &658571943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12857,6 +12860,7 @@ MonoBehaviour:
   moveVec: {x: 0, y: 0}
   sensorDist: 2.25
   dirShiftPower: 0.4
+  limitTime: 5
 --- !u!114 &1325933067
 MonoBehaviour:
   m_ObjectHideFlags: 0

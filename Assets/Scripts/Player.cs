@@ -221,4 +221,13 @@ public class Player : CharacterStatus
         yield return new WaitForSeconds(damageDelay);
         isDamaged = false;
     }
+    public void Revival(){
+        curHP = maxHP;
+        playerDead = false;
+        collider2D.enabled = true;
+        CreateFollowingHpBar();
+        weaponTransform.gameObject.SetActive(true);
+        gameObject.layer = 7;
+        
+    }
 }
