@@ -6,9 +6,7 @@ public class MaceBullet : EffectBullet
     Player minHealthPlayer;
     public float shiledAmount;
     public float shiledTime;
-    private void Awake() {
-        minHealthPlayer = player;        
-    }
+
     public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         if (enemyList.Count > 0)
@@ -42,6 +40,7 @@ public class MaceBullet : EffectBullet
             // 죽지않았고 사제가 아니면서 가장 체력이 낮은 아군을 탐지
             Player[] playersList =  GameManager.instance.players;
             float minHeath = 1.1f;
+            minHealthPlayer = player;
 
             // 가장 체력이 낮은 아군을 탐지
             for (int y = 0; y < GameManager.instance.players.Length; y++)
