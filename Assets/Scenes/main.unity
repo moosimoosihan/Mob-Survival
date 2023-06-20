@@ -6554,7 +6554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: detectRadius
-      value: 1.8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: shiledAmount
@@ -6562,11 +6562,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: spawnDistance
-      value: 1.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: detectionAngle
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: knockBackPower
