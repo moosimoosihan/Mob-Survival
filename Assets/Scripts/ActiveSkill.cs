@@ -25,7 +25,7 @@ public abstract class ActiveSkill : MonoBehaviour
             AreaOff();
             return;
         }
-        if(KeyDown()){
+        if(KeyDown(areaOn)){
             ActiveSkillUpdate();
         }
         AreaUpdate();
@@ -34,8 +34,8 @@ public abstract class ActiveSkill : MonoBehaviour
     public abstract void ActiveSkillInit();
     public abstract void AreaUpdate();
     public abstract void AreaOff();
-    public bool KeyDown(){
-        if(!isActive && Input.GetKeyDown(KeyCode.Mouse0)){
+    public bool KeyDown(bool _areaOn){
+        if(!isActive && _areaOn? Input.GetKeyDown(KeyCode.Mouse0) : Input.GetKeyDown(KeyCode.R)){
             return true;
         } else {
             return false;

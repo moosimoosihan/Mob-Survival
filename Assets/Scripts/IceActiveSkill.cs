@@ -16,7 +16,7 @@ public class IceActiveSkill : ActiveSkill
     }
     public override void AreaUpdate()
     {
-        if(!isActive && Input.GetKeyDown(KeyCode.Mouse0)){
+        if(!isActive && Input.GetKeyDown(KeyCode.R)){
             areaOn = true;
         } else if(areaOn && Input.GetKeyDown(KeyCode.Mouse1)){
             areaOn = false;

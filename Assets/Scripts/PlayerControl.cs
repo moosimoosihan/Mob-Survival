@@ -11,7 +11,7 @@ public class PlayerControl : MonoBehaviour
 
     // 특정 버튼으로 플레이어 교체
     // Q, E 로 하나씩 바꿀껀지?
-    // 1,2,3,4 로 원하는 캐릭터로 교체할 건지?
+    // 1,2,3,4 로 원하는 캐릭터로 교체
     void Start()
     {
         mainCharacter = GameManager.instance.players[chatNum].gameObject;
@@ -30,10 +30,35 @@ public class PlayerControl : MonoBehaviour
             { // e 를 눌렀을 경우
                 BackPlayer();
             }
+            else if(Input.GetKeyDown(KeyCode.Alpha1) && GameManager.instance.isPlay)
+            {
+                SelectPlayer(0);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha2) && GameManager.instance.isPlay)
+            {
+                SelectPlayer(1);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha3) && GameManager.instance.isPlay)
+            {
+                SelectPlayer(2);
+            }
+            else if(Input.GetKeyDown(KeyCode.Alpha4) && GameManager.instance.isPlay)
+            {
+                SelectPlayer(3);
+            }
         }
-
         // 다른곳으로 빼고싶은데 처음 초기화시 이상한 곳으로 가는 현상이 있음! ㅠㅠ
         selectP.position = playerRectTransforms[chatNum].position;
+    }
+
+    public void SelectPlayer(int _playerNum)
+    {
+        if(!GameManager.instance.players[_playerNum].playerDead){
+            chatNum=_playerNum;
+            mainCharacter = GameManager.instance.players[chatNum].gameObject;
+            CamSwitch(mainCharacter);
+            ControlSwitch(mainCharacter);
+        }
     }
 
     public void BackPlayer()
