@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Sprite")]
     public GameObject gameOverObj;
     public Sprite[] playerSptrite;
+    public GameObject pauseObj;
 
     // 임시
     [Header("이펙트 프리펩")]
@@ -106,6 +107,9 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+            Pause();
     }
 
     //경험치 획득
@@ -133,6 +137,18 @@ public class GameManager : MonoBehaviour
     public void Resume(){
         isPlay = true;
         Time.timeScale = 1;
+    }
+    public void Pause(){
+        if(pauseObj.activeSelf)
+        {
+            pauseObj.SetActive(false);
+            Resume();
+        }
+        else
+        {
+            pauseObj.SetActive(true);
+            Stop();
+        }
     }
     public void Replay(){
         SceneManager.LoadScene(0);
