@@ -110,6 +110,23 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
             Pause();
+
+        if(Input.GetKeyDown(KeyCode.G) && isPlay){
+            for(int i = 0;i < players.Length;i++){
+                if(players[i].playerDead){
+                    if(life > 0){
+                        life--;
+                        // 죽은 플레이어 살리기
+                        players[i].Revival();
+                        if(Vector3.Distance(playerControl.mainCharacter.transform.position, players[i].transform.position)>players[i].gameObject.GetComponent<CharacterAI>().distWithinMainCharacter){
+                            // 멀리서 부활했을 경우 플레이어 이동
+                            players[i].transform.position = playerControl.mainCharacter.transform.position;
+                        }
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     //경험치 획득

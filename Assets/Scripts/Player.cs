@@ -186,6 +186,7 @@ public class Player : CharacterStatus
             }
             
             if(livePlayerCount==0){ // 전부 죽었을 경우
+                GameManager.instance.isPlay = false;
                 // 부활
 
                 // 게임오버
