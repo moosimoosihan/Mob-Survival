@@ -21,28 +21,28 @@ public class PlayerControl : MonoBehaviour
     
     void Update()
     {
-        if(GameManager.instance.players.Length > 1){ // 1명 이상일 경우 (2명 이상이라도 나머지가 죽어서 1명이 되는경우도 포함해야 함!)
-            if(Input.GetKeyDown(KeyCode.E) && GameManager.instance.isPlay)
+        if(GameManager.instance.players.Length > 1 && GameManager.instance.isPlay){ // 1명 이상일 경우 (2명 이상이라도 나머지가 죽어서 1명이 되는경우도 포함해야 함!)
+            if(Input.GetKeyDown(KeyCode.E))
             { // q를 눌렀을 경우
                 NextPlyaer();
             }
-            else if(Input.GetKeyDown(KeyCode.Q) && GameManager.instance.isPlay)
+            else if(Input.GetKeyDown(KeyCode.Q))
             { // e 를 눌렀을 경우
                 BackPlayer();
             }
-            else if(Input.GetKeyDown(KeyCode.Alpha1) && GameManager.instance.isPlay)
+            else if(Input.GetKeyDown(KeyCode.Alpha1))
             {
                 SelectPlayer(0);
             }
-            else if(Input.GetKeyDown(KeyCode.Alpha2) && GameManager.instance.isPlay)
+            else if(Input.GetKeyDown(KeyCode.Alpha2))
             {
                 SelectPlayer(1);
             }
-            else if(Input.GetKeyDown(KeyCode.Alpha3) && GameManager.instance.isPlay)
+            else if(Input.GetKeyDown(KeyCode.Alpha3))
             {
                 SelectPlayer(2);
             }
-            else if(Input.GetKeyDown(KeyCode.Alpha4) && GameManager.instance.isPlay)
+            else if(Input.GetKeyDown(KeyCode.Alpha4))
             {
                 SelectPlayer(3);
             }
