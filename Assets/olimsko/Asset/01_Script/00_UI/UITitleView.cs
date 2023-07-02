@@ -20,4 +20,9 @@ public class UITitleView : UIView
         base.OnHide();
     }
 
+    public void OnShowSettingView()
+    {
+        OSManager.GetService<UIManager>().GetUI<UISettingView>().Show();
+    }
+
 }

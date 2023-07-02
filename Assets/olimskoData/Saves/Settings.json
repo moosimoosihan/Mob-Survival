@@ -1,3 +1,35 @@
 {
-  "ObjectMap": {}
+  "ObjectMap": {
+    "VideoSetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "VideoSetting, Assembly-CSharp",
+      "ScreenMode": 3,
+      "Resolution": {
+        "x": 3840,
+        "y": 2160,
+        "magnitude": 4405.81445,
+        "sqrMagnitude": 19411200
+      },
+      "RefreshRate": 60,
+      "QualityLevel": 5,
+      "VSync": true,
+      "ShadowQuality": 2,
+      "AntiAliasing": 2
+    },
+    "InputSetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "InputSetting, Assembly-CSharp",
+      "KeyCodeMap": {}
+    },
+    "AudioSetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "AudioSetting, Assembly-CSharp",
+      "Mute": false,
+      "MasterVolume": 0.81,
+      "BGMVolume": 1.0,
+      "EffectVolume": 1.0,
+      "UIVolume": 1.0
+    },
+    "GamePlaySetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "GamePlaySetting, Assembly-CSharp",
+      "Language": "en"
+    }
+  }
 }

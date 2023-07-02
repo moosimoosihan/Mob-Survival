@@ -2290,7 +2290,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 1
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: UIButton
+  m_BindPath: UIButton (1)
 --- !u!114 &3768514004627541273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2334,11 +2334,23 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4977113291962339935}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3350166444226389567}
+        m_TargetAssemblyTypeName: UITitleView, Assembly-CSharp
+        m_MethodName: OnShowSettingView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_UITransition: {fileID: 0}
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: UIButton
+  m_BindPath: UIButton (1)
 --- !u!114 &557564773562625079
 MonoBehaviour:
   m_ObjectHideFlags: 0

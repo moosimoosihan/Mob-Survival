@@ -27,3 +27,5 @@ MonoBehaviour:
   ListPrefabs:
   - m_Name: UILoadingView
     m_Prefab: {fileID: 8291332439410686179, guid: 20e488a4485820d4383d8a20f990a343, type: 3}
+  - m_Name: UISettingView
+    m_Prefab: {fileID: 8291332439410686179, guid: 97c57f04bcfc7f347b7cb5be2345fb1f, type: 3}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using olimsko;
+using Cysharp.Threading.Tasks;
 
 public class UISettingView : UIView
 {
@@ -18,6 +19,7 @@ public class UISettingView : UIView
     protected override void OnHide()
     {
         base.OnHide();
+        OSManager.GetService<StateManager>().SaveSettingsAsync().Forget();
     }
 
 }
