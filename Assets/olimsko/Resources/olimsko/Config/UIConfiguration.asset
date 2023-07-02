@@ -24,4 +24,6 @@ MonoBehaviour:
   OverrideObjectLayer: 1
   ObjectLayer: 5
   MakeScriptWhenAddPrefab: 1
-  ListPrefabs: []
+  ListPrefabs:
+  - m_Name: UILoadingView
+    m_Prefab: {fileID: 8291332439410686179, guid: 20e488a4485820d4383d8a20f990a343, type: 3}

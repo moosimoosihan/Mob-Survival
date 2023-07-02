@@ -13,9 +13,4 @@ MonoBehaviour:
   m_Name: ContextConfiguration
   m_EditorClassIdentifier: 
   ListPredefinedContext:
-  - BuildContext
-  - DashBoardContext
-  - GameContext
-  - LoadingContext
-  - ResourceContext
-  - TimeContext
+  - TestContext
