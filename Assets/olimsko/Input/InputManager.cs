@@ -16,6 +16,11 @@ namespace olimsko
 
         public UniTask InitializeAsync()
         {
+            if (Configuration.InputActionAsset == null)
+            {
+                Debug.LogError("InputActionAsset is null");
+                return UniTask.CompletedTask;
+            }
             foreach (var action in Configuration.InputActionAsset)
             {
                 action.Enable();

@@ -17,7 +17,7 @@ MonoBehaviour:
   DefaultScreenSize: {x: 3840, y: 2160}
   Match: 1
   AutoSpawnInputSystem: 1
-  CustomInputSystem: {fileID: 3844666986492774167, guid: 5a584f7ed04dc864db5f1e7779cf8c06, type: 3}
+  CustomInputSystem: {fileID: 8912292190782521156, guid: 966a80db202751d4285d68db80c68f81, type: 3}
   UseHideHotKey: 1
   HideHotKeyCode: 27
   UINameWhenNoHotKeyList: 
