@@ -168,7 +168,15 @@ public class GameManager : MonoBehaviour
         }
     }
     public void Replay(){
-        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("main");
+    }
+    public void GameExit(){
+        Time.timeScale = 1;
+        SceneManager.LoadScene("01_Main");
+    }
+    public void GameEnd(){
+        Application.Quit();
     }
 }
 [System.Serializable]
