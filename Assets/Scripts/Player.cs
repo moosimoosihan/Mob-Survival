@@ -124,7 +124,9 @@ public class Player : CharacterStatus
     {
         if (playerDead || !GameManager.instance.isPlay)
             return;
-        inputVec = obj.ReadValue<Vector2>();
+            
+        if(inputEnabled)
+            inputVec = obj.ReadValue<Vector2>();
     }
 
     void LateUpdate()
@@ -226,7 +228,7 @@ public class Player : CharacterStatus
 
             if (inputEnabled && livePlayerCount > 0)
             {
-                GameManager.instance.playerControl.NextPlyaer();
+                GameManager.instance.playerControl.PlayerDeadNextPlayer();
             }
         }
     }
