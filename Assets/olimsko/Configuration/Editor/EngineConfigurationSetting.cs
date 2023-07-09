@@ -37,6 +37,10 @@ namespace olimsko
                         EditorSceneManager.playModeStartScene = AssetDatabase.LoadAssetAtPath<SceneAsset>(ConfigurationProvider.LoadOrDefault<EngineConfiguration>().StartScenePath);
                     }
                 }
+                else
+                {
+                    EditorSceneManager.playModeStartScene = null;
+                }
             }
         }
     }
