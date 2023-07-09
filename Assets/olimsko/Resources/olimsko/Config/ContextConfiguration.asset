@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: ContextConfiguration
   m_EditorClassIdentifier: 
   ListPredefinedContext:
-  - TestContext
   - LoadingContext
+  - StageContext
+  - TestContext

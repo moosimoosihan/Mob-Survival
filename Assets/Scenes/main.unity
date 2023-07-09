@@ -1616,7 +1616,6 @@ GameObject:
   - component: {fileID: 110158275}
   - component: {fileID: 110158274}
   - component: {fileID: 110158273}
-  - component: {fileID: 110158272}
   - component: {fileID: 110158271}
   m_Layer: 7
   m_Name: Wizard
@@ -1647,36 +1646,6 @@ MonoBehaviour:
   sensorDist: 2.25
   dirShiftPower: 0.4
   limitTime: 5
---- !u!114 &110158272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110158270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 60e2c90248f5f2e46ac7761a26d49a8d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &110158273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2910,7 +2879,6 @@ GameObject:
   - component: {fileID: 177339307}
   - component: {fileID: 177339306}
   - component: {fileID: 177339305}
-  - component: {fileID: 177339304}
   - component: {fileID: 177339303}
   m_Layer: 7
   m_Name: Archer
@@ -2959,36 +2927,6 @@ MonoBehaviour:
   sensorDist: 2.25
   dirShiftPower: 0.4
   limitTime: 5
---- !u!114 &177339304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 177339301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 60e2c90248f5f2e46ac7761a26d49a8d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &177339305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9454,7 +9392,6 @@ GameObject:
   - component: {fileID: 658571946}
   - component: {fileID: 658571945}
   - component: {fileID: 658571944}
-  - component: {fileID: 658571943}
   - component: {fileID: 658571942}
   m_Layer: 7
   m_Name: Healer
@@ -9503,36 +9440,6 @@ MonoBehaviour:
   sensorDist: 2.25
   dirShiftPower: 0.4
   limitTime: 5
---- !u!114 &658571943
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 658571940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 60e2c90248f5f2e46ac7761a26d49a8d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &658571944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19409,7 +19316,6 @@ GameObject:
   - component: {fileID: 1325933070}
   - component: {fileID: 1325933069}
   - component: {fileID: 1325933068}
-  - component: {fileID: 1325933067}
   - component: {fileID: 1325933066}
   m_Layer: 7
   m_Name: Warrior
@@ -19458,36 +19364,6 @@ MonoBehaviour:
   sensorDist: 2.25
   dirShiftPower: 0.4
   limitTime: 5
---- !u!114 &1325933067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1325933064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 60e2c90248f5f2e46ac7761a26d49a8d, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1325933068
 MonoBehaviour:
   m_ObjectHideFlags: 0

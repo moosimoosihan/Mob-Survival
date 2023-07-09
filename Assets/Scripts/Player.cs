@@ -2,6 +2,7 @@ using Spine.Unity;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using olimsko;
 
 public class Player : CharacterStatus
 {
@@ -56,17 +57,26 @@ public class Player : CharacterStatus
         scanner = GetComponent<Scaner>();
         collider2D = GetComponent<Collider2D>();
 
-        
+        OSManager.GetService<InputManager>().GetAction("Move").Enable();
+        OSManager.GetService<InputManager>().GetAction("Move").performed += OnMove;
+
         childTransform = transform.GetChild(0).GetComponent<Transform>();
         weaponTransform = transform.GetChild(1).GetComponent<Transform>();
         skeletonAnimation = transform.GetChild(0).GetChild(0).GetComponent<SkeletonAnimation>();
 
         //사운드
         //audioSource = GetComponent<AudioSource>(); 
-        
+
         CreateFollowingHpBar();
     }
-    public void Init(playerData data){
+
+    private void OnDestroy()
+    {
+        OSManager.GetService<InputManager>().GetAction("Move").performed -= OnMove;
+        OSManager.GetService<InputManager>().GetAction("Move").Disable();
+    }
+    public void Init(playerData data)
+    {
         maxHP = data.maxHP;
         curHP = maxHP;
         def = data.def;
@@ -82,12 +92,12 @@ public class Player : CharacterStatus
         if (playerDead || !GameManager.instance.isPlay)
             return;
 
-        if(inputEnabled)
+        if (inputEnabled)
         {
             // 현재 다이나믹으로 했을 경우 필요 없음
             //StopToWall(inputVec);
             Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
-            rigid.MovePosition(isBorder? rigid.position : rigid.position + nextVec);
+            rigid.MovePosition(isBorder ? rigid.position : rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
             {
@@ -97,7 +107,9 @@ public class Player : CharacterStatus
             {
                 SetAnimationState(AnimationState.Idle);
             }
-        } else {
+        }
+        else
+        {
             inputVec = Vector2.zero;
         }
     }
@@ -106,23 +118,28 @@ public class Player : CharacterStatus
         Debug.DrawRay(transform.position, _inputVec * 2, Color.green);
         isBorder = Physics2D.Raycast(transform.position, _inputVec, 1, LayerMask.GetMask("Wall"));
     }
-    void OnMove(InputValue value)
+
+
+    private void OnMove(InputAction.CallbackContext obj)
     {
         if (playerDead || !GameManager.instance.isPlay)
             return;
-
-        if (inputEnabled)
-            inputVec = value.Get<Vector2>();
+        inputVec = obj.ReadValue<Vector2>();
     }
+
     void LateUpdate()
     {
         if (playerDead || !GameManager.instance.isPlay)
             return;
 
-        if (inputVec.x != 0){
-            if (inputVec.x < 0){
+        if (inputVec.x != 0)
+        {
+            if (inputVec.x < 0)
+            {
                 childTransform.localScale = new Vector3(1, 1, 1);
-            } else {
+            }
+            else
+            {
                 childTransform.localScale = new Vector3(-1, 1, 1);
             }
         }
@@ -135,39 +152,49 @@ public class Player : CharacterStatus
             return;
 
         double dam = 0;
-        if(_damage>0){
+        if (_damage > 0)
+        {
             isDamaged = true;
             StartCoroutine(DamageDelay());
-            dam = _damage/(1+def*0.01);
+            dam = _damage / (1 + def * 0.01);
             // 회피
-            float ran = Random.Range(0,100);
-            if(evasion*100 > ran){
+            float ran = Random.Range(0, 100);
+            if (evasion * 100 > ran)
+            {
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
                 return;
             }
 
             //보호막이 있을 경우 보호막이 먼저 깎인다.
-            if(curShield>0){
-                if(curShield>=dam){
+            if (curShield > 0)
+            {
+                if (curShield >= dam)
+                {
                     curShield -= System.Convert.ToSingle(dam);
                     dam = 0;
-                } else {
+                }
+                else
+                {
                     dam -= curShield;
                     curShield = 0;
                 }
-                if(curShield <= 0){
-                    if(isShield){
+                if (curShield <= 0)
+                {
+                    if (isShield)
+                    {
                         StopCoroutine(ShieldOn());
                         isShield = false;
                         shieldCurTime = 0;
                     }
                 }
             }
-        } else {
+        }
+        else
+        {
             // 회복의 경우
             dam = _damage;
-        }       
+        }
 
         curHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
@@ -179,13 +206,16 @@ public class Player : CharacterStatus
             SetAnimationState(AnimationState.Death);
 
             int livePlayerCount = 0;
-            for(int i=0;i<GameManager.instance.players.Length;i++){
-                if(!GameManager.instance.players[i].playerDead){
+            for (int i = 0; i < GameManager.instance.players.Length; i++)
+            {
+                if (!GameManager.instance.players[i].playerDead)
+                {
                     livePlayerCount++;
                 }
             }
-            
-            if(livePlayerCount==0){ // 전부 죽었을 경우
+
+            if (livePlayerCount == 0)
+            { // 전부 죽었을 경우
                 GameManager.instance.isPlay = false;
                 // 부활
 
@@ -194,7 +224,8 @@ public class Player : CharacterStatus
                 // 다시하기
             }
 
-            if(inputEnabled && livePlayerCount > 0){
+            if (inputEnabled && livePlayerCount > 0)
+            {
                 GameManager.instance.playerControl.NextPlyaer();
             }
         }
@@ -203,32 +234,34 @@ public class Player : CharacterStatus
     public void SetAnimationState(AnimationState _aniState)
     {
         if (skeletonAnimation == null || playerDead || !GameManager.instance.isPlay)
-           return;
+            return;
 
         if (_aniState == AnimationState.Idle)
-           skeletonAnimation.AnimationName = "idle";
+            skeletonAnimation.AnimationName = "idle";
         else if (_aniState == AnimationState.Run)
-           skeletonAnimation.AnimationName = "run";
+            skeletonAnimation.AnimationName = "run";
         else if (_aniState == AnimationState.Death)
         {
-           skeletonAnimation.AnimationName = "death_loop";
-           playerDead = true;
-           gameObject.layer = LayerMask.NameToLayer("Default");
-           weaponTransform.gameObject.SetActive(false);
-           collider2D.enabled = false;
+            skeletonAnimation.AnimationName = "death_loop";
+            playerDead = true;
+            gameObject.layer = LayerMask.NameToLayer("Default");
+            weaponTransform.gameObject.SetActive(false);
+            collider2D.enabled = false;
         }
     }
-    IEnumerator DamageDelay(){
+    IEnumerator DamageDelay()
+    {
         yield return new WaitForSeconds(damageDelay);
         isDamaged = false;
     }
-    public void Revival(){
+    public void Revival()
+    {
         curHP = maxHP;
         playerDead = false;
         collider2D.enabled = true;
         CreateFollowingHpBar();
         weaponTransform.gameObject.SetActive(true);
         gameObject.layer = 7;
-        
+
     }
 }
