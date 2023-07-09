@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LanguageTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 8cfcf702b71702c4fb01372796e081c8, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 5886874931200
+    m_Localized: starting Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5886937845760
+    m_Localized: setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5886937845761
+    m_Localized: My work
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5886937845762
+    m_Localized: end
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20780848435200
+    m_Localized: On the title screen after cancellation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5886937845767
+    m_Localized: After saving, to the title screen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20375573811200
+    m_Localized: audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20375573811201
+    m_Localized: Manipulation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 20375573811202
+    m_Localized: Setting initialization
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183013125574656
+    m_Localized: Master volume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183013125574657
+    m_Localized: Background music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 183013125574658
+    m_Localized: sound effect
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386432
+    m_Localized: Move up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386433
+    m_Localized: Go down
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386434
+    m_Localized: Left
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386435
+    m_Localized: Right
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386436
+    m_Localized: Character gathering
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386437
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386438
+    m_Localized: Character change
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386439
+    m_Localized: Active activation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386440
+    m_Localized: Active activation confirmation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386441
+    m_Localized: Cancellation of active activation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386442
+    m_Localized: Use of resurrection potion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 260012762386443
+    m_Localized: enforce
+    m_Metadata:
+      m_Items: []
+  - m_Id: 271227114934272
+    m_Localized: Would you really end?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 279733859700736
+    m_Localized: Title screen
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

@@ -20,4 +20,8 @@ public class UISelectStageView : UIView
         base.OnHide();
     }
 
+    public void OnShowSelectHero()
+    {
+        OSManager.GetService<UIManager>().GetUI<UISelectHeroView>().Show();
+    }
 }

@@ -19,7 +19,17 @@ public class UISettingView : UIView
     protected override void OnHide()
     {
         base.OnHide();
-        OSManager.GetService<StateManager>().SaveSettingsAsync().Forget();
+        OSManager.GetService<UIManager>().GetUI<UITitleView>()?.Show();
     }
 
+    public void RevertSetting()
+    {
+        GetEntity<UIAudioSettingEntity>().RevertSetting();
+        GetEntity<UIControlSettingEntity>().RevertSetting();
+    }
+
+    public void OnSaveSetting()
+    {
+        OSManager.GetService<StateManager>().SaveSettingsAsync().Forget();
+    }
 }

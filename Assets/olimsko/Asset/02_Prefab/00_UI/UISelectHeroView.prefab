@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uD30C\uD2F0 \uC120\uD0DD"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc59741a3870e9242b371aa20ac88500, type: 2}
-  m_sharedMaterial: {fileID: -3946070553500521369, guid: dc59741a3870e9242b371aa20ac88500, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e68852d75614dc47baef6c8871b22bd, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 34f9522eea0d89f4583ac74c728c7519, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -204,11 +204,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774\uAC74 \uC815\uBCF4\uAC00\uB9CE\uC544\uC11C \uB9CE\uC774\uBC14\uAFD4\uC57C\uD560\uAC8C
-    \uBED4\uD558\uB2C8 \uB108\uBB34 \uADC0\uCC2E\uC544\uC694..\n\nPress THIS Button..."
+  m_text: "\uAD6C\uCD95\uC911\n\nPress THIS Button..."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: dc59741a3870e9242b371aa20ac88500, type: 2}
-  m_sharedMaterial: {fileID: -3946070553500521369, guid: dc59741a3870e9242b371aa20ac88500, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5e68852d75614dc47baef6c8871b22bd, type: 2}
+  m_sharedMaterial: {fileID: 2546853434063220108, guid: 5e68852d75614dc47baef6c8871b22bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -542,7 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 978e07a446aacec40a36066d1b498408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IsDependenceInScene: 0
+  m_IsDependenceInScene: 1
   m_IsInteractable: 1
   m_VisibleOnAwake: 0
   m_AnimTime: 0.3
@@ -583,7 +582,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7476305668151039244
 MonoBehaviour:
@@ -616,7 +615,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8291332439410686179}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

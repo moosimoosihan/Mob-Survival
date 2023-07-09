@@ -4,6 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
+using System.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -108,6 +109,11 @@ namespace olimsko
         protected T GetEntity<T>(string name) where T : IUIViewEntity
         {
             return (T)m_DicEntity[name];
+        }
+
+        protected T GetEntity<T>() where T : IUIViewEntity
+        {
+            return m_DicEntity.Values.OfType<T>().FirstOrDefault();
         }
 
         protected T Get<T>(string name) where T : IUIBindable

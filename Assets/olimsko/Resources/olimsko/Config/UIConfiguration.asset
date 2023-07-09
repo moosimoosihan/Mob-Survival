@@ -29,3 +29,7 @@ MonoBehaviour:
     m_Prefab: {fileID: 8291332439410686179, guid: 20e488a4485820d4383d8a20f990a343, type: 3}
   - m_Name: UISettingView
     m_Prefab: {fileID: 8291332439410686179, guid: 97c57f04bcfc7f347b7cb5be2345fb1f, type: 3}
+  - m_Name: UIExitPopUpView
+    m_Prefab: {fileID: 8291332439410686179, guid: 6829ff686d58a7342a597c188c46ee22, type: 3}
+  - m_Name: UICreditView
+    m_Prefab: {fileID: 8291332439410686179, guid: 3bf512e0587947c41a2b3b89141acff7, type: 3}

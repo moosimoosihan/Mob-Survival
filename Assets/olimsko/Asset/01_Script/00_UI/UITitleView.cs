@@ -22,7 +22,33 @@ public class UITitleView : UIView
 
     public void OnShowSettingView()
     {
+        Hide();
         OSManager.GetService<UIManager>().GetUI<UISettingView>().Show();
     }
 
+    public void OnShowStageView()
+    {
+        OSManager.GetService<UIManager>().GetUI<UIStageView>().Show();
+    }
+
+    public void OnShowCreditView()
+    {
+        OSManager.GetService<UIManager>().GetUI<UICreditView>().Show();
+    }
+
+    public async void OnShowExitGamePopUp()
+    {
+        Hide();
+        if (!await OSManager.GetService<UIManager>().GetUI<UIExitPopUpView>().ConfirmAsync(""))
+        {
+            Show();
+            return;
+        }
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit(); 
+#endif
+    }
 }

@@ -20,4 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/olimsko/Asset/00_Scene/99_Loading.unity
     guid: 970ef26db994aed40a85cddb20351b45
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: a8181d5211a503a4c8937aa2146e71dd, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: a4b2fa9f93be3fe46b2e8838a396bcff, type: 2}
