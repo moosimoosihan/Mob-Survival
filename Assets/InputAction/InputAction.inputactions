@@ -15,9 +15,54 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeCharacter",
+                    "name": "ChangeCharacter1",
                     "type": "Button",
                     "id": "13f6377e-4175-4959-bf1e-481239f08c4d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacter2",
+                    "type": "Button",
+                    "id": "413bca19-32df-4e85-914e-1a10387455fc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacter3",
+                    "type": "Button",
+                    "id": "e287bcb9-893a-4295-9dc6-f9113855e096",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacter4",
+                    "type": "Button",
+                    "id": "0fe4795d-e098-4358-824c-93043e57066f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacterPrev",
+                    "type": "Button",
+                    "id": "4edae532-5dc6-4c92-acfa-74d33d25fe81",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeCharacterNext",
+                    "type": "Button",
+                    "id": "eae6fab9-ce47-4af1-a824-46d126ad0d6d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -132,40 +177,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
-                    "action": "ChangeCharacter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "eda5ec4a-b126-4695-841f-b6b9f7936eed",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChangeCharacter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "28825775-aa84-48b5-9a0c-3915c98e4c3f",
-                    "path": "<Keyboard>/3",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChangeCharacter",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "2bc22717-60cc-4d19-92a4-a0b236d01d57",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard&Mouse",
-                    "action": "ChangeCharacter",
+                    "action": "ChangeCharacter1",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -221,6 +233,61 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "UsePotion",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "821cfd9a-b1aa-493b-806c-b8e47b168772",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeCharacter2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6551c37-9e9a-4106-9f9f-71e52a7a162e",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeCharacter3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18f3822e-94ad-4d6b-950e-4f8060b9783f",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeCharacter4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e62f2820-29a6-4b92-af2a-0f94bc669bc6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeCharacterPrev",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b53b9561-73f2-4a7f-bbbf-2852b41ee421",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "ChangeCharacterNext",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
