@@ -48,17 +48,41 @@ public class Enemy : CharacterStatus
 
     void Update()
     {
-        nearestTarget = GameManager.instance.playerControl.mainCharacter.transform;
-
-        if(!isLive || !GameManager.instance.isPlay)
+        if (!isLive || !GameManager.instance.isPlay)
             return;
 
-        if(isFire){
+        FindClosestObject();
+
+        if (isFire)
+        {
             fireTime += Time.deltaTime;
-            if(fireTime >= 1){
+            if (fireTime >= 1)
+            {
                 fireTime = 0;
                 GetDamage(curFireDamage, 0, false);
             }
+        }
+    }
+
+    private void FindClosestObject()
+    {
+        float maxDistance = 1000f;
+        float playerCount = 0;
+        foreach (Player player in GameManager.instance.players)
+        {
+            if (!player.playerDead)
+            {
+                playerCount++;
+                float distance = Vector2.Distance(transform.position, player.transform.position);
+                if (distance < maxDistance)
+                {
+                    nearestTarget = player.gameObject.transform;
+                }
+            }
+        }
+        if (playerCount == 0)
+        {
+            nearestTarget = null;
         }
     }
 
