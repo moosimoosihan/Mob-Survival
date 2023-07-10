@@ -21,7 +21,6 @@ public class Enemy : CharacterStatus
     WaitForFixedUpdate wait;
     public float attackDelay;
 
-    public Scaner scaner;
     bool isAttackable = true;
 
     public float fireDeBuffTime;
@@ -29,6 +28,8 @@ public class Enemy : CharacterStatus
     float fireTime;
     public float curFireDamage;
     GameObject effect;
+    public Transform nearestTarget;
+
     void Awake()
     {
         _Awake();
@@ -41,14 +42,14 @@ public class Enemy : CharacterStatus
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
-        scaner = GetComponent<Scaner>();
-
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
     }
 
     void Update()
     {
+        nearestTarget = GameManager.instance.playerControl.mainCharacter.transform;
+
         if(!isLive || !GameManager.instance.isPlay)
             return;
 
@@ -68,10 +69,10 @@ public class Enemy : CharacterStatus
     public virtual void _FixedUpdate()
     {
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x
-        if (!isLive || knockBack || scaner.nearestTarget == null || !GameManager.instance.isPlay)
+        if (!isLive || knockBack || nearestTarget == null || !GameManager.instance.isPlay)
             return;
 
-        target = scaner.nearestTarget.GetComponent<Rigidbody2D>();
+        target = nearestTarget.GetComponent<Rigidbody2D>();
 
         Vector2 dirVec = target.position - rigid.position;
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
@@ -84,7 +85,7 @@ public class Enemy : CharacterStatus
     }
     public virtual void _LateUpdate()
     {
-        if (!isLive || scaner.nearestTarget == null || target == null || !GameManager.instance.isPlay)
+        if (!isLive || nearestTarget == null || target == null || !GameManager.instance.isPlay)
             return;
 
         if (target.position.x > rigid.position.x)
@@ -195,25 +196,23 @@ public class Enemy : CharacterStatus
 
     IEnumerator KnockBack(float knockBackPower)
     {
-        if (scaner != null)
+
+        knockBack = false;
+        yield return wait;
+        knockBack = true;
+        if(nearestTarget != null)
         {
+            Vector3 playerPos = nearestTarget.transform.position;
+            Vector3 dirVec = transform.position - playerPos;
+            rigid.AddForce(dirVec.normalized * knockBackPower, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.1f);
             knockBack = false;
-            yield return wait;
-            knockBack = true;
-            if(scaner.nearestTarget != null)
-            {
-                Vector3 playerPos = scaner.nearestTarget.transform.position;
-                Vector3 dirVec = transform.position - playerPos;
-                rigid.AddForce(dirVec.normalized * knockBackPower, ForceMode2D.Impulse);
-                yield return new WaitForSeconds(0.1f);
-                knockBack = false;
-            }            
         }
     }
 
     public void Dead()
     {
-        GameManager.instance.poolManager.TakeToPool<Enemy>(idName, this);
+        gameObject.SetActive(false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

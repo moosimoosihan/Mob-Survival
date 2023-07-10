@@ -33,7 +33,6 @@ public class GoblinBoss : Enemy
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
-        scaner = GetComponent<Scaner>();
 
         bullet = transform.GetChild(1).gameObject;
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
@@ -46,12 +45,12 @@ public class GoblinBoss : Enemy
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || scaner.nearestTarget == null || isAttack){
+        if (!isLive || knockBack || nearestTarget == null || isAttack){
             rigid.velocity = Vector2.zero;
             return;
         } 
 
-        target = scaner.nearestTarget.GetComponent<Rigidbody2D>();
+        target = nearestTarget.GetComponent<Rigidbody2D>();
 
         Vector2 dirVec = target.position - rigid.position;
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
@@ -60,7 +59,7 @@ public class GoblinBoss : Enemy
     }
     public override void _LateUpdate()
     {
-        if (!isLive || scaner.nearestTarget == null || target == null || isAttack)
+        if (!isLive || nearestTarget == null || target == null || isAttack)
             return;
 
         if (target.position.x > rigid.position.x)
@@ -171,7 +170,7 @@ public class GoblinBoss : Enemy
     }
     IEnumerator Check(){
         isCheck = true;
-        if(scaner.nearestTarget!=null){
+        if(nearestTarget!=null){
             // 적군이 있을 경우
             isCheck = false;
             yield return bossState = BossState.MoveToPlayer;
@@ -182,9 +181,9 @@ public class GoblinBoss : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        if(scaner.nearestTarget){
-            while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 15f){
-                if(scaner.nearestTarget != null){
+        if(nearestTarget){
+            while(Vector2.Distance(transform.position, nearestTarget.transform.position) > 15f){
+                if(nearestTarget != null){
                     yield return bossState = BossState.Check;
                     isAttack = false;
                     break;
@@ -203,7 +202,7 @@ public class GoblinBoss : Enemy
         }
     }
     IEnumerator NormalFire(){
-        if(scaner.nearestTarget != null){
+        if(nearestTarget != null){
             // 앞으로 하나씩 미사일 발사
             isAttack = true;
             yield return null;
@@ -215,7 +214,7 @@ public class GoblinBoss : Enemy
                 bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                 _bullet.transform.position = transform.position;
                 Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
-                Vector2 dirVec = scaner.nearestTarget.transform.position - transform.position;
+                Vector2 dirVec = nearestTarget.transform.position - transform.position;
                 rigid.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
             }
             yield return bossState = BossState.Rest;
@@ -226,7 +225,7 @@ public class GoblinBoss : Enemy
         }
     }
     IEnumerator CircleFire(){
-        if(scaner.nearestTarget != null){
+        if(nearestTarget != null){
             // 원형으로 미사일 발사
             isAttack = true;
             yield return null;

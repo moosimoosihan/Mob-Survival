@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6060792419958117257}
   - component: {fileID: 6225483393852580137}
   - component: {fileID: 3661658936295366213}
-  - component: {fileID: 99869157839475476}
   m_Layer: 6
   m_Name: Goblin King
   m_TagString: Enemy
@@ -152,6 +151,7 @@ MonoBehaviour:
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 1
+  idName: 
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -174,27 +174,6 @@ MonoBehaviour:
   skillDelay: 20
   timer: 0
   bossState: 0
---- !u!114 &99869157839475476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2207541614551476657}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc84a1fa0160844ebd3d509f1e2d2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanRange: 100
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  nearestTarget: {fileID: 0}
-  itemScanRange: 0
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &3637102257813566209
 GameObject:
   m_ObjectHideFlags: 0

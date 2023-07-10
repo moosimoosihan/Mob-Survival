@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4758480154492861389}
   - component: {fileID: 6683658302885780826}
   - component: {fileID: 2804877781288562894}
-  - component: {fileID: 4510560252462364444}
   m_Layer: 6
   m_Name: Snake
   m_TagString: Enemy
@@ -140,11 +139,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 0
+  idName: 
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -156,28 +161,11 @@ MonoBehaviour:
   coll: {fileID: 0}
   spriter: {fileID: 0}
   anim: {fileID: 0}
+  attackDelay: 0
   scaner: {fileID: 0}
---- !u!114 &4510560252462364444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5685544076861595714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc84a1fa0160844ebd3d509f1e2d2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanRange: 100
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  nearestTarget: {fileID: 0}
-  itemScanRange: 0
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 0
+  fireDeBuffTime: 0
+  isFire: 0
+  curFireDamage: 0
 --- !u!1 &7751696143473904046
 GameObject:
   m_ObjectHideFlags: 0

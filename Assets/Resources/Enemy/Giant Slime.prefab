@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 9178175653398265333}
   - component: {fileID: 9178175653398265329}
   - component: {fileID: 9178175653398265328}
-  - component: {fileID: 9178175653398265331}
   m_Layer: 6
   m_Name: Giant Slime
   m_TagString: Enemy
@@ -206,11 +205,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 1
+  idName: 
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -478,24 +483,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9178175653398265331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9178175653398265332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc84a1fa0160844ebd3d509f1e2d2d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scanRange: 100
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  nearestTarget: {fileID: 0}
-  itemScanRange: 0
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 0

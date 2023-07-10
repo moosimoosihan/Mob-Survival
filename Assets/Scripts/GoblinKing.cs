@@ -34,7 +34,6 @@ public class GoblinKing : Enemy
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
-        scaner = GetComponent<Scaner>();
 
         
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
@@ -49,12 +48,12 @@ public class GoblinKing : Enemy
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || scaner.nearestTarget == null || isAttack){
+        if (!isLive || knockBack || nearestTarget == null || isAttack){
             rigid.velocity = Vector2.zero;
             return;
         } 
 
-        target = scaner.nearestTarget.GetComponent<Rigidbody2D>();
+        target = nearestTarget.GetComponent<Rigidbody2D>();
 
         Vector2 dirVec = target.position - rigid.position;
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
@@ -63,7 +62,7 @@ public class GoblinKing : Enemy
     }
     public override void _LateUpdate()
     {
-        if (!isLive || scaner.nearestTarget == null || target == null || isAttack)
+        if (!isLive || nearestTarget == null || target == null || isAttack)
             return;
 
         if (target.position.x > rigid.position.x)
@@ -180,7 +179,7 @@ public class GoblinKing : Enemy
     }
     IEnumerator Check(){
         isCheck = true;
-        if(scaner.nearestTarget!=null){
+        if(nearestTarget!=null){
             // 적군이 있을 경우
             isCheck = false;
             yield return bossState = BossState.MoveToPlayer;
@@ -191,9 +190,9 @@ public class GoblinKing : Enemy
         }
     }
     IEnumerator MoveToPlayer(){
-        if(scaner.nearestTarget){
-            while(Vector2.Distance(transform.position, scaner.nearestTarget.transform.position) > 10f){
-                if(scaner.nearestTarget != null){
+        if(nearestTarget){
+            while(Vector2.Distance(transform.position, nearestTarget.transform.position) > 10f){
+                if(nearestTarget != null){
                     yield return bossState = BossState.Check;
                     isAttack = false;
                     break;
@@ -213,7 +212,7 @@ public class GoblinKing : Enemy
         }
     }
     IEnumerator Fire1(){
-        if(scaner.nearestTarget != null){
+        if(nearestTarget != null){
             // 플레이어 쪽으로 내려 찍기
             isCheck = false;
             yield return null;
@@ -235,7 +234,7 @@ public class GoblinKing : Enemy
         }
     }
     IEnumerator Fire2(){
-        if(scaner.nearestTarget != null){
+        if(nearestTarget != null){
             // 아군 버프
             isAttack = true;
             timer = 0;
@@ -255,7 +254,7 @@ public class GoblinKing : Enemy
         }
     }
     IEnumerator Fire3(){
-        if(scaner.nearestTarget != null){
+        if(nearestTarget != null){
             // 플레이어 쪽으로 세번 내려 찍기
             isCheck = false;
             yield return null;

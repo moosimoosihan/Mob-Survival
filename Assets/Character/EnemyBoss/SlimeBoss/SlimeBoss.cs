@@ -58,21 +58,21 @@ public class SlimeBoss : Enemy
         {
             if (isReady)
             {
-                if (scaner.nearestTarget != null)
+                if (nearestTarget != null)
                 {
-                    Vector3 targetPos = scaner.nearestTarget.position;
+                    Vector3 targetPos = nearestTarget.position;
                     JumpAttack(new Vector3(targetPos.x, targetPos.y));
                     timer = 0;
                 }
             }
         }
         
-        if (!isLive || scaner.nearestTarget == null || target == null || !GameManager.instance.isPlay)
+        if (!isLive || nearestTarget == null || target == null || !GameManager.instance.isPlay)
             return;
 
         if (target.position.x > rigid.position.x)
         {
-            //Å¸°Ù ¿ÞÂÊ¿¡ ÀÖ´Â °æ¿ì
+            //Å¸ï¿½ï¿½ ï¿½ï¿½ï¿½Ê¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½
             gameObject.transform.localScale = new Vector3(-1, 1, 1);
         }
         else
@@ -112,12 +112,12 @@ public class SlimeBoss : Enemy
         targetAnim.AttackTargetArea(_targetPos, aimObj.transform.localScale, totalTime);
         yield return new WaitForSeconds(totalTime / 2.0f);
 
-        //Á¡ÇÁ³ôÀÌ Å¸°Ù°úÀÇ y°ª
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ù°ï¿½ï¿½ï¿½ yï¿½ï¿½
         float jumpY = xDistance * 0.5f;
         if (jumpY < 0.5f)
             jumpY += 0.5f;
 
-        //½ÃÀÛÁ¡ÀÌ¶û Å¸°ÙÁ¡ ³ôÀÌ ºñ±³ÇØ¼­ ±âÁØÁ¡ Á¤ÇØÁÖ±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
         float jumpHeight = 0;
         if(_targetPos.y > childTransformStartPos.y)
         {
@@ -134,14 +134,14 @@ public class SlimeBoss : Enemy
         float scaleX = 1;
         float scaleY = 1;
 
-        //Á¡ÇÁÀü¿¡ ÄÝ¶óÀÌ´õ ²¨ÁÖ±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ö±ï¿½
         //capsuleCollider2D.enabled = false;
 
         while (true)
         {
             timer += Time.deltaTime;
 
-            //À§Ä¡
+            //ï¿½ï¿½Ä¡
             posX = Mathf.Lerp(childTransformStartPos.x, _targetPos.x, moveCurve.Evaluate(timer / totalTime));
 
             if(timer < totalTime / 2.0f)
@@ -155,10 +155,10 @@ public class SlimeBoss : Enemy
                 posY = Mathf.Lerp(jumpHeight, _targetPos.y, moveCurve.Evaluate(t));
             }
 
-            //¸öÅë ÀÌµ¿
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
             transform.position = new Vector3(posX, posY, transform.position.z);
                       
-            //»çÀÌÁî ²Ü··ÀÌ±â
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü·ï¿½ï¿½Ì±ï¿½
             scaleX = scaleCurve_X.Evaluate(timer / totalTime);
             scaleY = scaleCurve_Y.Evaluate(timer / totalTime);
             transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
@@ -171,20 +171,20 @@ public class SlimeBoss : Enemy
 
         targetAnim.Done();
 
-        //Á¡ÇÁÈÄ ÄÝ¶óÀÌ´õ ÄÑÁÖ±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½Ö±ï¿½
         //capsuleCollider2D.enabled = true;
 
-        //°ø°Ý
+        //ï¿½ï¿½ï¿½ï¿½
         AttackArea();
 
-        //ÂøÁöÇÏ°í³ª¼­ ²Ü··ÀÌ±â
+        //ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü·ï¿½ï¿½Ì±ï¿½
         timer = 0;
         totalTime = 0.35f;
         while (true)
         {
             timer += Time.deltaTime;
 
-            //»çÀÌÁî ²Ü··ÀÌ±â
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü·ï¿½ï¿½Ì±ï¿½
             scaleX = scaleCurve_X_Afterwards.Evaluate(timer / totalTime);
             scaleY = scaleCurve_Y_Afterwards.Evaluate(timer / totalTime);
             transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
@@ -202,7 +202,7 @@ public class SlimeBoss : Enemy
     {
         List<Player> result = new List<Player>();
 
-        //¿ø ¾ÈÀÇ ¿ÀºêÁ§Æ®µéÀ» °¡Á®¿À±â À§ÇØ physics »ç¿ë
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ physics ï¿½ï¿½ï¿½
         Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Player"));
 
         if (colliders2D.Length > 0)
@@ -212,10 +212,10 @@ public class SlimeBoss : Enemy
                 Vector3 direction = targetCol.transform.position - transform.position;
                 float angle = Vector3.Angle(transform.up, direction);
 
-                // ¢Ø¡è¢Ö ºÎÃ¤²Ã °¢µµ ¾È¿¡ ÀÖ´Â ¾Öµé¸¸ °¡Á®¿À±â   
+                // ï¿½Ø¡ï¿½ï¿½ ï¿½ï¿½Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½Öµé¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   
                 if (angle <= detectionAngle * 0.5f)
                 {
-                    //0 ~ 180µµ -0 - 180
+                    //0 ~ 180ï¿½ï¿½ -0 - 180
                     Player playerScript = targetCol.GetComponent<Player>();
                     if (playerScript != null)
                         result.Add(playerScript);
@@ -234,7 +234,7 @@ public class SlimeBoss : Enemy
 
         for (int i = 0; i < tempPlayerList.Count; i++)
         {
-            //Debug.Log($"µ¥¹ÌÁö [{damage}]");
+            //Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ [{damage}]");
             tempPlayerList[i].GetDamage(attackDamage, false);
         }
 
@@ -253,19 +253,19 @@ public class SlimeBoss : Enemy
         if (curHP <= 0)
             return false;
 
-        //µ¥¹ÌÁö ±¸Çö ±¸°£
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (_damage > 0)
             DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
 
         curHP -= _damage;
 
-        // º¸½º ³Ë¹é x?
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹ï¿½ x?
         // if (gameObject.activeSelf)
         //     StartCoroutine(KnockBack());
 
         if (curHP > 0)
         {
-            // È÷Æ® ¸ð¼Ç? È÷Æ® »ö»ó?
+            // ï¿½ï¿½Æ® ï¿½ï¿½ï¿½? ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½?
         }
         else
         {
@@ -276,14 +276,14 @@ public class SlimeBoss : Enemy
             
             GameManager.instance.bossKill++;
             
-            // °æÇèÄ¡ ¾ÆÀÌÅÛ »ý¼º
+            // ï¿½ï¿½ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             GameObject expItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[0].itemPrefab);
             Vector2 randomPosition = Random.insideUnitCircle.normalized;
             expItem.transform.position = (Vector2)transform.position+randomPosition;
             expItem.SetActive(true);
             expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
 
-            // º¸½ºÀÇ °æ¿ì ¾Æ¿ô°ÔÀÓ ¾ÆÀÌÅÛ 100ÇÁ·Î µå¶ø ÇöÀç´Â °ñµå 100ÇÁ·Î
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Æ¿ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 100ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ 100ï¿½ï¿½ï¿½ï¿½
             int ran = Random.Range(1,101);
             if(ran <= 100){
                 GameObject goldItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[1].itemPrefab);
@@ -293,13 +293,13 @@ public class SlimeBoss : Enemy
                 goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
             }
 
-            // ÀÏÁ¤ È®·ü·Î ÀÎ°ÔÀÓ ¾ÆÀÌÅÛ »ý¼º
+            // ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             
             
-            //°æÇèÄ¡ È¹µæ
+            //ï¿½ï¿½ï¿½ï¿½Ä¡ È¹ï¿½ï¿½
             //GameManager.instance.GetExp();
 
-            //¿¡´Ï¸ÞÀÌ¼Ç¿¡ Dead¸¦ ³Ö´Â ´ë½Å ¹Ù·Î È£Ãâ
+            //ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½Ì¼Ç¿ï¿½ Deadï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½Ù·ï¿½ È£ï¿½ï¿½
             Dead();
         }
         return true;
