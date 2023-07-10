@@ -88,11 +88,11 @@ public class Spawner : MonoBehaviour
     {
         int monsterIndex = index-1;
 
-        GameObject enemy = GameManager.instance.pool.Get(enemySpawnDataList[monsterIndex].monsterPrefab);
+        Enemy enemy = GameManager.instance.poolManager.GetFromPool<Enemy>(monsterIndex);
 
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
-        enemy.SetActive(true);
+        //enemy.SetActive(true);
         if(enemy.GetComponent<Enemy>()){
             enemy.GetComponent<Enemy>().Init(enemySpawnDataList[monsterIndex]);
         }

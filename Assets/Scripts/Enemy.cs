@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
+using Redcode.Pools;
 
-public class Enemy : CharacterStatus
+public class Enemy : CharacterStatus, IPoolObject
 {
     [Header("적군 정보")]
     public string idName;
@@ -124,10 +125,6 @@ public class Enemy : CharacterStatus
         }
     }
 
-    void OnEnable()
-    {
-        _OnEnable();
-    }
     public virtual void _OnEnable()
     {
         isLive = true;
@@ -139,6 +136,15 @@ public class Enemy : CharacterStatus
         if(effect != null && effect.gameObject.activeSelf){
             effect.gameObject.SetActive(false);
         }
+    }
+    public void OnCreatedInPool()
+    {
+        
+    }
+
+    public void OnGettingFromPool()
+    {
+        _OnEnable();
     }
     public virtual void Init(enemySpawnData data)
     {
@@ -237,7 +243,8 @@ public class Enemy : CharacterStatus
 
     public void Dead()
     {
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        GameManager.instance.poolManager.TakeToPool<Enemy>(this.idName, this);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -289,4 +296,6 @@ public class Enemy : CharacterStatus
         curFireDamage = _damage;
         fireDeBuffTime = _debuffTime;
     }
+
+
 }
