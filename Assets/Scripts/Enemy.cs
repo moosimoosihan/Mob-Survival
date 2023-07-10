@@ -76,6 +76,7 @@ public class Enemy : CharacterStatus
                 float distance = Vector2.Distance(transform.position, player.transform.position);
                 if (distance < maxDistance)
                 {
+                    maxDistance = distance;
                     nearestTarget = player.gameObject.transform;
                 }
             }
