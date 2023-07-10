@@ -140,11 +140,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   curHP: 0
+  maxShield: 0
+  curShield: 0
+  isShield: 0
+  shieldTime: 0
+  shieldCurTime: 0
   speed: 0
   critRate: 0
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 0
+  idName: 
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -156,7 +162,11 @@ MonoBehaviour:
   coll: {fileID: 0}
   spriter: {fileID: 0}
   anim: {fileID: 0}
+  attackDelay: 0
   scaner: {fileID: 0}
+  fireDeBuffTime: 0
+  isFire: 0
+  curFireDamage: 0
 --- !u!114 &2046424732704965602
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
+    public string idName;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
     public Rigidbody2D originTargetRigid2D;
@@ -117,6 +118,7 @@ public class Enemy : CharacterStatus
     {
         //spriteType에 따른 모습 변경
         //anim.runtimeAnimatorController = animCon[data.spriteType];
+        idName = data.enemyName;
         power = data.power;
         speed = data.speed;
         maxHP = data.health * power;
@@ -211,7 +213,7 @@ public class Enemy : CharacterStatus
 
     public void Dead()
     {
-        gameObject.SetActive(false);
+        GameManager.instance.poolManager.TakeToPool<Enemy>(idName, this);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
