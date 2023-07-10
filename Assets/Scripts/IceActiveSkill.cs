@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using olimsko;
 
 public class IceActiveSkill : ActiveSkill
 {
@@ -16,9 +17,11 @@ public class IceActiveSkill : ActiveSkill
     }
     public override void AreaUpdate()
     {
-        if(!isActive && Input.GetKeyDown(KeyCode.R)){
+        if(!isActive && OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").IsPressed())
+        {
             areaOn = true;
-        } else if(areaOn && Input.GetKeyDown(KeyCode.Mouse1)){
+        } else if(areaOn && OSManager.GetService<InputManager>().GetAction("CancelActiveSkill").IsPressed())
+        {
             areaOn = false;
         }
 

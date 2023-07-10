@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using olimsko;
 
 public class WarriorActiveSkill : ActiveSkill
 {
@@ -23,9 +24,11 @@ public class WarriorActiveSkill : ActiveSkill
         skillArea.SetActive(areaOn);
     }
     public override void AreaUpdate(){
-        if(!isActive && Input.GetKeyDown(KeyCode.R)){
+        if(!isActive && OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").IsPressed())
+        {
             areaOn = true;
-        } else if(areaOn && Input.GetKeyDown(KeyCode.Mouse1)){
+        } else if(areaOn && OSManager.GetService<InputManager>().GetAction("CancelActiveSkill").IsPressed())
+        {
             areaOn = false;
         }
 
