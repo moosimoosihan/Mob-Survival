@@ -4977,6 +4977,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 7
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &300562524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6263,6 +6265,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   playerNum: 3
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &366468399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8622,6 +8626,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 5
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &571203837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11459,6 +11465,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &788730611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11678,6 +11686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &812661136
 GameObject:
   m_ObjectHideFlags: 0
@@ -13883,6 +13893,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &960023239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13997,6 +14009,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   playerNum: 2
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &964158634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14959,6 +14973,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   playerNum: 2
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &1033698563
 GameObject:
   m_ObjectHideFlags: 0
@@ -15014,6 +15030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   playerNum: 1
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &1033698566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15246,8 +15264,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1044936712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
-  m_LocalScale: {x: 3, y: 20, z: 1}
+  m_LocalPosition: {x: 0, y: 12.5, z: 0}
+  m_LocalScale: {x: 3, y: 25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1333762918}
@@ -17691,6 +17709,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 6
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &1222135781
 GameObject:
   m_ObjectHideFlags: 0
@@ -17890,6 +17910,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &1231406703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20121,6 +20143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   playerNum: 1
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &1378648298
 GameObject:
   m_ObjectHideFlags: 0
@@ -23417,6 +23441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   playerNum: 3
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &1674530448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24485,6 +24511,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 9
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &1722943803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25109,6 +25137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &1813398935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26185,6 +26215,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 1
   playerNum: 0
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &1861690794
 GameObject:
   m_ObjectHideFlags: 0
@@ -27564,6 +27596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 8
   playerNum: 3
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!1 &1969182784
 GameObject:
   m_ObjectHideFlags: 0
@@ -29004,6 +29038,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   playerNum: 1
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &2047568419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29110,6 +29146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 4
   playerNum: 2
+  m_UseAnimation: 1
+  m_AnimationTime: 0.5
 --- !u!114 &2055326308
 MonoBehaviour:
   m_ObjectHideFlags: 0
