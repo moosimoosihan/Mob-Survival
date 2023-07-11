@@ -214,7 +214,7 @@ public class Player : CharacterStatus
         else
         {
             // 회복의 경우
-            dam = _damage;
+            dam = _damage * (1 + heal);
         }
 
         curHP -= System.Convert.ToSingle(dam);

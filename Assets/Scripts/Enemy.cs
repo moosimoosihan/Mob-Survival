@@ -52,8 +52,6 @@ public class Enemy : CharacterStatus, IPoolObject
         if (!isLive || !GameManager.instance.isPlay)
             return;
 
-        FindClosestObject();
-
         if (isFire)
         {
             fireTime += Time.deltaTime;
@@ -67,6 +65,9 @@ public class Enemy : CharacterStatus, IPoolObject
 
     private void FindClosestObject()
     {
+        if (!isLive || !GameManager.instance.isPlay)
+            return;
+
         float maxDistance = 1000f;
         float playerCount = 0;
         foreach (Player player in GameManager.instance.players)
@@ -136,6 +137,7 @@ public class Enemy : CharacterStatus, IPoolObject
         if(effect != null && effect.gameObject.activeSelf){
             effect.gameObject.SetActive(false);
         }
+        InvokeRepeating("FindClosestObject", 0f, 0.1f);
     }
     public void OnCreatedInPool()
     {
@@ -244,6 +246,7 @@ public class Enemy : CharacterStatus, IPoolObject
     public void Dead()
     {
         //gameObject.SetActive(false);
+        CancelInvoke("FindClosestObject");
         GameManager.instance.poolManager.TakeToPool<Enemy>(this.idName, this);
     }
 
