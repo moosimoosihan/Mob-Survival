@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -8,8 +9,8 @@ public class HUD : MonoBehaviour
     public InfoYType type;
     public int playerNum;
 
-    Text myText;
-    Text myChildText;
+    TextMeshProUGUI myText;
+    TextMeshProUGUI myChildText;
     Slider mySlider;
     Image myImage;
 
@@ -33,8 +34,8 @@ public class HUD : MonoBehaviour
 
     void Awake()
     {
-        myText = GetComponent<Text>();
-        myChildText = GetComponentInChildren<Text>();
+        myText = GetComponent<TextMeshProUGUI>();
+        myChildText = GetComponentInChildren<TextMeshProUGUI>();
         mySlider = GetComponent<Slider>();
         myImage = GetComponent<Image>();
     }

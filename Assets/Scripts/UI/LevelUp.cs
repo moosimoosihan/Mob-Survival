@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 public class LevelUp : MonoBehaviour
 {
     public Font font;
@@ -8,7 +10,7 @@ public class LevelUp : MonoBehaviour
     public RectTransform itemList;
     public LevelItemData[] data;
     public Image[] playerSptrite;
-    public Text[] playerText;
+    public TextMeshProUGUI[] playerText;
     public int maxLen = 16;
     public Image[] selPlayer;
     void Start()

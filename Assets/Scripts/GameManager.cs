@@ -1,9 +1,9 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using olimsko;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public PlayerControl playerControl;
     public ItemManager itemManager;
     public LevelUp uiLevelUp;
-    public Text timeText;
+    public TextMeshProUGUI timeText;
     [Header("UI Sprite")]
     public GameObject gameOverObj;
     public Sprite[] playerSptrite;
