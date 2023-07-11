@@ -13484,7 +13484,7 @@ GameObject:
   - component: {fileID: 932958115}
   - component: {fileID: 932958116}
   m_Layer: 0
-  m_Name: PoolManagerOld
+  m_Name: PoolManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27895,7 +27895,6 @@ MonoBehaviour:
   players: []
   playerDummies: {fileID: 535669751}
   pool: {fileID: 932958116}
-  poolManager: {fileID: 2031804213}
   playerControl: {fileID: 535669752}
   itemManager: {fileID: 2033438851}
   uiLevelUp: {fileID: 1412637651}
@@ -28772,116 +28771,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
---- !u!1 &2031804212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2031804214}
-  - component: {fileID: 2031804213}
-  m_Layer: 0
-  m_Name: PoolManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2031804213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031804212}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 733f4e1ff483611408f4a8d4fc9202ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _pools:
-  - _name: Slime
-    _component: {fileID: 3627122579600860679, guid: 00346c53206cff24e9a01039d35c5a89, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Red Slime
-    _component: {fileID: 3627122579600860679, guid: 0b981f95e34add54db9cf6a3a7a485dc, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Blue Slime
-    _component: {fileID: 3627122579600860679, guid: 5f0777b24465c2540ad5ed1974cfc770, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Ent
-    _component: {fileID: 505481800010960006, guid: 328506fbd9aef504085d7d7f952f3d04, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Snake
-    _component: {fileID: 2804877781288562894, guid: 3e82296bee1fa6a4bbd278bec86557de, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Moth
-    _component: {fileID: 3937489048881309069, guid: 47ff8554796890648bbca5de4c0dfd4a, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Goblin
-    _component: {fileID: 8946005796279958280, guid: 40e2d5b99f9572c45bdbff963806ddc3, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Poison Moth
-    _component: {fileID: 3937489048881309069, guid: 81b95bf5a3080104f8953c89fac5f536, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Toad
-    _component: {fileID: 1374652897779401206, guid: 8385d4fde54cd8f4c8c529e9f4ff0d64, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Giant Slime
-    _component: {fileID: 9178175653398265333, guid: 113e595bc5b5718438fa69ffe0f3d8d2, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Golem
-    _component: {fileID: 6781764253091396935, guid: c998e2000b02e0741ad1c55885782ca2, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Goblin Mage
-    _component: {fileID: 1095695317898704558, guid: 9aed839504dec8142bca91cfcffcc399, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
-  - _name: Gblin King
-    _component: {fileID: 3661658936295366213, guid: 1b7c30e8d77d9814095be8172a7e4ad1, type: 3}
-    _count: 0
-    _container: {fileID: 2031804214}
-    _nonLazy: 0
---- !u!4 &2031804214
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2031804212}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2033438849
 GameObject:
   m_ObjectHideFlags: 0

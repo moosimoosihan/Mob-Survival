@@ -1,8 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using Redcode.Pools;
-
-public class Enemy : CharacterStatus, IPoolObject
+using UnityEngine.Pool;
+public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
     public string idName;
@@ -30,6 +29,8 @@ public class Enemy : CharacterStatus, IPoolObject
     public float curFireDamage;
     GameObject effect;
     public Transform nearestTarget;
+
+    private IObjectPool<Enemy> _ManagedPool;
 
     void Awake()
     {
@@ -125,7 +126,6 @@ public class Enemy : CharacterStatus, IPoolObject
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
-
     public virtual void _OnEnable()
     {
         isLive = true;
@@ -139,14 +139,13 @@ public class Enemy : CharacterStatus, IPoolObject
         }
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
     }
-    public void OnCreatedInPool()
-    {
-        
-    }
-
-    public void OnGettingFromPool()
+    void OnEnable()
     {
         _OnEnable();
+    }
+    public void SetManagedPool(IObjectPool<Enemy> pool)
+    {
+        _ManagedPool = pool;
     }
     public virtual void Init(enemySpawnData data)
     {
@@ -247,7 +246,7 @@ public class Enemy : CharacterStatus, IPoolObject
     {
         //gameObject.SetActive(false);
         CancelInvoke("FindClosestObject");
-        GameManager.instance.poolManager.TakeToPool<Enemy>(this.idName, this);
+        _ManagedPool.Release(this);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

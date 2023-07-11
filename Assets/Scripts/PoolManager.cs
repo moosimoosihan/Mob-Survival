@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManagerOld : MonoBehaviour
+public class PoolManager : MonoBehaviour
 {
     Dictionary<GameObject, List<GameObject>> objPoolDic = new Dictionary<GameObject, List<GameObject>>();
 

@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
     [Header("소환 정보")]
     public Transform[] spawnPoint;
+    int monsterIndex;
 
     [SerializeField]
     TextAsset enemyDatabase;
@@ -19,6 +21,7 @@ public class Spawner : MonoBehaviour
     List<spawnData> spawnDataList = new List<spawnData>();
     public int curSequence;
     public int bossCount = 0;
+    private IObjectPool<Enemy> _Pool;
     void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
@@ -69,6 +72,7 @@ public class Spawner : MonoBehaviour
 
             spawnDataList.Add(tempSpawnData);
         }
+
     }
     void Update()
     {
@@ -86,17 +90,37 @@ public class Spawner : MonoBehaviour
 
     void Spawn(int index)
     {
-        int monsterIndex = index-1;
+        monsterIndex = index-1;
+        _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy);
 
-        Enemy enemy = GameManager.instance.poolManager.GetFromPool<Enemy>(monsterIndex);
+        Enemy enemy = _Pool.Get();
+        enemy.transform.parent = GameManager.instance.pool.transform;
 
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
-        //enemy.SetActive(true);
         if(enemy.GetComponent<Enemy>()){
             enemy.GetComponent<Enemy>().Init(enemySpawnDataList[monsterIndex]);
         }
     }
+    Enemy CreateEnemy()
+    {
+        Enemy enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<Enemy>();
+        enemy.SetManagedPool(_Pool);
+        return enemy;
+    }
+    void OnGetEnemy(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(true);
+    }
+    void OnReleaseEnemy(Enemy enemy)
+    {
+        enemy.gameObject.SetActive(false);
+    }
+    void OnDestroyEnemy(Enemy enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
 
     //Sprite GetSpriteImgFromResourceFolder(string _folderName, string _spriteName)
     //{

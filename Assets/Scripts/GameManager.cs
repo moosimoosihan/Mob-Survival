@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using olimsko;
 using UnityEngine.InputSystem;
-using Redcode.Pools;
 
 public class GameManager : MonoBehaviour
 {
@@ -32,8 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("게임 오브젝트")]
     public Player[] players;
     public GameObject playerDummies;
-    public PoolManagerOld pool;
-    public PoolManager poolManager;
+    public PoolManager pool;
     public PlayerControl playerControl;
     public ItemManager itemManager;
     public LevelUp uiLevelUp;
