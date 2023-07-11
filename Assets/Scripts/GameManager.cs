@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using olimsko;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     [Header("게임 컨트롤")]
     public float gameTime;
     public bool isPlay;
+    public float curTimeScale = 1;
 
     [Header("플레이어 정보")]    
     public int level;
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     public PlayerControl playerControl;
     public ItemManager itemManager;
     public LevelUp uiLevelUp;
+    public Text timeText;
     [Header("UI Sprite")]
     public GameObject gameOverObj;
     public Sprite[] playerSptrite;
@@ -172,7 +175,7 @@ public class GameManager : MonoBehaviour
     }
     public void Resume(){
         isPlay = true;
-        Time.timeScale = 1;
+        Time.timeScale = curTimeScale;
     }
     public void Pause(){
         if(pauseObj.activeSelf)
@@ -196,6 +199,22 @@ public class GameManager : MonoBehaviour
     }
     public void GameEnd(){
         Application.Quit();
+    }
+    public void GameSpeedUp(){
+        if(!isPlay)
+            return;
+
+        if(Time.timeScale==1){
+            curTimeScale=1.5f;
+            timeText.text = "x1.5";
+        } else if(Time.timeScale==1.5f){
+            curTimeScale=2;
+            timeText.text = "x2";
+        } else if(Time.timeScale==2){
+            curTimeScale=1;
+            timeText.text = "x1";
+        }
+        Time.timeScale = curTimeScale;
     }
 }
 [System.Serializable]
