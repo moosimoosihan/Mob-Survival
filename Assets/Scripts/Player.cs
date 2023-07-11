@@ -171,23 +171,42 @@ public class Player : CharacterStatus
             //보호막이 있을 경우 보호막이 먼저 깎인다.
             if (curShield > 0)
             {
-                if (curShield >= dam)
+                if (curShield > _damage)
                 {
-                    curShield -= System.Convert.ToSingle(dam);
-                    dam = 0;
+                    curShield -= _damage;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
+                    return;
+                }
+                else if (curShield == _damage)
+                {
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
+                    curShield = 0;
+                    if (curShield <= 0)
+                    {
+                        if (isShield)
+                        {
+                            StopCoroutine(ShieldOn());
+                            isShield = false;
+                            shieldCurTime = 0;
+                        }
+                    }
+                    return;
                 }
                 else
                 {
-                    dam -= curShield;
+                    float tempDamage = _damage - curShield;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)curShield, gameObject, _isCritical, true);
+                    tempDamage = (float)(tempDamage / (1 + def * 0.01));
+                    dam = tempDamage;
                     curShield = 0;
-                }
-                if (curShield <= 0)
-                {
-                    if (isShield)
+                    if (curShield <= 0)
                     {
-                        StopCoroutine(ShieldOn());
-                        isShield = false;
-                        shieldCurTime = 0;
+                        if (isShield)
+                        {
+                            StopCoroutine(ShieldOn());
+                            isShield = false;
+                            shieldCurTime = 0;
+                        }
                     }
                 }
             }

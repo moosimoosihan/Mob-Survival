@@ -148,6 +148,8 @@ public class HUD : MonoBehaviour
             case InfoYType.Health:
                 float curHealth = GameManager.instance.players[playerNum].curHP;
                 float maxHealth = GameManager.instance.players[playerNum].maxHP;
+                curHealth = Mathf.FloorToInt(curHealth);
+                maxHealth = Mathf.FloorToInt(maxHealth);
                 if(p_curHealth != curHealth || p_maxHealth != maxHealth){
                     p_curHealth = curHealth;
                     p_maxHealth = maxHealth;
@@ -186,11 +188,15 @@ public class HUD : MonoBehaviour
                 if(GameManager.instance.players[playerNum].curShield>0 && GameManager.instance.players[playerNum].maxShield>0){
                     float curShield = GameManager.instance.players[playerNum].curShield;
                     float maxShield = GameManager.instance.players[playerNum].maxShield;
-                    p_curSheild = curShield;
-                    p_maxSheild = maxShield;
-                    mySlider.value = curShield/maxShield;
-                    if(myChildText!=null){
-                        myChildText.text = curShield.ToString() + "/" + maxShield.ToString();
+                    curShield = Mathf.FloorToInt(curShield);
+                    maxShield = Mathf.FloorToInt(maxShield);
+                    if(p_curSheild != curShield || p_maxSheild != maxShield){
+                        p_curSheild = curShield;
+                        p_maxSheild = maxShield;
+                        mySlider.value = curShield/maxShield;
+                        if(myChildText!=null){
+                            myChildText.text = curShield.ToString() + "/" + maxShield.ToString();
+                        }
                     }
                 } else {
                     GameManager.instance.players[playerNum].curShield = 0;

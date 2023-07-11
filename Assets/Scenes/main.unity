@@ -11975,7 +11975,7 @@ RectTransform:
   - {fileID: 318510678}
   - {fileID: 1979864536}
   m_Father: {fileID: 2020404719}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -22292,7 +22292,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2020404719}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -24977,7 +24977,7 @@ RectTransform:
   m_Children:
   - {fileID: 196841320}
   m_Father: {fileID: 2020404719}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -27950,6 +27950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 0
   isPlay: 0
+  curTimeScale: 1
   level: 0
   kill: 0
   bossKill: 0
@@ -28578,9 +28579,9 @@ RectTransform:
   - {fileID: 760638540}
   - {fileID: 1421940180}
   - {fileID: 1412637650}
+  - {fileID: 1758843197}
   - {fileID: 1505934042}
   - {fileID: 817429933}
-  - {fileID: 1758843197}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
