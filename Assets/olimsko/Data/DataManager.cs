@@ -25,12 +25,19 @@ namespace olimsko
                 for (int i = 0; i < Configuration.ListGoogleSheetData.Count; i++)
                 {
                     var data = Configuration.ListGoogleSheetData[i];
-                    var tsvUrl = data.Data.TsvUrl.Replace("{Key}", Configuration.GoogleSheetKey).Replace("{SheetId}", data.Key);
 
-                    Configuration.ListGoogleSheetData[i].Data.SetData(await GetGoogleSpreadSheetDataAsync(tsvUrl));
+                    if (Configuration.IsInitializeAtRuntime)
+                    {
+                        var tsvUrl = data.Data.TsvUrl.Replace("{Key}", Configuration.GoogleSheetKey).Replace("{SheetId}", data.Key);
+
+                        Configuration.ListGoogleSheetData[i].Data.SetData(await GetGoogleSpreadSheetDataAsync(tsvUrl));
+                    }
 
                     m_DictionaryGoogleSheetData.Add(data.Data.GetType(), data.Data);
                 }
+
+
+                Debug.Log("GoogleSheetData Initialized Done.");
             }
         }
 
