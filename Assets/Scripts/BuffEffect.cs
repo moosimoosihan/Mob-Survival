@@ -9,13 +9,8 @@ public class BuffEffect : MonoBehaviour
         _ManagedPool = pool;
     }
 
-    // Update is called once per frame
     public void DestroyBuffEffect()
     {
         _ManagedPool.Release(this);
-    }
-    void OnDisable()
-    {
-        DestroyBuffEffect();
     }
 }
