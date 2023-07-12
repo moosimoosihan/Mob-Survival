@@ -107,6 +107,7 @@ public class DamageLabel : MonoBehaviour
                 {
                     //원본으로부터 복제된 자식(child)들을 불러옵니다.
                     TextMesh other = damageText.transform.GetChild(i).GetComponent<TextMesh>();
+                    other.transform.localScale = Vector3.one;
                     other.color = outlineColor;
                     other.text = damageText.text;
 
