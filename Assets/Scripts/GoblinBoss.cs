@@ -284,4 +284,18 @@ public class GoblinBoss : Enemy
     {
         _ManagedPool = pool;
     }
+    private void Dead()
+    {
+        //gameObject.SetActive(false);
+        StopCoroutine("WarriorFireOn");
+        CancelInvoke("FindClosestObject");
+        DestroyEnemy();
+    }
+    private void DestroyEnemy()
+    {
+        if(effect!=null && effect.gameObject.activeSelf){
+            effect.DestroyBuffEffect();
+        }
+        _ManagedPool.Release(this);
+    }
 }

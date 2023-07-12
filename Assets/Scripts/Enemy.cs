@@ -27,7 +27,7 @@ public class Enemy : CharacterStatus
     public bool isFire;
     float fireTime;
     public float curFireDamage;
-    BuffEffect effect;
+    public BuffEffect effect;
     public Transform nearestTarget;
 
     private IObjectPool<Enemy> _ManagedPool;
@@ -141,7 +141,7 @@ public class Enemy : CharacterStatus
     {
         _ManagedPool = pool;
     }
-    public void DestroyEnemy()
+    private void DestroyEnemy()
     {
         if(effect!=null && effect.gameObject.activeSelf){
             effect.DestroyBuffEffect();
@@ -237,7 +237,7 @@ public class Enemy : CharacterStatus
         }
     }
 
-    public void Dead()
+    private void Dead()
     {
         //gameObject.SetActive(false);
         StopCoroutine("WarriorFireOn");
