@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : CharacterStatus
 {
     // 자신의 캐릭터
-    public enum characterInfo { 용사, 궁수, 현자, 사제 }
-    public characterInfo chacter;
+    public string chacter;
 
     [Header("플레이어 컨트롤 설정")]
     public Vector2 inputVec;
@@ -76,6 +75,7 @@ public class Player : CharacterStatus
     }
     public void Init(playerData data)
     {
+        chacter = data.chacter;
         maxHP = data.maxHP;
         curHP = maxHP;
         def = data.def;

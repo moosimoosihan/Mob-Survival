@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b1e587b1d9541e4780e95f909ceda82, type: 3}
   m_Name: EngineConfiguration
   m_EditorClassIdentifier: 
-  UseForceStartScene: 0
+  UseForceStartScene: 1
   StartScenePath: Assets/olimsko/Asset/00_Scene/00_Intro.unity

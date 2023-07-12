@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: DataConfiguration
   m_EditorClassIdentifier: 
   UseGoogleSheet: 1
-  IsInitializeAtRuntime: 0
+  IsInitializeAtRuntime: 1
   GoogleSheetKey: 1hF4jQUISnZgkRmXNqXd3B-Z9pNYGdadM7de3OcqMKIw
   ListGoogleSheetData:
   - m_Key: 679453712

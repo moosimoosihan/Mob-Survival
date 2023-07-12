@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public InputManager inputManager => OSManager.GetService<InputManager>();
+    private List<CharacterTable> CharacterData => OSManager.GetService<DataManager>().GetData<CharacterTableSO>().CharacterTable;
 
     [Header("게임 컨트롤")]
     public float gameTime;
@@ -23,8 +24,6 @@ public class GameManager : MonoBehaviour
     public int gold;
     public int[] nextExp;
     public int life;
-    [SerializeField]
-    TextAsset playerDatabase;
     List<playerData> playerDataList = new List<playerData>();
     [SerializeField]
     TextAsset expDatabase;
@@ -53,56 +52,53 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 묶음에서 현재 있는 플레이어 갯수를 가져오기
         players = playerDummies.GetComponentsInChildren<Player>();
-
+    
         //플레이어 데이터 불러오기
-        string seperator = "\r\n";
-        string[] lines = playerDatabase.text.Substring(0).Split(seperator);
-        for (int i = 0; i < lines.Length; i++)
-        {
-            string[] rows = lines[i].Split('\t');
-
-            //아이템 생성
+        for(int i=0;i<CharacterData.Count;i++){
             playerData tempPlayerData = new playerData();
-            tempPlayerData.damage = System.Convert.ToSingle(rows[0]);
-            tempPlayerData.critRate = System.Convert.ToSingle(rows[1]);
-            tempPlayerData.critDamage = System.Convert.ToSingle(rows[2]);
-            tempPlayerData.attSpeed = System.Convert.ToSingle(rows[3]);
-            tempPlayerData.attRange = System.Convert.ToSingle(rows[4]);
-            tempPlayerData.heal = System.Convert.ToSingle(rows[5]);
-            tempPlayerData.maxHP = System.Convert.ToInt32(rows[6]);
-            tempPlayerData.def = System.Convert.ToInt32(rows[7]);
-            tempPlayerData.hpRegen = System.Convert.ToInt32(rows[8]);
-            tempPlayerData.evasion = System.Convert.ToSingle(rows[9]);
-            tempPlayerData.vamp = System.Convert.ToSingle(rows[10]);
-            tempPlayerData.moveSpeed = System.Convert.ToInt32(rows[11]);
-            tempPlayerData.damageReduction = System.Convert.ToSingle(rows[12]);
-            tempPlayerData.elementalDamage = System.Convert.ToSingle(rows[13]);
-            tempPlayerData.activeDamage = System.Convert.ToSingle(rows[14]);
-            tempPlayerData.activeCooldown = System.Convert.ToSingle(rows[15]);
-            tempPlayerData.numberOfProjectile = System.Convert.ToInt32(rows[16]);
-            tempPlayerData.projectilePenetration = System.Convert.ToInt32(rows[17]);
-
+            tempPlayerData.chacter = CharacterData[i].Name;
+            tempPlayerData.maxHP = CharacterData[i].HP;
+            tempPlayerData.moveSpeed = CharacterData[i].MoveSpeed;
+            tempPlayerData.damage = CharacterData[i].Damage;
+            tempPlayerData.critRate = CharacterData[i].CritRate;
+            tempPlayerData.critDamage = CharacterData[i].CritDamage;
+            tempPlayerData.attSpeed = CharacterData[i].AttackSpeed;
+            tempPlayerData.attRange = CharacterData[i].AttackRange;
+            tempPlayerData.heal = CharacterData[i].Heal;
+            tempPlayerData.def = CharacterData[i].Def;
+            tempPlayerData.hpRegen = CharacterData[i].HPRegen;
+            tempPlayerData.evasion = CharacterData[i].Evasion;
+            tempPlayerData.vamp = CharacterData[i].Vamp;
+            tempPlayerData.damageReduction = CharacterData[i].DamageReduction;
+            tempPlayerData.elementalDamage = 0;
+            tempPlayerData.activeDamage = 0;
+            tempPlayerData.activeCooldown = 0;
+            tempPlayerData.numberOfProjectile = 0;
+            tempPlayerData.projectilePenetration = 0;
             playerDataList.Add(tempPlayerData);
         }
+        string seperator = "\r\n";
 
-        // 임시로 플레이어 스탯 부여
-        for(int i=0;i<players.Length;i++){
-            if(players[i].chacter==Player.characterInfo.용사){
-                players[i].Init(playerDataList[0]);
-            } else if(players[i].chacter==Player.characterInfo.궁수){
-                players[i].Init(playerDataList[1]);
-            } else if(players[i].chacter==Player.characterInfo.현자){
-                players[i].Init(playerDataList[2]);
-            } else if(players[i].chacter==Player.characterInfo.사제){
-                players[i].Init(playerDataList[3]);
-            }
-        }
-
+        //경험치 데이터 불러오기
         string[] expLines = expDatabase.text.Substring(0).Split(seperator);
         nextExp = new int[expLines.Length];
         for(int i=0;i<expLines.Length;i++){
             nextExp[i] = System.Convert.ToInt32(expLines[i]);
         }
+        // 임시로 플레이어 스탯 부여
+        for(int i=0;i<players.Length;i++){
+            // 캐릭터 선택 화면에서 선택한 캐릭터에 맞는 스탯 부여
+            if(i==3){
+                players[i].Init(playerDataList[0]);
+            } else if(i==1){
+                players[i].Init(playerDataList[1]);
+            } else if(i==0){
+                players[i].Init(playerDataList[2]);
+            } else if(i==2){
+                players[i].Init(playerDataList[3]);
+            }
+        }
+        uiLevelUp.Init();
     }
     
     void Start()
@@ -219,8 +215,7 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class playerData
 {
-    public enum characterInfo { 용사, 궁수, 현자, 사제 }
-    public characterInfo chacter;
+    public string chacter;
     public float maxHP;
     public float moveSpeed;
     public float damage;

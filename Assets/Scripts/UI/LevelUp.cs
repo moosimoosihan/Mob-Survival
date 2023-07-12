@@ -16,41 +16,50 @@ public class LevelUp : MonoBehaviour
     void Start()
     {
         rect = GetComponent<RectTransform>();
+    }
+
+    public void Init()
+    {
         // 캐릭터별 선언
-        items = new LevelItem[(GameManager.instance.players.Length*maxLen) + 1];
-        
-        for(int i=0;i<GameManager.instance.players.Length;i++){
+        items = new LevelItem[(GameManager.instance.players.Length * maxLen) + 1];
+
+        for (int i = 0; i < GameManager.instance.players.Length; i++)
+        {
             playerSptrite[i].transform.parent.gameObject.SetActive(true);
-            switch(GameManager.instance.players[i].chacter){
-                case Player.characterInfo.용사:
+            switch (GameManager.instance.players[i].chacter)
+            {
+                case "용사":
                     playerSptrite[i].sprite = GameManager.instance.playerSptrite[0];
                     playerText[i].text = "용사";
-                    for(int y=0;y<maxLen;y++)
+                    for (int y = 0; y < maxLen; y++)
                     {
                         // 16개의 아이템 추가
                         NewItem(i, y, 0, false);
                     }
                     break;
-                case Player.characterInfo.궁수:
+                case "궁수":
                     playerSptrite[i].sprite = GameManager.instance.playerSptrite[1];
                     playerText[i].text = "궁수";
-                    for(int y=0;y<maxLen;y++){
+                    for (int y = 0; y < maxLen; y++)
+                    {
                         // 16개의 아이템 추가
                         NewItem(i, y, 1, false);
                     }
                     break;
-                case Player.characterInfo.현자:
+                case "현자":
                     playerSptrite[i].sprite = GameManager.instance.playerSptrite[2];
                     playerText[i].text = "현자";
-                    for(int y=0;y<maxLen;y++){
+                    for (int y = 0; y < maxLen; y++)
+                    {
                         // 16개의 아이템 추가
                         NewItem(i, y, 2, false);
                     }
                     break;
-                case Player.characterInfo.사제:
+                case "사제":
                     playerSptrite[i].sprite = GameManager.instance.playerSptrite[3];
                     playerText[i].text = "사제";
-                    for(int y=0;y<maxLen;y++){
+                    for (int y = 0; y < maxLen; y++)
+                    {
                         // 16개의 아이템 추가
                         NewItem(i, y, 3, false);
                     }
