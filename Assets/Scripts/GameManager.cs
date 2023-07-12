@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         //플레이어 데이터 불러오기
         for(int i=0;i<CharacterData.Count;i++){
             playerData tempPlayerData = new playerData();
-            tempPlayerData.chacter = CharacterData[i].Name;
+            tempPlayerData.character = CharacterData[i].Name;
             tempPlayerData.maxHP = CharacterData[i].HP;
             tempPlayerData.moveSpeed = CharacterData[i].MoveSpeed;
             tempPlayerData.damage = CharacterData[i].Damage;
@@ -215,7 +215,7 @@ public class GameManager : MonoBehaviour
 [System.Serializable]
 public class playerData
 {
-    public string chacter;
+    public string character;
     public float maxHP;
     public float moveSpeed;
     public float damage;

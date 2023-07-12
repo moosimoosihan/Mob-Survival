@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CharacterStatus : MonoBehaviour
 {
+    public string character;
     public float maxHP;
     public float curHP;
     public float maxShield;

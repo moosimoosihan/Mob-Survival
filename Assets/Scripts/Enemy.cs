@@ -4,7 +4,6 @@ using UnityEngine.Pool;
 public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
-    public string idName;
     public RuntimeAnimatorController[] animCon;
     public Rigidbody2D target;
     public Rigidbody2D originTargetRigid2D;
@@ -27,7 +26,7 @@ public class Enemy : CharacterStatus
     public bool isFire;
     float fireTime;
     public float curFireDamage;
-    GameObject effect;
+    BuffEffect effect;
     public Transform nearestTarget;
 
     private IObjectPool<Enemy> _ManagedPool;
@@ -132,6 +131,7 @@ public class Enemy : CharacterStatus
         coll.enabled = true;
         rigid.simulated = true;
         isFire = false;
+        fireDeBuffTime = 0;
         curHP = maxHP;
 
         if(effect != null && effect.gameObject.activeSelf){
@@ -147,11 +147,15 @@ public class Enemy : CharacterStatus
     {
         _ManagedPool = pool;
     }
+    public void DestroyEnemy()
+    {
+        _ManagedPool.Release(this);
+    }
     public virtual void Init(enemySpawnData data)
     {
         //spriteType에 따른 모습 변경
         //anim.runtimeAnimatorController = animCon[data.spriteType];
-        idName = data.enemyName;
+        character = data.enemyName;
         power = data.power;
         speed = data.speed;
         maxHP = data.health * power;
@@ -160,12 +164,6 @@ public class Enemy : CharacterStatus
         //spriter.sprite = data.sprite;
 
         CreateFollowingHpBar();
-    }
-
-    //주변 탐색해서 타겟 바꾸기
-    void DetectAround()
-    {
-
     }
 
     public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical)
@@ -245,8 +243,9 @@ public class Enemy : CharacterStatus
     public void Dead()
     {
         //gameObject.SetActive(false);
+        StopCoroutine("WarriorFireOn");
         CancelInvoke("FindClosestObject");
-        _ManagedPool.Release(this);
+        DestroyEnemy();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -277,8 +276,8 @@ public class Enemy : CharacterStatus
     public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
     {
         isFire = true;
-        effect = GameManager.instance.pool.Get(GameManager.instance.burnEffect);
-        effect.transform.SetParent(transform);
+        effect = GameManager.instance.pool.buffPool.Get();
+        effect.transform.parent = transform;
         effect.transform.position = transform.position;
 
         fireTime = 0;
@@ -298,6 +297,4 @@ public class Enemy : CharacterStatus
         curFireDamage = _damage;
         fireDeBuffTime = _debuffTime;
     }
-
-
 }

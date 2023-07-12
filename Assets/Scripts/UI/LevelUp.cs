@@ -26,7 +26,7 @@ public class LevelUp : MonoBehaviour
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
             playerSptrite[i].transform.parent.gameObject.SetActive(true);
-            switch (GameManager.instance.players[i].chacter)
+            switch (GameManager.instance.players[i].character)
             {
                 case "용사":
                     playerSptrite[i].sprite = GameManager.instance.playerSptrite[0];

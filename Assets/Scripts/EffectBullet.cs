@@ -72,6 +72,9 @@ public class EffectBullet : Bullet
 
         for (int i = 0; i < enemyList.Count; i++)
         {
+            if(!enemyList[i].gameObject.activeSelf)
+                return;
+
             enemyList[i].GetDamage(damage, knockBackPower, isCritical);
         }
 

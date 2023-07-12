@@ -72,7 +72,7 @@ public class Spawner : MonoBehaviour
 
             spawnDataList.Add(tempSpawnData);
         }
-
+        _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy, collectionCheck: false, maxSize: 20);
     }
     void Update()
     {
@@ -91,8 +91,7 @@ public class Spawner : MonoBehaviour
     void Spawn(int index)
     {
         monsterIndex = index-1;
-        _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy);
-
+        
         Enemy enemy = _Pool.Get();
         enemy.transform.parent = GameManager.instance.pool.transform;
 

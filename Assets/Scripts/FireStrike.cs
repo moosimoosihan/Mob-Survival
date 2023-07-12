@@ -38,12 +38,13 @@ public class FireStrike : Bullet
                 if (detectedEnemyList.Contains(detectedEnemy) == false)
                 {
                     detectedEnemyList.Add(detectedEnemy);
-                    if (detectedEnemy.gameObject.activeSelf){
-                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
                     
+                    tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                    
+                    if (detectedEnemy.gameObject.activeSelf){                        
                         if(warriorFire){
                             if(!detectedEnemy.isFire){
-                                StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
+                                detectedEnemy.StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime));
                             } else {
                                 detectedEnemy.FireInit(warriorFireDamge, warriorFireTime);
                             }
