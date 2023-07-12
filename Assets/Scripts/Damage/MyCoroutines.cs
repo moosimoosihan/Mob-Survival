@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class MyCoroutines
@@ -111,6 +110,32 @@ public static class MyCoroutines
                 color.a = _toAlpha;
                 if (tempSpriteRenderer != null)
                     tempSpriteRenderer.color = color;
+                break;
+            }
+
+            yield return null;
+        }
+    }
+    public static IEnumerator CoFadeInOutTextMesh(GameObject _obj, float _fromAlpha, float _toAlpha, float _totalTime)
+    {
+        TextMesh tempTextMesh = _obj.GetComponent<TextMesh>();
+        Color color = tempTextMesh.color;
+
+        float timer = 0;
+        while (tempTextMesh != null)
+        {
+            timer += Time.deltaTime;
+            if (timer < _totalTime)
+            {
+                color.a = Mathf.Lerp(_fromAlpha, _toAlpha, timer / _totalTime);
+                if (tempTextMesh != null)
+                    tempTextMesh.color = color;
+            }
+            else
+            {
+                color.a = _toAlpha;
+                if (tempTextMesh != null)
+                    tempTextMesh.color = color;
                 break;
             }
 

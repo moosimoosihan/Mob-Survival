@@ -4,18 +4,54 @@ using UnityEngine;
 public class DamageLabel : MonoBehaviour
 {
     public enum Message { Miss }
-    public Message message;
-    public GameObject group;
-    public SpriteRenderer[] curScoreSpriteRenderers;
-    [SerializeField] Vector3[] digitOffsets;
-
-    int[] degits = new int[6];
     int curDamage = 0;
     [SerializeField]
     Vector3 originScale;
     bool isHeal;
     bool isPlayerDamge;
+    
+    // 아웃라인 설정
+    //두께 설정
+    public float pixelSize = 4;
+    //설정된 Resolution보다 클 경우 pixel size 두 배로 설정
+    public int doubleResolution = 1920;
+    //해상도에 따라 pixel size를 조정할지 결정
+    public bool resolutionDependant = false;
+    TextMesh damageText;
+    TextMesh[] allTextMesh;
+    public Color outlineColor = Color.black;
+    private MeshRenderer meshRenderer;
 
+    void Awake()    
+    {
+        damageText = GetComponentInChildren<TextMesh>();
+        meshRenderer = GetComponentsInChildren<MeshRenderer>()[0];
+        meshRenderer.sortingOrder = 10;
+        for(int i=0;i<8; i++)
+        {
+            GameObject outline = new GameObject("outline", typeof(TextMesh));
+            TextMesh outlineMesh = outline.GetComponent<TextMesh>();
+            outlineMesh.alignment = damageText.alignment;
+            outlineMesh.anchor = damageText.anchor;
+            outlineMesh.characterSize = damageText.characterSize;
+            outlineMesh.font = damageText.font;
+            outlineMesh.fontSize = damageText.fontSize;
+            outlineMesh.fontStyle = damageText.fontStyle;
+            outlineMesh.richText = damageText.richText;
+            outlineMesh.tabSize = damageText.tabSize;
+            outlineMesh.lineSpacing = damageText.lineSpacing;
+            outlineMesh.offsetZ = damageText.offsetZ;
+            outline.transform.parent = damageText.transform;
+            MeshRenderer otherMeshRenderer = outline.GetComponent<MeshRenderer>();
+            otherMeshRenderer.material = new Material(meshRenderer.material);
+            otherMeshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            otherMeshRenderer.receiveShadows = false;
+            otherMeshRenderer.sortingLayerID = meshRenderer.sortingLayerID;
+            otherMeshRenderer.sortingLayerName = meshRenderer.sortingLayerName;
+            otherMeshRenderer.sortingOrder = meshRenderer.sortingOrder;
+        }
+        allTextMesh = damageText.GetComponentsInChildren<TextMesh>();
+    }
 
     public void UpdateScore(int _newDamage, bool _isPlayerDamge)
     {
@@ -31,64 +67,56 @@ public class DamageLabel : MonoBehaviour
             curDamage = _newDamage;
         }
         
-        degits[5] = curDamage / 100000;
-        degits[4] = curDamage % 100000 / 10000;
-        degits[3] = curDamage % 10000 / 1000;
-        degits[2] = curDamage % 1000 / 100;
-        degits[1] = curDamage % 100 / 10;
-        degits[0] = curDamage % 10;
+        damageText.text = curDamage.ToString();
+        damageText.color = isHeal ? new Color(0,1,0) :  isPlayerDamge? new Color(1,0,0) : new Color(1,1,1);
 
-        for (int i = 0; i < degits.Length; i++)
-        {
-            curScoreSpriteRenderers[i].sprite = CheckCurrentDegitAndUpperDegitExist(ref degits, i, degits.Length - 1) ? DamageManager.Instance.numberSprites[degits[i]] : null;
-            curScoreSpriteRenderers[i].color = isHeal ? new Color(0,1,0) :  isPlayerDamge? new Color(1,0,0) : new Color(1,1,1);
-        }
+        //현재 원본 Text의 월드 좌표를 스크린 포인트로 맵핑합니다.
+        Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+        //outlineColor.a = damageText.color.a * damageText.color.a;
 
-        if(curDamage < 10)
+        //복제된 TextMesh 옵션 설정
+        for(int i=0;i<damageText.transform.childCount;i++)
         {
-            group.transform.localPosition = digitOffsets[0];
-        }
-        else if (curDamage < 100)
-        {
-            group.transform.localPosition = digitOffsets[1];
-        }
-        else if (curDamage < 1000)
-        {
-            group.transform.localPosition = digitOffsets[2];
-        }
-        else if (curDamage < 10000)
-        {
-            group.transform.localPosition = digitOffsets[3];
-        }
-        else if (curDamage < 100000)
-        {
-            group.transform.localPosition = digitOffsets[4];
-        }
-        else
-        {
-            group.transform.localPosition = digitOffsets[5];
+            //원본으로부터 복제된 자식(child)들을 불러옵니다.
+            TextMesh other = damageText.transform.GetChild(i).GetComponent<TextMesh>();
+            other.transform.localScale = Vector3.one;
+            other.color = outlineColor;
+            other.text = damageText.text;
+             
+            //설정된 해상도(doubleResolution)보다 큰 디바이스에서 실행될 경우
+            //pixelSize를 두배로 합니다.
+            bool doublePixel = resolutionDependant && (Screen.width > doubleResolution || Screen.height > doubleResolution);
+            Vector3 pixelOffset = GetOffset(i) * (doublePixel ? 2.0f * pixelSize : pixelSize);
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint + pixelOffset);
+            other.transform.position = worldPoint;
         }
     }
+
     public void UpdateMessage(Message _newMessage){
-        for (int i = 0; i < degits.Length; i++)
-        {
-            curScoreSpriteRenderers[i].sprite = CheckCurrentDegitAndUpperDegitExist(ref degits, i, degits.Length - 1) ? DamageManager.Instance.numberSprites[degits[i]] : null;
-        }
         switch(_newMessage){
             case Message.Miss:
-                curDamage = 0;
-                degits[5] = curDamage / 100000;
-                degits[4] = curDamage % 100000 / 10000;
-                degits[3] = curDamage % 10000 / 1000;
-                degits[2] = curDamage % 1000 / 100;
-                degits[1] = curDamage % 100 / 10;
-                degits[0] = curDamage % 10;
-                for (int i = 0; i < degits.Length; i++)
+                damageText.text = _newMessage.ToString();
+                damageText.color = new Color(1,0,0);
+
+                //현재 원본 Text의 월드 좌표를 스크린 포인트로 맵핑합니다.
+                Vector3 screenPoint = Camera.main.WorldToScreenPoint(transform.position);
+                //outlineColor.a = damageText.color.a * damageText.color.a;
+
+                //복제된 TextMesh 옵션 설정
+                for(int i=0;i<damageText.transform.childCount;i++)
                 {
-                    curScoreSpriteRenderers[i].sprite = CheckCurrentDegitAndUpperDegitExist(ref degits, i, degits.Length - 1) ? DamageManager.Instance.numberSprites[degits[i]] : null;
-                    curScoreSpriteRenderers[i].color = new Color(1,1,1);
+                    //원본으로부터 복제된 자식(child)들을 불러옵니다.
+                    TextMesh other = damageText.transform.GetChild(i).GetComponent<TextMesh>();
+                    other.color = outlineColor;
+                    other.text = damageText.text;
+
+                    //설정된 해상도(doubleResolution)보다 큰 디바이스에서 실행될 경우
+                    //pixelSize를 두배로 합니다.
+                    bool doublePixel = resolutionDependant && (Screen.width > doubleResolution || Screen.height > doubleResolution);
+                    Vector3 pixelOffset = GetOffset(i) * (doublePixel ? 2.0f * pixelSize : pixelSize);
+                    Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint + pixelOffset);
+                    other.transform.position = worldPoint;
                 }
-                curScoreSpriteRenderers[0].sprite = DamageManager.Instance.messages[0];
                 break;
         }
     }
@@ -139,17 +167,14 @@ public class DamageLabel : MonoBehaviour
 
         //흔들면서
         //StartCoroutine(CoShakeObj(tempScoreObj, 0.09f, 0.30f));   //안이쁨..
-
-        //켜주기
-        group.SetActive(true);
         
         //커진상태에서 작아지기
         StartCoroutine(MyCoroutines.CoChangeSize(gameObject, _isCritical? 10f : 3f, _isCritical? transform.localScale.x*2 :  transform.localScale.x, 0.15f));
 
         //빠르게 페이드인하면서 등장
-        for (int i = 0; i < curScoreSpriteRenderers.Length; i++)
+        for (int i = 0; i < allTextMesh.Length; i++)
         {
-            StartCoroutine(MyCoroutines.CoFadeInOut(curScoreSpriteRenderers[i], 0, 1, 0.15f));
+            StartCoroutine(MyCoroutines.CoFadeInOutTextMesh(allTextMesh[i].gameObject, 0, 1, 0.15f));
         }
 
         
@@ -158,17 +183,15 @@ public class DamageLabel : MonoBehaviour
 
         float fadeTime = 0.3f;
         //위로 올라가면서 페이드 아웃
-        for (int i = 0; i < curScoreSpriteRenderers.Length; i++)
+        for (int i = 0; i < allTextMesh.Length; i++)
         {
-            StartCoroutine(MyCoroutines.CoFadeInOut(curScoreSpriteRenderers[i], 1, 0, fadeTime));
+            StartCoroutine(MyCoroutines.CoFadeInOutTextMesh(allTextMesh[i].gameObject, 1, 0, fadeTime));
         }
 
         StartCoroutine(MyCoroutines.CoGlobalMove_AnimationCurve(gameObject, startPos, targetPos, fadeTime, DamageManager.Instance.labelMoveUpAnimationCurve));
 
         yield return new WaitForSeconds(fadeTime);
 
-        //Off시키기
-        group.SetActive(false);
         gameObject.SetActive(false);
     }
     IEnumerator CoSpawnMessageLabel(GameObject _OnObj)
@@ -193,36 +216,53 @@ public class DamageLabel : MonoBehaviour
 
         //흔들면서
         //StartCoroutine(CoShakeObj(tempScoreObj, 0.09f, 0.30f));   //안이쁨..
-
-        //켜주기
-        group.SetActive(true);
         
         //커진상태에서 작아지기
         StartCoroutine(MyCoroutines.CoChangeSize(gameObject, 3f, transform.localScale.x, 0.15f));
 
         //빠르게 페이드인하면서 등장
-        StartCoroutine(MyCoroutines.CoFadeInOut(curScoreSpriteRenderers[0], 0, 1, 0.15f));
+        for (int i = 0; i < allTextMesh.Length; i++)
+        {
+            StartCoroutine(MyCoroutines.CoFadeInOutTextMesh(allTextMesh[i].gameObject, 0, 1, 0.15f));
+        }
         
         //잠깐 보여줬다가
         yield return new WaitForSeconds(0.5f);
 
         float fadeTime = 0.3f;
         //위로 올라가면서 페이드 아웃
-        StartCoroutine(MyCoroutines.CoFadeInOut(curScoreSpriteRenderers[0], 1, 0, fadeTime));
+        for (int i = 0; i < allTextMesh.Length; i++)
+        {
+            StartCoroutine(MyCoroutines.CoFadeInOutTextMesh(allTextMesh[i].gameObject, 1, 0, fadeTime));
+        }
 
         StartCoroutine(MyCoroutines.CoGlobalMove_AnimationCurve(gameObject, startPos, targetPos, fadeTime, DamageManager.Instance.labelMoveUpAnimationCurve));
 
         yield return new WaitForSeconds(fadeTime);
 
         //Off시키기
-        group.SetActive(false);
         gameObject.SetActive(false);
     }
 
     private void OnDisable()
     {
-        group.SetActive(false);
         transform.localScale = originScale;
         StopAllCoroutines();
+    }
+    //복제된 TextMesh들의 배치정보
+    Vector3 GetOffset(int i)
+    {
+        switch(i % 8)
+        {
+            case 0: return new Vector3(0, 1, 0);
+            case 1: return new Vector3(1, 1, 0);
+            case 2: return new Vector3(1, 0, 0);
+            case 3: return new Vector3(1, -1, 0);
+            case 4: return new Vector3(0, -1, 0);
+            case 5: return new Vector3(-1, -1, 0);
+            case 6: return new Vector3(-1, 0, 0);
+            case 7: return new Vector3(-1, 1, 0);
+            default: return Vector3.zero;
+        }
     }
 }
