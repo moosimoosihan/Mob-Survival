@@ -14,4 +14,8 @@ public class BuffEffect : MonoBehaviour
     {
         _ManagedPool.Release(this);
     }
+    void OnDisable()
+    {
+        DestroyBuffEffect();
+    }
 }

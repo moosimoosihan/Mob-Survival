@@ -135,7 +135,7 @@ public class Enemy : CharacterStatus
         curHP = maxHP;
 
         if(effect != null && effect.gameObject.activeSelf){
-            effect.gameObject.SetActive(false);
+            effect.DestroyBuffEffect();
         }
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
     }
@@ -288,7 +288,7 @@ public class Enemy : CharacterStatus
             yield return new WaitForSeconds(0.1f);
         }
         fireDeBuffTime = 0;
-        effect.gameObject.SetActive(false);
+        effect.DestroyBuffEffect();
         isFire = false;
     }
 
