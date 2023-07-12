@@ -1679,6 +1679,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf69fd933df7d9a44a5d0893471555ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 0
   curHP: 0
   maxShield: 0
@@ -1691,7 +1692,6 @@ MonoBehaviour:
   critDamage: 0
   attackDamage: 0
   createFollowingHpBar: 1
-  chacter: 2
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -3180,6 +3180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf69fd933df7d9a44a5d0893471555ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 0
   curHP: 0
   maxShield: 0
@@ -3192,7 +3193,6 @@ MonoBehaviour:
   critDamage: 0
   attackDamage: 0
   createFollowingHpBar: 1
-  chacter: 1
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -10012,6 +10012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf69fd933df7d9a44a5d0893471555ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 100
   curHP: 0
   maxShield: 0
@@ -10024,7 +10025,6 @@ MonoBehaviour:
   critDamage: 0
   attackDamage: 0
   createFollowingHpBar: 1
-  chacter: 3
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -20067,7 +20067,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1297145189
 CanvasRenderer:
@@ -20599,6 +20599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf69fd933df7d9a44a5d0893471555ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 0
   curHP: 0
   maxShield: 0
@@ -20611,7 +20612,6 @@ MonoBehaviour:
   critDamage: 0
   attackDamage: 0
   createFollowingHpBar: 1
-  chacter: 0
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -29553,7 +29553,6 @@ MonoBehaviour:
   gold: 0
   nextExp: 
   life: 0
-  playerDatabase: {fileID: 4900000, guid: 4df45522ee31cf64698106c7c74bcae4, type: 3}
   expDatabase: {fileID: 4900000, guid: 4739ce314dce34d4589c78f45cb897a4, type: 3}
   players: []
   playerDummies: {fileID: 535669751}
