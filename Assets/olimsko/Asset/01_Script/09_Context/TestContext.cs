@@ -6,21 +6,21 @@ using UnityEngine.InputSystem;
 
 public class TestContext : ContextModel
 {
-    private Stat Damage;
-    private Stat AttackSpeed;
+    // private Stat Damage;
+    // private Stat AttackSpeed;
 
-    private List<CharacterTable> CharacterData => OSManager.GetService<DataManager>().GetData<CharacterTableSO>().CharacterTable;
+    // private List<CharacterTable> CharacterData => OSManager.GetService<DataManager>().GetData<CharacterTableSO>().CharacterTable;
 
-    private void Init()
-    {
-        Damage = new Stat();
-        AttackSpeed = new Stat();
-    }
+    // private void Init()
+    // {
+    //     Damage = new Stat();
+    //     AttackSpeed = new Stat();
+    // }
 
-    private void Start()
-    {
+    // private void Start()
+    // {
 
-    }
+    // }
 
 
     void Update()
@@ -36,65 +36,65 @@ public class TestContext : ContextModel
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
-            Debug.Log(CharacterData[0].Name + " " + CharacterData[0].Desc);
+            // Debug.Log(CharacterData[0].Name + " " + CharacterData[0].Desc + " " + CharacterData[0].AttackSpeed);
         }
     }
 }
 
-public enum StatType
-{
-    Damage,
-    AttackSpeed
-}
+// public enum StatType
+// {
+//     Damage,
+//     AttackSpeed
+// }
 
-public enum StatAddType
-{
-    Add,
-    Multiply
-}
+// public enum StatAddType
+// {
+//     Add,
+//     Multiply
+// }
 
-public enum StatCategory
-{
-    Character,
-    Item
-}
+// public enum StatCategory
+// {
+//     Character,
+//     Item
+// }
 
-public class Stat
-{
+// public class Stat
+// {
 
-    public StatType StatType;
-    public List<StatClass> StatList;
+//     public StatType StatType;
+//     public List<StatClass> StatList;
 
-    public Stat()
-    {
+//     public Stat()
+//     {
 
-    }
+//     }
 
-    public float GetCurrentStat()
-    {
-        float value = 0;
+//     public float GetCurrentStat()
+//     {
+//         float value = 0;
 
-        for (int i = 0; i < StatList.Count; i++)
-        {
-            switch (StatList[i].StatAddType)
-            {
-                case StatAddType.Add:
-                    value += StatList[i].Value;
-                    break;
-                case StatAddType.Multiply:
-                    value *= StatList[i].Value;
-                    break;
-            }
-        }
+//         for (int i = 0; i < StatList.Count; i++)
+//         {
+//             switch (StatList[i].StatAddType)
+//             {
+//                 case StatAddType.Add:
+//                     value += StatList[i].Value;
+//                     break;
+//                 case StatAddType.Multiply:
+//                     value *= StatList[i].Value;
+//                     break;
+//             }
+//         }
 
-        return value;
-    }
-}
+//         return value;
+//     }
+// }
 
-public class StatClass
-{
-    public StatCategory StatCategory;
-    public StatType StatType;
-    public StatAddType StatAddType;
-    public float Value;
-}
+// public class StatClass
+// {
+//     public StatCategory StatCategory;
+//     public StatType StatType;
+//     public StatAddType StatAddType;
+//     public float Value;
+// }

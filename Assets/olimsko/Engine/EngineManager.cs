@@ -18,9 +18,9 @@ namespace olimsko
             Configuration = configuration;
         }
 
-        public async UniTask InitializeAsync()
+        public UniTask InitializeAsync()
         {
-
+            return UniTask.CompletedTask;
         }
 
 
