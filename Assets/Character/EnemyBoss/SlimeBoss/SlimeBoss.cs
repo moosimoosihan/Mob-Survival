@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Pool;
 
 public class SlimeBoss : Enemy
 {
@@ -33,6 +33,8 @@ public class SlimeBoss : Enemy
 
     [SerializeField]
     bool drawRay = false;
+    private IObjectPool<SlimeBoss> _ManagedPool;
+
     private void OnDrawGizmosSelected()
     {
         if (drawRay)
@@ -304,4 +306,9 @@ public class SlimeBoss : Enemy
         }
         return true;
     }
+    public void SetManagedPool(IObjectPool<SlimeBoss> pool)
+    {
+        _ManagedPool = pool;
+    }
+
 }

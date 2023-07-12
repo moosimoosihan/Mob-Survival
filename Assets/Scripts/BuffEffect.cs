@@ -11,6 +11,7 @@ public class BuffEffect : MonoBehaviour
 
     public void DestroyBuffEffect()
     {
+        transform.parent = GameManager.instance.pool.transform;
         _ManagedPool.Release(this);
     }
 }

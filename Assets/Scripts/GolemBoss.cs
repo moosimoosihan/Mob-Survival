@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Spine.Unity;
+using UnityEngine.Pool;
 
 public class GolemBoss : Enemy
 {
@@ -25,6 +26,7 @@ public class GolemBoss : Enemy
         Skill
     }
     SkeletonAnimation skeletonAnimation;
+    private IObjectPool<GolemBoss> _ManagedPool;
     public override void _Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -270,4 +272,9 @@ public class GolemBoss : Enemy
         Rigidbody2D rigid = bullet.GetComponent<Rigidbody2D>();
         rigid.AddForce((left? Vector2.left : Vector2.right) * 50, ForceMode2D.Impulse);
     }
+    public void SetManagedPool(IObjectPool<GolemBoss> pool)
+    {
+        _ManagedPool = pool;
+    }
+
 }

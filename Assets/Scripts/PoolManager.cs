@@ -55,7 +55,9 @@ public class PoolManager : MonoBehaviour
     }
     void OnReleaseBuffEffect(BuffEffect buffEffect)
     {
-        buffEffect.gameObject.SetActive(false);
+        buffEffect.gameObject.transform.parent = this.transform;
+        if(buffEffect.gameObject.activeSelf)
+            buffEffect.gameObject.SetActive(false);
     }
     void OnDestroyBuffEffect(BuffEffect buffEffect)
     {

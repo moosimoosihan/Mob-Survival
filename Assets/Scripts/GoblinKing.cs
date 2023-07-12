@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using Spine.Unity;
+using UnityEngine.Pool;
 
 public class GoblinKing : Enemy
 {
@@ -27,6 +28,7 @@ public class GoblinKing : Enemy
         Skill3
     }
     SkeletonAnimation skeletonAnimation;
+    private IObjectPool<GoblinKing> _ManagedPool;
     public override void _Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -325,5 +327,9 @@ public class GoblinKing : Enemy
     }
     void EnemyBuff(){
 
+    }
+    public void SetManagedPool(IObjectPool<GoblinKing> pool)
+    {
+        _ManagedPool = pool;
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
+
 public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
@@ -134,14 +135,7 @@ public class Enemy : CharacterStatus
         fireDeBuffTime = 0;
         curHP = maxHP;
 
-        if(effect != null && effect.gameObject.activeSelf){
-            effect.DestroyBuffEffect();
-        }
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
-    }
-    void OnEnable()
-    {
-        _OnEnable();
     }
     public void SetManagedPool(IObjectPool<Enemy> pool)
     {
@@ -149,6 +143,9 @@ public class Enemy : CharacterStatus
     }
     public void DestroyEnemy()
     {
+        if(effect!=null && effect.gameObject.activeSelf){
+            effect.DestroyBuffEffect();
+        }
         _ManagedPool.Release(this);
     }
     public virtual void Init(enemySpawnData data)

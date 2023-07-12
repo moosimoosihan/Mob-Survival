@@ -1,6 +1,7 @@
 using Spine.Unity;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class GoblinBoss : Enemy
 {
@@ -26,6 +27,8 @@ public class GoblinBoss : Enemy
     float timer;
     float skillDelay;
     SkeletonAnimation skeletonAnimation;
+    private IObjectPool<GoblinBoss> _ManagedPool;
+
     public override void _Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -276,5 +279,9 @@ public class GoblinBoss : Enemy
             skeletonAnimation.AnimationName = "move";
         else if (_aniState == AnimationState.Skill)
             skeletonAnimation.AnimationName = "skill";
+    }
+    public void SetManagedPool(IObjectPool<GoblinBoss> pool)
+    {
+        _ManagedPool = pool;
     }
 }
