@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using olimsko;
 
 public class IceActiveSkill : ActiveSkill
 {
@@ -17,10 +16,10 @@ public class IceActiveSkill : ActiveSkill
     }
     public override void AreaUpdate()
     {
-        if(!isActive && OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").IsPressed())
+        if(!isActive && GameManager.instance.inputManager.GetAction("ReadyActiveSkill").IsPressed())
         {
             areaOn = true;
-        } else if(areaOn && OSManager.GetService<InputManager>().GetAction("CancelActiveSkill").IsPressed())
+        } else if(areaOn && GameManager.instance.inputManager.GetAction("CancelActiveSkill").IsPressed())
         {
             areaOn = false;
         }

@@ -2,7 +2,6 @@ using Spine.Unity;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using olimsko;
 
 public class Player : CharacterStatus
 {
@@ -48,7 +47,7 @@ public class Player : CharacterStatus
 
     SkeletonAnimation skeletonAnimation;
 
-    void Awake()
+    void Start()
     {
         //초기화
         rigid = GetComponent<Rigidbody2D>();
@@ -57,8 +56,8 @@ public class Player : CharacterStatus
         scanner = GetComponent<Scaner>();
         collider2D = GetComponent<Collider2D>();
 
-        OSManager.GetService<InputManager>().GetAction("Move").Enable();
-        OSManager.GetService<InputManager>().GetAction("Move").performed += OnMove;
+        GameManager.instance.inputManager.GetAction("Move").Enable();
+        GameManager.instance.inputManager.GetAction("Move").performed += OnMove;
 
         childTransform = transform.GetChild(0).GetComponent<Transform>();
         weaponTransform = transform.GetChild(1).GetComponent<Transform>();
@@ -72,8 +71,8 @@ public class Player : CharacterStatus
 
     private void OnDestroy()
     {
-        OSManager.GetService<InputManager>().GetAction("Move").performed -= OnMove;
-        OSManager.GetService<InputManager>().GetAction("Move").Disable();
+        GameManager.instance.inputManager.GetAction("Move").performed -= OnMove;
+        GameManager.instance.inputManager.GetAction("Move").Disable();
     }
     public void Init(playerData data)
     {

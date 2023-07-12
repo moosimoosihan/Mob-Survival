@@ -8,6 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public InputManager inputManager => OSManager.GetService<InputManager>();
 
     [Header("게임 컨트롤")]
     public float gameTime;
@@ -107,13 +108,13 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         isPlay = true;
-        OSManager.GetService<InputManager>().GetAction("UsePotion").Enable();
-        OSManager.GetService<InputManager>().GetAction("UsePotion").performed += RevivalPotion;
+        inputManager.GetAction("UsePotion").Enable();
+        inputManager.GetAction("UsePotion").performed += RevivalPotion;
     }
     private void OnDestroy()
     {
-        OSManager.GetService<InputManager>().GetAction("UsePotion").performed -= RevivalPotion;
-        OSManager.GetService<InputManager>().GetAction("UsePotion").Disable();
+        inputManager.GetAction("UsePotion").performed -= RevivalPotion;
+        inputManager.GetAction("UsePotion").Disable();
     }
 
     void Update()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using olimsko;
 
 public abstract class ActiveSkill : MonoBehaviour
 {
@@ -17,15 +16,15 @@ public abstract class ActiveSkill : MonoBehaviour
         timer = delay;
         ActiveSkillInit();
 
-        OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").Enable();
-        OSManager.GetService<InputManager>().GetAction("ConfirmActiveSkill").Enable();
-        OSManager.GetService<InputManager>().GetAction("CancelActiveSkill").Enable();
+        GameManager.instance.inputManager.GetAction("ReadyActiveSkill").Enable();
+        GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").Enable();
+        GameManager.instance.inputManager.GetAction("CancelActiveSkill").Enable();
     }
     private void OnDestroy()
     {
-        OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").Disable();
-        OSManager.GetService<InputManager>().GetAction("ConfirmActiveSkill").Disable();
-        OSManager.GetService<InputManager>().GetAction("CancelActiveSkill").Disable();
+        GameManager.instance.inputManager.GetAction("ReadyActiveSkill").Disable();
+        GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").Disable();
+        GameManager.instance.inputManager.GetAction("CancelActiveSkill").Disable();
     }
     void Update()
     {
@@ -46,7 +45,7 @@ public abstract class ActiveSkill : MonoBehaviour
     public abstract void AreaUpdate();
     public abstract void AreaOff();
     public bool KeyDown(bool _areaOn){
-        if(!isActive && _areaOn? OSManager.GetService<InputManager>().GetAction("ConfirmActiveSkill").IsPressed() : OSManager.GetService<InputManager>().GetAction("ReadyActiveSkill").IsPressed())
+        if(!isActive && _areaOn? GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").IsPressed() : GameManager.instance.inputManager.GetAction("ReadyActiveSkill").IsPressed())
         {
             return true;
         } else {
