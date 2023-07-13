@@ -27,6 +27,7 @@ public class IceWeapon : Weapon
                 
         Transform bullet = poolBullet.Get().transform;
 
+        bullet.parent = GameManager.instance.pool.transform;
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.left, dir);
         bullet.GetComponent<IceBullet>().projectilePrefab = iceGroundPrefab;
