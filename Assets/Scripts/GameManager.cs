@@ -206,6 +206,12 @@ public class GameManager : MonoBehaviour
             curTimeScale=2;
             timeText.text = "x2";
         } else if(Time.timeScale==2){
+            curTimeScale=3;
+            timeText.text = "x3";
+        } else if(Time.timeScale==3){
+            curTimeScale=5;
+            timeText.text = "x5";
+        } else if(Time.timeScale==5){
             curTimeScale=1;
             timeText.text = "x1";
         }
