@@ -34,12 +34,7 @@ public class Enemy : CharacterStatus
     private IObjectPool<BuffEffect> poolBuffEffect;
 
     public SkeletonAnimation skeletonAnimation;
-    void Awake()
-    {
-        _Awake();
-        CreateFollowingHpBar();
-    }
-    public virtual void _Awake()
+    protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -51,9 +46,11 @@ public class Enemy : CharacterStatus
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
         itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem);
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
+
+        CreateFollowingHpBar();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (!isLive || !GameManager.instance.isPlay)
             return;
@@ -69,7 +66,7 @@ public class Enemy : CharacterStatus
         }
     }
 
-    private void FindClosestObject()
+    protected void FindClosestObject()
     {
         if (!isLive || !GameManager.instance.isPlay)
             return;
@@ -95,13 +92,9 @@ public class Enemy : CharacterStatus
         }
     }
 
-    void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
-        _FixedUpdate();
-    }
-    public virtual void _FixedUpdate()
-    {
-        // 넉백 구현을 위해 Hit 에니메이션시 움직임 x
+         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x
         if (!isLive || knockBack || nearestTarget == null || !GameManager.instance.isPlay)
             return;
 
@@ -112,11 +105,8 @@ public class Enemy : CharacterStatus
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
     }
-    void LateUpdate()
-    {
-        _LateUpdate();
-    }
-    public virtual void _LateUpdate()
+
+    protected virtual void LateUpdate()
     {
         if (!isLive || nearestTarget == null || target == null || !GameManager.instance.isPlay)
             return;
@@ -131,11 +121,8 @@ public class Enemy : CharacterStatus
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
-    private void OnEnable()
-    {
-        _OnEnable();
-    }
-    public virtual void _OnEnable()
+
+    protected virtual void OnEnable()
     {
         isLive = true;
         coll.enabled = true;
@@ -146,6 +133,7 @@ public class Enemy : CharacterStatus
 
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
     }
+
     public void SetManagedPool(IObjectPool<Enemy> pool)
     {
         _ManagedPool = pool;
@@ -247,7 +235,7 @@ public class Enemy : CharacterStatus
         }
     }
 
-    private void Dead()
+    protected virtual void Dead()
     {
         //gameObject.SetActive(false);
         StopCoroutine("WarriorFireOn");
@@ -255,7 +243,7 @@ public class Enemy : CharacterStatus
         DestroyEnemy();
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    protected virtual void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.transform.CompareTag("Player") == false)
             return;

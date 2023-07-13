@@ -12,7 +12,18 @@ public class WarriorActiveSkill : ActiveSkill
     public bool warriorFire;
     public float warriorFireDamge;
     public float warriorFireTime;
-
+    protected override void Awake(){
+        base.Awake();
+    }
+    protected override void Start(){
+        base.Start();
+    }
+    protected override void OnDestroy(){
+        base.OnDestroy();
+    }
+    protected override void Update(){
+        base.Update();
+    }
     public override void ActiveSkillInit(){
         skillArea = transform.GetChild(0).gameObject;
         player = GetComponentInParent<Player>();

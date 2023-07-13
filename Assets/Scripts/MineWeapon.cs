@@ -11,12 +11,12 @@ public class MineWeapon : Weapon
     int curCreatCount = 0;
     [SerializeField]
     float weaponDuration;
-    public override void InitWeapon()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    public override void UpdateWeapon()
+    protected override void Update()
     {
         // 지뢰를 생성 할 수 있다면 생성        
         timer += Time.deltaTime;
@@ -25,15 +25,19 @@ public class MineWeapon : Weapon
             bool ret = FireCheck();
             if (ret)
             {
-                if (Fire())
+                if (OnFire())
                 {
                     timer = 0f;
                 }
             }            
         }        
     }
+    protected override void Fire()
+    {
 
-    bool Fire()
+    }
+
+    bool OnFire()
     {
         if (!player.scanner.nearestTarget)
             return false;

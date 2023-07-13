@@ -27,12 +27,12 @@ public class IreliaWeapon : Weapon
     [SerializeField]
     float rotationSpeed = 10;
 
-    public override void InitWeapon()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    public override void UpdateWeapon()
+    protected override void Update()
     {
         //총알 생성되어 있으면 회전시켜주고 아니면 딜레이후 생성
         if (isBulletsCreated)
@@ -41,7 +41,7 @@ public class IreliaWeapon : Weapon
             timer += Time.deltaTime;
             if (timer > curDelay)
             {
-                if (Fire())
+                if (OnFire())
                 {
                     //isRotate = false;
                     timer = 0f;
@@ -86,8 +86,11 @@ public class IreliaWeapon : Weapon
         }        
     }
 
-    
-    bool Fire()
+    protected override void Fire()
+    {
+        
+    }
+    bool OnFire()
     {
         if (!player.scanner.nearestTarget)
             return false;

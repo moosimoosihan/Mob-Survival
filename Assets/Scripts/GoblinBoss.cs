@@ -29,70 +29,38 @@ public class GoblinBoss : Enemy
     private IObjectPool<GoblinBoss> _ManagedPool;
     private IObjectPool<Bullet> bulletPool;
 
-    public override void _Awake()
+    protected override void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>();
-        spriter = GetComponent<SpriteRenderer>();
-        anim = GetComponent<Animator>();
-        wait = new WaitForFixedUpdate();
-
-        bullet = transform.GetChild(1).gameObject;
-        radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
+        base.Awake();
+        
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
-    public override void _FixedUpdate()
+    protected override void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || nearestTarget == null || isAttack)
+        if (isAttack)
         {
             rigid.velocity = Vector2.zero;
             return;
         }
-
-        target = nearestTarget.GetComponent<Rigidbody2D>();
-
-        Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-        rigid.velocity = Vector2.zero;
+        base.FixedUpdate();
     }
-    public override void _LateUpdate()
+    protected override void LateUpdate()
     {
-        if (!isLive || nearestTarget == null || target == null || isAttack)
-            return;
-
-        if (target.position.x > rigid.position.x)
-        {
-            //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            transform.localScale = new Vector3(1, 1, 1);
-        }
+        base.LateUpdate();
     }
-    public override void _OnEnable()
+    protected override void OnEnable()
     {
-        isLive = true;
-        coll.enabled = true;
-        rigid.simulated = true;
-        spriter.sortingOrder = 2;
-        curHP = maxHP;
+        base.OnEnable();
     }
     public override void Init(MonsterTable data, float power)
     {
-        speed = data.Speed;
-        maxHP = data.HP;
-        curHP = maxHP;
-        attackDamage = data.Attack;
-        missileDamage = data.Attack / 2;
-        bulletSpeed = 3;
+        base.Init(data, power);
     }
 
     IEnumerator BossStateMachine()
@@ -257,17 +225,12 @@ public class GoblinBoss : Enemy
     {
         _ManagedPool = pool;
     }
-    private void Dead()
+    protected override void Dead()
     {
-        //gameObject.SetActive(false);
-        StopCoroutine("WarriorFireOn");
-        CancelInvoke("FindClosestObject");
-        DestroyEnemy();
+        base.Dead();
+        StopAllCoroutines();
     }
-    private void DestroyEnemy()
-    {
-        _ManagedPool.Release(this);
-    }
+
     Bullet CreateBullet()
     {
         Bullet bullet = Instantiate(this.bullet).GetComponent<Bullet>();

@@ -1,10 +1,11 @@
 public class WarriorFirePassive : Weapon
 {
     // 베기와 용사의 일격에 피격당한 적에게 화염 데미지 적용!
-    public override void InitWeapon(){
-        
+    protected override void Awake()
+    {
+        base.Awake();
     }
-    public override void UpdateWeapon(){
+    protected override void Update(){
         if(gameObject.activeSelf){
             if(!player.GetComponentInChildren<MeleeWeapon>().warriorFire){
                 player.GetComponentInChildren<MeleeWeapon>().warriorFire = true;
@@ -18,6 +19,10 @@ public class WarriorFirePassive : Weapon
                 player.GetComponentInChildren<WarriorActiveSkill>().warriorFireTime = curDelay;
             }
         }
+    }
+    protected override void Fire()
+    {
+        
     }
     private void OnDisable() {
         if(player.GetComponentInChildren<MeleeWeapon>(true).warriorFire){

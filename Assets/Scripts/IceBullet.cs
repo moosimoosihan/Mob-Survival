@@ -7,8 +7,9 @@ public class IceBullet : Bullet
     public float groundDuration;
     public IObjectPool<Bullet> bulletPool;
 
-    public override void AwakeBullet()
+    protected override void Awake()
     {
+        base.Awake();
         bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
     public override void OnCreateBullet()

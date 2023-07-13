@@ -10,11 +10,12 @@ public class MaceWeapon : MeleeWeapon
         player = GetComponentInParent<Player>();
         curDetectionAngle = detectionAngle;
     }
-    public override void InitWeapon()
+    protected override void Update()
     {
-
+        base.Update();
     }
-    public override void Fire(Transform _targetTransform)
+
+    protected override void OnFire(Transform _targetTransform)
     {
         Vector3 targetPos = _targetTransform.position;
         Vector3 dir = targetPos - transform.position;

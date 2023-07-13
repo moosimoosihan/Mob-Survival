@@ -14,12 +14,12 @@ public abstract class ActiveSkill : MonoBehaviour
 
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
-    void Awake()
+    protected virtual void Awake()
     {
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
         poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
-    void Start()
+    protected virtual void Start()
     {
         timer = delay;
         ActiveSkillInit();
@@ -28,13 +28,13 @@ public abstract class ActiveSkill : MonoBehaviour
         GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").Enable();
         GameManager.instance.inputManager.GetAction("CancelActiveSkill").Enable();
     }
-    private void OnDestroy()
+    protected virtual void OnDestroy()
     {
         GameManager.instance.inputManager.GetAction("ReadyActiveSkill").Disable();
         GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").Disable();
         GameManager.instance.inputManager.GetAction("CancelActiveSkill").Disable();
     }
-    void Update()
+    protected virtual void Update()
     {
         if(isActive && timer < delay){
             timer += Time.deltaTime;

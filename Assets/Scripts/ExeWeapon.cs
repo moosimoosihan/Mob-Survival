@@ -7,22 +7,17 @@ public class ExeWeapon : Weapon
     [SerializeField]
     float distY;
 
-    public override void InitWeapon()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
 
-    public override void UpdateWeapon()
+    protected override void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > curDelay)
-        {
-            timer = 0f;
-            Fire();
-        }
+        base.Update();
     }
 
-    void Fire()
+    protected override void Fire()
     {
         if (!player.scanner.nearestTarget)
             return;

@@ -2,22 +2,16 @@ using UnityEngine;
 
 public class SpearWeapon : Weapon
 {
-    public override void InitWeapon()
+    protected override void Awake()
     {
-        
+        base.Awake();
+    }
+    protected override void Update()
+    {
+        base.Update();
     }
 
-    public override void UpdateWeapon()
-    {
-        timer += Time.deltaTime;
-        if (timer > curDelay)
-        {
-            timer = 0f;
-            Fire();
-        }
-    }
-
-    void Fire()
+    protected override void Fire()
     {
         if (!player.scanner.nearestTarget)
             return;

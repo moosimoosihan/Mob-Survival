@@ -6,12 +6,13 @@ public class ArcherPassive : Weapon
     public BowWeapon bowWeapon;
     public bool isActivate;
     public float buffTime;
-    public override void InitWeapon()
+    protected override void Awake()
     {
+        base.Awake();
         bowWeapon = player.GetComponentInChildren<BowWeapon>();
     }
 
-    public override void UpdateWeapon()
+    protected override void Update()
     {
         if(bowWeapon.isCritical){
             bowWeapon.isCritical = false;
@@ -42,5 +43,9 @@ public class ArcherPassive : Weapon
         bowWeapon.curDelay +=  bowWeapon.delay * damage;
         effect.DestroyBuffEffect();
         isActivate = false;
+    }
+
+    protected override void Fire()
+    {
     }
 }

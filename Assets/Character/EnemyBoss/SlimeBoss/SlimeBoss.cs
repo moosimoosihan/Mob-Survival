@@ -21,9 +21,6 @@ public class SlimeBoss : Enemy
     [SerializeField]
     AnimationCurve scaleCurve_Y_Afterwards;
 
-    //[SerializeField]
-    //Transform shadowTransform;
-
     [SerializeField]
     float attackRadius;
     [SerializeField]
@@ -33,9 +30,13 @@ public class SlimeBoss : Enemy
 
     [SerializeField]
     bool drawRay = false;
-    private IObjectPool<SlimeBoss> _ManagedPool;
     private IObjectPool<TargetAnimation> aimPool;
 
+    protected override void Awake()
+    {
+        base.Awake();
+        aimPool = new ObjectPool<TargetAnimation>(CreateAim, OnGetAim, OnReleaseAim, OnDestroyAim);
+    }
     private void OnDrawGizmosSelected()
     {
         if (drawRay)
@@ -53,7 +54,7 @@ public class SlimeBoss : Enemy
         return result;
     }
 
-    public override void _LateUpdate()
+    protected override void LateUpdate()
     {
         timer += Time.deltaTime;
 
@@ -70,18 +71,7 @@ public class SlimeBoss : Enemy
             }
         }
         
-        if (!isLive || nearestTarget == null || target == null || !GameManager.instance.isPlay)
-            return;
-
-        if (target.position.x > rigid.position.x)
-        {
-            //Ÿ�� ���ʿ� �ִ� ���
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
-        }
-        else
-        {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
-        }
+        base.LateUpdate();
     }
 
     bool isReady = true;
@@ -109,18 +99,16 @@ public class SlimeBoss : Enemy
 
         if (totalTime <= 0.6f)
             totalTime = 0.6f;
-
+        
         aimObj = aimPool.Get().gameObject;
         targetAnim = aimObj.GetComponent<TargetAnimation>();
         targetAnim.AttackTargetArea(_targetPos, aimObj.transform.localScale, totalTime);
         yield return new WaitForSeconds(totalTime / 2.0f);
 
-        //�������� Ÿ�ٰ��� y��
         float jumpY = xDistance * 0.5f;
         if (jumpY < 0.5f)
             jumpY += 0.5f;
 
-        //�������̶� Ÿ���� ���� ���ؼ� ������ �����ֱ�
         float jumpHeight = 0;
         if(_targetPos.y > childTransformStartPos.y)
         {
@@ -137,14 +125,10 @@ public class SlimeBoss : Enemy
         float scaleX = 1;
         float scaleY = 1;
 
-        //�������� �ݶ��̴� ���ֱ�
-        //capsuleCollider2D.enabled = false;
-
         while (true)
         {
             timer += Time.deltaTime;
 
-            //��ġ
             posX = Mathf.Lerp(childTransformStartPos.x, _targetPos.x, moveCurve.Evaluate(timer / totalTime));
 
             if(timer < totalTime / 2.0f)
@@ -158,10 +142,8 @@ public class SlimeBoss : Enemy
                 posY = Mathf.Lerp(jumpHeight, _targetPos.y, moveCurve.Evaluate(t));
             }
 
-            //���� �̵�
             transform.position = new Vector3(posX, posY, transform.position.z);
                       
-            //������ �ܷ��̱�
             scaleX = scaleCurve_X.Evaluate(timer / totalTime);
             scaleY = scaleCurve_Y.Evaluate(timer / totalTime);
             transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
@@ -174,20 +156,14 @@ public class SlimeBoss : Enemy
 
         targetAnim.Done();
 
-        //������ �ݶ��̴� ���ֱ�
-        //capsuleCollider2D.enabled = true;
-
-        //����
         AttackArea();
 
-        //�����ϰ����� �ܷ��̱�
         timer = 0;
         totalTime = 0.35f;
         while (true)
         {
             timer += Time.deltaTime;
 
-            //������ �ܷ��̱�
             scaleX = scaleCurve_X_Afterwards.Evaluate(timer / totalTime);
             scaleY = scaleCurve_Y_Afterwards.Evaluate(timer / totalTime);
             transform.localScale = new Vector3(scaleX, scaleY, transform.localScale.z);
@@ -205,7 +181,6 @@ public class SlimeBoss : Enemy
     {
         List<Player> result = new List<Player>();
 
-        //�� ���� ������Ʈ���� �������� ���� physics ���
         Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Player"));
 
         if (colliders2D.Length > 0)
@@ -215,10 +190,8 @@ public class SlimeBoss : Enemy
                 Vector3 direction = targetCol.transform.position - transform.position;
                 float angle = Vector3.Angle(transform.up, direction);
 
-                // �ء�� ��ä�� ���� �ȿ� �ִ� �ֵ鸸 ��������   
                 if (angle <= detectionAngle * 0.5f)
                 {
-                    //0 ~ 180�� -0 - 180
                     Player playerScript = targetCol.GetComponent<Player>();
                     if (playerScript != null)
                         result.Add(playerScript);
@@ -237,35 +210,19 @@ public class SlimeBoss : Enemy
 
         for (int i = 0; i < tempPlayerList.Count; i++)
         {
-            //Debug.Log($"������ [{damage}]");
             tempPlayerList[i].GetDamage(attackDamage, false);
         }
 
         return true;
     }
-
-    private void OnDisable()
+    protected override void Dead()
     {
+        base.Dead();
         if (aimObj != null && aimObj.activeSelf)
         {
             aimObj.SetActive(false);
         }
-    }
-   
-    public void SetManagedPool(IObjectPool<SlimeBoss> pool)
-    {
-        _ManagedPool = pool;
-    }
-    private void Dead()
-    {
-        //gameObject.SetActive(false);
-        StopCoroutine("WarriorFireOn");
-        CancelInvoke("FindClosestObject");
-        DestroyEnemy();
-    }
-    private void DestroyEnemy()
-    {
-        _ManagedPool.Release(this);
+        StopAllCoroutines();
     }
     TargetAnimation CreateAim()
     {

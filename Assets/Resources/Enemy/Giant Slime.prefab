@@ -203,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eba6914225dab145be6303eafecc6f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 0
   curHP: 0
   maxShield: 0
@@ -215,7 +216,6 @@ MonoBehaviour:
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 1
-  idName: 
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -228,10 +228,11 @@ MonoBehaviour:
   spriter: {fileID: 0}
   anim: {fileID: 0}
   attackDelay: 4
-  scaner: {fileID: 0}
   fireDeBuffTime: 0
   isFire: 0
   curFireDamage: 0
+  nearestTarget: {fileID: 0}
+  skeletonAnimation: {fileID: 0}
   aimPrefab: {fileID: 4422346568115067120, guid: 4139a629ee1fca74ebd89c2b66008ac7, type: 3}
   moveCurve:
     serializedVersion: 2

@@ -4936,17 +4936,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: []
   enemyDatabase: {fileID: 4900000, guid: 14e973501815848489a20404d65dadbb, type: 3}
-  enemySpawnDataList: []
-  skeletonDataAssetList:
-  - {fileID: 11400000, guid: b97cd19292f7e1c4a8385bed3c59061d, type: 2}
-  - {fileID: 11400000, guid: 95676a1e172338b42b44db9ecc4d1ca8, type: 2}
-  - {fileID: 11400000, guid: 71744faa415b0494cb3e42603ba19494, type: 2}
-  - {fileID: 11400000, guid: debaa207bd0697f4fb8c75ce7809bfc3, type: 2}
-  - {fileID: 11400000, guid: d4c2e0890da42ed42944b9d8061f402d, type: 2}
-  - {fileID: 11400000, guid: 4ba9af641583ab54b83e2ac27d60f98c, type: 2}
-  - {fileID: 11400000, guid: 0d5afde22e7fb884ea7018be54b804cf, type: 2}
-  - {fileID: 11400000, guid: 566cb1d77e74c9a48a2e10720a2edc10, type: 2}
-  - {fileID: 11400000, guid: a83bca17c07cac249949aaed2e57e232, type: 2}
   enemySpwanDatabase: {fileID: 4900000, guid: 3aee78d75f71b6a42825720125e01760, type: 3}
   curSequence: 0
   bossCount: 0

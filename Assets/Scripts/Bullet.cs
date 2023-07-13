@@ -19,15 +19,10 @@ public class Bullet : MonoBehaviour
     private IObjectPool<Bullet> _ManagedPool;
     public IObjectPool<HitEffect> hitEffectPool;
 
-    void Awake()
+    protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         hitEffectPool = new ObjectPool<HitEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
-        AwakeBullet();
-    }
-    public virtual void AwakeBullet()
-    {
-        
     }
 
     void OnDisable()

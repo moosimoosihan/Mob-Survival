@@ -3,19 +3,16 @@ using UnityEngine;
 public class HealWeapon : Weapon
 {
     Player minHealthPlayer;
-    public override void InitWeapon()
+    protected override void Awake()
     {
+        base.Awake();
         minHealthPlayer = player;
     }
-    public override void UpdateWeapon()
+    protected override void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > curDelay){
-            Fire();
-            timer = 0f;
-        }
+        base.Update();
     }
-    void Fire(){
+    protected override void Fire(){
         Player[] playersList =  GameManager.instance.players;
         float minHeath = 1.1f;
 

@@ -28,7 +28,7 @@ public class GoblinKing : Enemy
         Skill3
     }
     private IObjectPool<GoblinKing> _ManagedPool;
-    public override void _Awake()
+    protected override void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         coll = GetComponent<Collider2D>();
@@ -44,55 +44,23 @@ public class GoblinKing : Enemy
         skillDelay = 20;
         StartCoroutine(BossStateMachine());
     }
-    public override void _FixedUpdate()
+    protected override void FixedUpdate()
     {
         timer += Time.fixedDeltaTime;
 
-        // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || nearestTarget == null || isAttack)
-        {
-            rigid.velocity = Vector2.zero;
-            return;
-        }
-
-        target = nearestTarget.GetComponent<Rigidbody2D>();
-
-        Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
-        rigid.MovePosition(rigid.position + nextVec);
-        rigid.velocity = Vector2.zero;
+        base.FixedUpdate();
     }
-    public override void _LateUpdate()
+    protected override void LateUpdate()
     {
-        if (!isLive || nearestTarget == null || target == null || isAttack)
-            return;
-
-        if (target.position.x > rigid.position.x)
-        {
-            //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-2, 2, 2);
-        }
-        else
-        {
-            transform.localScale = new Vector3(2, 2, 2);
-        }
+        base.LateUpdate();
     }
-    public override void _OnEnable()
+    protected override void OnEnable()
     {
-        isLive = true;
-        coll.enabled = true;
-        rigid.simulated = true;
-        spriter.sortingOrder = 2;
-        curHP = maxHP;
+        base.OnEnable();
     }
     public override void Init(MonsterTable data, float power)
     {
-        speed = data.Speed;
-        maxHP = data.HP;
-        curHP = maxHP;
-        attackDamage = data.Attack;
-        missileDamage = data.Attack / 2;
-
+        base.Init(data, power);
     }
 
     IEnumerator BossStateMachine()
@@ -304,21 +272,11 @@ public class GoblinKing : Enemy
     }
     void EnemyBuff()
     {
-
+        // TODO: 모든 적군 버프 구현
     }
-    public void SetManagedPool(IObjectPool<GoblinKing> pool)
+    protected override void Dead()
     {
-        _ManagedPool = pool;
-    }
-    private void Dead()
-    {
-        //gameObject.SetActive(false);
-        StopCoroutine("WarriorFireOn");
-        CancelInvoke("FindClosestObject");
-        DestroyEnemy();
-    }
-    private void DestroyEnemy()
-    {
-        _ManagedPool.Release(this);
+        base.Dead();
+        StopAllCoroutines();
     }
 }

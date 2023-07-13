@@ -22,30 +22,21 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Awake()
     {
+        curDelay = delay;
         player = GetComponentInParent<Player>();
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
         poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
-
-    void Start()
+    protected virtual void Update()
     {
-        curDelay = delay;
-        InitWeapon();
+        timer += Time.deltaTime;
+        if (timer > curDelay)
+        {
+            timer = 0f;
+            Fire();
+        }
     }
-
-    void Update()
-    {
-        UpdateWeapon();
-    }
-    public void LevelUp()
-    {
-
-    }
-
-    public abstract void InitWeapon();
-
-    public abstract void UpdateWeapon();
-
+    protected abstract void Fire();
     BuffEffect CreateEffect()
     {
         BuffEffect buffEffect = Instantiate(projectilePrefab).GetComponent<BuffEffect>();

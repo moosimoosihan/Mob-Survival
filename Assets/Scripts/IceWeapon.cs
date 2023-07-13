@@ -5,18 +5,15 @@ public class IceWeapon : Weapon
     public GameObject iceGroundPrefab;
     public float groundDamage;
     public float groundDuration;
-    public override void InitWeapon(){
-        
+    protected override void Awake()
+    {
+        base.Awake();
     }
-    public override void UpdateWeapon(){
-        timer += Time.deltaTime;
-        if (timer > curDelay)
-        {
-            timer = 0f;
-            Fire();
-        }
+    protected override void Update()
+    {
+        base.Update();
     }
-    void Fire()
+    protected override void Fire()
     {
         if (!player.scanner.nearestTarget)
             return;

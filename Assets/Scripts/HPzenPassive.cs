@@ -2,20 +2,16 @@ using UnityEngine;
 
 public class HPzenPassive : Weapon
 {
-    public override void InitWeapon()
+    protected override void Awake()
     {
-        
+        base.Awake();
     }
-
-    public override void UpdateWeapon()
+    protected override void Update()
     {
-        timer += Time.deltaTime;
-        if(timer > curDelay){
-            Fire();
-            timer = 0f;
-        }
+        base.Update();
     }
-    void Fire(){
+    protected override void Fire()
+    {
         Player me = gameObject.GetComponentInParent<Player>();
         float maxHealth = me.maxHP;
         

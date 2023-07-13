@@ -25,23 +25,17 @@ public class MeleeWeapon : Weapon
         base.Awake();
         curDetectionAngle = detectionAngle;
     }
-    public override void InitWeapon()
-    {
 
-    }
-
-    public override void UpdateWeapon()
+    protected override void Update()
     {
         timer += Time.deltaTime;
         if (timer > curDelay)
         {
-            //��ó�� ���� Ž�� ������
             Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, detectRadius, 1 << LayerMask.NameToLayer(targetLayerMaskName));
 
             if (distanceList.Count > 0)
                 distanceList.Clear();
 
-            //���� ����� �༮ ã��
             foreach (var item in col2D)
             {
                 distanceList.Add(Vector3.Distance(item.transform.position, transform.position));
@@ -58,20 +52,22 @@ public class MeleeWeapon : Weapon
                         minDist = distanceList[i];
                 }
 
-                //���� ����� �༮ �־��ֱ�
                 int closestIndex = distanceList.FindIndex(dist => dist == minDist);
                 closestCol2D = col2D[closestIndex];
 
                 if (closestCol2D == null)
                     return;
 
-                Fire(closestCol2D.transform);
+                OnFire(closestCol2D.transform);
                 timer = 0f;
             }
         }
     }
-
-    public virtual void Fire(Transform _targetTransform)
+    protected override void Fire()
+    {
+        
+    }
+    protected virtual void OnFire(Transform _targetTransform)
     {
         Vector3 targetPos = _targetTransform.position;
         Vector3 dir = targetPos - transform.position;
