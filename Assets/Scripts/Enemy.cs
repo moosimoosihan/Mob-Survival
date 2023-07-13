@@ -27,7 +27,6 @@ public class Enemy : CharacterStatus
     public bool isFire;
     float fireTime;
     public float curFireDamage;
-    public BuffEffect effect;
     public Transform nearestTarget;
 
     private IObjectPool<Enemy> _ManagedPool;
@@ -143,9 +142,6 @@ public class Enemy : CharacterStatus
     }
     private void DestroyEnemy()
     {
-        if(effect!=null && effect.gameObject.activeSelf){
-            effect.DestroyBuffEffect();
-        }
         _ManagedPool.Release(this);
     }
     public virtual void Init(enemySpawnData data)
@@ -273,9 +269,10 @@ public class Enemy : CharacterStatus
     public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
     {
         isFire = true;
-        effect = GameManager.instance.pool.buffPool.Get();
-        effect.transform.parent = transform;
+        BuffEffect effect = GameManager.instance.pool.buffPool.Get();
+        effect.transform.parent = GameManager.instance.pool.transform;
         effect.transform.position = transform.position;
+        effect.target = transform;
 
         fireTime = 0;
         FireInit(_damage, _debuffTime);

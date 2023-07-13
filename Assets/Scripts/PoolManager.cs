@@ -55,12 +55,46 @@ public class PoolManager : MonoBehaviour
     }
     void OnReleaseBuffEffect(BuffEffect buffEffect)
     {
-        buffEffect.gameObject.transform.parent = this.transform;
-        if(buffEffect.gameObject.activeSelf)
-            buffEffect.gameObject.SetActive(false);
+        buffEffect.gameObject.SetActive(false);
     }
     void OnDestroyBuffEffect(BuffEffect buffEffect)
     {
         Destroy(buffEffect.gameObject);
     }
 }
+// public class PoolManager<T> : MonoBehaviour where T : MonoBehaviour
+// {
+//     public IObjectPool<T> pool;
+//     public GameObject prefab;
+//     public int maxSize;
+//     void Awake()
+//     {
+//         pool = new ObjectPool<T>(Create, OnGet, OnRelease, OnDestroy, maxSize: maxSize);
+//     }
+//     public T Get()
+//     {
+//         return pool.Get();
+//     }
+//     public void Release(T obj)
+//     {
+//         pool.Release(obj);
+//     }
+//     public T Create()
+//     {
+//         T obj = Instantiate(prefab).GetComponent<T>();
+//         obj.transform.parent = GameManager.instance.pool.transform;
+//         return obj;
+//     }
+//     public void OnGet(T obj)
+//     {
+//         obj.gameObject.SetActive(true);
+//     }
+//     public void OnDestroy(T obj)
+//     {
+//         Destroy(obj.gameObject);
+//     }
+//     public void OnRelease(T obj)
+//     {
+//         obj.gameObject.SetActive(false);
+//     }
+// }

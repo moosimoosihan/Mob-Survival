@@ -341,9 +341,6 @@ public class GoblinKing : Enemy
     }
     private void DestroyEnemy()
     {
-        if(effect!=null && effect.gameObject.activeSelf){
-            effect.DestroyBuffEffect();
-        }
         _ManagedPool.Release(this);
     }
 }
