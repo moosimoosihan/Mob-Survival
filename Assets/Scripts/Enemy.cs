@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
-
+using Spine.Unity;
 public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
@@ -30,6 +30,7 @@ public class Enemy : CharacterStatus
     public Transform nearestTarget;
     private IObjectPool<Enemy> _ManagedPool;
 
+    public SkeletonAnimation skeletonAnimation;
     void Awake()
     {
         _Awake();
@@ -42,6 +43,7 @@ public class Enemy : CharacterStatus
         spriter = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
+        skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
     }
@@ -124,6 +126,9 @@ public class Enemy : CharacterStatus
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
+    private void OnEnable() {
+        _OnEnable();
+    }
     public virtual void _OnEnable()
     {
         isLive = true;
@@ -154,6 +159,7 @@ public class Enemy : CharacterStatus
         curHP = maxHP;
         attackDamage = data.attackDamage * power;
         //spriter.sprite = data.sprite;
+        
 
         CreateFollowingHpBar();
     }

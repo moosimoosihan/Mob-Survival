@@ -4938,12 +4938,24 @@ MonoBehaviour:
   enemyDatabase: {fileID: 4900000, guid: 14e973501815848489a20404d65dadbb, type: 3}
   enemySpawnDataList: []
   skeletonDataAssetList:
-  - {fileID: 11400000, guid: f136e5fd35e67394b819b5726a757616, type: 2}
-  - {fileID: 11400000, guid: 45ffd114e46da52428f678f677dfba7e, type: 2}
+  - {fileID: 11400000, guid: b97cd19292f7e1c4a8385bed3c59061d, type: 2}
+  - {fileID: 11400000, guid: 95676a1e172338b42b44db9ecc4d1ca8, type: 2}
+  - {fileID: 11400000, guid: 71744faa415b0494cb3e42603ba19494, type: 2}
+  - {fileID: 11400000, guid: debaa207bd0697f4fb8c75ce7809bfc3, type: 2}
+  - {fileID: 11400000, guid: d4c2e0890da42ed42944b9d8061f402d, type: 2}
   - {fileID: 11400000, guid: 4ba9af641583ab54b83e2ac27d60f98c, type: 2}
+  - {fileID: 11400000, guid: 0d5afde22e7fb884ea7018be54b804cf, type: 2}
+  - {fileID: 11400000, guid: 566cb1d77e74c9a48a2e10720a2edc10, type: 2}
+  - {fileID: 11400000, guid: a83bca17c07cac249949aaed2e57e232, type: 2}
   enemySpwanDatabase: {fileID: 4900000, guid: 3aee78d75f71b6a42825720125e01760, type: 3}
   curSequence: 0
   bossCount: 0
+  enemyPrefab: {fileID: 6511591022887581323, guid: 5fd7f87d4f8ece44cad50d8f5ec2d879, type: 3}
+  bossPrefab:
+  - {fileID: 9178175653398265332, guid: 113e595bc5b5718438fa69ffe0f3d8d2, type: 3}
+  - {fileID: 2207541614551476657, guid: c998e2000b02e0741ad1c55885782ca2, type: 3}
+  - {fileID: 5530101597511654031, guid: 9aed839504dec8142bca91cfcffcc399, type: 3}
+  - {fileID: 2207541614551476657, guid: 1b7c30e8d77d9814095be8172a7e4ad1, type: 3}
 --- !u!4 &281496650
 Transform:
   m_ObjectHideFlags: 0

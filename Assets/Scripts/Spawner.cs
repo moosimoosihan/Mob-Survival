@@ -25,15 +25,8 @@ public class Spawner : MonoBehaviour
     public int curSequence;
     public int bossCount = 0;
     private IObjectPool<Enemy> _Pool;
-    private IObjectPool<SlimeBoss> _PoolSlimeBoss;
-    private IObjectPool<GolemBoss> _PoolGolemBoss;
-    private IObjectPool<GoblinBoss> _PoolGoblinBoss;
-    private IObjectPool<GoblinKing> _PoolGoblinKing;
-    //private PoolManager<Enemy> _Pool;
-    // private PoolManager<SlimeBoss> _PoolSlimeBoss;
-    // private PoolManager<GolemBoss> _PoolGolemBoss;
-    // private PoolManager<GoblinBoss> _PoolGoblinBoss;
-    // private PoolManager<GoblinKing> _PoolGoblinKing;
+    public GameObject enemyPrefab;
+    public GameObject[] bossPrefab;
 
     void Awake()
     {
@@ -52,7 +45,6 @@ public class Spawner : MonoBehaviour
             tempEnemySpawnData.health = System.Convert.ToInt32(rows[1]);
             tempEnemySpawnData.speed = System.Convert.ToSingle(rows[2]);
             tempEnemySpawnData.attackDamage = System.Convert.ToSingle(rows[3]);
-            tempEnemySpawnData.monsterPrefab = GetSpinePrefabObjFromResourceFolder("Enemy", tempEnemySpawnData.enemyName);
             tempEnemySpawnData.power = 1;
 
             enemySpawnDataList.Add(tempEnemySpawnData);
@@ -87,10 +79,6 @@ public class Spawner : MonoBehaviour
             spawnDataList.Add(tempSpawnData);
         }
         _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy);
-        _PoolSlimeBoss = new ObjectPool<SlimeBoss>(CreateSlimeBoss, OnGetSlimeBoss, OnReleaseSlimeBoss, OnDestroySlimeBoss, maxSize: 1);
-        _PoolGolemBoss = new ObjectPool<GolemBoss>(CreateGolemBoss, OnGetGolemBoss, OnReleaseGolemBoss, OnDestroyGolemBoss, maxSize: 1);
-        _PoolGoblinBoss = new ObjectPool<GoblinBoss>(CreateGoblinBoss, OnGetGoblinBoss, OnReleaseGoblinBoss, OnDestroyGoblinBoss, maxSize: 1);
-        _PoolGoblinKing = new ObjectPool<GoblinKing>(CreateGoblinKing, OnGetGoblinKing, OnReleaseGoblinKing, OnDestroyGoblinKing, maxSize: 1);
     }
     void Update()
     {
@@ -111,17 +99,17 @@ public class Spawner : MonoBehaviour
     {
         monsterIndex = index - 1;
 
-        // _Pool.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
-        // _PoolSlimeBoss.maxSize = 30;
         Enemy enemy = _Pool.Get();
         enemy.transform.parent = GameManager.instance.pool.transform;
-
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
+        enemy.skeletonAnimation.skeletonDataAsset = skeletonDataAssetList[monsterIndex];
+        enemy.skeletonAnimation.Initialize(true);
         if (enemy != null)
         {
             enemy.Init(enemySpawnDataList[monsterIndex]);
         }
+        enemy.gameObject.SetActive(true);
     }
     void SpawnBoss(int index)
     {
@@ -130,54 +118,42 @@ public class Spawner : MonoBehaviour
         switch (monsterIndex)
         {
             case 9:
-                // _PoolSlimeBoss.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
-                // _PoolSlimeBoss.maxSize = 1;
-                SlimeBoss slimeBoss = _PoolSlimeBoss.Get();
-                slimeBoss.transform.parent = GameManager.instance.pool.transform;
-                slimeBoss.transform.position = spawnPoint[randPointIndex].position;
-                slimeBoss.Init(enemySpawnDataList[monsterIndex]);
+                GameObject silmeBoss = GameManager.instance.pool.Get(bossPrefab[0]);
+                silmeBoss.transform.parent = GameManager.instance.pool.transform;
+                silmeBoss.transform.position = spawnPoint[randPointIndex].position;
+                silmeBoss.GetComponent<Enemy>().Init(enemySpawnDataList[9]);
                 break;
             case 10:
-                // _PoolGolemBoss.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
-                // _PoolSlimeBoss.maxSize = 1;
-                GolemBoss golemBoss = _PoolGolemBoss.Get();
+                GameObject golemBoss = GameManager.instance.pool.Get(bossPrefab[1]);
                 golemBoss.transform.parent = GameManager.instance.pool.transform;
                 golemBoss.transform.position = spawnPoint[randPointIndex].position;
-                golemBoss.Init(enemySpawnDataList[monsterIndex]);
+                golemBoss.GetComponent<Enemy>().Init(enemySpawnDataList[10]);
                 break;
             case 11:
-                // _PoolGoblinBoss.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
-                // _PoolSlimeBoss.maxSize = 1;
-                GoblinBoss goblinBoss = _PoolGoblinBoss.Get();
-                goblinBoss.transform.parent = GameManager.instance.pool.transform;
-                goblinBoss.transform.position = spawnPoint[randPointIndex].position;
-                goblinBoss.Init(enemySpawnDataList[monsterIndex]);
+                GameObject goblinMage = GameManager.instance.pool.Get(bossPrefab[2]);
+                goblinMage.transform.parent = GameManager.instance.pool.transform;
+                goblinMage.transform.position = spawnPoint[randPointIndex].position;
+                goblinMage.GetComponent<Enemy>().Init(enemySpawnDataList[11]);
+                
                 break;
             case 12:
-                // _PoolGoblinKing.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
-                // _PoolSlimeBoss.maxSize = 1;
-                GoblinKing goblinKing = _PoolGoblinKing.Get();
+                GameObject goblinKing = GameManager.instance.pool.Get(bossPrefab[3]);
                 goblinKing.transform.parent = GameManager.instance.pool.transform;
                 goblinKing.transform.position = spawnPoint[randPointIndex].position;
-                goblinKing.Init(enemySpawnDataList[monsterIndex]);
+                goblinKing.GetComponent<Enemy>().Init(enemySpawnDataList[12]);
                 break;
         }
     }
     // 일반 몬스터
     Enemy CreateEnemy()
     {
-        Enemy enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<Enemy>();
+        Enemy enemy = Instantiate(enemyPrefab).GetComponent<Enemy>();
         enemy.SetManagedPool(_Pool);
         return enemy;
     }
     void OnGetEnemy(Enemy enemy)
     {
-        enemy.GetComponentInChildren<SkeletonAnimation>(true).skeletonDataAsset = skeletonDataAssetList[monsterIndex];
-        enemy.GetComponentInChildren<SkeletonAnimation>(true).Initialize(true);
-
-        // SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(enemy.GetComponentInChildren<SkeletonAnimation>(true), true);
-        enemy.gameObject.SetActive(true);
-        enemy._OnEnable();
+        
     }
     void OnReleaseEnemy(Enemy enemy)
     {
@@ -188,94 +164,6 @@ public class Spawner : MonoBehaviour
     {
         Destroy(enemy.gameObject);
     }
-    // 슬라임 보스
-    SlimeBoss CreateSlimeBoss()
-    {
-        SlimeBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<SlimeBoss>();
-        enemy.SetManagedPool(_PoolSlimeBoss);
-        return enemy;
-    }
-    void OnGetSlimeBoss(SlimeBoss enemy)
-    {
-        enemy.gameObject.SetActive(true);
-        enemy._OnEnable();
-    }
-    void OnReleaseSlimeBoss(SlimeBoss enemy)
-    {
-        enemy.gameObject.SetActive(false);
-    }
-    void OnDestroySlimeBoss(SlimeBoss enemy)
-    {
-        Destroy(enemy.gameObject);
-    }
-    // 골렘 보스
-    GolemBoss CreateGolemBoss()
-    {
-        GolemBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GolemBoss>();
-        enemy.SetManagedPool(_PoolGolemBoss);
-        return enemy;
-    }
-    void OnGetGolemBoss(GolemBoss enemy)
-    {
-        enemy.gameObject.SetActive(true);
-        enemy._OnEnable();
-    }
-    void OnReleaseGolemBoss(GolemBoss enemy)
-    {
-        enemy.gameObject.SetActive(false);
-    }
-    void OnDestroyGolemBoss(GolemBoss enemy)
-    {
-        Destroy(enemy.gameObject);
-    }
-    void OnGetGoblinBoss(GoblinBoss enemy)
-    {
-        enemy.gameObject.SetActive(true);
-    }
-    // 고블린 보스
-    GoblinBoss CreateGoblinBoss()
-    {
-        GoblinBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GoblinBoss>();
-        enemy.SetManagedPool(_PoolGoblinBoss);
-        return enemy;
-    }
-    void OnReleaseGoblinBoss(GoblinBoss enemy)
-    {
-        enemy.gameObject.SetActive(false);
-        enemy._OnEnable();
-    }
-    void OnDestroyGoblinBoss(GoblinBoss enemy)
-    {
-        Destroy(enemy.gameObject);
-    }
-    // 고블린 킹
-    GoblinKing CreateGoblinKing()
-    {
-        GoblinKing enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GoblinKing>();
-        enemy.SetManagedPool(_PoolGoblinKing);
-        return enemy;
-    }
-    void OnGetGoblinKing(GoblinKing enemy)
-    {
-        enemy.gameObject.SetActive(true);
-        enemy._OnEnable();
-    }
-    void OnReleaseGoblinKing(GoblinKing enemy)
-    {
-        enemy.gameObject.SetActive(false);
-    }
-    void OnDestroyGoblinKing(GoblinKing enemy)
-    {
-        Destroy(enemy.gameObject);
-    }
-
-    //Sprite GetSpriteImgFromResourceFolder(string _folderName, string _spriteName)
-    //{
-    //    string imgPath = $"{_folderName}/{_spriteName}";
-    //    Sprite loadedSprite = Resources.Load<Sprite>(imgPath);
-
-    //    return loadedSprite;
-    //}
 
     GameObject GetSpinePrefabObjFromResourceFolder(string _folderName, string _prefabName)
     {
@@ -323,7 +211,6 @@ public class enemySpawnData
     public int health;
     public float speed;
     public float attackDamage;
-    public GameObject monsterPrefab;
     public float power;
 }
 
