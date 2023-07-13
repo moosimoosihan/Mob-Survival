@@ -95,7 +95,7 @@ namespace olimsko
             return Sentence;
         }
 
-        protected void SetDataToSerializableDictionary<T1, T2>(string[,] data, SerializableDictionary<T1, T2> dictionary) where T2 : ITableData<T1>, new()
+        protected void SetDataToList<T1, T2>(string[,] data, SerializableDictionary<T1, T2> dictionary) where T2 : ITableData<T1>, new()
         {
             dictionary.Clear();
 
@@ -110,7 +110,7 @@ namespace olimsko
             }
         }
 
-        protected void SetDataToDictionary<T1, T2>(string[,] data, Dictionary<T1, T2> dictionary) where T2 : ITableData<T1>, new()
+        protected void SetDataToList<T1, T2>(string[,] data, Dictionary<T1, T2> dictionary) where T2 : ITableData<T1>, new()
         {
             dictionary.Clear();
 

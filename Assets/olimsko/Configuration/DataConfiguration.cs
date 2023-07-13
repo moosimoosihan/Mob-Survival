@@ -7,6 +7,7 @@ namespace olimsko
     [EditInProjectSettings]
     public class DataConfiguration : Configuration
     {
+        public string TsvUrl { get; } = "https://docs.google.com/spreadsheets/d/{Key}/export?format=tsv&gid={SheetId}";
         public bool UseGoogleSheet;
         public bool IsInitializeAtRuntime;
         public string GoogleSheetKey;

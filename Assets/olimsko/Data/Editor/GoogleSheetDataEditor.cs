@@ -64,7 +64,7 @@ namespace olimsko
             CreateScriptFile(googleSheetData, data);
         }
 
-        private async UniTask<string[]> GetGoogleSpreadSheetDataAsync(string url)
+        private async UniTask<string[,]> GetGoogleSpreadSheetDataAsync(string url)
         {
             UnityWebRequest request = UnityWebRequest.Get(url);
             await request.SendWebRequest();
@@ -72,7 +72,7 @@ namespace olimsko
             if (request.result == UnityWebRequest.Result.Success)
             {
                 string tsvData = request.downloadHandler.text;
-                string[] data = ParsingSpreadSheetData(tsvData);
+                string[,] data = ParsingSpreadSheetData(tsvData);
                 return data;
             }
             else
@@ -82,16 +82,34 @@ namespace olimsko
             }
         }
 
-        private string[] ParsingSpreadSheetData(string data)
+        private string[,] ParsingSpreadSheetData(string data)
         {
             string[] row = data.Replace("\r", "").Split('\n');
             int rowSize = row.Length;
+            int columnSize = row[0].Split('\t').Length;
+            string[,] Sentence = new string[rowSize, columnSize];
 
-            return row[0].Split('\t');
+            for (int i = 0; i < rowSize; i++)
+            {
+                string[] column = row[i].Split('\t');
+                for (int j = 0; j < columnSize; j++)
+                {
+                    Sentence[i, j] = column[j];
+                }
+            }
+
+            return Sentence;
         }
 
-        private string CreateScriptFile(GoogleSheetData googleSheetData, string[] properties)
+        private string CreateScriptFile(GoogleSheetData googleSheetData, string[,] datas)
         {
+            string[] properties = new string[datas.GetLength(1)];
+
+            for (int i = 0; i < datas.GetLength(1); i++)
+            {
+                properties[i] = datas[0, i];
+            }
+
             string className = googleSheetData.GetType().Name.Replace("SO", "");
             string scriptName = $"{className}.cs";
             string assetPath = AssetDatabase.GetAssetPath(googleSheetData);
@@ -107,6 +125,20 @@ namespace olimsko
                 outputFile.WriteLine("using UnityEngine;");
                 outputFile.WriteLine("using olimsko;");
                 outputFile.WriteLine();
+
+                Dictionary<string, List<string>> enumDictionary = new Dictionary<string, List<string>>();
+
+                for (int i = 0; i < properties.Length; i++)
+                {
+                    if (properties[i].IndexOf("enum") != -1)
+                    {
+                        int j = i;
+                        ParseEnumClass(outputFile, datas, j, enumDictionary);
+                    }
+                }
+
+                WriteEnumDictionary(outputFile, enumDictionary);
+
                 outputFile.WriteLine("[Serializable]");
                 outputFile.WriteLine($"public class {className} : ITableData<{firstPropertyType}>");
                 outputFile.WriteLine("{");
@@ -137,6 +169,42 @@ namespace olimsko
             AssetDatabase.Refresh();
 
             return scriptPath;
+        }
+
+        private void ParseEnumClass(StreamWriter outputFile, string[,] datas, int idx, Dictionary<string, List<string>> enumDictionary)
+        {
+            string enumName = ParsePropertyType(datas[0, idx]);
+
+            for (int i = 1; i < datas.GetLength(0); i++)
+            {
+                string enumValue = datas[i, idx].Trim();
+
+                if (!enumDictionary.ContainsKey(enumName))
+                {
+                    enumDictionary.Add(enumName, new List<string>());
+                }
+
+                if (!enumDictionary[enumName].Contains(enumValue) && !string.IsNullOrEmpty(enumValue))
+                {
+                    enumDictionary[enumName].Add(enumValue);
+                }
+            }
+        }
+
+        private void WriteEnumDictionary(StreamWriter outputFile, Dictionary<string, List<string>> enumDictionary)
+        {
+            foreach (var enumData in enumDictionary)
+            {
+                outputFile.WriteLine($"public enum {enumData.Key} {{");
+
+                foreach (var enumValue in enumData.Value)
+                {
+                    outputFile.WriteLine($"    {enumValue},");
+                }
+                outputFile.WriteLine("    Default");
+                outputFile.WriteLine("}");
+                outputFile.WriteLine();
+            }
         }
 
         private string ParsePropertyType(string property)
@@ -230,7 +298,7 @@ namespace olimsko
 
                 if (propertyType != "bool" && propertyType != "int" && propertyType != "float" && propertyType != "string" && propertyType != "byte" && propertyType != "sbyte" && propertyType != "char" && propertyType != "decimal" && propertyType != "double" && propertyType != "long" && propertyType != "short" && propertyType != "uint" && propertyType != "ulong" && propertyType != "ushort")
                 {
-                    outputFile.WriteLine($"        m_{propertyName} = ({propertyType})Enum.Parse(typeof({propertyType}), data[row, {columnIndex}]);");
+                    outputFile.WriteLine($"        m_{propertyName} = string.IsNullOrEmpty(data[row, {columnIndex}]) ? {propertyType}.Default : ({propertyType})Enum.Parse(typeof({propertyType}), data[row, {columnIndex}]);");
                 }
                 else if (propertyType == "string")
                 {
@@ -238,7 +306,7 @@ namespace olimsko
                 }
                 else
                 {
-                    outputFile.WriteLine($"        m_{propertyName} = {propertyType}.Parse(data[row, {columnIndex}]);");
+                    outputFile.WriteLine($"        m_{propertyName} = string.IsNullOrEmpty(data[row, {columnIndex}]) ? default : {propertyType}.Parse(data[row, {columnIndex}]);");
                 }
 
                 columnIndex++;
