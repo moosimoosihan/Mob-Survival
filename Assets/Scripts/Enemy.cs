@@ -199,6 +199,7 @@ public class Enemy : CharacterStatus
             
             // 경험치 아이템 생성
             Item expItem = itemPool.Get();
+            expItem.transform.parent = GameManager.instance.pool.transform;
             Vector2 randomPosition = Random.insideUnitCircle.normalized;
             expItem.transform.position = (Vector2)transform.position+randomPosition;
             expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
@@ -208,6 +209,7 @@ public class Enemy : CharacterStatus
             int ran = Random.Range(1,101);
             if(ran <= 50){
                 Item goldItem = itemPool.Get();
+                goldItem.transform.parent = GameManager.instance.pool.transform;
                 Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
                 goldItem.transform.position = (Vector2)transform.position+randomPositionGold;
                 goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
