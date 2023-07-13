@@ -153,7 +153,77 @@ public class Enemy : CharacterStatus
         curHP = maxHP;
         attackDamage = data.Attack * power;
         //spriter.sprite = data.sprite;
-
+        float scale = 1;
+        Vector2 position = Vector2.zero;
+        switch(data.Index){
+            case 0:
+                //슬라임
+                scale = 0.45f;
+                position = new Vector2(0,-0.9f);
+            break;
+            case 1:
+                //빨간 슬라임
+                scale = 0.5f;
+                position = new Vector2(0,-0.9f);
+            break;
+            case 2:
+                //파란 슬라임
+                scale = 0.6f;
+                position = new Vector2(0,-0.9f);
+            break;
+            case 3:
+                //나무
+                scale = 1f;
+                position = new Vector2(0,-0.9f);
+            break;
+            case 4:
+                //뱀
+                scale = 0.2342059f;
+                position = new Vector2(0,-0.93f);
+            break;
+            case 5:
+                //모기
+                scale = 0.557689f;
+                position = new Vector2(-0.12f,-0.7f);
+            break;
+            case 6:
+                //고블린
+                scale = 0.1f;
+                position = new Vector2(0,-0.9f);
+            break;
+            case 7:
+                //독 모기
+                scale = 0.557689f;
+                position = new Vector2(-0.12f,-0.7f);
+            break;
+            case 8:
+                //두꺼비
+                scale = 0.5251f;
+                position = new Vector2(-0.09f,-1.07f);
+            break;
+            case 9:
+                // 슬라임 보스
+                scale = 1.5f;
+                position = new Vector2(0,-2.5f);
+            break;
+            case 10:
+                // 골렘 보스
+                scale = 1f;
+                position = new Vector2(0,0);
+            break;
+            case 11:
+                // 고블린 메이지
+                scale = 1f;
+                position = new Vector2(0,-2);
+            break;
+            case 12:
+                // 고블린 킹
+                scale = 1f;
+                position = new Vector2(0,-1);
+            break;
+        }
+        skeletonAnimation.gameObject.transform.localPosition = position;
+        skeletonAnimation.gameObject.transform.localScale = new Vector3(scale,scale,scale);
 
         CreateFollowingHpBar();
     }
