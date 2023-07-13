@@ -4937,6 +4937,10 @@ MonoBehaviour:
   spawnPoint: []
   enemyDatabase: {fileID: 4900000, guid: 14e973501815848489a20404d65dadbb, type: 3}
   enemySpawnDataList: []
+  skeletonDataAssetList:
+  - {fileID: 11400000, guid: f136e5fd35e67394b819b5726a757616, type: 2}
+  - {fileID: 11400000, guid: 45ffd114e46da52428f678f677dfba7e, type: 2}
+  - {fileID: 11400000, guid: 4ba9af641583ab54b83e2ac27d60f98c, type: 2}
   enemySpwanDatabase: {fileID: 4900000, guid: 3aee78d75f71b6a42825720125e01760, type: 3}
   curSequence: 0
   bossCount: 0

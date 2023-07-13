@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
+using Spine.Unity;
 
 public class Spawner : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Spawner : MonoBehaviour
     TextAsset enemyDatabase;
     [SerializeField]
     List<enemySpawnData> enemySpawnDataList = new List<enemySpawnData>();
+
+    public List<SkeletonDataAsset> skeletonDataAssetList = new List<SkeletonDataAsset>();
 
     [Header("소환 시퀀스 정보")]
     float timer;
@@ -31,7 +34,7 @@ public class Spawner : MonoBehaviour
     // private PoolManager<GolemBoss> _PoolGolemBoss;
     // private PoolManager<GoblinBoss> _PoolGoblinBoss;
     // private PoolManager<GoblinKing> _PoolGoblinKing;
-    
+
     void Awake()
     {
         spawnPoint = GetComponentsInChildren<Transform>();
@@ -54,7 +57,7 @@ public class Spawner : MonoBehaviour
 
             enemySpawnDataList.Add(tempEnemySpawnData);
         }
-        
+
         // 몬스터 스폰 데이터 불러오기
         string spwanSeperator = "\r\n";
         string[] spwanlines = enemySpwanDatabase.text.Substring(0).Split(spwanSeperator);
@@ -62,7 +65,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spwanlines.Length; i++)
         {
             string[] rows = spwanlines[i].Split('\t');
-            
+
             // 스폰 데이터 생성
             spawnData tempSpawnData = new spawnData();
             string[] timePart = rows[0].Split('~');
@@ -75,7 +78,8 @@ public class Spawner : MonoBehaviour
             tempSpawnData.monsterAmount = System.Convert.ToInt32(rows[3]);
             string[] monTypes = rows[4].Split(',');
             tempSpawnData.monTypes = new int[monTypes.Length];
-            for(int y=0;y<monTypes.Length;y++){
+            for (int y = 0; y < monTypes.Length; y++)
+            {
                 tempSpawnData.monTypes[y] = System.Convert.ToInt32(monTypes[y]);
             }
             tempSpawnData.power = System.Convert.ToSingle(rows[5]);
@@ -96,7 +100,8 @@ public class Spawner : MonoBehaviour
         //     Spawn();
         // }
         timer += Time.deltaTime;
-        if(timer>=spawnDataList[curSequence].curTime){
+        if (timer >= spawnDataList[curSequence].curTime)
+        {
             StartCoroutine(spwanCo(spawnDataList[curSequence].spwanInterval, spawnDataList[curSequence].monsterAmount, spawnDataList[curSequence].monTypes));
             curSequence++;
         }
@@ -104,8 +109,8 @@ public class Spawner : MonoBehaviour
 
     void Spawn(int index)
     {
-        monsterIndex = index-1;
-        
+        monsterIndex = index - 1;
+
         // _Pool.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
         // _PoolSlimeBoss.maxSize = 30;
         Enemy enemy = _Pool.Get();
@@ -113,15 +118,17 @@ public class Spawner : MonoBehaviour
 
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
-        if(enemy!=null){
+        if (enemy != null)
+        {
             enemy.Init(enemySpawnDataList[monsterIndex]);
         }
     }
     void SpawnBoss(int index)
     {
-        monsterIndex = index-1;
+        monsterIndex = index - 1;
         int randPointIndex = Random.Range(1, spawnPoint.Length);
-        switch(monsterIndex){
+        switch (monsterIndex)
+        {
             case 9:
                 // _PoolSlimeBoss.prefab = enemySpawnDataList[monsterIndex].monsterPrefab;
                 // _PoolSlimeBoss.maxSize = 1;
@@ -165,12 +172,16 @@ public class Spawner : MonoBehaviour
     }
     void OnGetEnemy(Enemy enemy)
     {
+        enemy.GetComponentInChildren<SkeletonAnimation>(true).skeletonDataAsset = skeletonDataAssetList[monsterIndex];
+        enemy.GetComponentInChildren<SkeletonAnimation>(true).Initialize(true);
+
+        // SpineEditorUtilities.ReloadSkeletonDataAssetAndComponent(enemy.GetComponentInChildren<SkeletonAnimation>(true), true);
         enemy.gameObject.SetActive(true);
         enemy._OnEnable();
     }
     void OnReleaseEnemy(Enemy enemy)
     {
-        if(enemy.gameObject.activeSelf)
+        if (enemy.gameObject.activeSelf)
             enemy.gameObject.SetActive(false);
     }
     void OnDestroyEnemy(Enemy enemy)
@@ -178,7 +189,8 @@ public class Spawner : MonoBehaviour
         Destroy(enemy.gameObject);
     }
     // 슬라임 보스
-    SlimeBoss CreateSlimeBoss(){
+    SlimeBoss CreateSlimeBoss()
+    {
         SlimeBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<SlimeBoss>();
         enemy.SetManagedPool(_PoolSlimeBoss);
         return enemy;
@@ -197,7 +209,8 @@ public class Spawner : MonoBehaviour
         Destroy(enemy.gameObject);
     }
     // 골렘 보스
-    GolemBoss CreateGolemBoss(){
+    GolemBoss CreateGolemBoss()
+    {
         GolemBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GolemBoss>();
         enemy.SetManagedPool(_PoolGolemBoss);
         return enemy;
@@ -220,7 +233,8 @@ public class Spawner : MonoBehaviour
         enemy.gameObject.SetActive(true);
     }
     // 고블린 보스
-    GoblinBoss CreateGoblinBoss(){
+    GoblinBoss CreateGoblinBoss()
+    {
         GoblinBoss enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GoblinBoss>();
         enemy.SetManagedPool(_PoolGoblinBoss);
         return enemy;
@@ -235,7 +249,8 @@ public class Spawner : MonoBehaviour
         Destroy(enemy.gameObject);
     }
     // 고블린 킹
-    GoblinKing CreateGoblinKing(){
+    GoblinKing CreateGoblinKing()
+    {
         GoblinKing enemy = Instantiate(enemySpawnDataList[monsterIndex].monsterPrefab).GetComponent<GoblinKing>();
         enemy.SetManagedPool(_PoolGoblinKing);
         return enemy;
@@ -269,21 +284,29 @@ public class Spawner : MonoBehaviour
 
         return loadedObj;
     }
-    IEnumerator spwanCo(float interval, int amount, int[] type) {
+    IEnumerator spwanCo(float interval, int amount, int[] type)
+    {
         bossCount = 0;
         float spawnInterval = interval / amount; // 몬스터 생성 간격
-        for (int i = 0; i < amount; i++) {
+        for (int i = 0; i < amount; i++)
+        {
             int index = i % type.Length;
-            if((type[index]>9)){
-                if(bossCount<1){ // 보스몹 소환 가능
+            if ((type[index] > 9))
+            {
+                if (bossCount < 1)
+                { // 보스몹 소환 가능
                     int monsterType = type[index];
                     SpawnBoss(monsterType);
                     bossCount++;
-                } else {
-                    int monsterType = type[Random.Range(0,index-1)];
+                }
+                else
+                {
+                    int monsterType = type[Random.Range(0, index - 1)];
                     Spawn(monsterType);
                 }
-            } else {
+            }
+            else
+            {
                 index = i % type.Length;
                 int monsterType = type[index];
                 Spawn(monsterType);

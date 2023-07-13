@@ -28,7 +28,7 @@ namespace olimsko
 
                     if (Configuration.IsInitializeAtRuntime)
                     {
-                        var tsvUrl = data.Data.TsvUrl.Replace("{Key}", Configuration.GoogleSheetKey).Replace("{SheetId}", data.Key);
+                        var tsvUrl = ConfigurationProvider.LoadOrDefault<DataConfiguration>().TsvUrl.Replace("{Key}", Configuration.GoogleSheetKey).Replace("{SheetId}", data.Key);
 
                         Configuration.ListGoogleSheetData[i].Data.SetData(await GetGoogleSpreadSheetDataAsync(tsvUrl));
                     }
