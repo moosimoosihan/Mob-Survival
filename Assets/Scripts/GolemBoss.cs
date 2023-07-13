@@ -42,6 +42,13 @@ public class GolemBoss : Enemy
     {
         timer += Time.fixedDeltaTime;
 
+        // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
+        if (isAttack)
+        {
+            rigid.velocity = Vector2.zero;
+            return;
+        }
+
         base.FixedUpdate();
     }
     protected override void LateUpdate()

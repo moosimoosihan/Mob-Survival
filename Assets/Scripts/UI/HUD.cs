@@ -5,7 +5,7 @@ using TMPro;
 
 public class HUD : MonoBehaviour
 {
-    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill, ActiveSkill, Sheild }
+    public enum InfoYType { Exp, Level, Kill, Time, Health, Gold, Life, BossKill, ActiveSkill, Sheild, FPS }
     public InfoYType type;
     public int playerNum;
 
@@ -13,6 +13,7 @@ public class HUD : MonoBehaviour
     TextMeshProUGUI myChildText;
     Slider mySlider;
     Image myImage;
+    float timer;
 
     // 이전 값 저장 변수
     float p_Exp;
@@ -29,6 +30,7 @@ public class HUD : MonoBehaviour
     float p_maxActiveSkill;
     float p_curSheild;
     float p_maxSheild;
+    float p_FPS;
     [SerializeField] private bool m_UseAnimation = true;
     [SerializeField] private float m_AnimationTime = 0.5f;
 
@@ -210,6 +212,13 @@ public class HUD : MonoBehaviour
                     }
                 }
                 break;
+            case InfoYType.FPS:
+                timer += Time.deltaTime;
+                if(timer > 0.5f){
+                    myText.text = string.Format("FPS : {0:F0}",1/Time.deltaTime);
+                    timer = 0;
+                }
+            break;
         }
     }
 }
