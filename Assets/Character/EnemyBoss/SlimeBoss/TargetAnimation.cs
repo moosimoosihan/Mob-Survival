@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class TargetAnimation : MonoBehaviour
 {
@@ -12,8 +12,10 @@ public class TargetAnimation : MonoBehaviour
     [SerializeField]
     float fillUpScale;
 
+    private IObjectPool<TargetAnimation> _ManagedPool;
 
     public bool isReady = true;
+
 
     private void Update()
     {
@@ -48,5 +50,11 @@ public class TargetAnimation : MonoBehaviour
     {
         isReady = true;
         group.SetActive(false);
+        _ManagedPool.Release(this);
     }
+    public void SetManagedPool(IObjectPool<TargetAnimation> pool)
+    {
+        _ManagedPool = pool;
+    }
+
 }

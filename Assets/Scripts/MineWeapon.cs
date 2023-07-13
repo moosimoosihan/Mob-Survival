@@ -43,7 +43,8 @@ public class MineWeapon : Weapon
     }
     void CreateBullet()
     {
-        Transform mineBullet = GameManager.instance.pool.Get(projectilePrefab).transform;
+        Transform mineBullet = poolBullet.Get().transform;
+        mineBullet.parent = GameManager.instance.pool.transform;
         Bullet bulletScript = mineBullet.GetComponent<Bullet>();
         //mineBullet.SetParent(transform);
         mineBullet.transform.position = transform.position;

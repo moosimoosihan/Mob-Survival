@@ -120,26 +120,25 @@ public class Spawner : MonoBehaviour
         switch (monsterIndex)
         {
             case 9:
-                GameObject silmeBoss = GameManager.instance.pool.Get(bossPrefab[0]);
+                GameObject silmeBoss = Instantiate(bossPrefab[0], GameManager.instance.pool.transform);
                 silmeBoss.transform.parent = GameManager.instance.pool.transform;
                 silmeBoss.transform.position = spawnPoint[randPointIndex].position;
                 silmeBoss.GetComponent<Enemy>().Init(enemySpawnDataList[9]);
                 break;
             case 10:
-                GameObject golemBoss = GameManager.instance.pool.Get(bossPrefab[1]);
+                GameObject golemBoss = Instantiate(bossPrefab[1], GameManager.instance.pool.transform);
                 golemBoss.transform.parent = GameManager.instance.pool.transform;
                 golemBoss.transform.position = spawnPoint[randPointIndex].position;
                 golemBoss.GetComponent<Enemy>().Init(enemySpawnDataList[10]);
                 break;
             case 11:
-                GameObject goblinMage = GameManager.instance.pool.Get(bossPrefab[2]);
-                goblinMage.transform.parent = GameManager.instance.pool.transform;
+                GameObject goblinMage = Instantiate(bossPrefab[2], GameManager.instance.pool.transform);
                 goblinMage.transform.position = spawnPoint[randPointIndex].position;
                 goblinMage.GetComponent<Enemy>().Init(enemySpawnDataList[11]);
 
                 break;
             case 12:
-                GameObject goblinKing = GameManager.instance.pool.Get(bossPrefab[3]);
+                GameObject goblinKing = Instantiate(bossPrefab[3], GameManager.instance.pool.transform);
                 goblinKing.transform.parent = GameManager.instance.pool.transform;
                 goblinKing.transform.position = spawnPoint[randPointIndex].position;
                 goblinKing.GetComponent<Enemy>().Init(enemySpawnDataList[12]);

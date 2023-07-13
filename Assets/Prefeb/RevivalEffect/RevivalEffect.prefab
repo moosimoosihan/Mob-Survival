@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8897461279344800443}
   - component: {fileID: 6092037885411708955}
   - component: {fileID: -2073337287627112173}
-  - component: {fileID: 2634943474264246402}
+  - component: {fileID: -838865730343198312}
   m_Layer: 0
   m_Name: RevivalEffect
   m_TagString: Untagged
@@ -106,9 +106,6 @@ MonoBehaviour:
   knockBackPower: 0
   throwBullet: 0
   isCritical: 0
-  warriorFire: 0
-  warriorFireDamge: 0
-  warriorFireTime: 0
 --- !u!95 &-2073337287627112173
 Animator:
   serializedVersion: 5
@@ -129,7 +126,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2634943474264246402
+--- !u!114 &-838865730343198312
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,6 +135,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8053629336657862800}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c304d75da78b0d4409fb572fec35e960, type: 3}
+  m_Script: {fileID: 11500000, guid: 46222621115a777448cda975fba0c187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

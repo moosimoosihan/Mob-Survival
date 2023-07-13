@@ -27,6 +27,7 @@ public class GoblinBoss : Enemy
     float timer;
     float skillDelay;
     private IObjectPool<GoblinBoss> _ManagedPool;
+    private IObjectPool<Bullet> bulletPool;
 
     public override void _Awake()
     {
@@ -41,6 +42,7 @@ public class GoblinBoss : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
+        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
     public override void _FixedUpdate()
     {
@@ -90,62 +92,6 @@ public class GoblinBoss : Enemy
         attackDamage = data.attackDamage;
         missileDamage = data.attackDamage/2;
         bulletSpeed = 3;
-    }
-    public override bool GetDamage(float _damage,float knockBackPower, bool _isCritical)
-    {
-        if (curHP <= 0)
-            return false;
-
-        //데미지 구현 구간
-        if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
-
-        curHP -= _damage;
-
-        // 보스 넉백 x?
-        // if (gameObject.activeSelf)
-        //     StartCoroutine(KnockBack());
-
-        if (curHP > 0)
-        {
-            // 히트 모션? 히트 색상?
-        }
-        else
-        {
-            curHP = 0;
-            isLive = false;
-            coll.enabled = false;
-            rigid.simulated = false;
-            
-            GameManager.instance.bossKill++;
-            
-            // 경험치 아이템 생성
-            GameObject expItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[0].itemPrefab);
-            Vector2 randomPosition = Random.insideUnitCircle.normalized;
-            expItem.transform.position = (Vector2)transform.position+randomPosition;
-            expItem.SetActive(true);
-            expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
-
-            // 보스의 경우 아웃게임 아이템 100프로 드랍 현재는 골드 100프로
-            int ran = Random.Range(1,101);
-            if(ran <= 100){
-                GameObject goldItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[1].itemPrefab);
-                Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
-                goldItem.transform.position = (Vector2)transform.position+randomPositionGold;
-                goldItem.SetActive(true);
-                goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
-            }
-
-            // 일정 확률로 인게임 아이템 생성
-            
-            
-            //경험치 획득
-            //GameManager.instance.GetExp();
-
-            //에니메이션에 Dead를 넣는 대신 바로 호출
-            Dead();
-        }
-        return true;
     }
 
     IEnumerator BossStateMachine()
@@ -210,7 +156,7 @@ public class GoblinBoss : Enemy
             yield return null;
             for(int i=0;i<patternNum[0];i++){
                 yield return new WaitForSeconds(0.5f);
-                GameObject _bullet = GameManager.instance.pool.Get(bullet);
+                Bullet _bullet = bulletPool.Get();
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                 bulletLogic.duration = 5f;
                 bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
@@ -241,7 +187,7 @@ public class GoblinBoss : Enemy
                 int roundB = 9;
                 int curRound = i % 2 == 0 ? roundA : roundB;
                 for(int y=0;y<curRound;y++){
-                    GameObject _bullet = GameManager.instance.pool.Get(bullet);
+                    Bullet _bullet = bulletPool.Get();
                     EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                     bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                     _bullet.transform.position = transform.position;
@@ -293,5 +239,24 @@ public class GoblinBoss : Enemy
     private void DestroyEnemy()
     {
         _ManagedPool.Release(this);
+    }
+    Bullet CreateBullet()
+    {
+        Bullet bullet = Instantiate(this.bullet).GetComponent<Bullet>();
+        bullet.SetManagedPool(bulletPool);
+        return bullet;
+    }
+    void OnGetBullet(Bullet bullet)
+    {
+        bullet.gameObject.SetActive(true);
+    }
+    void OnReleaseBullet(Bullet bullet)
+    {
+        if (bullet.gameObject.activeSelf)
+            bullet.gameObject.SetActive(false);
+    }
+    void OnDestroyBullet(Bullet bullet)
+    {
+        Destroy(bullet.gameObject);
     }
 }

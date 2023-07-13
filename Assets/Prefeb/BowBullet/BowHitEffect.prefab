@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 425041851349190469}
   - component: {fileID: 3337959121966919178}
   - component: {fileID: 7936763402429567789}
-  - component: {fileID: 2856734877781791281}
+  - component: {fileID: -3784011075042941516}
   m_Layer: 0
   m_Name: BowHitEffect
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2856734877781791281
+--- !u!114 &-3784011075042941516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2750444415992987762}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c304d75da78b0d4409fb572fec35e960, type: 3}
+  m_Script: {fileID: 11500000, guid: 46222621115a777448cda975fba0c187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

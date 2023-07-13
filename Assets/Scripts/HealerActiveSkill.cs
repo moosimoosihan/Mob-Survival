@@ -37,7 +37,7 @@ public class HealerActiveSkill : ActiveSkill
                     minHealthPlayer.transform.position = GameManager.instance.playerControl.mainCharacter.transform.position;
                 }
                 // 회생 이펙트 생성
-                Transform revivalEffect = GameManager.instance.pool.Get(projectilePrefab).transform;
+                Transform revivalEffect = poolBuffEffect.Get().transform;
                 Bullet revivalScript = revivalEffect.GetComponent<Bullet>();
                 revivalScript.Fire(0, -1, Vector3.zero, 0, 1, false, true, false);
                 revivalEffect.position = minHealthPlayer.transform.position;

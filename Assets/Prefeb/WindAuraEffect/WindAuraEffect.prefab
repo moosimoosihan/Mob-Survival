@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2534390924800075356}
   - component: {fileID: 1529817827599331358}
   - component: {fileID: 392282816799465872}
+  - component: {fileID: 2015915104053071855}
   m_Layer: 0
   m_Name: WindAuraEffect
   m_TagString: Untagged
@@ -105,3 +106,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &2015915104053071855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938980340032785142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75f0e8a5deb2d7248b4c1909321205ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}

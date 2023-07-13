@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     [Header("게임 오브젝트")]
     public Player[] players;
     public GameObject playerDummies;
-    public PoolManager pool;
+    public GameObject pool;
     public PlayerControl playerControl;
     public ItemManager itemManager;
     public LevelUp uiLevelUp;

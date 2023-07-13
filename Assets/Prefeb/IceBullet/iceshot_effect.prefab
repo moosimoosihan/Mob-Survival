@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3113001650402195055}
   - component: {fileID: 5454026408320898637}
   - component: {fileID: 1207360163787417045}
-  - component: {fileID: 7860240636319345254}
+  - component: {fileID: 8699287314391554404}
   m_Layer: 0
   m_Name: iceshot_effect
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!114 &7860240636319345254
+--- !u!114 &8699287314391554404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,6 +115,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6196218399175912062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c304d75da78b0d4409fb572fec35e960, type: 3}
+  m_Script: {fileID: 11500000, guid: 46222621115a777448cda975fba0c187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

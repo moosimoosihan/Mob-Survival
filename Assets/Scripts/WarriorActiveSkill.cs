@@ -60,8 +60,9 @@ public class WarriorActiveSkill : ActiveSkill
         Vector2 dir = vec - myVec;
         dir = dir.normalized;
                 
-        Transform bullet = GameManager.instance.pool.Get(projectilePrefab).transform;
+        Transform bullet = poolBullet.Get().transform;
 
+        bullet.parent = GameManager.instance.pool.transform;
         bullet.position = transform.position;
         bullet.rotation = Quaternion.FromToRotation(Vector3.left, dir);
         FireStrike bulletScript = bullet.GetComponent<FireStrike>();

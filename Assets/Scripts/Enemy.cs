@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 using Spine.Unity;
+
 public class Enemy : CharacterStatus
 {
     [Header("적군 정보")]
@@ -29,6 +30,8 @@ public class Enemy : CharacterStatus
     public float curFireDamage;
     public Transform nearestTarget;
     private IObjectPool<Enemy> _ManagedPool;
+    private IObjectPool<Item> itemPool;
+    private IObjectPool<BuffEffect> poolBuffEffect;
 
     public SkeletonAnimation skeletonAnimation;
     void Awake()
@@ -46,6 +49,8 @@ public class Enemy : CharacterStatus
         skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
+        itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem);
+        poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
     }
 
     void Update()
@@ -193,20 +198,20 @@ public class Enemy : CharacterStatus
             GameManager.instance.kill++;
             
             // 경험치 아이템 생성
-            GameObject expItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[0].itemPrefab);
+            Item expItem = itemPool.Get();
             Vector2 randomPosition = Random.insideUnitCircle.normalized;
             expItem.transform.position = (Vector2)transform.position+randomPosition;
-            expItem.SetActive(true);
             expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
+            expItem.gameObject.SetActive(true);
 
             // 일정 확률로 골드 아이템 생성
             int ran = Random.Range(1,101);
             if(ran <= 50){
-                GameObject goldItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[1].itemPrefab);
+                Item goldItem = itemPool.Get();
                 Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
                 goldItem.transform.position = (Vector2)transform.position+randomPositionGold;
-                goldItem.SetActive(true);
                 goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
+                goldItem.gameObject.SetActive(true);
             }
 
             // 일정 확률로 인게임 아이템 생성
@@ -274,7 +279,7 @@ public class Enemy : CharacterStatus
     public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
     {
         isFire = true;
-        BuffEffect effect = GameManager.instance.pool.Get(GameManager.instance.burnEffect).GetComponent<BuffEffect>();
+        BuffEffect effect = poolBuffEffect.Get();
         effect.transform.parent = GameManager.instance.pool.transform;
         effect.transform.position = transform.position;
         effect.target = transform;
@@ -295,5 +300,42 @@ public class Enemy : CharacterStatus
     {
         curFireDamage = _damage;
         fireDeBuffTime = _debuffTime;
+    }
+    Item CreateItem()
+    {
+        Item item = Instantiate(GameManager.instance.itemManager.itemPrefab).GetComponent<Item>();
+        item.SetManagedPool(itemPool);
+        return item;
+    }
+    void OnGetItem(Item item)
+    {
+
+    }
+    void OnReleaseItem(Item item)
+    {
+        item.gameObject.SetActive(false);
+    }
+    void OnDestroyItem(Item item)
+    {
+        Destroy(item.gameObject);
+    }
+    BuffEffect CreateEffect()
+    {
+        BuffEffect buffEffect = Instantiate(GameManager.instance.burnEffect).GetComponent<BuffEffect>();
+        buffEffect.SetManagedPool(poolBuffEffect);
+        return buffEffect;
+    }
+    void OnGetEffect(BuffEffect buffEffect)
+    {
+        buffEffect.gameObject.SetActive(true);
+    }
+    void OnReleaseEffect(BuffEffect buffEffect)
+    {
+        if (buffEffect.gameObject.activeSelf)
+            buffEffect.gameObject.SetActive(false);
+    }
+    void OnDestroyEffect(BuffEffect buffEffect)
+    {
+        Destroy(buffEffect.gameObject);
     }
 }

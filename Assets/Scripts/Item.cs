@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class Item : MonoBehaviour
 {
@@ -6,7 +7,11 @@ public class Item : MonoBehaviour
     public int count; // 아이템이 가진 수량
     public bool isMag = false; // 플레이어의 일정 반경에 닿았을 경우
     bool touch = false;
-
+    SpriteRenderer spriteRenderer;
+    IObjectPool<Item> _ManagedPool;
+    void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
         if(isMag){
@@ -15,6 +20,7 @@ public class Item : MonoBehaviour
         }
     }
     public void Init(ItemData data){
+        spriteRenderer.sprite = GameManager.instance.itemManager.itemSprite[data.spriteNum];
         itemName = data.itemName;
         count = data.count;
     }
@@ -36,7 +42,7 @@ public class Item : MonoBehaviour
                     // 아이템 별 구현
                     break;
             }
-            gameObject.SetActive(false);
+            DestroyItem();
         }
     }
     private void OnTriggerStay2D(Collider2D other) {
@@ -53,7 +59,15 @@ public class Item : MonoBehaviour
                     // 아이템 별 구현
                     break;
             }
-            gameObject.SetActive(false);
+            DestroyItem();
         }
+    }
+    public void SetManagedPool(IObjectPool<Item> pool)
+    {
+        _ManagedPool = pool;
+    }
+    private void DestroyItem()
+    {
+        _ManagedPool.Release(this);
     }
 }

@@ -1,16 +1,22 @@
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BuffEffect : MonoBehaviour
 {
     public Transform target;
-    private void Update() {
-        if(target.gameObject.activeSelf)
+    private IObjectPool<BuffEffect> _ManagedPool;
+    void FixedUpdate(){
+        if(target != null && target.gameObject.activeSelf)
             transform.position = target.position;
         else
             DestroyBuffEffect();
     }
+    public void SetManagedPool(IObjectPool<BuffEffect> pool)
+    {
+        _ManagedPool = pool;
+    }
     public void DestroyBuffEffect()
     {
-        gameObject.SetActive(false);
+        _ManagedPool.Release(this);
     }
 }

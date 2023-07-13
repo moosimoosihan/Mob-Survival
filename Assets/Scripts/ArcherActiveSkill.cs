@@ -6,10 +6,12 @@ public class ArcherActiveSkill : ActiveSkill
     public float skillDuration;
     bool isActivate;
     public float buffTime;
+
     public override void ActiveSkillInit(){
         skillArea = null;
         player = GetComponentInParent<Player>();
     }
+
     public override void AreaOff(){}
     public override void AreaUpdate(){}
     public override void ActiveSkillUpdate(){
@@ -29,8 +31,9 @@ public class ArcherActiveSkill : ActiveSkill
     }
     IEnumerator Skill(){
         isActivate = true;
-        GameObject effect = GameManager.instance.pool.Get(projectilePrefab);
-        effect.transform.SetParent(transform);
+        BuffEffect effect = poolBuffEffect.Get();
+        effect.transform.parent = GameManager.instance.pool.transform;
+        effect.target = transform.parent;
         effect.transform.position = transform.position;
 
         player.critRate += 0.3f;
@@ -41,7 +44,7 @@ public class ArcherActiveSkill : ActiveSkill
         }
         buffTime = 0;
         player.critRate -= 0.3f;
-        effect.gameObject.SetActive(false);
+        effect.DestroyBuffEffect();
         isActivate = false;
     }
 }

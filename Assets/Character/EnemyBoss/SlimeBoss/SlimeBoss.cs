@@ -34,6 +34,7 @@ public class SlimeBoss : Enemy
     [SerializeField]
     bool drawRay = false;
     private IObjectPool<SlimeBoss> _ManagedPool;
+    private IObjectPool<TargetAnimation> aimPool;
 
     private void OnDrawGizmosSelected()
     {
@@ -109,7 +110,7 @@ public class SlimeBoss : Enemy
         if (totalTime <= 0.6f)
             totalTime = 0.6f;
 
-        aimObj = GameManager.instance.pool.Get(aimPrefab);        
+        aimObj = aimPool.Get().gameObject;
         targetAnim = aimObj.GetComponent<TargetAnimation>();
         targetAnim.AttackTargetArea(_targetPos, aimObj.transform.localScale, totalTime);
         yield return new WaitForSeconds(totalTime / 2.0f);
@@ -250,62 +251,7 @@ public class SlimeBoss : Enemy
             aimObj.SetActive(false);
         }
     }
-    public override bool GetDamage(float _damage,float knockBackPower, bool _isCritical)
-    {
-        if (curHP <= 0)
-            return false;
-
-        //������ ���� ����
-        if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
-
-        curHP -= _damage;
-
-        // ���� �˹� x?
-        // if (gameObject.activeSelf)
-        //     StartCoroutine(KnockBack());
-
-        if (curHP > 0)
-        {
-            // ��Ʈ ���? ��Ʈ ����?
-        }
-        else
-        {
-            curHP = 0;
-            isLive = false;
-            coll.enabled = false;
-            rigid.simulated = false;
-            
-            GameManager.instance.bossKill++;
-            
-            // ����ġ ������ ����
-            GameObject expItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[0].itemPrefab);
-            Vector2 randomPosition = Random.insideUnitCircle.normalized;
-            expItem.transform.position = (Vector2)transform.position+randomPosition;
-            expItem.SetActive(true);
-            expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
-
-            // ������ ��� �ƿ����� ������ 100���� ��� ����� ��� 100����
-            int ran = Random.Range(1,101);
-            if(ran <= 100){
-                GameObject goldItem = GameManager.instance.pool.Get(GameManager.instance.itemManager.itemDataList[1].itemPrefab);
-                Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
-                goldItem.transform.position = (Vector2)transform.position+randomPositionGold;
-                goldItem.SetActive(true);
-                goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
-            }
-
-            // ���� Ȯ���� �ΰ��� ������ ����
-            
-            
-            //����ġ ȹ��
-            //GameManager.instance.GetExp();
-
-            //���ϸ��̼ǿ� Dead�� �ִ� ��� �ٷ� ȣ��
-            Dead();
-        }
-        return true;
-    }
+   
     public void SetManagedPool(IObjectPool<SlimeBoss> pool)
     {
         _ManagedPool = pool;
@@ -320,5 +266,24 @@ public class SlimeBoss : Enemy
     private void DestroyEnemy()
     {
         _ManagedPool.Release(this);
+    }
+    TargetAnimation CreateAim()
+    {
+        TargetAnimation aimObj = Instantiate(aimPrefab).GetComponent<TargetAnimation>();
+        aimObj.SetManagedPool(aimPool);
+        return aimObj;
+    }
+    void OnGetAim(TargetAnimation aimObj)
+    {
+        aimObj.gameObject.SetActive(true);
+    }
+    void OnReleaseAim(TargetAnimation aimObj)
+    {
+        if (aimObj.gameObject.activeSelf)
+            aimObj.gameObject.SetActive(false);
+    }
+    void OnDestroyAim(TargetAnimation aimObj)
+    {
+        Destroy(aimObj.gameObject);
     }
 }

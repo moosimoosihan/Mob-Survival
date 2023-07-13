@@ -159,7 +159,7 @@ public class IreliaWeapon : Weapon
 
         for (int i = 0; i < creationCount; i++)
         {
-            Transform tempBullet = GameManager.instance.pool.Get(projectilePrefab).transform;
+            Transform tempBullet = poolBullet.Get().transform;
             Bullet bulletScript = tempBullet.GetComponent<Bullet>();
             tempBullet.SetParent(transform);
 

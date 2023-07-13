@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Pool;
 public class Bullet : MonoBehaviour
 {
     [SerializeField]
@@ -16,10 +16,18 @@ public class Bullet : MonoBehaviour
     public bool isCritical;
     protected Rigidbody2D rigid;
     protected List<Enemy> detectedEnemyList = new List<Enemy>();
+    private IObjectPool<Bullet> _ManagedPool;
+    public IObjectPool<HitEffect> hitEffectPool;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
+        hitEffectPool = new ObjectPool<HitEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
+        AwakeBullet();
+    }
+    public virtual void AwakeBullet()
+    {
+        
     }
 
     void OnDisable()
@@ -91,7 +99,8 @@ public class Bullet : MonoBehaviour
             //피격 이펙트
             if (hitEffectPrefab != null)
             {
-                GameObject bulletHitEffect = GameManager.instance.pool.Get(hitEffectPrefab);
+                HitEffect bulletHitEffect = hitEffectPool.Get();
+                bulletHitEffect.transform.parent = GameManager.instance.pool.transform;
                 bulletHitEffect.transform.position = transform.position;
             }
 
@@ -113,7 +122,7 @@ public class Bullet : MonoBehaviour
         }
 
         // 피격 이후 생성하는 총알의 경우
-        CreateBullet();
+        OnCreateBullet();
 
         //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
         if(tempIsHit && !throwBullet)
@@ -125,7 +134,7 @@ public class Bullet : MonoBehaviour
             DeActivate(0);
         }
     }
-    public virtual void CreateBullet(){
+    public virtual void OnCreateBullet(){
 
     }
 
@@ -133,16 +142,40 @@ public class Bullet : MonoBehaviour
     {
         StartCoroutine(CoDelayStarter(() =>
         {
-            gameObject.SetActive(false);
+            _ManagedPool.Release(this);
             detectedEnemyList.Clear();  //비활성화시 이전에 데미지 줬던 녀석들 리스트에서 해제
         },
         _inTime
-        ));        
+        ));
     }
 
     protected IEnumerator CoDelayStarter(System.Action _action, float _delay)
     {
         yield return new WaitForSeconds(_delay);
         _action.Invoke();
+    }
+
+    public void SetManagedPool(IObjectPool<Bullet> pool)
+    {
+        _ManagedPool = pool;
+    }
+    HitEffect CreateEffect()
+    {
+        HitEffect buffEffect = Instantiate(hitEffectPrefab).GetComponent<HitEffect>();
+        buffEffect.SetManagedPool(hitEffectPool);
+        return buffEffect;
+    }
+    void OnGetEffect(HitEffect buffEffect)
+    {
+        buffEffect.gameObject.SetActive(true);
+    }
+    void OnReleaseEffect(HitEffect buffEffect)
+    {
+        if (buffEffect.gameObject.activeSelf)
+            buffEffect.gameObject.SetActive(false);
+    }
+    void OnDestroyEffect(HitEffect buffEffect)
+    {
+        Destroy(buffEffect.gameObject);
     }
 }

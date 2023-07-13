@@ -7,6 +7,8 @@ public class ItemManager : MonoBehaviour
     TextAsset itemDatabase;
     [SerializeField]
     public List<ItemData> itemDataList = new List<ItemData>();
+    public GameObject itemPrefab;
+    public Sprite[] itemSprite;
     
     void Awake()
     {
@@ -22,16 +24,9 @@ public class ItemManager : MonoBehaviour
             ItemData tempItemSpawnData = new ItemData();
             tempItemSpawnData.itemName = rows[0];
             tempItemSpawnData.count = System.Convert.ToInt32(rows[1]);
-            tempItemSpawnData.itemPrefab = GetSpinePrefabObjFromResourceFolder("Item", tempItemSpawnData.itemName);
+            tempItemSpawnData.spriteNum = i;
 
             itemDataList.Add(tempItemSpawnData);
-        }
-        GameObject GetSpinePrefabObjFromResourceFolder(string _folderName, string _prefabName)
-        {
-            string tempPath = $"{_folderName}/{_prefabName}";
-            GameObject loadedObj = Resources.Load<GameObject>(tempPath);
-
-            return loadedObj;
         }
     }
 }
@@ -40,5 +35,5 @@ public class ItemData
 {
     public string itemName;
     public int count; // 골드 혹은 경험치 추가되는 양
-    public GameObject itemPrefab;
+    public int spriteNum;
 }

@@ -28,7 +28,7 @@ public class FireStrike : Bullet
             //피격 이펙트
             if (hitEffectPrefab != null)
             {
-                GameObject bulletHitEffect = GameManager.instance.pool.Get(hitEffectPrefab);
+                HitEffect bulletHitEffect = hitEffectPool.Get();
                 bulletHitEffect.transform.position = transform.position;
             }
 
