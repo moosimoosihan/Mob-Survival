@@ -138,7 +138,7 @@ public class Enemy : CharacterStatus
     {
         _ManagedPool = pool;
     }
-    private void DestroyEnemy()
+    protected virtual void DestroyEnemy()
     {
         _ManagedPool.Release(this);
     }

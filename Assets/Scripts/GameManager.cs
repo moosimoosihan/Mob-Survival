@@ -52,31 +52,7 @@ public class GameManager : MonoBehaviour
 
         // 플레이어 묶음에서 현재 있는 플레이어 갯수를 가져오기
         players = playerDummies.GetComponentsInChildren<Player>();
-    
-        //플레이어 데이터 불러오기
-        for(int i=0;i<CharacterData.Count;i++){
-            playerData tempPlayerData = new playerData();
-            tempPlayerData.character = CharacterData[i].Name;
-            tempPlayerData.maxHP = CharacterData[i].HP;
-            tempPlayerData.moveSpeed = CharacterData[i].MoveSpeed;
-            tempPlayerData.damage = CharacterData[i].Damage;
-            tempPlayerData.critRate = CharacterData[i].CritRate;
-            tempPlayerData.critDamage = CharacterData[i].CritDamage;
-            tempPlayerData.attSpeed = CharacterData[i].AttackSpeed;
-            tempPlayerData.attRange = CharacterData[i].AttackRange;
-            tempPlayerData.heal = CharacterData[i].Heal;
-            tempPlayerData.def = CharacterData[i].Def;
-            tempPlayerData.hpRegen = CharacterData[i].HPRegen;
-            tempPlayerData.evasion = CharacterData[i].Evasion;
-            tempPlayerData.vamp = CharacterData[i].Vamp;
-            tempPlayerData.damageReduction = CharacterData[i].DamageReduction;
-            tempPlayerData.elementalDamage = 0;
-            tempPlayerData.activeDamage = 0;
-            tempPlayerData.activeCooldown = 0;
-            tempPlayerData.numberOfProjectile = 0;
-            tempPlayerData.projectilePenetration = 0;
-            playerDataList.Add(tempPlayerData);
-        }
+
         string seperator = "\r\n";
 
         //경험치 데이터 불러오기
@@ -85,20 +61,26 @@ public class GameManager : MonoBehaviour
         for(int i=0;i<expLines.Length;i++){
             nextExp[i] = System.Convert.ToInt32(expLines[i]);
         }
+        CharacterInit();
+        uiLevelUp.Init();
+    }
+    // asycn 필요함
+    void CharacterInit()
+    {
         // 임시로 플레이어 스탯 부여
         for(int i=0;i<players.Length;i++){
             // 캐릭터 선택 화면에서 선택한 캐릭터에 맞는 스탯 부여
             if(i==3){
-                players[i].Init(playerDataList[0]);
+                players[i].Init(CharacterData[0]);
             } else if(i==1){
-                players[i].Init(playerDataList[1]);
+                players[i].Init(CharacterData[1]);
             } else if(i==0){
-                players[i].Init(playerDataList[2]);
+                players[i].Init(CharacterData[2]);
             } else if(i==2){
-                players[i].Init(playerDataList[3]);
+                players[i].Init(CharacterData[3]);
             }
         }
-        uiLevelUp.Init();
+        
     }
     
     void Start()

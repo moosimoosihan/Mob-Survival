@@ -214,4 +214,8 @@ public class GolemBoss : Enemy
         base.Dead();
         StopAllCoroutines();
     }
+    protected override void DestroyEnemy()
+    {
+        gameObject.SetActive(false);
+    }
 }

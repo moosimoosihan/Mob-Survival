@@ -279,4 +279,8 @@ public class GoblinKing : Enemy
         base.Dead();
         StopAllCoroutines();
     }
+    protected override void DestroyEnemy()
+    {
+        gameObject.SetActive(false);
+    }
 }

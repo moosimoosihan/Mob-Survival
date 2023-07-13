@@ -72,18 +72,18 @@ public class Player : CharacterStatus
         GameManager.instance.inputManager.GetAction("Move").performed -= OnMove;
         GameManager.instance.inputManager.GetAction("Move").Disable();
     }
-    public void Init(playerData data)
+    public void Init(CharacterTable data)
     {
-        character = data.character;
-        maxHP = data.maxHP;
+        character = data.Name;
+        maxHP = data.HP;
         curHP = maxHP;
-        def = data.def;
-        speed = data.moveSpeed;
-        hpRegen = data.hpRegen;
-        evasion = data.evasion;
-        heal = data.heal;
-        critRate = data.critRate;
-        critDamage = data.critDamage;
+        def = data.Def;
+        speed = data.MoveSpeed;
+        hpRegen = data.HPRegen;
+        evasion = data.Evasion;
+        heal = data.Heal;
+        critRate = data.CritRate;
+        critDamage = data.CritDamage;
     }
     void FixedUpdate()
     {

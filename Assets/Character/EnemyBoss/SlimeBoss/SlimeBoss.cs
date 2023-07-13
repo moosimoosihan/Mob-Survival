@@ -224,6 +224,10 @@ public class SlimeBoss : Enemy
         }
         StopAllCoroutines();
     }
+    protected override void DestroyEnemy()
+    {
+        gameObject.SetActive(false);
+    }
     TargetAnimation CreateAim()
     {
         TargetAnimation aimObj = Instantiate(aimPrefab).GetComponent<TargetAnimation>();

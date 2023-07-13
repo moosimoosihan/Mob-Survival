@@ -250,4 +250,8 @@ public class GoblinBoss : Enemy
     {
         Destroy(bullet.gameObject);
     }
+    protected override void DestroyEnemy()
+    {
+        gameObject.SetActive(false);
+    }
 }
