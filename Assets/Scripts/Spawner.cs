@@ -104,7 +104,9 @@ public class Spawner : MonoBehaviour
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
         enemy.skeletonAnimation.skeletonDataAsset = skeletonDataAssetList[monsterIndex];
+        enemy.skeletonAnimation.ClearState();
         enemy.skeletonAnimation.Initialize(true);
+
         if (enemy != null)
         {
             enemy.Init(enemySpawnDataList[monsterIndex]);
@@ -134,7 +136,7 @@ public class Spawner : MonoBehaviour
                 goblinMage.transform.parent = GameManager.instance.pool.transform;
                 goblinMage.transform.position = spawnPoint[randPointIndex].position;
                 goblinMage.GetComponent<Enemy>().Init(enemySpawnDataList[11]);
-                
+
                 break;
             case 12:
                 GameObject goblinKing = GameManager.instance.pool.Get(bossPrefab[3]);
@@ -153,7 +155,7 @@ public class Spawner : MonoBehaviour
     }
     void OnGetEnemy(Enemy enemy)
     {
-        
+
     }
     void OnReleaseEnemy(Enemy enemy)
     {
