@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Pool;
 
 public abstract class Weapon : MonoBehaviour
-{    
+{
     [Header("무기 정보")]
     public float damage;
     public int count;
@@ -12,7 +12,7 @@ public abstract class Weapon : MonoBehaviour
     public float knockBackPower;
     public float duration;
     public bool isCritical;
-    
+
     protected float timer;
     protected Player player;
 
@@ -20,13 +20,13 @@ public abstract class Weapon : MonoBehaviour
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
 
-    void Awake()
+    protected virtual void Awake()
     {
         player = GetComponentInParent<Player>();
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
         poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
-    
+
     void Start()
     {
         curDelay = delay;

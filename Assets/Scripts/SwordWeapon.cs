@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class SwordWeapon : MeleeWeapon
 {
-    private void Awake() {
+    protected override void Awake()
+    {
+        base.Awake();
         curDetectionAngle = detectionAngle;
     }
     public override void InitWeapon()
@@ -23,7 +25,8 @@ public class SwordWeapon : MeleeWeapon
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
 
-        if(warriorFire){
+        if (warriorFire)
+        {
             bullet.GetComponent<FireSword>().warriorFire = true;
             bullet.GetComponent<FireSword>().warriorFireDamge = warriorFireDamge;
             bullet.GetComponent<FireSword>().warriorFireTime = warriorFireTime;

@@ -20,7 +20,9 @@ public class MeleeWeapon : Weapon
 
     public List<float> distanceList = new List<float>();
 
-    private void Awake() {
+    protected override void Awake()
+    {
+        base.Awake();
         curDetectionAngle = detectionAngle;
     }
     public override void InitWeapon()
@@ -33,13 +35,13 @@ public class MeleeWeapon : Weapon
         timer += Time.deltaTime;
         if (timer > curDelay)
         {
-            //±ÙÃ³¿¡ ÀûÀ» Å½Áö ÇßÀ»¶§
+            //ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, detectRadius, 1 << LayerMask.NameToLayer(targetLayerMaskName));
 
             if (distanceList.Count > 0)
                 distanceList.Clear();
 
-            //Á¦ÀÏ °¡±î¿î ³à¼® Ã£±â
+            //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½à¼® Ã£ï¿½ï¿½
             foreach (var item in col2D)
             {
                 distanceList.Add(Vector3.Distance(item.transform.position, transform.position));
@@ -56,7 +58,7 @@ public class MeleeWeapon : Weapon
                         minDist = distanceList[i];
                 }
 
-                //Á¦ÀÏ °¡±î¿î ³à¼® ³Ö¾îÁÖ±â
+                //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½à¼® ï¿½Ö¾ï¿½ï¿½Ö±ï¿½
                 int closestIndex = distanceList.FindIndex(dist => dist == minDist);
                 closestCol2D = col2D[closestIndex];
 
