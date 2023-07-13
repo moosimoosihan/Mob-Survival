@@ -27,7 +27,6 @@ public class GoblinKing : Enemy
         Skill2,
         Skill3
     }
-    SkeletonAnimation skeletonAnimation;
     private IObjectPool<GoblinKing> _ManagedPool;
     public override void _Awake()
     {

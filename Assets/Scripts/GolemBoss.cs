@@ -25,7 +25,7 @@ public class GolemBoss : Enemy
         Move,
         Skill
     }
-    SkeletonAnimation skeletonAnimation;
+    
     private IObjectPool<GolemBoss> _ManagedPool;
     public override void _Awake()
     {

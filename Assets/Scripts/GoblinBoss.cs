@@ -26,7 +26,6 @@ public class GoblinBoss : Enemy
     }
     float timer;
     float skillDelay;
-    SkeletonAnimation skeletonAnimation;
     private IObjectPool<GoblinBoss> _ManagedPool;
 
     public override void _Awake()
