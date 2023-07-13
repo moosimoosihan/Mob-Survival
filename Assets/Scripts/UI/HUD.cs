@@ -215,7 +215,10 @@ public class HUD : MonoBehaviour
             case InfoYType.FPS:
                 timer += Time.deltaTime;
                 if(timer > 0.5f){
-                    myText.text = string.Format("FPS : {0:F0}",1/Time.deltaTime);
+                    if(p_FPS != 1/Time.deltaTime){
+                        p_FPS = 1/Time.deltaTime;
+                        myText.text = string.Format("FPS : {0:F0}",1/Time.deltaTime);
+                    }
                     timer = 0;
                 }
             break;
