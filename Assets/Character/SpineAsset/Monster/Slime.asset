@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: goblin_shaman_SkeletonData
+  m_Name: Slime
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 0a6c2d2ece1298843a0e9e1fe0938202, type: 2}
+  - {fileID: 11400000, guid: abba03b5cf8bc234289561bcfd7f6d5c, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 5469bc6ca3081c6469945ca3b393e8ad, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 1a3cd35f778d11b4a8ec7fe398bb00d0, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

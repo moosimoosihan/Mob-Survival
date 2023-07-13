@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: snake_SkeletonData
+  m_Name: Goblin Mage
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 586a4b0dc595a5048ba9c097d3ffd62f, type: 2}
+  - {fileID: 11400000, guid: 0a6c2d2ece1298843a0e9e1fe0938202, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: 80dd1773f3afa204c8e748a222c8d08d, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 5469bc6ca3081c6469945ca3b393e8ad, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

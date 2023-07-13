@@ -13,7 +13,7 @@ public class Enemy : CharacterStatus
     public bool isLive;
     public bool knockBack;
     public float power = 1;
-    
+
 
     public Rigidbody2D rigid;
     public Collider2D coll;
@@ -38,7 +38,7 @@ public class Enemy : CharacterStatus
     {
         _Awake();
         CreateFollowingHpBar();
-    }    
+    }
     public virtual void _Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -131,7 +131,8 @@ public class Enemy : CharacterStatus
             gameObject.transform.localScale = new Vector3(1, 1, 1);
         }
     }
-    private void OnEnable() {
+    private void OnEnable()
+    {
         _OnEnable();
     }
     public virtual void _OnEnable()
@@ -153,18 +154,18 @@ public class Enemy : CharacterStatus
     {
         _ManagedPool.Release(this);
     }
-    public virtual void Init(enemySpawnData data)
+    public virtual void Init(MonsterTable data, float powerValue)
     {
         //spriteType에 따른 모습 변경
         //anim.runtimeAnimatorController = animCon[data.spriteType];
-        character = data.enemyName;
-        power = data.power;
-        speed = data.speed;
-        maxHP = data.health * power;
+        character = data.Name;
+        power = powerValue;
+        speed = data.Speed;
+        maxHP = data.HP * power;
         curHP = maxHP;
-        attackDamage = data.attackDamage * power;
+        attackDamage = data.Attack * power;
         //spriter.sprite = data.sprite;
-        
+
 
         CreateFollowingHpBar();
     }
@@ -196,29 +197,30 @@ public class Enemy : CharacterStatus
             // spriter.sortingOrder = 1;
             //anim.SetBool("Dead",true);
             GameManager.instance.kill++;
-            
+
             // 경험치 아이템 생성
             Item expItem = itemPool.Get();
             expItem.transform.parent = GameManager.instance.pool.transform;
             Vector2 randomPosition = Random.insideUnitCircle.normalized;
-            expItem.transform.position = (Vector2)transform.position+randomPosition;
+            expItem.transform.position = (Vector2)transform.position + randomPosition;
             expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
             expItem.gameObject.SetActive(true);
 
             // 일정 확률로 골드 아이템 생성
-            int ran = Random.Range(1,101);
-            if(ran <= 50){
+            int ran = Random.Range(1, 101);
+            if (ran <= 50)
+            {
                 Item goldItem = itemPool.Get();
                 goldItem.transform.parent = GameManager.instance.pool.transform;
                 Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
-                goldItem.transform.position = (Vector2)transform.position+randomPositionGold;
+                goldItem.transform.position = (Vector2)transform.position + randomPositionGold;
                 goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
                 goldItem.gameObject.SetActive(true);
             }
 
             // 일정 확률로 인게임 아이템 생성
-            
-            
+
+
             //경험치 획득
             //GameManager.instance.GetExp();
 
@@ -235,7 +237,7 @@ public class Enemy : CharacterStatus
         knockBack = false;
         yield return wait;
         knockBack = true;
-        if(nearestTarget != null)
+        if (nearestTarget != null)
         {
             Vector3 playerPos = nearestTarget.transform.position;
             Vector3 dirVec = transform.position - playerPos;
@@ -265,7 +267,7 @@ public class Enemy : CharacterStatus
     }
     void Attack(Player _player)
     {
-        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), attackDamage,out bool isCritical), isCritical);
+        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), attackDamage, out bool isCritical), isCritical);
         isAttackable = false;
 
         if (gameObject.activeSelf)

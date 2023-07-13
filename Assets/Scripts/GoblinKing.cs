@@ -17,7 +17,7 @@ public class GoblinKing : Enemy
     bool isCheck = false;
     bool bossPowerUp;
 
-    public enum BossState{ Check, MoveToPlayer, Fire1, Fire2, Fire3, Rest }
+    public enum BossState { Check, MoveToPlayer, Fire1, Fire2, Fire3, Rest }
     [Header("보스 패턴 정보")]
     public BossState bossState;
     public enum AnimationState
@@ -36,7 +36,7 @@ public class GoblinKing : Enemy
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
 
-        
+
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         bulletArea = transform.GetChild(1).gameObject;
@@ -49,10 +49,11 @@ public class GoblinKing : Enemy
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || nearestTarget == null || isAttack){
+        if (!isLive || knockBack || nearestTarget == null || isAttack)
+        {
             rigid.velocity = Vector2.zero;
             return;
-        } 
+        }
 
         target = nearestTarget.GetComponent<Rigidbody2D>();
 
@@ -69,11 +70,11 @@ public class GoblinKing : Enemy
         if (target.position.x > rigid.position.x)
         {
             //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-2,2,2);
+            transform.localScale = new Vector3(-2, 2, 2);
         }
         else
         {
-            transform.localScale = new Vector3(2,2,2);
+            transform.localScale = new Vector3(2, 2, 2);
         }
     }
     public override void _OnEnable()
@@ -84,19 +85,22 @@ public class GoblinKing : Enemy
         spriter.sortingOrder = 2;
         curHP = maxHP;
     }
-    public override void Init(enemySpawnData data)
+    public override void Init(MonsterTable data, float power)
     {
-        speed = data.speed;
-        maxHP = data.health;
+        speed = data.Speed;
+        maxHP = data.HP;
         curHP = maxHP;
-        attackDamage = data.attackDamage;
-        missileDamage = data.attackDamage/2;
+        attackDamage = data.Attack;
+        missileDamage = data.Attack / 2;
+
     }
 
     IEnumerator BossStateMachine()
     {
-        while(gameObject.activeSelf || !isCheck || !isAttack){
-            switch(bossState){
+        while (gameObject.activeSelf || !isCheck || !isAttack)
+        {
+            switch (bossState)
+            {
                 case BossState.Check:
                     yield return StartCoroutine(Check());
                     break;
@@ -118,46 +122,63 @@ public class GoblinKing : Enemy
             }
         }
     }
-    IEnumerator Check(){
+    IEnumerator Check()
+    {
         isCheck = true;
-        if(nearestTarget!=null){
+        if (nearestTarget != null)
+        {
             // 적군이 있을 경우
             isCheck = false;
             yield return bossState = BossState.MoveToPlayer;
-        } else {
+        }
+        else
+        {
             // 없을경우 1초마다 check 한다.
             yield return new WaitForSeconds(1);
             isCheck = false;
         }
     }
-    IEnumerator MoveToPlayer(){
-        if(nearestTarget){
-            while(Vector2.Distance(transform.position, nearestTarget.transform.position) > 10f){
-                if(nearestTarget != null){
+    IEnumerator MoveToPlayer()
+    {
+        if (nearestTarget)
+        {
+            while (Vector2.Distance(transform.position, nearestTarget.transform.position) > 10f)
+            {
+                if (nearestTarget != null)
+                {
                     yield return bossState = BossState.Check;
                     isAttack = false;
                     break;
-                } else {
+                }
+                else
+                {
                     isAttack = false;
                     isCheck = true;
                     yield return null;
                 }
             }
-            if(timer > skillDelay){
+            if (timer > skillDelay)
+            {
                 yield return bossState = BossState.Fire2;
-            } else {
+            }
+            else
+            {
                 yield return bossState = bossPowerUp ? BossState.Fire3 : BossState.Fire1;
             }
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
         }
     }
-    IEnumerator Fire1(){
-        if(nearestTarget != null){
+    IEnumerator Fire1()
+    {
+        if (nearestTarget != null)
+        {
             // 플레이어 쪽으로 내려 찍기
             isCheck = false;
             yield return null;
-            
+
             SetAnimationState(AnimationState.Skill1);
             // 범위 표시
             bulletArea.gameObject.SetActive(true);
@@ -166,22 +187,26 @@ public class GoblinKing : Enemy
             // 발사
             bulletArea.gameObject.SetActive(false);
             BulletFire();
-            
+
             yield return new WaitForSeconds(2.683f);
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
         }
     }
-    IEnumerator Fire2(){
-        if(nearestTarget != null){
+    IEnumerator Fire2()
+    {
+        if (nearestTarget != null)
+        {
             // 아군 버프
             isAttack = true;
             timer = 0;
             isCheck = false;
             yield return null;
-            
+
             SetAnimationState(AnimationState.Skill2);
             yield return new WaitForSeconds(2.3f);
             // 버프
@@ -189,17 +214,21 @@ public class GoblinKing : Enemy
             yield return new WaitForSeconds(0.8f);
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
             isAttack = false;
         }
     }
-    IEnumerator Fire3(){
-        if(nearestTarget != null){
+    IEnumerator Fire3()
+    {
+        if (nearestTarget != null)
+        {
             // 플레이어 쪽으로 세번 내려 찍기
             isCheck = false;
             yield return null;
-            
+
             SetAnimationState(AnimationState.Skill3);
             // 범위 표시
             bulletArea.gameObject.SetActive(true);
@@ -208,26 +237,30 @@ public class GoblinKing : Enemy
             // 발사
             bulletArea.gameObject.SetActive(false);
             StartCoroutine(BossPowerFire());
-            
+
             yield return new WaitForSeconds(2.683f);
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
         }
     }
 
-    IEnumerator Rest(){
+    IEnumerator Rest()
+    {
         // 잠깐 가만히 서서 쉬는 타임
         yield return new WaitForSeconds(2f);
         bossState = BossState.Check;
         isAttack = false;
     }
-    void SetAnimationState(AnimationState _aniState){
-        if(skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
+    void SetAnimationState(AnimationState _aniState)
+    {
+        if (skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
             return;
-        
-        if(_aniState == AnimationState.Move)
+
+        if (_aniState == AnimationState.Move)
             skeletonAnimation.AnimationName = "move";
         else if (_aniState == AnimationState.Skill1)
             skeletonAnimation.AnimationName = "skill1";
@@ -238,22 +271,27 @@ public class GoblinKing : Enemy
     }
     private void OnDisable()
     {
-        if (bullet != null && bullet.activeSelf){
+        if (bullet != null && bullet.activeSelf)
+        {
             bullet.SetActive(false);
         }
-        if(bulletArea != null && bulletArea.activeSelf){
+        if (bulletArea != null && bulletArea.activeSelf)
+        {
             bulletArea.SetActive(false);
         }
     }
-    void BulletFire(){
+    void BulletFire()
+    {
         float time = 0.5f;
-        bullet.gameObject.SetActive(true);        
+        bullet.gameObject.SetActive(true);
         EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
         bulletScript.duration = time;
         bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical);
     }
-    IEnumerator BossPowerFire(){
-        for(int i=0;i<3;i++){
+    IEnumerator BossPowerFire()
+    {
+        for (int i = 0; i < 3; i++)
+        {
             yield return new WaitForSeconds(0.2f);
             float time = 0.2f;
             bullet.gameObject.SetActive(true);
@@ -264,7 +302,8 @@ public class GoblinKing : Enemy
             bullet.gameObject.SetActive(false);
         }
     }
-    void EnemyBuff(){
+    void EnemyBuff()
+    {
 
     }
     public void SetManagedPool(IObjectPool<GoblinKing> pool)

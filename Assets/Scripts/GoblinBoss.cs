@@ -13,7 +13,7 @@ public class GoblinBoss : Enemy
     bool isAttack = false;
     bool isCheck = false;
 
-    public enum BossState{ Check, MoveToPlayer, NormalFire, CircleFire, Rest }
+    public enum BossState { Check, MoveToPlayer, NormalFire, CircleFire, Rest }
     [Header("보스 패턴 정보")]
     public BossState bossState;
     public int bossPatternLen = 2;
@@ -49,10 +49,11 @@ public class GoblinBoss : Enemy
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
-        if (!isLive || knockBack || nearestTarget == null || isAttack){
+        if (!isLive || knockBack || nearestTarget == null || isAttack)
+        {
             rigid.velocity = Vector2.zero;
             return;
-        } 
+        }
 
         target = nearestTarget.GetComponent<Rigidbody2D>();
 
@@ -69,7 +70,7 @@ public class GoblinBoss : Enemy
         if (target.position.x > rigid.position.x)
         {
             //타겟 왼쪽에 있는 경우
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         else
         {
@@ -84,20 +85,22 @@ public class GoblinBoss : Enemy
         spriter.sortingOrder = 2;
         curHP = maxHP;
     }
-    public override void Init(enemySpawnData data)
+    public override void Init(MonsterTable data, float power)
     {
-        speed = data.speed;
-        maxHP = data.health;
+        speed = data.Speed;
+        maxHP = data.HP;
         curHP = maxHP;
-        attackDamage = data.attackDamage;
-        missileDamage = data.attackDamage/2;
+        attackDamage = data.Attack;
+        missileDamage = data.Attack / 2;
         bulletSpeed = 3;
     }
 
     IEnumerator BossStateMachine()
     {
-        while(gameObject.activeSelf || !isCheck || !isAttack){
-            switch(bossState){
+        while (gameObject.activeSelf || !isCheck || !isAttack)
+        {
+            switch (bossState)
+            {
                 case BossState.Check:
                     yield return StartCoroutine(Check());
                     break;
@@ -116,45 +119,60 @@ public class GoblinBoss : Enemy
             }
         }
     }
-    IEnumerator Check(){
+    IEnumerator Check()
+    {
         isCheck = true;
-        if(nearestTarget!=null){
+        if (nearestTarget != null)
+        {
             // 적군이 있을 경우
             isCheck = false;
             yield return bossState = BossState.MoveToPlayer;
-        } else {
+        }
+        else
+        {
             // 없을경우 1초마다 check 한다.
             yield return new WaitForSeconds(1);
             isCheck = false;
         }
     }
-    IEnumerator MoveToPlayer(){
-        if(nearestTarget){
-            while(Vector2.Distance(transform.position, nearestTarget.transform.position) > 15f){
-                if(nearestTarget != null){
+    IEnumerator MoveToPlayer()
+    {
+        if (nearestTarget)
+        {
+            while (Vector2.Distance(transform.position, nearestTarget.transform.position) > 15f)
+            {
+                if (nearestTarget != null)
+                {
                     yield return bossState = BossState.Check;
                     isAttack = false;
                     break;
-                } else {
+                }
+                else
+                {
                     isAttack = false;
                     isCheck = true;
                     yield return null;
                 }
             }
-            int ran = Random.Range(0,bossPatternLen);
+            int ran = Random.Range(0, bossPatternLen);
             yield return bossState = timer >= skillDelay ? (ran == 0 ? BossState.NormalFire : BossState.CircleFire) : BossState.Check;
             timer = 0;
             isCheck = false;
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
         }
     }
-    IEnumerator NormalFire(){
-        if(nearestTarget != null){
+    IEnumerator NormalFire()
+    {
+        if (nearestTarget != null)
+        {
             // 앞으로 하나씩 미사일 발사
             isAttack = true;
             yield return null;
-            for(int i=0;i<patternNum[0];i++){
+            for (int i = 0; i < patternNum[0]; i++)
+            {
                 yield return new WaitForSeconds(0.5f);
                 Bullet _bullet = bulletPool.Get();
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
@@ -167,13 +185,17 @@ public class GoblinBoss : Enemy
             }
             yield return bossState = BossState.Rest;
             skillDelay = 2;
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
             isAttack = false;
         }
     }
-    IEnumerator CircleFire(){
-        if(nearestTarget != null){
+    IEnumerator CircleFire()
+    {
+        if (nearestTarget != null)
+        {
             // 원형으로 미사일 발사
             isAttack = true;
             yield return null;
@@ -181,12 +203,14 @@ public class GoblinBoss : Enemy
             SetAnimationState(AnimationState.Skill);
             yield return new WaitForSeconds(4f);
             // 발사
-            for(int i=0; i< patternNum[1];i++){
+            for (int i = 0; i < patternNum[1]; i++)
+            {
                 yield return new WaitForSeconds(1f);
                 int roundA = 10;
                 int roundB = 9;
                 int curRound = i % 2 == 0 ? roundA : roundB;
-                for(int y=0;y<curRound;y++){
+                for (int y = 0; y < curRound; y++)
+                {
                     Bullet _bullet = bulletPool.Get();
                     EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                     bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
@@ -205,22 +229,26 @@ public class GoblinBoss : Enemy
                 SetAnimationState(AnimationState.Move);
             }
             skillDelay = 15;
-        } else {
+        }
+        else
+        {
             yield return bossState = BossState.Check;
             isAttack = false;
         }
     }
-    IEnumerator Rest(){
+    IEnumerator Rest()
+    {
         // 잠깐 가만히 서서 쉬는 타임
         yield return new WaitForSeconds(1f);
         bossState = BossState.Check;
         isAttack = false;
     }
-    void SetAnimationState(AnimationState _aniState){
-        if(skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
+    void SetAnimationState(AnimationState _aniState)
+    {
+        if (skeletonAnimation == null || !isLive || !GameManager.instance.isPlay)
             return;
-        
-        if(_aniState == AnimationState.Move)
+
+        if (_aniState == AnimationState.Move)
             skeletonAnimation.AnimationName = "move";
         else if (_aniState == AnimationState.Skill)
             skeletonAnimation.AnimationName = "skill";

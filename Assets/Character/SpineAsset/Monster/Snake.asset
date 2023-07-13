@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: slime_ giant_SkeletonData
+  m_Name: Snake
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: 459d60a18e9f8d143a47fc79bfa14a26, type: 2}
+  - {fileID: 11400000, guid: 586a4b0dc595a5048ba9c097d3ffd62f, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: e92e9d51dd92ac04da0058b2a7dc995f, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 80dd1773f3afa204c8e748a222c8d08d, type: 3}
   isUpgradingBlendModeMaterials: 0
   blendModeMaterials:
     requiresBlendModeMaterials: 0

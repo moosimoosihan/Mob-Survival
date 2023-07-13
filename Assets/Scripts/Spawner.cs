@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
 using Spine.Unity;
+using olimsko;
+using Cysharp.Threading.Tasks;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,10 +14,8 @@ public class Spawner : MonoBehaviour
 
     [SerializeField]
     TextAsset enemyDatabase;
-    [SerializeField]
-    List<enemySpawnData> enemySpawnDataList = new List<enemySpawnData>();
 
-    public List<SkeletonDataAsset> skeletonDataAssetList = new List<SkeletonDataAsset>();
+    private List<MonsterTable> MonsterTable => OSManager.GetService<DataManager>().GetData<MonsterTableSO>().MonsterTable;
 
     [Header("소환 시퀀스 정보")]
     float timer;
@@ -34,21 +34,6 @@ public class Spawner : MonoBehaviour
         //몬스터 데이터 불러오기
         string seperator = "\r\n";
         string[] lines = enemyDatabase.text.Substring(0).Split(seperator);
-
-        for (int i = 0; i < lines.Length; i++)
-        {
-            string[] rows = lines[i].Split('\t');
-
-            //아이템 생성
-            enemySpawnData tempEnemySpawnData = new enemySpawnData();
-            tempEnemySpawnData.enemyName = rows[0];
-            tempEnemySpawnData.health = System.Convert.ToInt32(rows[1]);
-            tempEnemySpawnData.speed = System.Convert.ToSingle(rows[2]);
-            tempEnemySpawnData.attackDamage = System.Convert.ToSingle(rows[3]);
-            tempEnemySpawnData.power = 1;
-
-            enemySpawnDataList.Add(tempEnemySpawnData);
-        }
 
         // 몬스터 스폰 데이터 불러오기
         string spwanSeperator = "\r\n";
@@ -95,7 +80,7 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    void Spawn(int index)
+    async UniTask Spawn(int index)
     {
         monsterIndex = index - 1;
 
@@ -103,13 +88,13 @@ public class Spawner : MonoBehaviour
         enemy.transform.parent = GameManager.instance.pool.transform;
         int randPointIndex = Random.Range(1, spawnPoint.Length);
         enemy.transform.position = spawnPoint[randPointIndex].position;
-        enemy.skeletonAnimation.skeletonDataAsset = skeletonDataAssetList[monsterIndex];
+        enemy.skeletonAnimation.skeletonDataAsset = await MonsterTable[monsterIndex].GetSkeletonDataAsset();
         enemy.skeletonAnimation.ClearState();
         enemy.skeletonAnimation.Initialize(true);
 
         if (enemy != null)
         {
-            enemy.Init(enemySpawnDataList[monsterIndex]);
+            enemy.Init(MonsterTable[monsterIndex], 1);
         }
         enemy.gameObject.SetActive(true);
     }
@@ -123,25 +108,25 @@ public class Spawner : MonoBehaviour
                 GameObject silmeBoss = Instantiate(bossPrefab[0], GameManager.instance.pool.transform);
                 silmeBoss.transform.parent = GameManager.instance.pool.transform;
                 silmeBoss.transform.position = spawnPoint[randPointIndex].position;
-                silmeBoss.GetComponent<Enemy>().Init(enemySpawnDataList[9]);
+                silmeBoss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
                 break;
             case 10:
                 GameObject golemBoss = Instantiate(bossPrefab[1], GameManager.instance.pool.transform);
                 golemBoss.transform.parent = GameManager.instance.pool.transform;
                 golemBoss.transform.position = spawnPoint[randPointIndex].position;
-                golemBoss.GetComponent<Enemy>().Init(enemySpawnDataList[10]);
+                golemBoss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
                 break;
             case 11:
                 GameObject goblinMage = Instantiate(bossPrefab[2], GameManager.instance.pool.transform);
                 goblinMage.transform.position = spawnPoint[randPointIndex].position;
-                goblinMage.GetComponent<Enemy>().Init(enemySpawnDataList[11]);
+                goblinMage.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
 
                 break;
             case 12:
                 GameObject goblinKing = Instantiate(bossPrefab[3], GameManager.instance.pool.transform);
                 goblinKing.transform.parent = GameManager.instance.pool.transform;
                 goblinKing.transform.position = spawnPoint[randPointIndex].position;
-                goblinKing.GetComponent<Enemy>().Init(enemySpawnDataList[12]);
+                goblinKing.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
                 break;
         }
     }
@@ -191,28 +176,18 @@ public class Spawner : MonoBehaviour
                 else
                 {
                     int monsterType = type[Random.Range(0, index - 1)];
-                    Spawn(monsterType);
+                    Spawn(monsterType).Forget();
                 }
             }
             else
             {
                 index = i % type.Length;
                 int monsterType = type[index];
-                Spawn(monsterType);
+                Spawn(monsterType).Forget();
             }
             yield return new WaitForSeconds(spawnInterval);
         }
     }
-}
-
-[System.Serializable]
-public class enemySpawnData
-{
-    public string enemyName;
-    public int health;
-    public float speed;
-    public float attackDamage;
-    public float power;
 }
 
 [System.Serializable]
