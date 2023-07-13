@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 using System.Collections;
-using Spine.Unity;
 using olimsko;
 using Cysharp.Threading.Tasks;
 
@@ -16,6 +15,7 @@ public class Spawner : MonoBehaviour
     TextAsset enemyDatabase;
 
     private List<MonsterTable> MonsterTable => OSManager.GetService<DataManager>().GetData<MonsterTableSO>().MonsterTable;
+    public int enemyPoolMaxSize;
 
     [Header("소환 시퀀스 정보")]
     float timer;
@@ -63,7 +63,7 @@ public class Spawner : MonoBehaviour
 
             spawnDataList.Add(tempSpawnData);
         }
-        _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy);
+        _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy, maxSize : enemyPoolMaxSize);
     }
     void Update()
     {

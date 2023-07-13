@@ -44,7 +44,7 @@ public class Enemy : CharacterStatus
         skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
-        itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem);
+        itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem, maxSize : GameManager.instance.itemManager.itemPoolMaxSize);
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
 
         CreateFollowingHpBar();

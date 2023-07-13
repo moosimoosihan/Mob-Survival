@@ -4936,6 +4936,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: []
   enemyDatabase: {fileID: 4900000, guid: 14e973501815848489a20404d65dadbb, type: 3}
+  enemyPoolMaxSize: 32
   enemySpwanDatabase: {fileID: 4900000, guid: 3aee78d75f71b6a42825720125e01760, type: 3}
   curSequence: 0
   bossCount: 0
@@ -30628,6 +30629,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d005e54e13fd1154db59cad53b057218, type: 3}
   - {fileID: 21300000, guid: d0289dca7d658d4408183aa6ce1ae50c, type: 3}
   - {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  itemPoolMaxSize: 50
 --- !u!1 &2037476140
 GameObject:
   m_ObjectHideFlags: 0

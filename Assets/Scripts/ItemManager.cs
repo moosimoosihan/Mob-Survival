@@ -9,7 +9,7 @@ public class ItemManager : MonoBehaviour
     public List<ItemData> itemDataList = new List<ItemData>();
     public GameObject itemPrefab;
     public Sprite[] itemSprite;
-    
+    public int itemPoolMaxSize;
     void Awake()
     {
         // 아이템 데이터 불러오기
