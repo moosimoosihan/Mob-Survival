@@ -28,7 +28,6 @@ public class Enemy : CharacterStatus
     float fireTime;
     public float curFireDamage;
     public Transform nearestTarget;
-
     private IObjectPool<Enemy> _ManagedPool;
 
     void Awake()
@@ -269,7 +268,7 @@ public class Enemy : CharacterStatus
     public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
     {
         isFire = true;
-        BuffEffect effect = GameManager.instance.pool.buffPool.Get();
+        BuffEffect effect = GameManager.instance.pool.Get(GameManager.instance.burnEffect).GetComponent<BuffEffect>();
         effect.transform.parent = GameManager.instance.pool.transform;
         effect.transform.position = transform.position;
         effect.target = transform;
