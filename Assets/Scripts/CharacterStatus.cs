@@ -14,11 +14,15 @@ public class CharacterStatus : MonoBehaviour
     public float speed;
     public float critRate;
     public float critDamage = 2;
+    
 
     public float attackDamage;
 
     [SerializeField]
     bool createFollowingHpBar;
+
+    // 속도 저항
+    public float resistance = 1;
 
     public void CreateFollowingHpBar()
     {
@@ -43,5 +47,11 @@ public class CharacterStatus : MonoBehaviour
         curShield = 0;
         //이펙트 제거해야 함
         isShield = false;
+    }
+    public IEnumerator Speedresistance(float _resistance, float _time)
+    {
+        resistance = _resistance;
+        yield return new WaitForSeconds(_time);
+        resistance = 1;
     }
 }

@@ -104,6 +104,8 @@ public class Enemy : CharacterStatus
         Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
+
+        skeletonAnimation.timeScale = resistance;
     }
 
     protected virtual void LateUpdate()
@@ -221,6 +223,11 @@ public class Enemy : CharacterStatus
                 scale = 1f;
                 position = new Vector2(0,-1);
             break;
+            case 13:
+                // 자이언트 나무
+                scale = 2f;
+                position = new Vector2(0,-2);
+                break;
         }
         skeletonAnimation.gameObject.transform.localPosition = position;
         skeletonAnimation.gameObject.transform.localScale = new Vector3(scale,scale,scale);

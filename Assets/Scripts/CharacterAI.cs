@@ -72,7 +72,7 @@ public class CharacterAI : MonoBehaviour
                 playerScript.SetAnimationState(Player.AnimationState.Run);
             }
 
-            moveVec = dir.normalized * curSpeed * Time.fixedDeltaTime;
+            moveVec = dir.normalized * curSpeed * Time.fixedDeltaTime * playerScript.resistance;
             if (moveVec.x < 0)
             {
                 childTransform.localScale = new Vector3(1, 1, 1);

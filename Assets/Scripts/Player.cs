@@ -94,7 +94,7 @@ public class Player : CharacterStatus
         {
             // 현재 다이나믹으로 했을 경우 필요 없음
             //StopToWall(inputVec);
-            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime;
+            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime * resistance;
             rigid.MovePosition(isBorder ? rigid.position : rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
@@ -110,6 +110,8 @@ public class Player : CharacterStatus
         {
             inputVec = Vector2.zero;
         }
+
+        skeletonAnimation.timeScale = resistance;
     }
     public void StopToWall(Vector2 _inputVec)
     {

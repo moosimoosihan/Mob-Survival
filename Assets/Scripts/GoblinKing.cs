@@ -36,7 +36,6 @@ public class GoblinKing : Enemy
         anim = GetComponent<Animator>();
         wait = new WaitForFixedUpdate();
 
-
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         bulletArea = transform.GetChild(1).gameObject;

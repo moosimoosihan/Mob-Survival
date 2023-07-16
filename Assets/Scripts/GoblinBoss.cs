@@ -7,8 +7,7 @@ public class GoblinBoss : Enemy
 {
     [Header("보스 정보")]
     public float missileDamage;
-    public GameObject bullet;
-    WaitForFixedUpdate wait;
+    public GameObject enemyBullet;
 
     bool isAttack = false;
     bool isCheck = false;
@@ -27,7 +26,7 @@ public class GoblinBoss : Enemy
     float timer;
     float skillDelay;
     private IObjectPool<GoblinBoss> _ManagedPool;
-    private IObjectPool<Bullet> bulletPool;
+    private IObjectPool<EnemyBullet> bulletPool;
 
     protected override void Awake()
     {
@@ -36,7 +35,7 @@ public class GoblinBoss : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
-        bulletPool = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
+        bulletPool = new ObjectPool<EnemyBullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
     protected override void FixedUpdate()
     {
@@ -62,6 +61,7 @@ public class GoblinBoss : Enemy
     {
         base.Init(data, power);
         missileDamage = attackDamage;
+        bulletSpeed = 10;
     }
 
     IEnumerator BossStateMachine()
@@ -108,6 +108,7 @@ public class GoblinBoss : Enemy
     {
         if (nearestTarget)
         {
+            SetAnimationState(AnimationState.Move);
             while (Vector2.Distance(transform.position, nearestTarget.transform.position) > 15f)
             {
                 if (nearestTarget != null)
@@ -125,7 +126,7 @@ public class GoblinBoss : Enemy
             }
             int ran = Random.Range(0, bossPatternLen);
             yield return bossState = timer >= skillDelay ? (ran == 0 ? BossState.NormalFire : BossState.CircleFire) : BossState.Check;
-            timer = 0;
+            
             isCheck = false;
         }
         else
@@ -143,7 +144,8 @@ public class GoblinBoss : Enemy
             for (int i = 0; i < patternNum[0]; i++)
             {
                 yield return new WaitForSeconds(0.5f);
-                Bullet _bullet = bulletPool.Get();
+                EnemyBullet _bullet = bulletPool.Get();
+                _bullet.transform.parent = GameManager.instance.pool.transform;
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                 bulletLogic.duration = 5f;
                 bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
@@ -154,6 +156,7 @@ public class GoblinBoss : Enemy
             }
             yield return bossState = BossState.Rest;
             skillDelay = 2;
+            timer = 0;
         }
         else
         {
@@ -180,24 +183,26 @@ public class GoblinBoss : Enemy
                 int curRound = i % 2 == 0 ? roundA : roundB;
                 for (int y = 0; y < curRound; y++)
                 {
-                    Bullet _bullet = bulletPool.Get();
+                    EnemyBullet _bullet = bulletPool.Get();
+                    _bullet.transform.parent = GameManager.instance.pool.transform;
                     EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                     bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
                     _bullet.transform.position = transform.position;
-                    bullet.transform.rotation = Quaternion.identity;
+                    _bullet.transform.rotation = Quaternion.identity;
 
                     Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
                     Vector2 dirVec = new Vector2(Mathf.Cos(Mathf.PI * 2 * y / curRound), Mathf.Sin(Mathf.PI * 2 * y / curRound));
                     rigid.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
 
                     Vector3 rotVec = Vector3.forward * 360 * y / curRound + Vector3.forward * 90;
-                    bullet.transform.Rotate(rotVec);
+                    _bullet.transform.Rotate(rotVec);
                 }
                 yield return new WaitForSeconds(0.4f);
                 bossState = BossState.Rest;
                 SetAnimationState(AnimationState.Move);
             }
-            skillDelay = 15;
+            skillDelay = 10;
+            timer = 0;
         }
         else
         {
@@ -232,22 +237,22 @@ public class GoblinBoss : Enemy
         StopAllCoroutines();
     }
 
-    Bullet CreateBullet()
+    EnemyBullet CreateBullet()
     {
-        Bullet bullet = Instantiate(this.bullet).GetComponent<Bullet>();
+        EnemyBullet bullet = Instantiate(enemyBullet).GetComponent<EnemyBullet>();
         bullet.SetManagedPool(bulletPool);
         return bullet;
     }
-    void OnGetBullet(Bullet bullet)
+    void OnGetBullet(EnemyBullet bullet)
     {
         bullet.gameObject.SetActive(true);
     }
-    void OnReleaseBullet(Bullet bullet)
+    void OnReleaseBullet(EnemyBullet bullet)
     {
         if (bullet.gameObject.activeSelf)
             bullet.gameObject.SetActive(false);
     }
-    void OnDestroyBullet(Bullet bullet)
+    void OnDestroyBullet(EnemyBullet bullet)
     {
         Destroy(bullet.gameObject);
     }

@@ -118,15 +118,21 @@ public class Spawner : MonoBehaviour
                 break;
             case 11:
                 GameObject goblinMage = Instantiate(bossPrefab[2], GameManager.instance.pool.transform);
+                goblinMage.transform.parent = GameManager.instance.pool.transform;
                 goblinMage.transform.position = spawnPoint[randPointIndex].position;
                 goblinMage.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
-
                 break;
             case 12:
                 GameObject goblinKing = Instantiate(bossPrefab[3], GameManager.instance.pool.transform);
                 goblinKing.transform.parent = GameManager.instance.pool.transform;
                 goblinKing.transform.position = spawnPoint[randPointIndex].position;
                 goblinKing.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                break;
+            case 13:
+                GameObject giantEnt = Instantiate(bossPrefab[4], GameManager.instance.pool.transform);
+                giantEnt.transform.parent = GameManager.instance.pool.transform;
+                giantEnt.transform.position = spawnPoint[randPointIndex].position;
+                giantEnt.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
                 break;
         }
     }

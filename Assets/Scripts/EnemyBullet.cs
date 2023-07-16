@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class EnemyBullet : MonoBehaviour
 {
@@ -7,8 +8,9 @@ public class EnemyBullet : MonoBehaviour
     public int per;
     public bool isCritical;
     public float duration;
+    private IObjectPool<EnemyBullet> _ManagedPool;
 
-    public void Init(float _damage, int _per, bool _isCritical)
+    public virtual void Init(float _damage, int _per, bool _isCritical)
     {
         damage = _damage;
         per = _per;
@@ -16,7 +18,7 @@ public class EnemyBullet : MonoBehaviour
         DeActivate(duration);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.CompareTag("Player") == false)
             return;
@@ -41,9 +43,13 @@ public class EnemyBullet : MonoBehaviour
         _inTime
         ));        
     }
-        protected IEnumerator CoDelayStarter(System.Action _action, float _delay)
+    protected IEnumerator CoDelayStarter(System.Action _action, float _delay)
     {
         yield return new WaitForSeconds(_delay);
         _action.Invoke();
+    }
+    public void SetManagedPool(IObjectPool<EnemyBullet> pool)
+    {
+        _ManagedPool = pool;
     }
 }
