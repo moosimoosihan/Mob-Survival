@@ -154,6 +154,8 @@ public class Enemy : CharacterStatus
         maxHP = data.HP * power;
         curHP = maxHP;
         attackDamage = data.Attack * power;
+        (coll as CapsuleCollider2D).size = new Vector2(1.8f,1.8f);
+        (coll as CapsuleCollider2D).offset = Vector2.zero;
         //spriter.sprite = data.sprite;
         float scale = 1;
         Vector2 position = Vector2.zero;
@@ -175,6 +177,8 @@ public class Enemy : CharacterStatus
             break;
             case 3:
                 //나무
+                (coll as CapsuleCollider2D).offset = new Vector2(0.1f,0.2f);
+                (coll as CapsuleCollider2D).size = new Vector2(1.5f,1.8f);
                 scale = 1f;
                 position = new Vector2(0,-0.9f);
             break;
@@ -190,6 +194,8 @@ public class Enemy : CharacterStatus
             break;
             case 6:
                 //고블린
+                (coll as CapsuleCollider2D).offset = new Vector2(0,-0.1f);
+                (coll as CapsuleCollider2D).size = new Vector2(1.5f,1.5f);
                 scale = 0.1f;
                 position = new Vector2(0,-0.9f);
             break;
@@ -205,26 +211,35 @@ public class Enemy : CharacterStatus
             break;
             case 9:
                 // 슬라임 보스
+                (coll as CapsuleCollider2D).offset = new Vector2(0.5f,0);
+                (coll as CapsuleCollider2D).size = new Vector2(5,5);
                 scale = 1.5f;
                 position = new Vector2(0,-2.5f);
             break;
             case 10:
                 // 골렘 보스
+                (coll as CapsuleCollider2D).offset = new Vector2(0,3);
+                (coll as CapsuleCollider2D).size = new Vector2(6,6);
                 scale = 1f;
                 position = new Vector2(0,0);
             break;
             case 11:
                 // 고블린 메이지
+                (coll as CapsuleCollider2D).size = new Vector2(4,4);
                 scale = 1f;
                 position = new Vector2(0,-2);
             break;
             case 12:
                 // 고블린 킹
+                (coll as CapsuleCollider2D).offset = new Vector2(0,0.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(3,3);
                 scale = 1f;
                 position = new Vector2(0,-1);
             break;
             case 13:
                 // 자이언트 나무
+                (coll as CapsuleCollider2D).offset = new Vector2(0,1.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(5.5f,7);
                 scale = 2f;
                 position = new Vector2(0,-2);
                 break;

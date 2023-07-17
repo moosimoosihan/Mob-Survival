@@ -145,7 +145,7 @@ public class GiantEnt : Enemy
             aimObj = aimPool.Get().gameObject;
             aimObj.transform.position = targetPos;
             TargetAnimation targetAnim = aimObj.GetComponent<TargetAnimation>();
-            targetAnim.AttackTargetArea(targetPos, new Vector3(1.5f,1,0), totalTime);
+            targetAnim.AttackTargetArea(targetPos, new Vector3(3.5f,2,0), totalTime);
 
             yield return new WaitForSeconds(3f);
 

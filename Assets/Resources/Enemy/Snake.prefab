@@ -102,7 +102,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.7453725, y: 1.7591782}
+  m_Size: {x: 1.8, y: 1.8}
   m_Direction: 0
 --- !u!50 &6683658302885780826
 Rigidbody2D:
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45cfa286cbbdc6c47977d6538edb1a79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: 
   maxHP: 0
   curHP: 0
   maxShield: 0
@@ -149,7 +150,7 @@ MonoBehaviour:
   critDamage: 2
   attackDamage: 0
   createFollowingHpBar: 0
-  idName: 
+  resistance: 1
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -162,10 +163,11 @@ MonoBehaviour:
   spriter: {fileID: 0}
   anim: {fileID: 0}
   attackDelay: 0
-  scaner: {fileID: 0}
   fireDeBuffTime: 0
   isFire: 0
   curFireDamage: 0
+  nearestTarget: {fileID: 0}
+  skeletonAnimation: {fileID: 0}
 --- !u!1 &7751696143473904046
 GameObject:
   m_ObjectHideFlags: 0
