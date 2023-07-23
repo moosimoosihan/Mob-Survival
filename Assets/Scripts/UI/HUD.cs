@@ -44,6 +44,7 @@ public class HUD : MonoBehaviour
 
     void Start()
     {
+
         switch(type){
             case InfoYType.Exp:
                 mySlider.value = p_Exp;
@@ -61,6 +62,10 @@ public class HUD : MonoBehaviour
                 myText.text = string.Format("{0:D2}:{1:D2}",p_TimeMin, p_TimeSec);
                 break;
             case InfoYType.Health:
+                if(GameManager.instance.players.Length < playerNum){
+                    gameObject.SetActive(false);
+                    return;
+                }
                 float curHealth = GameManager.instance.players[playerNum].curHP;
                 float maxHealth = GameManager.instance.players[playerNum].maxHP;
                 p_curHealth = curHealth;
@@ -79,6 +84,10 @@ public class HUD : MonoBehaviour
                 myText.text = string.Format("x {0:F0}",p_Life);
                 break;
             case InfoYType.ActiveSkill:
+                if(GameManager.instance.players.Length < playerNum){
+                    gameObject.SetActive(false);
+                    return;
+                }
                 float curTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer;
                 float maxTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
                 p_curActiveSkill = curTimer;
@@ -86,6 +95,10 @@ public class HUD : MonoBehaviour
                 myImage.fillAmount = curTimer/maxTimer;
                 break;
             case InfoYType.Sheild:
+                if(GameManager.instance.players.Length < playerNum){
+                    gameObject.SetActive(false);
+                    return;
+                }
                 if(GameManager.instance.players[playerNum].curShield>0 || GameManager.instance.players[playerNum].maxShield>0){
                     float curShield = GameManager.instance.players[playerNum].curShield;
                     float maxShield = GameManager.instance.players[playerNum].maxShield;
@@ -149,6 +162,7 @@ public class HUD : MonoBehaviour
                 }
                 break;
             case InfoYType.Health:
+                
                 float curHealth = GameManager.instance.players[playerNum].curHP;
                 float maxHealth = GameManager.instance.players[playerNum].maxHP;
                 curHealth = Mathf.FloorToInt(curHealth);

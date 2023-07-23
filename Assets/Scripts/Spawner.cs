@@ -171,7 +171,7 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             int index = i % type.Length;
-            if ((type[index] > 9))
+            if ((type[index] > 9 && type[index] < 14 && type[index] > 16))
             {
                 if (bossCount < 1)
                 { // 보스몹 소환 가능

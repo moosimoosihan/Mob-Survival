@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using olimsko;
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public bool isPlay;
     public float curTimeScale = 1;
 
-    [Header("플레이어 정보")]    
+    [Header("플레이어 정보")]
     public int level;
     public int kill;
     public int bossKill;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     List<playerData> playerDataList = new List<playerData>();
     [SerializeField]
     TextAsset expDatabase;
+    public GameObject[] playerPrefs;
 
     [Header("게임 오브젝트")]
     public Player[] players;
@@ -39,11 +41,15 @@ public class GameManager : MonoBehaviour
     [Header("UI Sprite")]
     public GameObject gameOverObj;
     public Sprite[] playerSptrite;
+    public Sprite[] playerSkillSprite;
     public GameObject pauseObj;
+    public GameObject[] playerUI;
 
     // 임시
     [Header("이펙트 프리펩")]
     public GameObject burnEffect;
+
+    private StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
 
     void Awake()
     {
@@ -67,20 +73,32 @@ public class GameManager : MonoBehaviour
     // asycn 필요함
     void CharacterInit()
     {
-        // 임시로 플레이어 스탯 부여
-        for(int i=0;i<players.Length;i++){
-            // 캐릭터 선택 화면에서 선택한 캐릭터에 맞는 스탯 부여
-            if(i==3){
-                players[i].Init(CharacterData[0]);
-            } else if(i==1){
-                players[i].Init(CharacterData[1]);
-            } else if(i==0){
-                players[i].Init(CharacterData[2]);
-            } else if(i==2){
-                players[i].Init(CharacterData[3]);
-            }
+        // 플레이어 선택 화면에서 선택한 캐릭터 정보 가져오기
+        // StageContext.ListSelectedHero <= 리스트
+        players = new Player[StageContext.ListSelectedHero.Count];
+        for(int i=0;i<StageContext.ListSelectedHero.Count;i++){
+            Player player = Instantiate(playerPrefs[StageContext.ListSelectedHero[i]]).GetComponent<Player>();
+            player.transform.SetParent(playerDummies.transform);
+            players[i] = player;
+            players[i].Init(CharacterData[StageContext.ListSelectedHero[i]]);
+            playerUI[i].SetActive(true);
+            playerUI[i].GetComponentsInChildren<Image>()[0].sprite = playerSptrite[StageContext.ListSelectedHero[i]];
+            playerUI[i].GetComponentsInChildren<Image>()[3].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
+            playerUI[i].GetComponentsInChildren<Image>()[4].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
         }
-        
+        // 임시로 플레이어 스탯 부여
+        // for(int i=0;i<players.Length;i++){
+        //     // 캐릭터 선택 화면에서 선택한 캐릭터에 맞는 스탯 부여
+        //     if(i==3){
+        //         players[i].Init(CharacterData[0]);
+        //     } else if(i==1){
+        //         players[i].Init(CharacterData[1]);
+        //     } else if(i==0){
+        //         players[i].Init(CharacterData[2]);
+        //     } else if(i==2){
+        //         players[i].Init(CharacterData[3]);
+        //     }
+        // }
     }
     
     void Start()
