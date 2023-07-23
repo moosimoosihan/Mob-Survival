@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20780848435200
-    m_Localized: On the title screen after cancellation
+    m_Localized: After cancellation to the title screen
     m_Metadata:
       m_Items: []
   - m_Id: 5886937845767
@@ -124,6 +124,174 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 338813303312384
     m_Localized: test
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580042989568
+    m_Localized: select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932608
+    m_Localized: cancellation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932609
+    m_Localized: Party selection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932610
+    m_Localized: Reinforced stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932611
+    m_Localized: Monster appearing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932612
+    m_Localized: Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932613
+    m_Localized: Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932614
+    m_Localized: Sage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932615
+    m_Localized: Priests
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932616
+    m_Localized: Warrior
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932617
+    m_Localized: Archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932618
+    m_Localized: Sage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932619
+    m_Localized: Priest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4264209556099072
+    m_Localized: Stage start
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615548362752
+    m_Localized: Achievements
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888704
+    m_Localized: Returns of the retained stones
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888705
+    m_Localized: Purchase of stats
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888706
+    m_Localized: collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888707
+    m_Localized: Atmosphere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700672
+    m_Localized: offense power
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700673
+    m_Localized: Critical
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700674
+    m_Localized: Critical damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700675
+    m_Localized: attack speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700676
+    m_Localized: Attack range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700677
+    m_Localized: Hill and shield increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700678
+    m_Localized: Increase in health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700679
+    m_Localized: Defense
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700680
+    m_Localized: Health recovery per second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700681
+    m_Localized: Evasion rate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700682
+    m_Localized: Vitality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700683
+    m_Localized: speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700684
+    m_Localized: Reduction of damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700685
+    m_Localized: Attribute attack increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700686
+    m_Localized: Active damage increased
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700687
+    m_Localized: Active Cool Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700688
+    m_Localized: Increased number of projectiles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700689
+    m_Localized: Increasing projectile penetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700690
+    m_Localized: Experience acquisition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700691
+    m_Localized: Item acquisition range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700692
+    m_Localized: Passive 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700693
+    m_Localized: Passive 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700694
+    m_Localized: Passive 3
     m_Metadata:
       m_Items: []
   references:

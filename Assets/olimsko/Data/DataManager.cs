@@ -16,9 +16,15 @@ namespace olimsko
         public DataManager(DataConfiguration configuration)
         {
             Configuration = configuration;
+            OSManager.AddPrePostInitializationTask(PerformPostEngineInitializationTasks);
         }
 
         public async UniTask InitializeAsync()
+        {
+            await UniTask.CompletedTask;
+        }
+
+        private async UniTask PerformPostEngineInitializationTasks()
         {
             if (Configuration.UseGoogleSheet)
             {

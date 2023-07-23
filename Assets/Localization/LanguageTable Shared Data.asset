@@ -123,6 +123,174 @@ MonoBehaviour:
     m_Key: Str_Test
     m_Metadata:
       m_Items: []
+  - m_Id: 4195580042989568
+    m_Key: Str_Select
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932608
+    m_Key: Str_Cancel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932609
+    m_Key: Str_SelectHero
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932610
+    m_Key: Str_UpgradeStone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932611
+    m_Key: Str_SpawnMonster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4264209556099072
+    m_Key: Str_StartStage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615548362752
+    m_Key: Str_Acheve
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888704
+    m_Key: Str_UpgradeStoneCount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888705
+    m_Key: Str_BuyCharacterStat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888706
+    m_Key: Str_Collection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5331615602888707
+    m_Key: Str_WatingRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932612
+    m_Key: Str_CharacterNameKey_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932613
+    m_Key: Str_CharacterNameKey_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932614
+    m_Key: Str_CharacterNameKey_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932615
+    m_Key: Str_CharacterNameKey_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932616
+    m_Key: Str_CharacterDescKey_0
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932617
+    m_Key: Str_CharacterDescKey_1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932618
+    m_Key: Str_CharacterDescKey_2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4195580084932619
+    m_Key: Str_CharacterDescKey_3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700672
+    m_Key: Str_StatNameKey_Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700673
+    m_Key: Str_StatNameKey_CritRate
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700674
+    m_Key: Str_StatNameKey_CritDamage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700675
+    m_Key: Str_StatNameKey_AttSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700676
+    m_Key: Str_StatNameKey_AttRange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700677
+    m_Key: Str_StatNameKey_Heal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700678
+    m_Key: Str_StatNameKey_HP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700679
+    m_Key: Str_StatNameKey_Def
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700680
+    m_Key: Str_StatNameKey_HPRigen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700681
+    m_Key: Str_StatNameKey_Evasion
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700682
+    m_Key: Str_StatNameKey_Vamp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700683
+    m_Key: Str_StatNameKey_MoveSpeed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700684
+    m_Key: Str_StatNameKey_DamageReduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700685
+    m_Key: Str_StatNameKey_ElementalDamage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700686
+    m_Key: Str_StatNameKey_ActiveDamage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700687
+    m_Key: Str_StatNameKey_ActiveCooldown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700688
+    m_Key: Str_StatNameKey_NumberOfProjectile
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700689
+    m_Key: Str_StatNameKey_ProjectilePenetration
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700690
+    m_Key: Str_StatNameKey_EXP
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700691
+    m_Key: Str_StatNameKey_PickUpRange
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700692
+    m_Key: Str_StatNameKey_Passive1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700693
+    m_Key: Str_StatNameKey_Passive2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5358733212700694
+    m_Key: Str_StatNameKey_Passive3
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

@@ -26,7 +26,11 @@ namespace olimsko
         public static bool IsInitialized => m_InitializeOSM != null && m_InitializeOSM.Task.Status == UniTaskStatus.Succeeded;
         public static bool IsInitializing => m_InitializeOSM != null && !(m_InitializeOSM.Task.Status == UniTaskStatus.Succeeded);
 
+        private static readonly List<Func<UniTask>> prepostInitializationTasks = new List<Func<UniTask>>();
         private static readonly List<Func<UniTask>> postInitializationTasks = new List<Func<UniTask>>();
+
+        public static void AddPrePostInitializationTask(Func<UniTask> task) => prepostInitializationTasks.Insert(0, task);
+        public static void RemovePrePostInitializationTask(Func<UniTask> task) => prepostInitializationTasks.Remove(task);
 
         public static void AddPostInitializationTask(Func<UniTask> task) => postInitializationTasks.Insert(0, task);
         public static void RemovePostInitializationTask(Func<UniTask> task) => postInitializationTasks.Remove(task);
@@ -51,6 +55,13 @@ namespace olimsko
             OSManager.m_ListEntity.Clear();
             OSManager.m_ListEntity.AddRange(entities);
 
+            for (int i = prepostInitializationTasks.Count - 1; i >= 0; i--)
+            {
+                OnInitializationProgress?.Invoke(.75f + .25f * (1 - i / (float)prepostInitializationTasks.Count));
+                await prepostInitializationTasks[i]();
+                if (!IsInitializing) return;
+            }
+
             for (int i = postInitializationTasks.Count - 1; i >= 0; i--)
             {
                 OnInitializationProgress?.Invoke(.75f + .25f * (1 - i / (float)postInitializationTasks.Count));
@@ -59,6 +70,7 @@ namespace olimsko
             }
 
             m_InitializeOSM?.TrySetResult();
+            Debug.Log("OSManager Initialized Done.");
             OnInitializeComplete?.Invoke();
         }
 
