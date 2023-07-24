@@ -102,39 +102,45 @@ public class Spawner : MonoBehaviour
     {
         monsterIndex = index - 1;
         int randPointIndex = Random.Range(1, spawnPoint.Length);
+        GameObject boss = null;
         switch (monsterIndex)
         {
             case 9:
                 GameObject silmeBoss = Instantiate(bossPrefab[0], GameManager.instance.pool.transform);
-                silmeBoss.transform.parent = GameManager.instance.pool.transform;
-                silmeBoss.transform.position = spawnPoint[randPointIndex].position;
-                silmeBoss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                boss = silmeBoss;
                 break;
             case 10:
                 GameObject golemBoss = Instantiate(bossPrefab[1], GameManager.instance.pool.transform);
-                golemBoss.transform.parent = GameManager.instance.pool.transform;
-                golemBoss.transform.position = spawnPoint[randPointIndex].position;
-                golemBoss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                boss = golemBoss;
                 break;
             case 11:
                 GameObject goblinMage = Instantiate(bossPrefab[2], GameManager.instance.pool.transform);
-                goblinMage.transform.parent = GameManager.instance.pool.transform;
-                goblinMage.transform.position = spawnPoint[randPointIndex].position;
-                goblinMage.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                boss = goblinMage;
                 break;
             case 12:
                 GameObject goblinKing = Instantiate(bossPrefab[3], GameManager.instance.pool.transform);
-                goblinKing.transform.parent = GameManager.instance.pool.transform;
-                goblinKing.transform.position = spawnPoint[randPointIndex].position;
-                goblinKing.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                boss = goblinKing;
                 break;
             case 16:
                 GameObject giantEnt = Instantiate(bossPrefab[4], GameManager.instance.pool.transform);
-                giantEnt.transform.parent = GameManager.instance.pool.transform;
-                giantEnt.transform.position = spawnPoint[randPointIndex].position;
-                giantEnt.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+                boss = giantEnt;
+                break;
+            case 17:
+                GameObject basilisk = Instantiate(bossPrefab[5], GameManager.instance.pool.transform);
+                boss = basilisk;
+                break;
+            case 18:
+                GameObject twinHeadOgre = Instantiate(bossPrefab[6], GameManager.instance.pool.transform);
+                boss = twinHeadOgre;
+                break;
+            case 19:
+                GameObject medusa = Instantiate(bossPrefab[7], GameManager.instance.pool.transform);
+                boss = medusa;
                 break;
         }
+        boss.transform.parent = GameManager.instance.pool.transform;
+        boss.transform.position = spawnPoint[randPointIndex].position;
+        boss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
     }
     // 일반 몬스터
     Enemy CreateEnemy()

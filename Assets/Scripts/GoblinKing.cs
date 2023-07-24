@@ -254,7 +254,7 @@ public class GoblinKing : Enemy
         bullet.gameObject.SetActive(true);
         EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
         bulletScript.duration = time;
-        bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical);
+        bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical, true);
     }
     IEnumerator BossPowerFire()
     {
@@ -265,7 +265,7 @@ public class GoblinKing : Enemy
             bullet.gameObject.SetActive(true);
             EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
             bulletScript.duration = time;
-            bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical);
+            bulletScript.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 100, isCritical, true);
             yield return new WaitForSeconds(time);
             bullet.gameObject.SetActive(false);
         }

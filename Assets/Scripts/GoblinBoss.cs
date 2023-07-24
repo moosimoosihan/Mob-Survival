@@ -148,7 +148,7 @@ public class GoblinBoss : Enemy
                 _bullet.transform.parent = GameManager.instance.pool.transform;
                 EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
                 bulletLogic.duration = 5f;
-                bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
+                bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical, true);
                 _bullet.transform.position = transform.position;
                 Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
                 Vector2 dirVec = nearestTarget.transform.position - transform.position;
@@ -186,7 +186,7 @@ public class GoblinBoss : Enemy
                     EnemyBullet _bullet = bulletPool.Get();
                     _bullet.transform.parent = GameManager.instance.pool.transform;
                     EnemyBullet bulletLogic = _bullet.GetComponent<EnemyBullet>();
-                    bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical);
+                    bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 1, isCritical, true);
                     _bullet.transform.position = transform.position;
                     _bullet.transform.rotation = Quaternion.identity;
 

@@ -10,9 +10,9 @@ public class GiantEntBullet : EnemyBullet
     {
         hitEffectPool = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
     }
-    public override void Init(float _damage, int _per, bool _isCritical)
+    public override void Init(float _damage, int _per, bool _isCritical, bool _bossBullet, bool _deActivate = true)
     {
-        base.Init(_damage, _per, _isCritical);
+        base.Init(_damage, _per, _isCritical, _bossBullet, _deActivate);
     }
     protected override void OnTriggerEnter2D(Collider2D other)
     {

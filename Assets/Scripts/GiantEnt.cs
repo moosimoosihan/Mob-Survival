@@ -157,7 +157,7 @@ public class GiantEnt : Enemy
             bullet.transform.position = targetPos;
             EnemyBullet bulletLogic = bullet.GetComponent<EnemyBullet>();
             bulletLogic.duration = 1f;
-            bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 5, isCritical);
+            bulletLogic.Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), 5, isCritical, true);
             
             yield return new WaitForSeconds(0.8f);
 

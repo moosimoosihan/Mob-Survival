@@ -257,6 +257,10 @@ public class Enemy : CharacterStatus
                 break;
             case 18:
                 // 트윈헤드오우거
+                (coll as CapsuleCollider2D).offset = new Vector2(0,0.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(2.5f,5.5f);
+                scale = 2f;
+                position = new Vector2(0,-2);
                 break;
             case 19:
                 // 메두사

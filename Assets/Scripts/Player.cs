@@ -270,7 +270,7 @@ public class Player : CharacterStatus
             collider2D.enabled = false;
         }
     }
-    IEnumerator DamageDelay()
+    public IEnumerator DamageDelay()
     {
         yield return new WaitForSeconds(damageDelay);
         isDamaged = false;
