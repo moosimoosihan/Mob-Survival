@@ -28,7 +28,7 @@ public class Player : CharacterStatus
     [SerializeField]
     public bool inputEnabled;
     public new Collider2D collider2D;
-    Transform childTransform;
+    public Transform childTransform;
     public Transform weaponTransform;
     [Header("플레이어 스탯 설정")]
     public int def;

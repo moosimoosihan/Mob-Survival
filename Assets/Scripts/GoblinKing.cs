@@ -283,4 +283,9 @@ public class GoblinKing : Enemy
     {
         gameObject.SetActive(false);
     }
+    protected override void BossPowerUp(){
+        if(curHP <= maxHP/2 && !bossPowerUp){
+            bossPowerUp = true;
+        }
+    }
 }

@@ -74,7 +74,6 @@ public class GameManager : MonoBehaviour
     void CharacterInit()
     {
         // 플레이어 선택 화면에서 선택한 캐릭터 정보 가져오기
-        // StageContext.ListSelectedHero <= 리스트
         players = new Player[StageContext.ListSelectedHero.Count];
         for(int i=0;i<StageContext.ListSelectedHero.Count;i++){
             Player player = Instantiate(playerPrefs[StageContext.ListSelectedHero[i]]).GetComponent<Player>();
@@ -86,19 +85,6 @@ public class GameManager : MonoBehaviour
             playerUI[i].GetComponentsInChildren<Image>()[3].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
             playerUI[i].GetComponentsInChildren<Image>()[4].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
         }
-        // 임시로 플레이어 스탯 부여
-        // for(int i=0;i<players.Length;i++){
-        //     // 캐릭터 선택 화면에서 선택한 캐릭터에 맞는 스탯 부여
-        //     if(i==3){
-        //         players[i].Init(CharacterData[0]);
-        //     } else if(i==1){
-        //         players[i].Init(CharacterData[1]);
-        //     } else if(i==0){
-        //         players[i].Init(CharacterData[2]);
-        //     } else if(i==2){
-        //         players[i].Init(CharacterData[3]);
-        //     }
-        // }
     }
     
     void Start()

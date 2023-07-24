@@ -237,11 +237,32 @@ public class Enemy : CharacterStatus
                 position = new Vector2(0,-1);
             break;
             case 13:
+                // 코브라
+                break;
+            case 14:
+                // 아머고블린
+                break;
+            case 15:
+                // 돌연변이 슬라임
+                break;
+            case 16:
                 // 자이언트 나무
                 (coll as CapsuleCollider2D).offset = new Vector2(0,1.5f);
                 (coll as CapsuleCollider2D).size = new Vector2(5.5f,7);
                 scale = 2f;
                 position = new Vector2(0,-2);
+                break;
+            case 17:
+                // 바실리스크
+                break;
+            case 18:
+                // 트윈헤드오우거
+                break;
+            case 19:
+                // 메두사
+                (coll as CapsuleCollider2D).size = new Vector2(3,5.5f);
+                scale = 3f;
+                position = new Vector2(0,-3);
                 break;
         }
         skeletonAnimation.gameObject.transform.localPosition = position;
@@ -307,10 +328,13 @@ public class Enemy : CharacterStatus
             //에니메이션에 Dead를 넣는 대신 바로 호출
             Dead();
         }
-
+        BossPowerUp();
         return true;
     }
+    protected virtual void BossPowerUp()
+    {
 
+    }
     IEnumerator KnockBack(float knockBackPower)
     {
 
