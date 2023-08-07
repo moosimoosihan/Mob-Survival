@@ -61,7 +61,7 @@ public class Enemy : CharacterStatus
             if (fireTime >= 1)
             {
                 fireTime = 0;
-                GetDamage(curFireDamage, 0, false);
+                GetDamage(curFireDamage, 0, false, true);
             }
         }
     }
@@ -154,6 +154,12 @@ public class Enemy : CharacterStatus
         maxHP = data.HP * power;
         curHP = maxHP;
         attackDamage = data.Attack * power;
+
+        // 추가되어야 할 부분
+        // def = data.Def;
+        // evasion = data.Evasion;
+        // heal = data.Heal;
+
         (coll as CapsuleCollider2D).size = new Vector2(1.8f,1.8f);
         (coll as CapsuleCollider2D).offset = Vector2.zero;
         //spriter.sprite = data.sprite;
@@ -275,16 +281,76 @@ public class Enemy : CharacterStatus
         CreateFollowingHpBar();
     }
 
-    public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical)
+    public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical, bool trueDamage = false)
     {
-        if (curHP <= 0)
+        if (curHP <= 0 || !GameManager.instance.isPlay)
             return false;
 
         //데미지 구현 구간
-        if (_damage > 0)
-            DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
+        double dam = 0;
+        if (_damage > 0 && !trueDamage)
+        {
+            dam = _damage / (1 + def * 0.01);
+            // 회피
+            float ran = Random.Range(0, 100);
+            if (evasion * 100 > ran)
+            {
+                //회피 성공
+                DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
+                return false;
+            }
 
-        curHP -= _damage;
+            //보호막이 있을 경우 보호막이 먼저 깎인다.
+            if (curShield > 0)
+            {
+                if (curShield > _damage)
+                {
+                    curShield -= _damage;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
+                    return false;
+                }
+                else if (curShield == _damage)
+                {
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
+                    curShield = 0;
+                    if (curShield <= 0)
+                    {
+                        if (isShield)
+                        {
+                            StopCoroutine(ShieldOn());
+                            isShield = false;
+                            shieldCurTime = 0;
+                        }
+                    }
+                    return false;
+                }
+                else
+                {
+                    float tempDamage = _damage - curShield;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)curShield, gameObject, _isCritical, false);
+                    tempDamage = (float)(tempDamage / (1 + def * 0.01));
+                    dam = tempDamage;
+                    curShield = 0;
+                    if (curShield <= 0)
+                    {
+                        if (isShield)
+                        {
+                            StopCoroutine(ShieldOn());
+                            isShield = false;
+                            shieldCurTime = 0;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            // 회복의 경우
+            dam = _damage * (1 + heal);
+        }
+
+        curHP -= System.Convert.ToSingle(dam);
+        DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, false);
 
         if (gameObject.activeSelf)
             StartCoroutine(KnockBack(knockBackPower));

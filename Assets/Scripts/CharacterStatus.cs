@@ -14,7 +14,9 @@ public class CharacterStatus : MonoBehaviour
     public float speed;
     public float critRate;
     public float critDamage = 2;
-    
+    public int def;
+    public float evasion;
+    public float heal;
 
     public float attackDamage;
 

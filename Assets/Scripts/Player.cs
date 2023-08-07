@@ -31,10 +31,7 @@ public class Player : CharacterStatus
     public Transform childTransform;
     public Transform weaponTransform;
     [Header("플레이어 스탯 설정")]
-    public int def;
-    public float heal;
     public float hpRegen;
-    public float evasion;
 
     public enum AnimationState
     {
