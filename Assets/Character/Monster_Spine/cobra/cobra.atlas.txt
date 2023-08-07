@@ -1,0 +1,15 @@
+cobra.png
+size:1237,712
+filter:Linear,Linear
+pma:true
+body_low
+bounds:2,455,1233,255
+body_up
+bounds:2,2,451,722
+rotate:90
+head
+bounds:726,157,296,194
+rotate:90
+jaw
+bounds:726,16,187,139
+offsets:2,0,189,139

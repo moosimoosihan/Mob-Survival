@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765898373622610531}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -3, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -182,8 +182,12 @@ MonoBehaviour:
   speed: 0
   critRate: 0
   critDamage: 2
+  def: 0
+  evasion: 0
+  heal: 0
   attackDamage: 0
   createFollowingHpBar: 1
+  resistance: 1
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -428,8 +432,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.5, y: 0}
-  m_Size: {x: 5, y: 5}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 6, y: 7}
   m_Direction: 0
 --- !u!50 &9178175653398265328
 Rigidbody2D:

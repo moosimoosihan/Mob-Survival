@@ -68,6 +68,9 @@ public class PlayerControl : MonoBehaviour
     }
     public void SelectPlayer2(InputAction.CallbackContext obj)
     {
+        if(GameManager.instance.players.Length < 2)
+            return;
+
         if(GameManager.instance.players.Length > 1 && GameManager.instance.isPlay){
             if(!GameManager.instance.players[1].playerDead){
                 chatNum=1;
@@ -79,6 +82,8 @@ public class PlayerControl : MonoBehaviour
     }
     public void SelectPlayer3(InputAction.CallbackContext obj)
     {
+        if(GameManager.instance.players.Length < 3)
+            return;
         if(GameManager.instance.players.Length > 1 && GameManager.instance.isPlay){
             if(!GameManager.instance.players[2].playerDead){
                 chatNum=2;
@@ -90,6 +95,9 @@ public class PlayerControl : MonoBehaviour
     }
     public void SelectPlayer4(InputAction.CallbackContext obj)
     {
+        if(GameManager.instance.players.Length < 4)
+            return;
+
         if(GameManager.instance.players.Length > 1 && GameManager.instance.isPlay){
             if(!GameManager.instance.players[3].playerDead){
                 chatNum=3;

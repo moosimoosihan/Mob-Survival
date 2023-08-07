@@ -1,0 +1,27 @@
+Bluefire Slime.png
+size:7166,4141
+filter:Linear,Linear
+pma:true
+body
+bounds:4804,170,1916,1580
+eye_1
+bounds:6722,582,166,319
+offsets:1,1,168,321
+eye_2
+bounds:6722,903,293,335
+offsets:1,1,295,337
+fire1
+bounds:2,2,2330,1955
+fire2
+bounds:2429,9,2373,1973
+fire3
+bounds:4901,1752,2387,2073
+rotate:90
+fire4
+bounds:2429,1984,2470,2155
+fire5
+bounds:2,1959,2425,2180
+mouth
+bounds:6722,1240,510,442
+offsets:1,1,512,444
+rotate:90

@@ -10,9 +10,12 @@ public class GoblinKing : Enemy
     public GameObject bulletArea;
     public GameObject bullet;
     WaitForFixedUpdate wait;
-    public float skillDelay = 20;
-    public float timer;
-
+    public float skill1Delay = 10;
+    public float skill2Delay = 20;
+    public float skill3Delay = 10;
+    public float skill1Timer;
+    public float skill2Timer;
+    public float skill3Timer;
     bool isAttack = false;
     bool isCheck = false;
     bool bossPowerUp;
@@ -40,12 +43,14 @@ public class GoblinKing : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         bulletArea = transform.GetChild(1).gameObject;
         bullet = transform.GetChild(2).gameObject;
-        skillDelay = 20;
         StartCoroutine(BossStateMachine());
     }
     protected override void FixedUpdate()
     {
-        timer += Time.fixedDeltaTime;
+        skill1Timer += Time.fixedDeltaTime;
+        skill2Timer += Time.fixedDeltaTime;
+        if(bossPowerUp)
+            skill3Timer += Time.fixedDeltaTime;
 
         base.FixedUpdate();
     }
@@ -125,14 +130,7 @@ public class GoblinKing : Enemy
                     yield return null;
                 }
             }
-            if (timer > skillDelay)
-            {
-                yield return bossState = BossState.Fire2;
-            }
-            else
-            {
-                yield return bossState = bossPowerUp ? BossState.Fire3 : BossState.Fire1;
-            }
+            yield return bossState = skill3Timer >= skill3Delay ? BossState.Fire3 : skill1Timer >= skill1Delay ? BossState.Fire1 : skill2Timer >= skill2Delay ? BossState.Fire2 : BossState.Check;
         }
         else
         {
@@ -157,6 +155,7 @@ public class GoblinKing : Enemy
             BulletFire();
 
             yield return new WaitForSeconds(2.683f);
+            skill1Timer = 0;
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
         }
@@ -171,7 +170,6 @@ public class GoblinKing : Enemy
         {
             // 아군 버프
             isAttack = true;
-            timer = 0;
             isCheck = false;
             yield return null;
 
@@ -180,6 +178,7 @@ public class GoblinKing : Enemy
             // 버프
             EnemyBuff();
             yield return new WaitForSeconds(0.8f);
+            skill2Timer = 0;
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
         }
@@ -207,6 +206,8 @@ public class GoblinKing : Enemy
             StartCoroutine(BossPowerFire());
 
             yield return new WaitForSeconds(2.683f);
+            skill3Timer = 0;
+            skill1Timer = 0;
             bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
         }
@@ -219,7 +220,7 @@ public class GoblinKing : Enemy
     IEnumerator Rest()
     {
         // 잠깐 가만히 서서 쉬는 타임
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         bossState = BossState.Check;
         isAttack = false;
     }
@@ -272,7 +273,7 @@ public class GoblinKing : Enemy
     }
     void EnemyBuff()
     {
-        // TODO: 모든 적군 버프 구현
+        // TODO: 모든 적군 10초 동안 버프 구현
     }
     protected override void Dead()
     {

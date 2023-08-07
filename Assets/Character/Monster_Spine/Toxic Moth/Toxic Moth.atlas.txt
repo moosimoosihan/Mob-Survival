@@ -1,0 +1,24 @@
+Toxic Moth.png
+size:1001,201
+filter:Linear,Linear
+pma:true
+L_feeler
+bounds:922,110,89,77
+rotate:90
+L_wing
+bounds:2,7,192,256
+rotate:90
+R_feeler
+bounds:794,3,62,97
+rotate:90
+R_wing
+bounds:260,41,158,211
+rotate:90
+body
+bounds:637,5,155,194
+face
+bounds:794,67,132,126
+rotate:90
+tail
+bounds:473,2,197,162
+rotate:90
