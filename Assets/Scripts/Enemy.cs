@@ -146,8 +146,6 @@ public class Enemy : CharacterStatus
     }
     public virtual void Init(MonsterTable data, float powerValue)
     {
-        //spriteType에 따른 모습 변경
-        //anim.runtimeAnimatorController = animCon[data.spriteType];
         character = data.Name;
         power = powerValue;
         speed = data.Speed;
@@ -155,14 +153,13 @@ public class Enemy : CharacterStatus
         curHP = maxHP;
         attackDamage = data.Attack * power;
 
-        // 추가되어야 할 부분
-        // def = data.Def;
-        // evasion = data.Evasion;
-        // heal = data.Heal;
+        def = data.Def;
+        evasion = data.Avoidance;
+        heal = data.HPRegen;
 
         (coll as CapsuleCollider2D).size = new Vector2(1.8f,1.8f);
         (coll as CapsuleCollider2D).offset = Vector2.zero;
-        //spriter.sprite = data.sprite;
+
         float scale = 1;
         Vector2 position = Vector2.zero;
         switch(data.Index){

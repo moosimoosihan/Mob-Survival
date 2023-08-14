@@ -12,6 +12,7 @@ public class UIIntroView : UIView
     protected override void Awake()
     {
         base.Awake();
+        AudioManager.Instance.Init();
     }
 
     protected override void OnShow()

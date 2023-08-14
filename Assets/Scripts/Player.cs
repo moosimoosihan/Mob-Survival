@@ -280,6 +280,7 @@ public class Player : CharacterStatus
         CreateFollowingHpBar();
         weaponTransform.gameObject.SetActive(true);
         gameObject.layer = 7;
-
+        
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Revive);
     }
 }

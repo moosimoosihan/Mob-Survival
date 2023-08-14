@@ -48,6 +48,9 @@ public class ArcherActiveSkill : ActiveSkill
         effect.transform.position = transform.position;
 
         player.critRate += 0.3f;
+
+        GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff1);
+
         buffTime = skillDuration;
         while(buffTime>0){
             buffTime -= 0.1f;
@@ -55,6 +58,9 @@ public class ArcherActiveSkill : ActiveSkill
         }
         buffTime = 0;
         player.critRate -= 0.3f;
+
+        buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
+
         effect.DestroyBuffEffect();
         isActivate = false;
     }

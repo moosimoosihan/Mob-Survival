@@ -14,7 +14,7 @@ public class CharacterStatus : MonoBehaviour
     public float speed;
     public float critRate;
     public float critDamage = 2;
-    public int def;
+    public float def;
     public float evasion;
     public float heal;
 
@@ -26,6 +26,8 @@ public class CharacterStatus : MonoBehaviour
     // 속도 저항
     public float resistance = 1;
 
+    // 버프 이펙트
+    public GameObject shielSfxPlayer;
     public void CreateFollowingHpBar()
     {
         if (createFollowingHpBar)
@@ -39,6 +41,9 @@ public class CharacterStatus : MonoBehaviour
         // 이펙트 생성해야 함
         HealthFollow followingSdBar = UISingletonManager.Instance.followingBarManager.CreateFollowingSdBar().GetComponent<HealthFollow>();
         followingSdBar.Init(this.gameObject);
+
+        shielSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Shield);
+
         shieldCurTime = shieldTime;
         while(shieldCurTime>0){
             shieldCurTime -= 0.1f;
@@ -47,6 +52,8 @@ public class CharacterStatus : MonoBehaviour
 
         shieldCurTime = 0;
         curShield = 0;
+
+        shielSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
         //이펙트 제거해야 함
         isShield = false;
     }

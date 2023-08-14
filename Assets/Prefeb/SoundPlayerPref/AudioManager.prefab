@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8087910649504204805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5292347092691210849}
+  - component: {fileID: 535722101426223265}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5292347092691210849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087910649504204805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &535722101426223265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087910649504204805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3e80e4a4acf047409185b017bd13121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loopSFXPrefab: {fileID: 3145159521065105537, guid: a3bf44bf414ee3b418ab037b19371737, type: 3}
+  bgmClip: []
+  sfxClip:
+  - {fileID: 8300000, guid: 2dc9e0b6651c73b43a47d564458d7c7b, type: 3}
+  - {fileID: 8300000, guid: cd6d92f498664da4b851a4739747d0eb, type: 3}
+  - {fileID: 8300000, guid: 5308554b6a30d6d42a9c5e14243cc053, type: 3}
+  - {fileID: 8300000, guid: 72986e1f10d0b4c4587869944d8f79b4, type: 3}
+  - {fileID: 8300000, guid: 6a24b70b0560ee64e8049863d4ec66d9, type: 3}
+  - {fileID: 8300000, guid: ef30c610b4468384ab73f67799a05191, type: 3}
+  - {fileID: 8300000, guid: 8320a8670f9314948847ab6fb724c32b, type: 3}
+  - {fileID: 8300000, guid: 8767d581974bf344aabb1d4245d9f282, type: 3}
+  - {fileID: 8300000, guid: 425dac8a2bcb2234ea15757aae6969e6, type: 3}
+  - {fileID: 8300000, guid: cffbbb279a57a7f47950ff874e3738ea, type: 3}
+  - {fileID: 8300000, guid: 4c4ac6dc18c61e34aafd49a5996683bd, type: 3}
+  - {fileID: 8300000, guid: 82e2815b0cd245b41bcf8fe102355c6c, type: 3}
+  - {fileID: 8300000, guid: 1f50924d191457e4f98cb7ee0eab8b6b, type: 3}
+  - {fileID: 8300000, guid: da5243339f6aec1499a7e6b76f5450e6, type: 3}
+  loopSfxClip:
+  - {fileID: 8300000, guid: 6701e00aea40d694c805d30dfe90da76, type: 3}
+  - {fileID: 8300000, guid: 40ddb0e069c8bd54f9d04aa90ddebba6, type: 3}
+  - {fileID: 8300000, guid: 4223e1e29f190484686047881ef3f9fc, type: 3}
+  - {fileID: 8300000, guid: 4a3324185751e2943bfa93e088cfd43e, type: 3}
+  - {fileID: 8300000, guid: 56f3bce6e9c53a941b6aea731743788f, type: 3}
+  bgmVolume: 1
+  sfxVolume: 1
+  uiSfxVolume: 1

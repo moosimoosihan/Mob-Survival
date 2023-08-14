@@ -28,5 +28,7 @@ public class BowWeapon : Weapon
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
         this.isCritical = isCritical;
+
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);
     }
 }

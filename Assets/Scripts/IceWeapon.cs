@@ -33,6 +33,7 @@ public class IceWeapon : Weapon
         bullet.GetComponent<IceBullet>().speed = bulletSpeed;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
         
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Wizard_Attack);
     }
 
 }

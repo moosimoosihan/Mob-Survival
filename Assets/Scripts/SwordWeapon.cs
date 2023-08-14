@@ -25,6 +25,8 @@ public class SwordWeapon : MeleeWeapon
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
 
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Worrior_Attack);
+
         if (warriorFire)
         {
             bullet.GetComponent<FireSword>().warriorFire = true;

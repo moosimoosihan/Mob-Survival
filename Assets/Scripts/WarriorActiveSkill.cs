@@ -81,6 +81,8 @@ public class WarriorActiveSkill : ActiveSkill
         bulletScript.throwBullet = true;
         bulletScript.Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), 0, dir, knockBackPower, bulletDuration, isCritical);
 
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Worrior_FireStrike);
+
         if(warriorFire){
             bulletScript.warriorFire = true;
             bulletScript.warriorFireDamge = warriorFireDamge;
