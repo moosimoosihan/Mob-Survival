@@ -57,6 +57,7 @@ public class IceActiveSkill : ActiveSkill
     void Skill(Vector2 vec){
         // 해당 마우스 지점에 블리자드 생성
         Transform bullet = poolBullet.Get().transform;
+        bullet.parent = GameManager.instance.pool.transform;
         bullet.position = vec;
         bullet.GetComponent<Bullet>().Init(damage, -1, 0, skillDuration, false, true);
     }

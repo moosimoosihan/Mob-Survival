@@ -15,12 +15,17 @@ public class AudioManager : Singleton<AudioManager>
     public float sfxVolume = 1;
     public float uiSfxVolume = 1;
 
+    public AudioSource sfxPlayer;
+    public AudioSource bgmPlayer;
+
     public enum Sfx { Archer_Attack, Healer_Attack, Revive, Worrior_FireStrike, Worrior_Attack, Wizard_Attack }
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
     
     public void Init()
     {
         _Pool = new ObjectPool<LoopSFXPlayer>(CreateLoopSfxPlayer, OnGetLoopSfxPlayer, OnReleaseLoopSfxPlayer, OnDestroyLoopSfxPlayer);
+        bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
+        sfxPlayer = GetComponentsInChildren<AudioSource>()[1];
     }
     public void SfxPlay(Sfx type)
     {
@@ -45,7 +50,7 @@ public class AudioManager : Singleton<AudioManager>
                 playNum = Random.Range(11, 14);
                 break;
         }
-        AudioSource.PlayClipAtPoint(sfxClip[playNum], GameManager.instance.pool.transform.position, sfxVolume);
+        sfxPlayer.PlayOneShot(sfxClip[playNum], sfxVolume / 2);
     }
     public GameObject LoopSfxPlay(LoopSfx type)
     {
@@ -71,7 +76,7 @@ public class AudioManager : Singleton<AudioManager>
         loopSfxPlayer.transform.parent = GameManager.instance.pool.transform;
         AudioSource loopPlayer = loopSfxPlayer.GetComponent<AudioSource>();
         loopPlayer.clip = loopSfxClip[playNum];
-        loopPlayer.volume = sfxVolume / 2;
+        loopPlayer.volume = sfxVolume / 10; // 너무 크다
         loopPlayer.loop = true;
         loopPlayer.Play();
         return loopSfxPlayer.gameObject;

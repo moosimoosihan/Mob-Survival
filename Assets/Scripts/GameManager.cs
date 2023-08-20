@@ -170,8 +170,9 @@ public class GameManager : MonoBehaviour
             Stop();
         }
     }
+    // 리플레이 혹은 메인화면으로 돌아갈 시 singleton 초기화 해야함
     public void Replay(){
-        Time.timeScale = 1;
+        Pause();
         SceneManager.LoadScene("main");
     }
     public void GameExit(){
