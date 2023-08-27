@@ -350,6 +350,7 @@ public class Enemy : CharacterStatus
 
         if (curHP > 0)
         {
+            HitSound();
             //anim.SetTrigger("Hit");
         }
         else
@@ -417,6 +418,7 @@ public class Enemy : CharacterStatus
     protected virtual void Dead()
     {
         //gameObject.SetActive(false);
+        DieSound();
         StopCoroutine("WarriorFireOn");
         CancelInvoke("FindClosestObject");
         DestroyEnemy();
@@ -508,5 +510,83 @@ public class Enemy : CharacterStatus
     void OnDestroyEffect(BuffEffect buffEffect)
     {
         Destroy(buffEffect.gameObject);
+    }
+    void HitSound()
+    {
+        switch(character)
+        {
+            case "나무":
+            case "자이언트 나무":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Hit);
+                break;
+            case "고블린":
+            case "고블린 메이지":
+            case "고블린 킹":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Goblin_Hit);
+                break;
+            case "모기":
+            case "독 모기":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_Hit);
+                break;
+            case "슬라임":
+            case "빨간 슬라임":
+            case "파란 슬라임":
+            case "자이언트 슬라임":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Hit);
+                break;
+            case "뱀":
+            case "코브라":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Snake_Hit);
+                break;
+            case "두꺼비":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_Hit);
+                break;
+        }
+    }
+    void DieSound()
+    {
+        switch(character)
+        {
+            case "나무":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Yellow_Die);
+                break;
+            case "자이언트 나무":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Red_Die);
+                break;
+            case "고블린":
+            case "고블린 메이지":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Goblin_Die);
+                break;
+            case "고블린 킹":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Goblin_Armed_Die);
+                break;
+            case "모기":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_1_Die);
+                break;
+            case "독 모기":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_2_Die);
+                break;
+            case "슬라임":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Poison_Die);
+                break;
+            case "빨간 슬라임":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Fire_Die);
+                break;
+            case "파란 슬라임":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Water_Die);
+                break;
+            case "자이언트 슬라임":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Poison_Die);
+                break;
+            case "뱀":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Snake_Die);
+                break;
+            case "코브라":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Cobra_Die);
+                break;
+            case "두꺼비":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_Die);
+                break;
+        }
     }
 }
