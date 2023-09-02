@@ -548,10 +548,10 @@ public class Enemy : CharacterStatus
         switch(character)
         {
             case "나무":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Yellow_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Die);
                 break;
             case "자이언트 나무":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Red_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Dark_Die);
                 break;
             case "고블린":
             case "고블린 메이지":
@@ -561,31 +561,31 @@ public class Enemy : CharacterStatus
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Goblin_Armed_Die);
                 break;
             case "모기":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_1_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_RedMoth_Die);
                 break;
             case "독 모기":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_2_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Moth_Poison_Die);
                 break;
             case "슬라임":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Poison_Die);
                 break;
             case "빨간 슬라임":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Fire_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Red_Die);
                 break;
             case "파란 슬라임":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Water_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Blue_Die);
                 break;
             case "자이언트 슬라임":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Poison_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Slime_Mutated_Die);
                 break;
             case "뱀":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Snake_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Snake_RedSnake_Die);
                 break;
             case "코브라":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Cobra_Die);
                 break;
             case "두꺼비":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_Die);
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_PurpleToad_Die);
                 break;
         }
     }

@@ -25,24 +25,25 @@ public class AudioManager : Singleton<AudioManager>
         Worrior_Attack,
         Wizard_Attack,
         Ent_Hit,
-        Ent_Red_Die,
-        Ent_Yellow_Die,
+        Ent_Dark_Die,
+        Ent_Die,
         Goblin_Hit,
         Goblin_Armed_Die,
         Goblin_Die,
         Moth_Hit,
-        Moth_1_Die,
-        Moth_2_Die,
+        Moth_RedMoth_Die,
+        Moth_Poison_Die,
         Slime_Hit,
-        Slime_Blue_Fire_Die,
-        Slime_Fire_Die,
+        Slime_Blue_Die,
+        Slime_Mutated_Die,
+        Slime_Red_Die,
+        Slime_BlueFire_Die,
         Slime_Poison_Die,
-        Slime_Water_Die,
         Snake_Hit,
-        Snake_Die,
+        Snake_RedSnake_Die,
         Cobra_Die,
         Toad_Hit,
-        Toad_Die,
+        Toad_PurpleToad_Die,
         }
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
     
@@ -77,10 +78,10 @@ public class AudioManager : Singleton<AudioManager>
             case Sfx.Ent_Hit:
                 playNum = 14;
                 break;
-            case Sfx.Ent_Red_Die:
+            case Sfx.Ent_Dark_Die:
                 playNum = 15;
                 break;
-            case Sfx.Ent_Yellow_Die:
+            case Sfx.Ent_Die:
                 playNum = 16;
                 break;
             case Sfx.Goblin_Hit:
@@ -95,41 +96,44 @@ public class AudioManager : Singleton<AudioManager>
             case Sfx.Moth_Hit:
                 playNum = 20;
                 break;
-            case Sfx.Moth_1_Die:    
+            case Sfx.Moth_RedMoth_Die:    
                 playNum = 21;
                 break;
-            case Sfx.Moth_2_Die:
+            case Sfx.Moth_Poison_Die:
                 playNum = 22;
                 break;
             case Sfx.Slime_Hit:
                 playNum = 23;
                 break;
-            case Sfx.Slime_Blue_Fire_Die:
+            case Sfx.Slime_Blue_Die:
                 playNum = 24;
                 break;
-            case Sfx.Slime_Fire_Die:
+            case Sfx.Slime_BlueFire_Die:
                 playNum = 25;
                 break;
-            case Sfx.Slime_Poison_Die:
+            case Sfx.Slime_Mutated_Die:
                 playNum = 26;
                 break;
-            case Sfx.Slime_Water_Die:
+            case Sfx.Slime_Poison_Die:
                 playNum = 27;
                 break;
-            case Sfx.Snake_Hit:
+            case Sfx.Slime_Red_Die:
                 playNum = 28;
                 break;
-            case Sfx.Snake_Die:
+            case Sfx.Snake_Hit:
                 playNum = 29;
                 break;
-            case Sfx.Cobra_Die:
+            case Sfx.Snake_RedSnake_Die:
                 playNum = 30;
                 break;
-            case Sfx.Toad_Hit:
+            case Sfx.Cobra_Die:
                 playNum = 31;
                 break;
-            case Sfx.Toad_Die:
+            case Sfx.Toad_Hit:
                 playNum = 32;
+                break;
+            case Sfx.Toad_PurpleToad_Die:
+                playNum = 33;
                 break;
         }
         sfxPlayer.PlayOneShot(sfxClip[playNum], sfxVolume / 2);
