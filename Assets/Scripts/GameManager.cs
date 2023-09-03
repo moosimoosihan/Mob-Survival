@@ -81,9 +81,9 @@ public class GameManager : MonoBehaviour
             players[i] = player;
             players[i].Init(CharacterData[StageContext.ListSelectedHero[i]]);
             playerUI[i].SetActive(true);
-            playerUI[i].GetComponentsInChildren<Image>()[0].sprite = playerSptrite[StageContext.ListSelectedHero[i]];
-            playerUI[i].GetComponentsInChildren<Image>()[3].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
-            playerUI[i].GetComponentsInChildren<Image>()[4].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
+            playerUI[i].GetComponentsInChildren<Image>()[2].sprite = playerSptrite[StageContext.ListSelectedHero[i]];
+            playerUI[i].GetComponentsInChildren<Image>()[6].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
+            playerUI[i].GetComponentsInChildren<Image>()[7].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
         }
     }
     

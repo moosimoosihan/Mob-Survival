@@ -2,13 +2,14 @@ using UnityEngine;
 using Cinemachine;
 using olimsko;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+
 public class PlayerControl : MonoBehaviour
 {
     public CinemachineVirtualCamera cinevirtual;
     public GameObject mainCharacter;
     public RectTransform selectP;
-    public RectTransform[] playerRectTransforms;
-
+    public Sprite[] sprites;
     public int chatNum = 0;
 
     // 특정 버튼으로 플레이어 교체
@@ -47,12 +48,6 @@ public class PlayerControl : MonoBehaviour
         OSManager.GetService<InputManager>().GetAction("ChangeCharacterNext").Disable();
         OSManager.GetService<InputManager>().GetAction("ChangeCharacterPrev").performed -= BackPlayer;
         OSManager.GetService<InputManager>().GetAction("ChangeCharacterPrev").Disable();
-    }
-    
-    void Update()
-    {        
-        // 다른곳으로 빼고싶은데 처음 초기화시 이상한 곳으로 가는 현상이 있음! ㅠㅠ
-        selectP.position = playerRectTransforms[chatNum].position;
     }
 
     public void SelectPlayer1(InputAction.CallbackContext obj)
@@ -155,10 +150,12 @@ public class PlayerControl : MonoBehaviour
         for(int i = 0;i<GameManager.instance.players.Length;i++){
             if(GameManager.instance.players[i].gameObject == conPlayer){
                 GameManager.instance.players[i].inputEnabled = true;
+                GameManager.instance.playerUI[i].GetComponentsInChildren<Image>()[0].sprite = sprites[1];
                 for(int j = 0;j<GameManager.instance.players.Length;j++){
                     GameManager.instance.players[j].GetComponent<CharacterAI>().mainCharacter = mainCharacter;
                 }
             } else {
+                GameManager.instance.playerUI[i].GetComponentsInChildren<Image>()[0].sprite = sprites[0];
                 GameManager.instance.players[i].inputEnabled = false;
             }
         }
