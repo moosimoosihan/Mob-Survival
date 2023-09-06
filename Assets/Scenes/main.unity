@@ -503,6 +503,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5128328146061272334, guid: 7f1f0ce4b72783e4e9b9dfeb734350e4, type: 3}
+      propertyPath: character
+      value: "\uBC14\uC2E4\uB9AC\uC2A4\uD06C"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128328146061272334, guid: 7f1f0ce4b72783e4e9b9dfeb734350e4, type: 3}
       propertyPath: attackDelay
       value: 1
       objectReference: {fileID: 0}
@@ -1666,6 +1670,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1095695317898704558, guid: 9aed839504dec8142bca91cfcffcc399, type: 3}
+      propertyPath: character
+      value: "\uACE0\uBE14\uB9B0 \uBA54\uC774\uC9C0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1095695317898704558, guid: 9aed839504dec8142bca91cfcffcc399, type: 3}
       propertyPath: attackDelay
       value: 1
       objectReference: {fileID: 0}
@@ -2522,6 +2530,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3480322636745041809, guid: efc45ce57ce705f4f8cc73633210c477, type: 3}
+      propertyPath: character
+      value: "\uC790\uC774\uC5B8\uD2B8 \uB098\uBB34"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3480322636745041809, guid: efc45ce57ce705f4f8cc73633210c477, type: 3}
       propertyPath: attackDelay
       value: 1
       objectReference: {fileID: 0}
@@ -3325,6 +3337,10 @@ PrefabInstance:
     - target: {fileID: 6626065446006396644, guid: 3447158be8b304e6294f267d40dc177b, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626065446006396644, guid: 3447158be8b304e6294f267d40dc177b, type: 3}
+      propertyPath: character
+      value: "\uBA54\uB450"
       objectReference: {fileID: 0}
     - target: {fileID: 6626065446006396644, guid: 3447158be8b304e6294f267d40dc177b, type: 3}
       propertyPath: attackDelay
@@ -10424,6 +10440,10 @@ PrefabInstance:
     - target: {fileID: 9178175653398265333, guid: 113e595bc5b5718438fa69ffe0f3d8d2, type: 3}
       propertyPath: maxHP
       value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 9178175653398265333, guid: 113e595bc5b5718438fa69ffe0f3d8d2, type: 3}
+      propertyPath: character
+      value: "\uC790\uC774\uC5B8\uD2B8 \uC2AC\uB77C\uC784"
       objectReference: {fileID: 0}
     - target: {fileID: 9178175653398265333, guid: 113e595bc5b5718438fa69ffe0f3d8d2, type: 3}
       propertyPath: attackDamage
@@ -26012,6 +26032,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6781764253091396935, guid: c998e2000b02e0741ad1c55885782ca2, type: 3}
+      propertyPath: character
+      value: "\uACE8\uB818"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6781764253091396935, guid: c998e2000b02e0741ad1c55885782ca2, type: 3}
       propertyPath: attackDelay
       value: 1
       objectReference: {fileID: 0}
@@ -27485,6 +27509,10 @@ PrefabInstance:
     - target: {fileID: 8876195051394013535, guid: 8a5f81061bfb6e944a55d9f56d08930e, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8876195051394013535, guid: 8a5f81061bfb6e944a55d9f56d08930e, type: 3}
+      propertyPath: character
+      value: "\uD2B8\uC708\uD5E4\uB4DC\uC624\uC6B0\uAC70"
       objectReference: {fileID: 0}
     - target: {fileID: 8876195051394013535, guid: 8a5f81061bfb6e944a55d9f56d08930e, type: 3}
       propertyPath: bulletSpeed
@@ -29187,6 +29215,10 @@ PrefabInstance:
     - target: {fileID: 3661658936295366213, guid: 1b7c30e8d77d9814095be8172a7e4ad1, type: 3}
       propertyPath: speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3661658936295366213, guid: 1b7c30e8d77d9814095be8172a7e4ad1, type: 3}
+      propertyPath: character
+      value: "\uACE0\uBE14\uB9B0 \uD0B9"
       objectReference: {fileID: 0}
     - target: {fileID: 3661658936295366213, guid: 1b7c30e8d77d9814095be8172a7e4ad1, type: 3}
       propertyPath: attackDelay

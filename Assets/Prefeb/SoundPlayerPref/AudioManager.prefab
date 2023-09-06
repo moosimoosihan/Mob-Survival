@@ -339,6 +339,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3e1fb2e0067bc094896606f34a15d79b, type: 3}
   - {fileID: 8300000, guid: 5fa25eca7487926499ce466074933002, type: 3}
   - {fileID: 8300000, guid: a6b9f894b73545247b591e0be0c60b4b, type: 3}
+  - {fileID: 8300000, guid: 77850b723a97d4248a2f6e2f4ba9033f, type: 3}
+  - {fileID: 8300000, guid: 2087425475c4994448a75787688a2c16, type: 3}
+  - {fileID: 8300000, guid: 7483cfd8e74d7b24cb63433503a828b5, type: 3}
+  - {fileID: 8300000, guid: 0197b2610df45d44d98b993ea412c14a, type: 3}
+  - {fileID: 8300000, guid: 6f274b317a007af439ea0f089457a2f7, type: 3}
+  - {fileID: 8300000, guid: f0ac78350991b044290d489a3d6b5ae8, type: 3}
+  - {fileID: 8300000, guid: 053dc443e7b237849b48c0632921354e, type: 3}
+  - {fileID: 8300000, guid: 4f207c8fc71a5834b9b981764af52d68, type: 3}
   loopSfxClip:
   - {fileID: 8300000, guid: 6701e00aea40d694c805d30dfe90da76, type: 3}
   - {fileID: 8300000, guid: 40ddb0e069c8bd54f9d04aa90ddebba6, type: 3}

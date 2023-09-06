@@ -516,7 +516,6 @@ public class Enemy : CharacterStatus
         switch(character)
         {
             case "나무":
-            case "자이언트 나무":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Hit);
                 break;
             case "고블린":
@@ -541,6 +540,18 @@ public class Enemy : CharacterStatus
             case "두꺼비":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_Hit);
                 break;
+            case "바실리스크":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Basilisk_Hit);
+                break;
+            case "자이언트 나무":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Giant_Ent_Hit);
+                break;
+            case "메두사":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Medusa_Hit);
+                break;
+            case "트윈헤드오우거":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Twin_Headed_Ogre_Hit);
+                break;
         }
     }
     void DieSound()
@@ -549,9 +560,6 @@ public class Enemy : CharacterStatus
         {
             case "나무":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Die);
-                break;
-            case "자이언트 나무":
-                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Dark_Die);
                 break;
             case "고블린":
             case "고블린 메이지":
@@ -586,6 +594,18 @@ public class Enemy : CharacterStatus
                 break;
             case "두꺼비":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Toad_PurpleToad_Die);
+                break;
+            case "바실리스크":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Basilisk_Die);
+                break;
+            case "자이언트 나무":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Giant_Ent_Die);
+                break;
+            case "메두사":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Medusa_Die);
+                break;
+            case "트윈헤드오우거":
+                AudioManager.Instance.SfxPlay(AudioManager.Sfx.Twin_Headed_Ogre_Die);
                 break;
         }
     }

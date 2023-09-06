@@ -44,6 +44,14 @@ public class AudioManager : Singleton<AudioManager>
         Cobra_Die,
         Toad_Hit,
         Toad_PurpleToad_Die,
+        Basilisk_Hit,
+        Basilisk_Die,
+        Giant_Ent_Hit,
+        Giant_Ent_Die,
+        Medusa_Hit,
+        Medusa_Die,
+        Twin_Headed_Ogre_Hit,
+        Twin_Headed_Ogre_Die,
         }
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
     
@@ -134,6 +142,30 @@ public class AudioManager : Singleton<AudioManager>
                 break;
             case Sfx.Toad_PurpleToad_Die:
                 playNum = 33;
+                break;
+            case Sfx.Basilisk_Hit:
+                playNum = 34;
+                break;
+            case Sfx.Basilisk_Die:
+                playNum = 35;
+                break;
+            case Sfx.Giant_Ent_Hit:
+                playNum = 36;
+                break;
+            case Sfx.Giant_Ent_Die:
+                playNum = 37;
+                break;
+            case Sfx.Medusa_Hit:
+                playNum = 38;
+                break;
+            case Sfx.Medusa_Die:
+                playNum = 39;
+                break;
+            case Sfx.Twin_Headed_Ogre_Hit:
+                playNum = 40;
+                break;
+            case Sfx.Twin_Headed_Ogre_Die:
+                playNum = 41;
                 break;
         }
         sfxPlayer.PlayOneShot(sfxClip[playNum], sfxVolume / 2);
