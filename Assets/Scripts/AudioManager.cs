@@ -54,12 +54,26 @@ public class AudioManager : Singleton<AudioManager>
         Twin_Headed_Ogre_Die,
         }
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
+
+    public enum ItemSfx { Coin, Exp }
     
     public void Init()
     {
         _Pool = new ObjectPool<LoopSFXPlayer>(CreateLoopSfxPlayer, OnGetLoopSfxPlayer, OnReleaseLoopSfxPlayer, OnDestroyLoopSfxPlayer);
         bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
         sfxPlayer = GetComponentsInChildren<AudioSource>()[1];
+    }
+    public void ItemSfxPlay(ItemSfx type){
+        int playNum = 0;
+        switch(type){
+            case ItemSfx.Coin:
+                playNum = 42;
+                break;
+            case ItemSfx.Exp:
+                playNum = 43;
+                break;
+        }
+        sfxPlayer.PlayOneShot(sfxClip[playNum], sfxVolume / 2);
     }
     public void SfxPlay(Sfx type)
     {

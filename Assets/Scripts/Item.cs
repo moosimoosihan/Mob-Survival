@@ -34,9 +34,11 @@ public class Item : MonoBehaviour
             switch(itemName){
                 case "Exp":
                     GameManager.instance.GetExp(count);
+                    AudioManager.Instance.ItemSfxPlay(AudioManager.ItemSfx.Exp);
                     break;
                 case "Gold":
                     GameManager.instance.GetGold(count);
+                    AudioManager.Instance.ItemSfxPlay(AudioManager.ItemSfx.Coin);
                     break;
                     case "Item":
                     // 아이템 별 구현
