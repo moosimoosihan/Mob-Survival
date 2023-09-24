@@ -35,7 +35,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20780848435200
-    m_Localized: After cancellation to the title screen
+    m_Localized: On the title screen after cancellation
     m_Metadata:
       m_Items: []
   - m_Id: 5886937845767
@@ -47,7 +47,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 20375573811201
-    m_Localized: Manipulation
+    m_Localized: Operation setting
     m_Metadata:
       m_Items: []
   - m_Id: 20375573811202
@@ -292,6 +292,26 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 5358733212700694
     m_Localized: Passive 3
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7864635157303296
+    m_Localized: Screen setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7864635211829248
+    m_Localized: Language setting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7864635211829249
+    m_Localized: Change the language.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7864635211829250
+    m_Localized: Screen mode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7864635211829251
+    m_Localized: resolution
     m_Metadata:
       m_Items: []
   references:

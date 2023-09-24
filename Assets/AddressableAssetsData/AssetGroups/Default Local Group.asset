@@ -37,6 +37,10 @@ MonoBehaviour:
     m_Address: UpgradeStone
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 64e072609f8124545abb598cb923424e
+    m_Address: InventoryItem
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f55702dda33b84b45ab2e3ef6dd44921, type: 2}
   m_SchemaSet:

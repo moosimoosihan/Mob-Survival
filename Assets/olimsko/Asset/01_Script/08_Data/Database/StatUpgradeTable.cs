@@ -2,7 +2,8 @@ using System;
 using UnityEngine;
 using olimsko;
 
-public enum StatType {
+public enum StatType
+{
     Damage,
     CritRate,
     CritDamage,
@@ -11,7 +12,7 @@ public enum StatType {
     Heal,
     HP,
     Def,
-    HPRigen,
+    HPRegen,
     Evasion,
     Vamp,
     MoveSpeed,

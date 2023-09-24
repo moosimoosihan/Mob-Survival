@@ -22,14 +22,14 @@
     "AudioSetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
       "$type": "AudioSetting, Assembly-CSharp",
       "Mute": false,
-      "MasterVolume": 0.76,
-      "BGMVolume": 0.75,
-      "EffectVolume": 0.429999977,
+      "MasterVolume": 1.0,
+      "BGMVolume": 1.0,
+      "EffectVolume": 1.0,
       "UIVolume": 1.0
     },
     "GamePlaySetting, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
       "$type": "GamePlaySetting, Assembly-CSharp",
-      "Language": "en"
+      "Language": 0
     }
   }
 }

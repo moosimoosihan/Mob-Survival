@@ -36,8 +36,20 @@ public class TestContext : ContextModel
 
         if (Input.GetKeyDown(KeyCode.Y))
         {
+            if (OSManager.GetService<UIManager>().GetUI<UIPauseView>()?.IsVisible == false)
+            {
+                OSManager.GetService<UIManager>().GetUI<UIPauseView>()?.Show();
+            }
+
             // Debug.Log(CharacterData[0].Name + " " + CharacterData[0].Desc + " " + CharacterData[0].AttackSpeed);
         }
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            OSManager.GetService<ContextManager>().GetContext<PlayerContext>().AddInventoryItem(Random.Range(0, 40));
+        }
+
+
     }
 }
 

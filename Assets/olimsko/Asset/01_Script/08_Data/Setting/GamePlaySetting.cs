@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class GamePlaySetting
 {
-    private string m_Language;
+    private int m_Language;
 
     public GamePlaySetting()
     {
-        Language = "en";
+        Language = 0;
         // Language = LocalizationSettings.SelectedLocale.Identifier.Code;
     }
 
-    public GamePlaySetting(string language)
+    public GamePlaySetting(int language)
     {
         Language = language;
     }
 
-    public string Language { get => m_Language; set => m_Language = value; }
+    public int Language { get => m_Language; set => m_Language = value; }
 }

@@ -20,7 +20,7 @@ MonoBehaviour:
   CustomInputSystem: {fileID: 8912292190782521156, guid: 966a80db202751d4285d68db80c68f81, type: 3}
   UseHideHotKey: 1
   HideHotKeyCode: 27
-  UINameWhenNoHotKeyList: 
+  UINameWhenNoHotKeyList: UIPauseView
   OverrideObjectLayer: 1
   ObjectLayer: 5
   MakeScriptWhenAddPrefab: 1
@@ -33,3 +33,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 8291332439410686179, guid: 6829ff686d58a7342a597c188c46ee22, type: 3}
   - m_Name: UICreditView
     m_Prefab: {fileID: 8291332439410686179, guid: 3bf512e0587947c41a2b3b89141acff7, type: 3}
+  - m_Name: UIPauseView
+    m_Prefab: {fileID: 8291332439410686179, guid: 998055cfe9ab83842bcb6d45616f5697, type: 3}
