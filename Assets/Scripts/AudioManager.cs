@@ -8,6 +8,7 @@ public class AudioManager : Singleton<AudioManager>
     public GameObject loopSFXPrefab;
 
     public AudioClip[] bgmClip;
+    public AudioClip[] ambClip;
     public AudioClip[] sfxClip;
     public AudioClip[] loopSfxClip;
 
@@ -17,6 +18,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public AudioSource sfxPlayer;
     public AudioSource bgmPlayer;
+    public AudioSource ambPlayer;
 
     public enum Sfx {
         Archer_Attack,
@@ -56,12 +58,14 @@ public class AudioManager : Singleton<AudioManager>
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
 
     public enum ItemSfx { Coin, Exp }
+    public enum Amb { Stage1, Stage2 }
     
     public void Init()
     {
         _Pool = new ObjectPool<LoopSFXPlayer>(CreateLoopSfxPlayer, OnGetLoopSfxPlayer, OnReleaseLoopSfxPlayer, OnDestroyLoopSfxPlayer);
         bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
-        sfxPlayer = GetComponentsInChildren<AudioSource>()[1];
+        ambPlayer = GetComponentsInChildren<AudioSource>()[1];
+        sfxPlayer = GetComponentsInChildren<AudioSource>()[2];
     }
     public void ItemSfxPlay(ItemSfx type){
         int playNum = 0;
@@ -74,6 +78,18 @@ public class AudioManager : Singleton<AudioManager>
                 break;
         }
         sfxPlayer.PlayOneShot(sfxClip[playNum], sfxVolume / 2);
+    }
+    public void AmbPlay(Amb amb){
+        int playNum = 0;
+        switch(amb){
+            case Amb.Stage1:
+                playNum = 0;
+                break;
+            case Amb.Stage2:
+                playNum = 1;
+                break;
+        }
+        ambPlayer.clip = ambClip[playNum];
     }
     public void SfxPlay(Sfx type)
     {
