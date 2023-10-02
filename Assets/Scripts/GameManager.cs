@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         }
         CharacterInit();
         uiLevelUp.Init();
+
+        AudioManager.Instance.AmbPlay(AudioManager.Amb.Stage1);
     }
     // asycn 필요함
     void CharacterInit()

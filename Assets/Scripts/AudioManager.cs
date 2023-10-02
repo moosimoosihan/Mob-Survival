@@ -58,7 +58,7 @@ public class AudioManager : Singleton<AudioManager>
     public enum LoopSfx { Archer_Buff1, Archer_Buff2, Shield, FireArmor, Wizard_IceAge }
 
     public enum ItemSfx { Coin, Exp }
-    public enum Amb { Stage1, Stage2 }
+    public enum Amb { Stage1, Stage2, Stage3 }
     
     public void Init()
     {
@@ -88,8 +88,14 @@ public class AudioManager : Singleton<AudioManager>
             case Amb.Stage2:
                 playNum = 1;
                 break;
+            case Amb.Stage3:
+                playNum = 2;
+                break;
         }
         ambPlayer.clip = ambClip[playNum];
+        ambPlayer.volume = bgmVolume / 5;
+        ambPlayer.loop = true;
+        ambPlayer.Play();
     }
     public void SfxPlay(Sfx type)
     {
