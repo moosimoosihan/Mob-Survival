@@ -1,0 +1,574 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23325de590df7eb48ab08f763f74668d, type: 3}
+  m_Name: SkillTableSO
+  m_EditorClassIdentifier: 
+  m_Key: 1hF4jQUISnZgkRmXNqXd3B-Z9pNYGdadM7de3OcqMKIw
+  m_SheetId: 1813780632
+  SkillTable:
+  - m_Idx: 0
+    m_CharacterID: 0
+    m_SkillID: 0
+    m_Name: "\uC219\uB828\uB41C \uBCA0\uAE30"
+    m_Desc: "\uBCA0\uAE30 \uC2A4\uD0AC RangeType\uC774 HalfCircle\uC5D0\uC11C Circle\uB85C
+      \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 100
+  - m_Idx: 1
+    m_CharacterID: 0
+    m_SkillID: 1
+    m_Name: "\uBC94\uC704\uC99D\uAC00 (\uBCA0\uAE30)"
+    m_Desc: "\uBCA0\uAE30 \uC2A4\uD0AC Range 200\uC73C\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 200
+    - 2.5
+  - m_Idx: 2
+    m_CharacterID: 0
+    m_SkillID: 2
+    m_Name: "\uD30C\uD2F0\uBC84\uD504 (\uC6A9\uC0AC)"
+    m_Desc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 \uC2A4\uD15F Damage/Active Damage 15%
+      \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 15
+    - 5.3
+  - m_Idx: 3
+    m_CharacterID: 0
+    m_SkillID: 3
+    m_Name: "\uD2BC\uD2BC\uD55C \uAC11\uC637"
+    m_Desc: "Damage Reduction 10% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 10
+  - m_Idx: 4
+    m_CharacterID: 0
+    m_SkillID: 4
+    m_Name: "\uD654\uC5FC \uAC11\uC637"
+    m_Desc: "\uD654\uC0C1\uC2A4\uD0AC Debuff Condition\uC5D0 \uC6A9\uC0AC \uD53C\uACA9\uC2DC
+      \uCD94\uAC00"
+    m_Type: 0
+    m_Value:
+    - 0.1
+  - m_Idx: 5
+    m_CharacterID: 0
+    m_SkillID: 5
+    m_Name: "\uD654\uC0C1 \uD53C\uD574 \uC99D\uAC00"
+    m_Desc: "\uC6A9\uC0AC\uAC00 \uC801 10\uB9C8\uB9AC \uCC98\uCE58\uC2DC \uD654\uC0C1\uC2A4\uD0AC
+      Debuff Value 0.1% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 2
+  - m_Idx: 6
+    m_CharacterID: 0
+    m_SkillID: 6
+    m_Name: "\uC219\uB828\uB41C \uC77C\uACA9"
+    m_Desc: "\uC6A9\uC0AC\uC758 \uC77C\uACA9 \uC2A4\uD0AC Projectile Type\uC774 QuarterCircle
+      \uC5D0\uC11C HalfCircle\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 600
+  - m_Idx: 7
+    m_CharacterID: 0
+    m_SkillID: 7
+    m_Name: "\uBC94\uC704 \uC99D\uAC00 (\uC77C\uACA9)"
+    m_Desc: "\uC6A9\uC0AC\uC758 \uC77C\uACA9 \uC2A4\uD0AC\uC758 Project Range 600\uC73C\uB85C\uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 1
+  - m_Idx: 8
+    m_CharacterID: 0
+    m_SkillID: 8
+    m_Name: "\uAEBC\uC9C0\uC9C0\uC54A\uB294 \uBD88\uAF43"
+    m_Desc: "\uD654\uC0C1 \uC2A4\uD0AC\uC758 Buff Time\uC774 200\uC73C\uB85C \uBC88\uACBD"
+    m_Type: 1
+    m_Value:
+    - 50
+  - m_Idx: 9
+    m_CharacterID: 0
+    m_SkillID: 9
+    m_Name: "\uD76C\uC0DD\uC815\uC2E0"
+    m_Desc: "Damage Reduction 10% \uC99D\uAC00\uD558\uBA70 \uD30C\uD2F0\uC6D0\uC774
+      \uBC1B\uB294 \uB370\uBBF8\uC9C0 50%\uB97C \uC6A9\uC0AC\uAC00 \uB300\uC2E0 \uBC1B\uC74C"
+    m_Type: 1
+    m_Value:
+    - 15
+  - m_Idx: 10
+    m_CharacterID: 0
+    m_SkillID: 10
+    m_Name: "\uD3ED\uBC1C\uD558\uB294 \uBD88\uAF43"
+    m_Desc: "\uD654\uC0C1 \uB514\uBC84\uD504\uAC00 \uC788\uB294 \uBAAC\uC2A4\uD130\uAC00
+      \uC0AC\uB9DD\uC2DC Range 100 \uC774\uB0B4 \uC8FC\uBCC0 \uBAAC\uC2A4\uD130\uC5D0\uAC8C
+      \uD654\uC0C1 \uB514\uBC84\uD504\uB97C \uBD80\uC5EC"
+    m_Type: 1
+    m_Value:
+    - 5
+  - m_Idx: 11
+    m_CharacterID: 0
+    m_SkillID: 11
+    m_Name: "\uC77C\uACA9 \uC804\uBB38\uAC00"
+    m_Desc: "\uC6A9\uC0AC\uC758 \uC77C\uACA9 \uC2A4\uD0AC Projectile Type\uC744 Half
+      Circle\uC5D0\uC11C Circle\uB85C \uBCC0\uACBD\uC2DC\uD0A4\uACE0 Cooldown 20\uCD08
+      \uAC10\uC18C"
+    m_Type: 1
+    m_Value:
+    - 100
+  - m_Idx: 12
+    m_CharacterID: 0
+    m_SkillID: 12
+    m_Name: "\uBCA0\uAE30 \uAC15\uD654"
+    m_Desc: "Damage,Att Range 5% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 200
+  - m_Idx: 13
+    m_CharacterID: 0
+    m_SkillID: 13
+    m_Name: "\uACBD\uAC10\uB41C \uD53C\uD574 \uC99D\uAC00"
+    m_Desc: "Damage Reduction 3% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 15
+  - m_Idx: 14
+    m_CharacterID: 0
+    m_SkillID: 14
+    m_Name: "\uD654\uC0C1\uD53C\uD574 \uAC15\uD654"
+    m_Desc: "\uD654\uC0C1 \uC2A4\uD0AC\uC758 Debuff Value 0.1% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 10
+  - m_Idx: 15
+    m_CharacterID: 0
+    m_SkillID: 15
+    m_Name: "\uC6A9\uC0AC\uC758 \uC77C\uACA9 \uAC15\uD654"
+    m_Desc: "Active Damage 15% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 0.1
+  - m_Idx: 16
+    m_CharacterID: 1
+    m_SkillID: 0
+    m_Name: "\uC704\uAE30\uD0C8\uCD9C"
+    m_Desc: "\uD53C\uACA9\uC2DC \uBB34\uC801\uC2DC\uAC04 1\uCD08, \uC774\uB3D9\uC18D\uB3C4
+      100%\uC99D\uAC00\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 2
+  - m_Idx: 17
+    m_CharacterID: 1
+    m_SkillID: 1
+    m_Name: "\uBE60\uB978 \uACF5\uACA9"
+    m_Desc: "Att Speed 50% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 600
+  - m_Idx: 18
+    m_CharacterID: 1
+    m_SkillID: 2
+    m_Name: "\uD30C\uD2F0\uBC84\uD504(\uAD81\uC218)"
+    m_Desc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 Att Speed/Active Cooldown 15% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 1
+  - m_Idx: 19
+    m_CharacterID: 1
+    m_SkillID: 3
+    m_Name: "\uC815\uB839 \uBD80\uC5EC"
+    m_Desc: "\uC0AC\uACA9\uC5D0 \uD2B9\uC218\uD6A8\uACFC\uB97C \uCD94\uAC00\uD558\uC5EC
+      5\uD68C \uAE30\uBCF8 \uACF5\uACA9\uC2DC Crit Rate\uB97C 100%\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 50
+  - m_Idx: 20
+    m_CharacterID: 1
+    m_SkillID: 4
+    m_Name: "\uAFF0\uB6AB\uB294 \uD654\uC0B4"
+    m_Desc: "\uAD81\uC218\uAC00 \uC801 50\uB9C8\uB9AC \uCC98\uCE58\uC2DC \uC0AC\uACA9\uC2A4\uD0AC\uC758
+      \uD22C\uC0AC\uCCB4 \uAD00\uD1B5 1\uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 15
+  - m_Idx: 21
+    m_CharacterID: 1
+    m_SkillID: 5
+    m_Name: "\uBE60\uB978\uC900\uBE44"
+    m_Desc: "\uCE58\uBA85\uD0C0 \uBC1C\uC0DD\uC2DC \uC561\uD2F0\uBE0C \uC2A4\uD0AC
+      \uCFE8\uB2E4\uC6B4 1\uCD08 \uAC10\uC18C"
+    m_Type: 0
+    m_Value:
+    - 5
+  - m_Idx: 22
+    m_CharacterID: 1
+    m_SkillID: 6
+    m_Name: "\uC9C0\uC18D\uC2DC\uAC04 \uC99D\uAC00(\uC561\uD2F0\uBE0C)"
+    m_Desc: "\uC561\uD2F0\uBE0C\uC758 BuffTime 20\uCD08 \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 100
+  - m_Idx: 23
+    m_CharacterID: 1
+    m_SkillID: 7
+    m_Name: "\uCD94\uAC00 \uCE58\uBA85 \uBC84\uD504(\uC561\uD2F0\uBE0C)"
+    m_Desc: "\uC561\uD2F0\uBE0C\uAC00 Critical Damage 100%\uB3C4 \uC99D\uAC00\uC2DC\uD0B4"
+    m_Type: 0
+    m_Value:
+    - 200
+  - m_Idx: 24
+    m_CharacterID: 1
+    m_SkillID: 8
+    m_Name: "\uD638\uD06C\uC544\uC774"
+    m_Desc: "Crit Rate 20%\uC640 Crit Damage 70% \uC99D\uAC00"
+    m_Type: 1
+    m_Value:
+    - 15
+  - m_Idx: 25
+    m_CharacterID: 1
+    m_SkillID: 9
+    m_Name: "\uC815\uB839\uC758 \uBC1C\uAC78\uC74C"
+    m_Desc: "30\uCD08\uB9C8\uB2E4 10\uCD08\uAC04 \uD30C\uD2F0\uC6D0 \uC804\uCCB4
+      \uC2E0\uC18D \uBD80\uC5EC (Att Speed 50%, Move Speed 50% \uC99D\uAC00)"
+    m_Type: 1
+    m_Value:
+    - 10
+  - m_Idx: 26
+    m_CharacterID: 1
+    m_SkillID: 10
+    m_Name: "\uAC15\uD654\uB41C \uD654\uC0B4"
+    m_Desc: "\uD22C\uC0AC\uCCB4 \uAD00\uD1B5 1\uC99D\uAC00 \uC2DC\uD0A4\uACE0 \uC720\uB3C4
+      \uBD80\uC5EC (\uAD00\uD1B5\uC2DC \uAC00\uC7A5 \uAC00\uAE4C\uC6B4 \uC801 \uC5D0\uAC8C
+      \uC790\uB3D9 \uD0C0\uAC9F \uC124\uC815)"
+    m_Type: 1
+    m_Value:
+    - 0.1
+  - m_Idx: 27
+    m_CharacterID: 1
+    m_SkillID: 11
+    m_Name: "\uC219\uB828\uB41C \uAD81\uC218"
+    m_Desc: "\uC561\uD2F0\uBE0C\uAC00 \uC9C0\uC18D\uC911\uC778 \uB3D9\uC548 \uC0AC\uACA9
+      \uC2A4\uD0AC\uC758 Number of Projectile 2\uAC1C \uB354 \uCD94\uAC00\uD568"
+    m_Type: 1
+    m_Value:
+    - 2
+  - m_Idx: 28
+    m_CharacterID: 1
+    m_SkillID: 12
+    m_Name: "\uD328\uC2DC\uBE0C 1 \uAC15\uD654"
+    m_Desc: "Damage,Att Speed 5% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 600
+  - m_Idx: 29
+    m_CharacterID: 1
+    m_SkillID: 13
+    m_Name: "\uD68C\uD53C \uAC15\uD654"
+    m_Desc: "Evasion 1% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 1
+  - m_Idx: 30
+    m_CharacterID: 1
+    m_SkillID: 14
+    m_Name: "\uD328\uC2DC\uBE0C2 \uAC15\uD654"
+    m_Desc: "\uD328\uC2DC\uBE0C2\uC758 \uCE58\uBA85\uD0C0 \uBC1C\uC0DD\uC2DC Att
+      Speed 1% \uCD94\uAC00 \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 50
+  - m_Idx: 31
+    m_CharacterID: 1
+    m_SkillID: 15
+    m_Name: "\uC561\uD2F0\uBE0C \uAC15\uD654"
+    m_Desc: "\uC561\uD2F0\uBE0C\uC758 Crit Rate \uCD94\uAC00 1% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 15
+  - m_Idx: 32
+    m_CharacterID: 2
+    m_SkillID: 0
+    m_Name: "\uC544\uC774\uC2A4\uBCFC \uC804\uBB38\uAC00"
+    m_Desc: "Damage 50% \uC99D\uAC00\uD558\uBA70 ProjectSize 15\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 5
+  - m_Idx: 33
+    m_CharacterID: 2
+    m_SkillID: 1
+    m_Name: "\uD328\uC2A4\uD2B8\uBCFC"
+    m_Desc: "Att Speed 50% \uC99D\uAC00\uD558\uBA70 ProjectileSpeed 2\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 100
+  - m_Idx: 34
+    m_CharacterID: 2
+    m_SkillID: 2
+    m_Name: "\uD30C\uD2F0\uBC84\uD504(\uD604\uC790)"
+    m_Desc: "Add Exp 25%\uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 200
+  - m_Idx: 35
+    m_CharacterID: 2
+    m_SkillID: 3
+    m_Name: "\uBE59\uACB0"
+    m_Desc: "\uBAA8\uB4E0 \uC2A4\uD0AC\uC5D0 \uD2B9\uC218\uD6A8\uACFC\uB85C \uB514\uBC84\uD504
+      \uBE59\uACB0\uC744 \uBD80\uC5EC (\uD53C\uACA9\uC2DC 10\uCD08\uAC04 \uC774\uB3D9\uC18D\uB3C4
+      10%\uAC10\uC18C 4\uC911\uCCA9 \uAC00\uB2A5)"
+    m_Type: 0
+    m_Value:
+    - 15
+  - m_Idx: 36
+    m_CharacterID: 2
+    m_SkillID: 4
+    m_Name: "\uD544\uB4DC \uBC94\uC704 \uC99D\uAC00"
+    m_Desc: "\uC544\uC774\uC2A4 \uD544\uB4DC \uC2A4\uD0AC\uC758 Area Size 200\uC73C\uB85C
+      \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 10
+  - m_Idx: 37
+    m_CharacterID: 2
+    m_SkillID: 5
+    m_Name: "\uC9C0\uC18D\uB418\uB294 \uD544\uB4DC"
+    m_Desc: "\uC544\uC774\uC2A4 \uD544\uB4DC \uC2A4\uD0AC\uC758 Area Duration 10\uC73C\uB85C
+      \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 0.1
+  - m_Idx: 38
+    m_CharacterID: 2
+    m_SkillID: 6
+    m_Name: "\uBE14\uB9AC\uC790\uB4DC \uBC94\uC704 \uC99D\uAC00"
+    m_Desc: "\uBE14\uB9AC\uC790\uB4DC\uC758 Area Size 500\uC73C\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 2
+  - m_Idx: 39
+    m_CharacterID: 2
+    m_SkillID: 7
+    m_Name: "\uBE14\uB9AC\uC790\uB4DC \uB9C8\uC2A4\uD130"
+    m_Desc: "\uBE14\uB9AC\uC790\uB4DC\uC758 Area Duration 20\uCD08\uB85C \uBCC0\uACBD\uD558\uACE0
+      Cooldown 60\uCD08\uB85C \uBCC0\uACBD"
+    m_Type: 0
+    m_Value:
+    - 600
+  - m_Idx: 40
+    m_CharacterID: 2
+    m_SkillID: 8
+    m_Name: "\uC544\uC774\uC2A4\uBCFC \uB9C8\uC2A4\uD130"
+    m_Desc: "\uC544\uC774\uC2A4\uBCFC Damage 30, Cooldown 5\uCD08\uB85C \uBCC0\uACBD\uC2DC\uD0A4\uBA70
+      \uD53C\uACA9\uC2DC \uBE59\uACB0 2\uC911\uCCA9\uC529 \uBD80\uC5EC"
+    m_Type: 1
+    m_Value:
+    - 1
+  - m_Idx: 41
+    m_CharacterID: 2
+    m_SkillID: 9
+    m_Name: "\uD504\uB85C\uC98C \uB9C8\uC2A4\uD130\uB9AC"
+    m_Desc: "\uBE59\uACB0 4\uC911\uCCA9\uB41C \uC801\uC744 \uD53C\uACA9\uC2DC 2\uCD08\uAC04
+      \uC774\uB3D9\uC18D\uB3C4 100%\uAC10\uC18C\uC2DC\uD0B4"
+    m_Type: 1
+    m_Value:
+    - 50
+  - m_Idx: 42
+    m_CharacterID: 2
+    m_SkillID: 10
+    m_Name: "\uBE59\uACB0 \uC9C0\uB300"
+    m_Desc: "\uC544\uC774\uC2A4 \uD544\uB4DC\uC758 Area Size\uB97C 300, Area Duration\uC74415\uCD08\uB85C
+      \uBCC0\uACBD"
+    m_Type: 1
+    m_Value:
+    - 15
+  - m_Idx: 43
+    m_CharacterID: 2
+    m_SkillID: 11
+    m_Name: "\uC544\uC774\uC2A4 \uC5D0\uC774\uC9C0"
+    m_Desc: "\uBE14\uB9AC\uC790\uB4DC\uC758 \uBC94\uC704\uAC00 \uB9F5 \uC804\uCCB4\uB85C
+      \uBCC0\uACBD \uC9C0\uC18D\uC2DC\uAC04 5\uCD08 \uAC10\uC18C\uC640 CoolDown 30\uCD08
+      \uC99D\uAC00"
+    m_Type: 1
+    m_Value:
+    - 5
+  - m_Idx: 44
+    m_CharacterID: 2
+    m_SkillID: 12
+    m_Name: "\uD3EC\uCEE4\uC2A4"
+    m_Desc: "Damage,Att Range 5% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 100
+  - m_Idx: 45
+    m_CharacterID: 2
+    m_SkillID: 13
+    m_Name: "\uC544\uC774\uC2A4 \uD544\uB4DC \uBC94\uC704 \uC99D\uAC00"
+    m_Desc: "\uC544\uC774\uC2A4 \uD544\uB4DC\uC758 Area Size 10% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 200
+  - m_Idx: 46
+    m_CharacterID: 2
+    m_SkillID: 14
+    m_Name: "\uBE59\uACB0 \uAC15\uD654"
+    m_Desc: "\uB514\uBC84\uD504 \uBE59\uACB0\uC758 \uC774\uB3D9\uC18D\uB3C4 \uAC10\uC18C\uB97C
+      1% \uCD94\uAC00 \uAC10\uC18C"
+    m_Type: 2
+    m_Value:
+    - 15
+  - m_Idx: 47
+    m_CharacterID: 2
+    m_SkillID: 15
+    m_Name: "\uBE14\uB9AC\uC790\uB4DC \uAC15\uD654"
+    m_Desc: "Active Damage 15% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 10
+  - m_Idx: 48
+    m_CharacterID: 3
+    m_SkillID: 0
+    m_Name: "\uAE30\uC808"
+    m_Desc: "Att Speed 50% \uC99D\uAC00\uD558\uBA70 \uC774\uB2E8\uC2EC\uD310\uC73C\uB85C
+      \uD0C0\uACA9\uC2DC 2\uCD08\uAC04 \uC774\uB3D9\uC18D\uB3C4 100% \uAC10\uC18C"
+    m_Type: 0
+    m_Value:
+    - 0.1
+  - m_Idx: 49
+    m_CharacterID: 3
+    m_SkillID: 1
+    m_Name: "\uC815\uD654"
+    m_Desc: "\uC774\uB2E8\uC2EC\uD310\uC73C\uB85C \uD0C0\uACA9\uC2DC \uC544\uAD70\uC5D0\uAC8C
+      \uC801\uC6A9\uB418\uC5B4 \uC788\uB294 \uB514\uBC84\uD504 1\uAC1C \uC81C\uAC70"
+    m_Type: 0
+    m_Value:
+    - 2
+  - m_Idx: 50
+    m_CharacterID: 3
+    m_SkillID: 2
+    m_Name: "\uD30C\uD2F0\uBC84\uD504(\uC0AC\uC81C)"
+    m_Desc: "\uD30C\uD2F0\uC6D0 \uC804\uCCB4 Damage 15%, Defense 15% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 600
+  - m_Idx: 51
+    m_CharacterID: 3
+    m_SkillID: 3
+    m_Name: "\uC751\uAE09\uCC98\uCE58"
+    m_Desc: "\uD640\uB9AC\uC274\uB4DC\uAC00 \uC801\uC6A9\uB41C \uC544\uAD70\uC774
+      5\uCD08\uB9C8\uB2E4 \uC783\uC740 HP\uC758 5%\uB97C \uD68C\uBCF5"
+    m_Type: 0
+    m_Value:
+    - 1
+  - m_Idx: 52
+    m_CharacterID: 3
+    m_SkillID: 4
+    m_Name: "\uC804\uCCB4\uBCF4\uD638"
+    m_Desc: "\uD640\uB9AC\uC274\uB4DC\uAC00 \uD30C\uD2F0 \uC804\uCCB4\uC5D0 \uC801\uC6A9\uB418\uC9C0\uB9CC
+      \uCCB4\uB825\uC5D0 5%\uB9CC\uD07C\uC758 \uBCF4\uD638\uB9C9\uC774 \uC801\uC6A9\uB428"
+    m_Type: 0
+    m_Value:
+    - 50
+  - m_Idx: 53
+    m_CharacterID: 3
+    m_SkillID: 5
+    m_Name: "\uC2E0\uC131\uBB34\uAE30"
+    m_Desc: "\uBCF4\uD638\uB9C9\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC758 Damage
+      10%, Att Speed 10% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 15
+  - m_Idx: 54
+    m_CharacterID: 3
+    m_SkillID: 6
+    m_Name: "\uBB34\uC801"
+    m_Desc: "\uAE30\uC801\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC5D0\uAC8C 5\uCD08\uAC04
+      \uBB34\uC801\uD6A8\uACFC \uBD80\uC5EC"
+    m_Type: 0
+    m_Value:
+    - 5
+  - m_Idx: 55
+    m_CharacterID: 3
+    m_SkillID: 7
+    m_Name: "\uC561\uD2F0\uBE0C \uAC15\uD654"
+    m_Desc: "\uAE30\uC801\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC5D0\uAC8C 10\uCD08\uAC04
+      Damage 50%, Att Speed 50% \uC99D\uAC00"
+    m_Type: 0
+    m_Value:
+    - 100
+  - m_Idx: 56
+    m_CharacterID: 3
+    m_SkillID: 8
+    m_Name: "\uC774\uB2E8\uC2EC\uD310\uC790"
+    m_Desc: "\uC774\uB2E8\uC2EC\uD310\uC73C\uB85C \uD0C0\uACA9\uC2DC \uC801 \uD604\uC7AC
+      HP\uC758 5% \uD53C\uD574 \uCD94\uAC00"
+    m_Type: 1
+    m_Value:
+    - 200
+  - m_Idx: 57
+    m_CharacterID: 3
+    m_SkillID: 9
+    m_Name: "\uCD95\uBCF5\uAC15\uD654"
+    m_Desc: "\uC544\uAD70\uB4E4\uC774 Damage, Att Speed, Active Damage, Active Cooldown
+      25% \uC99D\uAC00"
+    m_Type: 1
+    m_Value:
+    - 15
+  - m_Idx: 58
+    m_CharacterID: 3
+    m_SkillID: 10
+    m_Name: "\uBE44\uD3ED\uB825\uC8FC\uC758"
+    m_Desc: "\uC774\uB2E8\uC2EC\uD310\uC73C\uB85C \uC801\uC744 \uD53C\uACA9\uD558\uC9C0
+      \uC54A\uC544\uB3C4 5\uCD08\uB9C8\uB2E4 \uD640\uB9AC\uC274\uB4DC\uAC00 \uC801\uC6A9\uB428"
+    m_Type: 1
+    m_Value:
+    - 10
+  - m_Idx: 59
+    m_CharacterID: 3
+    m_SkillID: 11
+    m_Name: "\uC2E0\uC758 \uC758\uC9C0"
+    m_Desc: "\uAE30\uC801 \uC2A4\uD0AC\uC774 \uBAA8\uB4E0 \uC544\uAD70\uC5D0\uAC8C
+      \uC801\uC6A9\uB428"
+    m_Type: 1
+    m_Value:
+    - 0.1
+  - m_Idx: 60
+    m_CharacterID: 3
+    m_SkillID: 12
+    m_Name: "\uD328\uC2DC\uBE0C 1 \uAC15\uD654"
+    m_Desc: "Att Speed 10% \uC99D\uAC00"
+    m_Type: 2
+    m_Value:
+    - 2
+  - m_Idx: 61
+    m_CharacterID: 3
+    m_SkillID: 13
+    m_Name: "\uBC84\uD504 \uAC15\uD654"
+    m_Desc: "\uBCF4\uD638\uB9C9\uC774 \uC801\uC6A9\uB41C \uC544\uAD70\uC758 Damage,
+      Att Speed 1% \uCD94\uAC00"
+    m_Type: 2
+    m_Value:
+    - 600
+  - m_Idx: 62
+    m_CharacterID: 3
+    m_SkillID: 14
+    m_Name: "\uBCF4\uD638 \uAC15\uD654"
+    m_Desc: "\uBCF4\uD638\uB9C9\uC774 \uCD5C\uB300 \uCCB4\uB825\uC758 1%\uB9CC\uD07C
+      \uB354 \uCD94\uAC00"
+    m_Type: 2
+    m_Value:
+    - 1
+  - m_Idx: 63
+    m_CharacterID: 3
+    m_SkillID: 15
+    m_Name: "\uC561\uD2F0\uBE0C \uAC15\uD654"
+    m_Desc: "Active CoolDown 1% \uAC10\uC18C"
+    m_Type: 2
+    m_Value:
+    - 50

@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: InventoryItem
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 95102b6cc87b7554bb33a7113554f861
+    m_Address: SkillIcon
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: f55702dda33b84b45ab2e3ef6dd44921, type: 2}
   m_SchemaSet:

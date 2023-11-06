@@ -16,7 +16,7 @@ public class UIInventory : UIViewEntity
     protected override void Awake()
     {
         base.Awake();
-        Debug.Log("??b");
+
         for (int i = 0; i < m_ListEquipedSlot.Count; i++)
         {
             m_ListEquipedSlot[i].Init(this, true, i);
@@ -32,7 +32,7 @@ public class UIInventory : UIViewEntity
     {
         base.OnShow();
         SyncInventory();
-        Debug.Log("??");
+
         PlayerContext.OnEquipedItemChanged -= SyncEquipedItem;
         PlayerContext.OnInventoryItemChanged -= SyncInventoryItem;
         PlayerContext.OnEquipedItemChanged += SyncEquipedItem;

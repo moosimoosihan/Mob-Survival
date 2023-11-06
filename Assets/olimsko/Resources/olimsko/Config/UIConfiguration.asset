@@ -33,5 +33,3 @@ MonoBehaviour:
     m_Prefab: {fileID: 8291332439410686179, guid: 6829ff686d58a7342a597c188c46ee22, type: 3}
   - m_Name: UICreditView
     m_Prefab: {fileID: 8291332439410686179, guid: 3bf512e0587947c41a2b3b89141acff7, type: 3}
-  - m_Name: UIPauseView
-    m_Prefab: {fileID: 8291332439410686179, guid: 998055cfe9ab83842bcb6d45616f5697, type: 3}

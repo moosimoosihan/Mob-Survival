@@ -314,6 +314,583 @@ MonoBehaviour:
     m_Localized: resolution
     m_Metadata:
       m_Items: []
+  - m_Id: 43336991895900160
+    m_Localized: Continuing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43336991996563456
+    m_Localized: Rebuilding
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43336991996563457
+    m_Localized: Stage termination
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43336991996563458
+    m_Localized: Character
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43336991996563459
+    m_Localized: Skill confirmation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43336991996563460
+    m_Localized: Mounting item
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903283654656
+    m_Localized: Health recovery per second
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706560
+    m_Localized: Skilled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706561
+    m_Localized: Range increase (cutting)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706562
+    m_Localized: Party buff (warrior)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706563
+    m_Localized: Sturdy armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706564
+    m_Localized: Flame armor
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706565
+    m_Localized: Increased burn damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706566
+    m_Localized: Skilled
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706567
+    m_Localized: Increased range (blow)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706568
+    m_Localized: Flame that does not turn off
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706569
+    m_Localized: Sacrifice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706570
+    m_Localized: Exploding flame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706571
+    m_Localized: Stranger
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706572
+    m_Localized: Cutting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706573
+    m_Localized: Reduced damage increased
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706574
+    m_Localized: Reinforcement of burn damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706575
+    m_Localized: Strengthening the warrior's blow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706576
+    m_Localized: Crisis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706577
+    m_Localized: Fast attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706578
+    m_Localized: Party Buff (Archer)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706579
+    m_Localized: Spirit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706580
+    m_Localized: Piercing arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706581
+    m_Localized: Fast preparation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706582
+    m_Localized: Increased duration (active)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706583
+    m_Localized: Additional dead buff (Active)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706584
+    m_Localized: Hawk Eye
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706585
+    m_Localized: Spirit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706586
+    m_Localized: Enhanced arrow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706587
+    m_Localized: Skilled archer
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706588
+    m_Localized: Passive 1 strengthening
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706589
+    m_Localized: Evasion reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706590
+    m_Localized: Passive 2 Enhancement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706591
+    m_Localized: Active reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706592
+    m_Localized: Iceball expert
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706593
+    m_Localized: Fastball
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706594
+    m_Localized: Party buff (sage)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706595
+    m_Localized: Freezing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706596
+    m_Localized: Increased field range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706597
+    m_Localized: Persistent field
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706598
+    m_Localized: Blizzard range increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706599
+    m_Localized: Blizzard Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706600
+    m_Localized: Iceball Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706601
+    m_Localized: Frozen Mastery
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706602
+    m_Localized: Freezing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706603
+    m_Localized: Ice Age
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706604
+    m_Localized: focus
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706605
+    m_Localized: Increased ice field range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706606
+    m_Localized: Enhancement of freezing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706607
+    m_Localized: Blizzard reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706608
+    m_Localized: faint
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706609
+    m_Localized: purification
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706610
+    m_Localized: Party buff (priest)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706611
+    m_Localized: first aid
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706612
+    m_Localized: Full protection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706613
+    m_Localized: Sacred weapon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706614
+    m_Localized: invincibility
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706615
+    m_Localized: Active reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706616
+    m_Localized: Heresy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706617
+    m_Localized: Blessing reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706618
+    m_Localized: Non -violentism
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706619
+    m_Localized: God's will
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706620
+    m_Localized: Passive 1 strengthening
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706621
+    m_Localized: Buff strengthening
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706622
+    m_Localized: Strengthening protection
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706623
+    m_Localized: Active reinforcement
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706624
+    m_Localized: Collection skill RangeType changes from HALFCIRCLE to Circle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706625
+    m_Localized: Change to Range 200
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706626
+    m_Localized: Party member full stat Damage/Active Damage increased 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706627
+    m_Localized: Damage Reduction 10% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706628
+    m_Localized: Burn Skills Add to DEBUFF Condition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706629
+    m_Localized: When the warrior is killed by 10 enemies, video skills Debuff Value
+      increase 0.1% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706630
+    m_Localized: Warrior's Strike Skill Projectile Type Change from QuarterCircle
+      to HALFCIRCLE
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706631
+    m_Localized: Transforming to the Project Range 600
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706632
+    m_Localized: The BUFF Time of the Video Skills fluids to 200
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706633
+    m_Localized: Damage Reduction 10% increase 10%, and the warrior receives 50%
+      damage that party members receive
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706634
+    m_Localized: When a monster with a video debuff dies, a video debuff is given
+      to the surrounding monsters within 100 Range
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706635
+    m_Localized: Change the winning skill type of the warrior from HALF Circle to
+      Circle and decrease 20 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706636
+    m_Localized: Damage, ATT RANGE 5% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706637
+    m_Localized: Damage Reduction 3% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706638
+    m_Localized: Debuff value 0.1% increase in video skills
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706639
+    m_Localized: Active Damage increased 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706640
+    m_Localized: Invincible time 1 second, change to 100%of movement speed
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706641
+    m_Localized: ATT SPEED increases 50%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706642
+    m_Localized: All party members all ATT SPEED/Active CoolDown increased 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706643
+    m_Localized: Add special effects to shooting and change the crit rate to 100%when
+      5 basic attacks
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706644
+    m_Localized: When the archer is killed by 50 enemies, the construction of the
+      shooting skill of the shooting skill is increased by 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706645
+    m_Localized: Active Skill Cool Down 1 second reduced in case of critical hit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706646
+    m_Localized: Active BUFFTIME 20 seconds increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706647
+    m_Localized: Active also increases 100%Critical Damage
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706648
+    m_Localized: CRIT rate 20% and crit damage 70% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706649
+    m_Localized: "All party members for 10 seconds every 30 seconds (ATT SPEED 50%,
+      Move Speed \u200B\u200B50%)"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706650
+    m_Localized: Increase 1 projectile penetration and assignment (automatic target
+      set to the nearest enemy in penetration)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706651
+    m_Localized: While the active continues, add 2 more of the Number of Projectile
+      of Shooting Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706652
+    m_Localized: Damage, ATT SPEED 5% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903392706653
+    m_Localized: EVASION increased 1%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900864
+    m_Localized: Increases ATT SPEED 1% in case of critical strike in passive 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900865
+    m_Localized: Active's CRIT RATE Additional 1% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900866
+    m_Localized: Damage increases 50% and changes to ProjectSize 15
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900867
+    m_Localized: ATT SPEED increases 50% and changed to Projectilesped 2
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900868
+    m_Localized: Add EXP 25%increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900869
+    m_Localized: Debuff freezing with special effects on all skills (10%reduction
+      of 10%for 10 seconds when hit)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900870
+    m_Localized: Changed to Area Size 200 of Ice Field Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900871
+    m_Localized: Changed to Area Duration 10 of Ice Field Skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900872
+    m_Localized: Changed to Blizzard's Area Size 500
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900873
+    m_Localized: Blizzard's Area Duration 20 seconds and change to 60 seconds of
+      COOLDOWN
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900874
+    m_Localized: Iceball Damage 30, COOLDOWN 5 seconds and granted two stacks at
+      the time of attack
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900875
+    m_Localized: Brown 4 reductions by 100%reduction in the movement speed for 2
+      seconds when the enemy is attacked.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900876
+    m_Localized: Change the area size of the ice field to 300 and Area duration 15
+      seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900877
+    m_Localized: Blizzard's range is changed to the entire map 5 seconds reduction
+      and Cooldown increases 30 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900878
+    m_Localized: Damage, ATT RANGE 5% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900879
+    m_Localized: Icefield's Area Size Increases 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900880
+    m_Localized: Add down 1% reduction in moving speed reduction in debuff freezing
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900881
+    m_Localized: Active Damage increased 15%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900882
+    m_Localized: ATT SPEED increases by 50%, and 100% reduction in moving speed for
+      2 seconds when hit by a heresy referee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900883
+    m_Localized: One debuff applied to allies when hitting with heresy referee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900884
+    m_Localized: Party member damage 15%, Defense 15% increase
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900885
+    m_Localized: Allies with Holy Shield recovered 5%of HP lost every 5 seconds
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900886
+    m_Localized: Holy Shield is applied to the entire party, but a protective film
+      is applied to health.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900887
+    m_Localized: Allies with shields 10%, ATT SPEED increased by 10%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900888
+    m_Localized: Invincible effects for 5 seconds to allies with miracles
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900889
+    m_Localized: Damage 50% and ATT SPEED increase for 10 seconds to allies with
+      miracles.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900890
+    m_Localized: Add 5% damage to the current HP when hitting with heresy referee
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900891
+    m_Localized: Allies increase 25% increase in Damage, Att Speed, Active Damage,
+      Active CoolDown
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900892
+    m_Localized: Holy Shield is applied every 5 seconds without having to hit the
+      enemy as a heresy referee.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900893
+    m_Localized: Miracle skills apply to all allies
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900894
+    m_Localized: 10% increase at ATT SPEED
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900895
+    m_Localized: Add 1% of the damage, ATT SPEED of allies with a shielded film
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900896
+    m_Localized: Add more than 1%of the shields as much as 1%of the maximum health
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900897
+    m_Localized: Active CoolDown 1% Reduction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43441903396900898
+    m_Localized: Level up
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43443394862043136
+    m_Localized: Basic skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43443394870431744
+    m_Localized: Special skill
+    m_Metadata:
+      m_Items: []
+  - m_Id: 43443394870431745
+    m_Localized: Level skill
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

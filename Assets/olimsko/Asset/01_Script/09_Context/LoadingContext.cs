@@ -22,6 +22,10 @@ public class LoadingContext : ContextModel
     {
         OnSceneLoadStart?.Invoke();
         OnSceneLoadProgressChanged?.Invoke(0f);
+
+        //게임 데이터 초기화
+        OSManager.GetService<ContextManager>().GetContext<PlayerContext>().ResetContext();
+
         await UniTask.Delay((int)(delaySuccess * 1000), true);
 
         var loadScene = SceneManager.LoadSceneAsync("99_Loading", LoadSceneMode.Single);

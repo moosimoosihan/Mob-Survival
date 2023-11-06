@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     [Header("이펙트 프리펩")]
     public GameObject burnEffect;
 
+    private UIManager UIManager => OSManager.GetService<UIManager>();
+
     private StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
 
     void Awake()
@@ -64,7 +66,8 @@ public class GameManager : MonoBehaviour
         //경험치 데이터 불러오기
         string[] expLines = expDatabase.text.Substring(0).Split(seperator);
         nextExp = new int[expLines.Length];
-        for(int i=0;i<expLines.Length;i++){
+        for (int i = 0; i < expLines.Length; i++)
+        {
             nextExp[i] = System.Convert.ToInt32(expLines[i]);
         }
         CharacterInit();
@@ -77,7 +80,8 @@ public class GameManager : MonoBehaviour
     {
         // 플레이어 선택 화면에서 선택한 캐릭터 정보 가져오기
         players = new Player[StageContext.ListSelectedHero.Count];
-        for(int i=0;i<StageContext.ListSelectedHero.Count;i++){
+        for (int i = 0; i < StageContext.ListSelectedHero.Count; i++)
+        {
             Player player = Instantiate(playerPrefs[StageContext.ListSelectedHero[i]]).GetComponent<Player>();
             player.transform.SetParent(playerDummies.transform);
             players[i] = player;
@@ -88,7 +92,7 @@ public class GameManager : MonoBehaviour
             playerUI[i].GetComponentsInChildren<Image>()[7].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
         }
     }
-    
+
     void Start()
     {
         isPlay = true;
@@ -137,31 +141,37 @@ public class GameManager : MonoBehaviour
     //경험치 획득
     public void GetExp(int amount)
     {
-        exp+=amount;
+        exp += amount;
 
-        if(exp >= nextExp[level]){
+        if (exp >= nextExp[level])
+        {
             exp -= nextExp[level];
             level++;
             uiLevelUp.Show();
+            UIManager.GetUI<UILevelUpView>().Show();
         }
     }
     public void GetGold(int amount)
     {
-        gold+=amount;
+        gold += amount;
     }
-    public void Stop(){
+    public void Stop()
+    {
         isPlay = false;
-        foreach(Player player in players){
+        foreach (Player player in players)
+        {
             player.inputVec = Vector2.zero;
         }
         Time.timeScale = 0;
     }
-    public void Resume(){
+    public void Resume()
+    {
         isPlay = true;
         Time.timeScale = curTimeScale;
     }
-    public void Pause(){
-        if(pauseObj.activeSelf)
+    public void Pause()
+    {
+        if (pauseObj.activeSelf)
         {
             pauseObj.SetActive(false);
             Resume();
@@ -171,37 +181,55 @@ public class GameManager : MonoBehaviour
             pauseObj.SetActive(true);
             Stop();
         }
+
+        if (!OSManager.GetService<UIManager>().GetUI<UIPauseView>().IsVisible)
+            OSManager.GetService<UIManager>().GetUI<UIPauseView>().Show();
+        else
+            OSManager.GetService<UIManager>().GetUI<UIPauseView>().Hide();
     }
     // 리플레이 혹은 메인화면으로 돌아갈 시 singleton 초기화 해야함
-    public void Replay(){
+    public void Replay()
+    {
         Pause();
         SceneManager.LoadScene("main");
     }
-    public void GameExit(){
+    public void GameExit()
+    {
         Time.timeScale = 1;
         SceneManager.LoadScene("01_Main");
     }
-    public void GameEnd(){
+    public void GameEnd()
+    {
         Application.Quit();
     }
-    public void GameSpeedUp(){
-        if(!isPlay)
+    public void GameSpeedUp()
+    {
+        if (!isPlay)
             return;
 
-        if(Time.timeScale==1){
-            curTimeScale=1.5f;
+        if (Time.timeScale == 1)
+        {
+            curTimeScale = 1.5f;
             timeText.text = "x1.5";
-        } else if(Time.timeScale==1.5f){
-            curTimeScale=2;
+        }
+        else if (Time.timeScale == 1.5f)
+        {
+            curTimeScale = 2;
             timeText.text = "x2";
-        } else if(Time.timeScale==2){
-            curTimeScale=3;
+        }
+        else if (Time.timeScale == 2)
+        {
+            curTimeScale = 3;
             timeText.text = "x3";
-        } else if(Time.timeScale==3){
-            curTimeScale=5;
+        }
+        else if (Time.timeScale == 3)
+        {
+            curTimeScale = 5;
             timeText.text = "x5";
-        } else if(Time.timeScale==5){
-            curTimeScale=1;
+        }
+        else if (Time.timeScale == 5)
+        {
+            curTimeScale = 1;
             timeText.text = "x1";
         }
         Time.timeScale = curTimeScale;
