@@ -72,8 +72,8 @@ public class Player : CharacterStatus
     public void Init(CharacterTable data)
     {
         character = data.Name;
-        maxHP = data.HP;
-        curHP = maxHP;
+        MaxHP = data.HP;
+        CurHP = MaxHP;
         def = data.Def;
         speed = data.MoveSpeed;
         hpRegen = data.HPRegen;
@@ -121,8 +121,8 @@ public class Player : CharacterStatus
     {
         if (playerDead || !GameManager.instance.isPlay)
             return;
-            
-        if(inputEnabled)
+
+        if (inputEnabled)
             inputVec = obj.ReadValue<Vector2>();
     }
 
@@ -214,12 +214,12 @@ public class Player : CharacterStatus
             dam = _damage * (1 + heal);
         }
 
-        curHP -= System.Convert.ToSingle(dam);
+        CurHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
 
-        if (curHP <= 0)
+        if (CurHP <= 0)
         {
-            curHP = 0;
+            CurHP = 0;
             //죽음
             SetAnimationState(AnimationState.Death);
 
@@ -274,13 +274,13 @@ public class Player : CharacterStatus
     }
     public void Revival()
     {
-        curHP = maxHP;
+        CurHP = MaxHP;
         playerDead = false;
         collider2D.enabled = true;
         CreateFollowingHpBar();
         weaponTransform.gameObject.SetActive(true);
         gameObject.layer = 7;
-        
+
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Revive);
     }
 }

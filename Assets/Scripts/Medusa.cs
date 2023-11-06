@@ -36,7 +36,7 @@ public class Medusa : Enemy
     protected override void Awake()
     {
         base.Awake();
-        
+
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
@@ -132,7 +132,7 @@ public class Medusa : Enemy
                 }
             }
             yield return bossState = normalTimer >= normarSkillDelay ? BossState.NormalFire : specialTimer >= specialFireDelay ? BossState.SpecialFire : BossState.Check;
-            
+
             isCheck = false;
         }
         else
@@ -147,7 +147,7 @@ public class Medusa : Enemy
             // 플레이어에게 미사일 발사
             isAttack = true;
             yield return null;
-            float delay = bossPowerUp? 1f : 2f;
+            float delay = bossPowerUp ? 1f : 2f;
             SetAnimationState(AnimationState.Skill1);
             yield return new WaitForSeconds(delay);
             Vector3 targetPos = nearestTarget.position;
@@ -164,7 +164,7 @@ public class Medusa : Enemy
             Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = nearestTarget.transform.position - transform.position;
             rigid.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
-            float attackDelay = bossPowerUp? 0.25f : 0.5f;
+            float attackDelay = bossPowerUp ? 0.25f : 0.5f;
             yield return new WaitForSeconds(attackDelay);
             yield return bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
@@ -184,27 +184,31 @@ public class Medusa : Enemy
             isAttack = true;
             yield return null;
             // 기 모으기
-            float delay = bossPowerUp? 2.5f : 5f;
+            float delay = bossPowerUp ? 2.5f : 5f;
 
             SetAnimationState(AnimationState.Skill2);
             StartCoroutine(MyCoroutines.CoFadeInOut(specialArea, 0, 0.5f, delay));
             yield return new WaitForSeconds(delay);
             // 발사
-            float attackDelay = bossPowerUp? 0.25f : 0.5f;
+            float attackDelay = bossPowerUp ? 0.25f : 0.5f;
             float elapsedTime = 0f;
             while (elapsedTime < 0.5f)
             {
                 // 플레이어와 오브젝트가 서로 마주보고 있다면
-                for(int i = 0;i<GameManager.instance.players.Length;i++){
+                for (int i = 0; i < GameManager.instance.players.Length; i++)
+                {
                     Player curPlayer = GameManager.instance.players[i];
-                    if((transform.localScale.x==1 && curPlayer.childTransform.localScale.x==-1) || (transform.localScale.x==-1 && curPlayer.childTransform.localScale.x==1)){
-                        if(curPlayer.isDamaged){ // 보스 공격은 무적시간 없음
-                                curPlayer.isDamaged = false;
-                                curPlayer.StopCoroutine(curPlayer.DamageDelay());
+                    if ((transform.localScale.x == 1 && curPlayer.childTransform.localScale.x == -1) || (transform.localScale.x == -1 && curPlayer.childTransform.localScale.x == 1))
+                    {
+                        if (curPlayer.isDamaged)
+                        { // 보스 공격은 무적시간 없음
+                            curPlayer.isDamaged = false;
+                            curPlayer.StopCoroutine(curPlayer.DamageDelay());
                         }
-                        if(curPlayer.resistance!=0){
+                        if (curPlayer.resistance != 0)
+                        {
                             curPlayer.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), isCritical);
-                            curPlayer.StartCoroutine(curPlayer.Speedresistance(0,specialStopTime));
+                            curPlayer.StartCoroutine(curPlayer.Speedresistance(0, specialStopTime));
                         }
                     }
                 }
@@ -237,20 +241,26 @@ public class Medusa : Enemy
 
 
 
-        if (_aniState == AnimationState.Move){
-            if(skeletonAnimation.timeScale==2){
+        if (_aniState == AnimationState.Move)
+        {
+            if (skeletonAnimation.timeScale == 2)
+            {
                 skeletonAnimation.timeScale = 1;
             }
             skeletonAnimation.AnimationName = "move";
         }
-        else if (_aniState == AnimationState.Skill1){
-            if(bossPowerUp && skeletonAnimation.timeScale == 1){
+        else if (_aniState == AnimationState.Skill1)
+        {
+            if (bossPowerUp && skeletonAnimation.timeScale == 1)
+            {
                 skeletonAnimation.timeScale = 2;
             }
             skeletonAnimation.AnimationName = "skill1";
         }
-        else if (_aniState == AnimationState.Skill2){
-            if(bossPowerUp && skeletonAnimation.timeScale == 1){
+        else if (_aniState == AnimationState.Skill2)
+        {
+            if (bossPowerUp && skeletonAnimation.timeScale == 1)
+            {
                 skeletonAnimation.timeScale = 2;
             }
             skeletonAnimation.AnimationName = "skill2";
@@ -289,11 +299,13 @@ public class Medusa : Enemy
     {
         gameObject.SetActive(false);
     }
-    protected override void BossPowerUp(){
-        if(curHP <= maxHP/2 && !bossPowerUp){
+    protected override void BossPowerUp()
+    {
+        if (CurHP <= MaxHP / 2 && !bossPowerUp)
+        {
             bossPowerUp = true;
-            normarSkillDelay = normarSkillDelay/2;
-            specialFireDelay = specialFireDelay/2;
+            normarSkillDelay = normarSkillDelay / 2;
+            specialFireDelay = specialFireDelay / 2;
         }
     }
 }

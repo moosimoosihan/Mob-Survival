@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using olimsko;
 using UnityEngine.InputSystem;
 using TMPro;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class GameManager : MonoBehaviour
     [Header("플레이어 정보")]
     public int level;
     public int kill;
-    public int bossKill;
+    public int bossKill = 0;
     public float exp;
     public int gold;
     public int[] nextExp;
@@ -52,6 +53,24 @@ public class GameManager : MonoBehaviour
     private UIManager UIManager => OSManager.GetService<UIManager>();
 
     private StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
+    private ContextManager ContextManager => OSManager.GetService<ContextManager>();
+
+    public Action<int> OnKillMonster;
+    public Action<int> OnKillBoss;
+    public Action<float> OnEXPBar;
+
+
+    public void AddKillCount(int value = 1)
+    {
+        kill += value;
+        OnKillMonster?.Invoke(kill);
+    }
+
+    public void AddBossKillCount(int value = 1)
+    {
+        bossKill += value;
+        OnKillBoss?.Invoke(bossKill);
+    }
 
     void Awake()
     {
@@ -142,7 +161,7 @@ public class GameManager : MonoBehaviour
     public void GetExp(int amount)
     {
         exp += amount;
-
+        OnEXPBar?.Invoke(exp);
         if (exp >= nextExp[level])
         {
             exp -= nextExp[level];
@@ -154,6 +173,7 @@ public class GameManager : MonoBehaviour
     public void GetGold(int amount)
     {
         gold += amount;
+        OSManager.GetService<GlobalManager>().PlayerInventory.Gold += amount;
     }
     public void Stop()
     {

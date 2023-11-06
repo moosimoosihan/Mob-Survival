@@ -23,7 +23,7 @@ public class HealthFollow : MonoBehaviour
     {
         rect.position = Camera.main.WorldToScreenPoint(targetObj.transform.position);
 
-        curSliderValue = isShield? characterStatus.curShield / characterStatus.maxShield : characterStatus.curHP / characterStatus.maxHP;
+        curSliderValue = isShield ? characterStatus.curShield / characterStatus.maxShield : characterStatus.CurHP / characterStatus.MaxHP;
         fillSlider.value = curSliderValue;
 
         if (curSliderValue <= 0)

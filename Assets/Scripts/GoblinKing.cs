@@ -49,7 +49,7 @@ public class GoblinKing : Enemy
     {
         skill1Timer += Time.fixedDeltaTime;
         skill2Timer += Time.fixedDeltaTime;
-        if(bossPowerUp)
+        if (bossPowerUp)
             skill3Timer += Time.fixedDeltaTime;
 
         base.FixedUpdate();
@@ -284,8 +284,10 @@ public class GoblinKing : Enemy
     {
         gameObject.SetActive(false);
     }
-    protected override void BossPowerUp(){
-        if(curHP <= maxHP/2 && !bossPowerUp){
+    protected override void BossPowerUp()
+    {
+        if (CurHP <= MaxHP / 2 && !bossPowerUp)
+        {
             bossPowerUp = true;
         }
     }

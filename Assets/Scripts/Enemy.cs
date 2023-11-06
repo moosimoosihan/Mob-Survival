@@ -44,7 +44,7 @@ public class Enemy : CharacterStatus
         skeletonAnimation = GetComponentInChildren<SkeletonAnimation>();
 
         radius = (coll as CapsuleCollider2D).size.x * transform.localScale.x / 2;
-        itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem, maxSize : GameManager.instance.itemManager.itemPoolMaxSize);
+        itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem, maxSize: GameManager.instance.itemManager.itemPoolMaxSize);
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
 
         CreateFollowingHpBar();
@@ -94,7 +94,7 @@ public class Enemy : CharacterStatus
 
     protected virtual void FixedUpdate()
     {
-         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x
+        // 넉백 구현을 위해 Hit 에니메이션시 움직임 x
         if (!isLive || knockBack || nearestTarget == null || !GameManager.instance.isPlay)
             return;
 
@@ -131,7 +131,7 @@ public class Enemy : CharacterStatus
         rigid.simulated = true;
         isFire = false;
         fireDeBuffTime = 0;
-        curHP = maxHP;
+        CurHP = MaxHP;
 
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
     }
@@ -149,91 +149,92 @@ public class Enemy : CharacterStatus
         character = data.Name;
         power = powerValue;
         speed = data.Speed;
-        maxHP = data.HP * power;
-        curHP = maxHP;
+        MaxHP = data.HP * power;
+        CurHP = MaxHP;
         attackDamage = data.Attack * power;
 
         def = data.Def;
         evasion = data.Avoidance;
         heal = data.HPRegen;
 
-        (coll as CapsuleCollider2D).size = new Vector2(1.8f,1.8f);
+        (coll as CapsuleCollider2D).size = new Vector2(1.8f, 1.8f);
         (coll as CapsuleCollider2D).offset = Vector2.zero;
 
         float scale = 1;
         Vector2 position = Vector2.zero;
-        switch(data.Index){
+        switch (data.Index)
+        {
             case 0:
                 //슬라임
                 scale = 0.45f;
-                position = new Vector2(0,-0.9f);
-            break;
+                position = new Vector2(0, -0.9f);
+                break;
             case 1:
                 //빨간 슬라임
                 scale = 0.5f;
-                position = new Vector2(0,-0.9f);
-            break;
+                position = new Vector2(0, -0.9f);
+                break;
             case 2:
                 //파란 슬라임
                 scale = 0.6f;
-                position = new Vector2(0,-0.9f);
-            break;
+                position = new Vector2(0, -0.9f);
+                break;
             case 3:
                 //나무
-                (coll as CapsuleCollider2D).size = new Vector2(1.5f,2);
+                (coll as CapsuleCollider2D).size = new Vector2(1.5f, 2);
                 scale = 1f;
-                position = new Vector2(-0.1f,-1);
-            break;
+                position = new Vector2(-0.1f, -1);
+                break;
             case 4:
                 //뱀
                 scale = 0.2342059f;
-                position = new Vector2(0,-0.93f);
-            break;
+                position = new Vector2(0, -0.93f);
+                break;
             case 5:
                 //모기
                 scale = 0.557689f;
-                position = new Vector2(-0.12f,-0.7f);
-            break;
+                position = new Vector2(-0.12f, -0.7f);
+                break;
             case 6:
                 //고블린
-                (coll as CapsuleCollider2D).size = new Vector2(1.5f,2f);
+                (coll as CapsuleCollider2D).size = new Vector2(1.5f, 2f);
                 scale = 0.1f;
-                position = new Vector2(0.2f,-1);
-            break;
+                position = new Vector2(0.2f, -1);
+                break;
             case 7:
                 //독 모기
                 scale = 0.557689f;
-                position = new Vector2(-0.12f,-0.7f);
-            break;
+                position = new Vector2(-0.12f, -0.7f);
+                break;
             case 8:
                 //두꺼비
                 scale = 0.5251f;
-                position = new Vector2(-0.09f,-1.07f);
-            break;
+                position = new Vector2(-0.09f, -1.07f);
+                break;
             case 9:
                 // 슬라임 보스
-                (coll as CapsuleCollider2D).size = new Vector2(6,7);
+                (coll as CapsuleCollider2D).size = new Vector2(6, 7);
                 scale = 1.5f;
-                position = new Vector2(-0.5f,-3);
-            break;
+                position = new Vector2(-0.5f, -3);
+                break;
             case 10:
                 // 골렘 보스
-                (coll as CapsuleCollider2D).size = new Vector2(7,8);
+                (coll as CapsuleCollider2D).size = new Vector2(7, 8);
                 scale = 1f;
-                position = new Vector2(1,-4);
-            break;
+                position = new Vector2(1, -4);
+                break;
             case 11:
                 // 고블린 메이지
-                (coll as CapsuleCollider2D).size = new Vector2(4,4);
+                (coll as CapsuleCollider2D).size = new Vector2(4, 4);
                 scale = 1f;
-                position = new Vector2(0,-2);
-            break;
+                position = new Vector2(0, -2);
+                break;
             case 12:
                 // 고블린 킹
-                (coll as CapsuleCollider2D).size = new Vector2(3,4.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(3, 4.5f);
                 scale = 1f;
-                position = new Vector2(0,-2);
-            break;
+                position = new Vector2(0, -2);
+                break;
             case 13:
                 // 코브라
                 break;
@@ -245,38 +246,38 @@ public class Enemy : CharacterStatus
                 break;
             case 16:
                 // 자이언트 나무
-                (coll as CapsuleCollider2D).size = new Vector2(5.5f,7);
+                (coll as CapsuleCollider2D).size = new Vector2(5.5f, 7);
                 scale = 2f;
-                position = new Vector2(0,-3.5f);
+                position = new Vector2(0, -3.5f);
                 break;
             case 17:
                 // 바실리스크
-                (coll as CapsuleCollider2D).size = new Vector2(5,4.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(5, 4.5f);
                 scale = 2.5f;
-                position = new Vector2(-0.5f,-2.5f);
+                position = new Vector2(-0.5f, -2.5f);
                 break;
             case 18:
                 // 트윈헤드오우거
-                (coll as CapsuleCollider2D).size = new Vector2(2.5f,5.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(2.5f, 5.5f);
                 scale = 2f;
-                position = new Vector2(0,-2.5f);
+                position = new Vector2(0, -2.5f);
                 break;
             case 19:
                 // 메두사
-                (coll as CapsuleCollider2D).size = new Vector2(3,5.5f);
+                (coll as CapsuleCollider2D).size = new Vector2(3, 5.5f);
                 scale = 3f;
-                position = new Vector2(0,-3);
+                position = new Vector2(0, -3);
                 break;
         }
         skeletonAnimation.gameObject.transform.localPosition = position;
-        skeletonAnimation.gameObject.transform.localScale = new Vector3(scale,scale,scale);
+        skeletonAnimation.gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
         CreateFollowingHpBar();
     }
 
     public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical, bool trueDamage = false)
     {
-        if (curHP <= 0 || !GameManager.instance.isPlay)
+        if (CurHP <= 0 || !GameManager.instance.isPlay)
             return false;
 
         //데미지 구현 구간
@@ -342,26 +343,26 @@ public class Enemy : CharacterStatus
             dam = _damage * (1 + heal);
         }
 
-        curHP -= System.Convert.ToSingle(dam);
+        CurHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, false);
 
         if (gameObject.activeSelf)
             StartCoroutine(KnockBack(knockBackPower));
 
-        if (curHP > 0)
+        if (CurHP > 0)
         {
             HitSound();
             //anim.SetTrigger("Hit");
         }
         else
         {
-            curHP = 0;
+            CurHP = 0;
             isLive = false;
             coll.enabled = false;
             rigid.simulated = false;
             // spriter.sortingOrder = 1;
             //anim.SetBool("Dead",true);
-            GameManager.instance.kill++;
+            GameManager.instance.AddKillCount();
 
             // 경험치 아이템 생성
             Item expItem = itemPool.Get();
@@ -513,7 +514,7 @@ public class Enemy : CharacterStatus
     }
     void HitSound()
     {
-        switch(character)
+        switch (character)
         {
             case "나무":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Hit);
@@ -556,7 +557,7 @@ public class Enemy : CharacterStatus
     }
     void DieSound()
     {
-        switch(character)
+        switch (character)
         {
             case "나무":
                 AudioManager.Instance.SfxPlay(AudioManager.Sfx.Ent_Die);

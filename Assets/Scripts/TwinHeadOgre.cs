@@ -40,7 +40,7 @@ public class TwinHeadOgre : Enemy
     protected override void Awake()
     {
         base.Awake();
-        
+
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
@@ -50,7 +50,7 @@ public class TwinHeadOgre : Enemy
     protected override void FixedUpdate()
     {
         normalTimer += Time.fixedDeltaTime;
-        if(bossPowerUp)
+        if (bossPowerUp)
             specialTimer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
@@ -138,7 +138,7 @@ public class TwinHeadOgre : Enemy
                 }
             }
             yield return bossState = normalTimer >= normarSkillDelay ? BossState.NormalFire : specialTimer >= specialFireDelay ? BossState.SpecialFire : BossState.Check;
-            
+
             isCheck = false;
         }
         else
@@ -169,7 +169,7 @@ public class TwinHeadOgre : Enemy
             Rigidbody2D rigid = _bullet.GetComponent<Rigidbody2D>();
             Vector2 dirVec = nearestTarget.transform.position - transform.position;
             rigid.AddForce(dirVec.normalized * bulletSpeed, ForceMode2D.Impulse);
-            float attackDelay = bossPowerUp? 0.25f : 0.5f;
+            float attackDelay = bossPowerUp ? 0.25f : 0.5f;
             yield return new WaitForSeconds(attackDelay);
             yield return bossState = BossState.Rest;
             SetAnimationState(AnimationState.Move);
@@ -198,10 +198,10 @@ public class TwinHeadOgre : Enemy
 
             aimObj = aimPool.Get().gameObject;
             targetAnim = aimObj.GetComponent<TargetAnimation>();
-            targetAnim.AttackTargetArea(transform.position, new Vector3(6,6,1), 1);
+            targetAnim.AttackTargetArea(transform.position, new Vector3(6, 6, 1), 1);
             yield return new WaitForSeconds(1);
             targetAnim.Done();
-            
+
             // 발사
             specialBulletPrefab.SetActive(true);
             specialBulletPrefab.GetComponent<EnemyBullet>().Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), GameManager.instance.players.Length, isCritical, true, false);
@@ -231,10 +231,12 @@ public class TwinHeadOgre : Enemy
 
 
 
-        if (_aniState == AnimationState.Move){
+        if (_aniState == AnimationState.Move)
+        {
             skeletonAnimation.AnimationName = "move";
         }
-        else if (_aniState == AnimationState.Skill1){
+        else if (_aniState == AnimationState.Skill1)
+        {
             skeletonAnimation.AnimationName = "skill";
         }
         // else if (_aniState == AnimationState.Skill2){
@@ -274,14 +276,16 @@ public class TwinHeadOgre : Enemy
     {
         gameObject.SetActive(false);
     }
-    protected override void BossPowerUp(){
-        if(curHP <= maxHP/2 && !bossPowerUp){
+    protected override void BossPowerUp()
+    {
+        if (CurHP <= MaxHP / 2 && !bossPowerUp)
+        {
             bossPowerUp = true;
         }
     }
-        TargetAnimation CreateAim()
+    TargetAnimation CreateAim()
     {
-    TargetAnimation aimObj = Instantiate(aimPrefab).GetComponent<TargetAnimation>();
+        TargetAnimation aimObj = Instantiate(aimPrefab).GetComponent<TargetAnimation>();
         aimObj.SetManagedPool(aimPool);
         return aimObj;
     }

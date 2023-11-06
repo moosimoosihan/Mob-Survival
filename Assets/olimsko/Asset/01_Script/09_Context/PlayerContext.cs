@@ -9,6 +9,7 @@ public class PlayerContext : ContextModel
 {
     public Action OnEquipedItemChanged;
     public Action OnInventoryItemChanged;
+    public Action OnSelectedCharacterChanged;
 
     private InventoryItemData[] m_ArrayEquipedItem = new InventoryItemData[4];
     private InventoryItemData[] m_ArrayInventoryItem = new InventoryItemData[28];
@@ -21,6 +22,21 @@ public class PlayerContext : ContextModel
     public Dictionary<int, EquipedSkillData> DicPlayerEquipedSkill { get => m_DicPlayerEquipedSkill; set => m_DicPlayerEquipedSkill = value; }
 
     private ContextManager ContextManager => OSManager.GetService<ContextManager>();
+
+    private int m_SelectedCharacterIdx = 0;
+
+    public int SelectedCharacterIdx
+    {
+        get
+        {
+            return m_SelectedCharacterIdx;
+        }
+        set
+        {
+            m_SelectedCharacterIdx = value;
+            OnSelectedCharacterChanged?.Invoke();
+        }
+    }
 
     public void ResetContext()
     {

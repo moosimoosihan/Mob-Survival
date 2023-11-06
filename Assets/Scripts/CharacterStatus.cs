@@ -1,11 +1,12 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class CharacterStatus : MonoBehaviour
 {
     public string character;
-    public float maxHP;
-    public float curHP;
+    private float maxHP;
+    private float curHP = 0;
     public float maxShield;
     public float curShield;
     public bool isShield;
@@ -19,6 +20,34 @@ public class CharacterStatus : MonoBehaviour
     public float heal;
 
     public float attackDamage;
+
+    public float MaxHP
+    {
+        get
+        {
+            return maxHP;
+        }
+        set
+        {
+            OnHpChanged?.Invoke();
+            maxHP = value;
+        }
+    }
+
+    public float CurHP
+    {
+        get
+        {
+            return curHP;
+        }
+        set
+        {
+            OnHpChanged?.Invoke();
+            curHP = value;
+        }
+    }
+
+    public Action OnHpChanged;
 
     [SerializeField]
     bool createFollowingHpBar;
@@ -36,7 +65,8 @@ public class CharacterStatus : MonoBehaviour
             followingHpBar.Init(this.gameObject);
         }
     }
-    public IEnumerator ShieldOn(){
+    public IEnumerator ShieldOn()
+    {
         isShield = true;
         // 이펙트 생성해야 함
         HealthFollow followingSdBar = UISingletonManager.Instance.followingBarManager.CreateFollowingSdBar().GetComponent<HealthFollow>();
@@ -45,7 +75,8 @@ public class CharacterStatus : MonoBehaviour
         shielSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Shield);
 
         shieldCurTime = shieldTime;
-        while(shieldCurTime>0){
+        while (shieldCurTime > 0)
+        {
             shieldCurTime -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }

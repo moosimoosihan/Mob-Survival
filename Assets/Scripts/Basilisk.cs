@@ -5,7 +5,7 @@ using Spine.Unity;
 
 public class Basilisk : Enemy
 {
-   [Header("보스 정보")]
+    [Header("보스 정보")]
     public float missileDamage;
     public float bulletSpeed;
     public GameObject poisonBullet;
@@ -31,7 +31,7 @@ public class Basilisk : Enemy
     protected override void Awake()
     {
         base.Awake();
-        
+
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
@@ -43,9 +43,9 @@ public class Basilisk : Enemy
     {
         normalTimer += Time.fixedDeltaTime;
         poisonTimer += Time.fixedDeltaTime;
-        if(bossPowerUp)
+        if (bossPowerUp)
             specialTimer += Time.fixedDeltaTime;
-        
+
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
         if (isAttack)
         {
@@ -133,7 +133,7 @@ public class Basilisk : Enemy
                 }
             }
             yield return bossState = (bossPowerUp && specialTimer >= specialSkillDelay) ? BossState.SpecialFire : poisonTimer >= poisonSkillDelay ? BossState.PoisonFire : normalTimer >= normalSkillDelay ? BossState.NormalFire : BossState.Check;
-            
+
             isCheck = false;
         }
         else
@@ -143,7 +143,8 @@ public class Basilisk : Enemy
     }
     IEnumerator PoisonFire()
     {
-        if(nearestTarget != null){
+        if (nearestTarget != null)
+        {
             SetAnimationState(AnimationState.Skill1);
             Vector2 dirVec = nearestTarget.transform.position - transform.position;
             isAttack = true;
@@ -151,11 +152,11 @@ public class Basilisk : Enemy
             yield return new WaitForSeconds(2f);
             //발사
             poisonBullet.transform.position = transform.position;
-            if(dirVec.x < 0)
+            if (dirVec.x < 0)
                 poisonBullet.transform.rotation = Quaternion.FromToRotation(Vector3.left, dirVec);
             else
                 poisonBullet.transform.rotation = Quaternion.FromToRotation(Vector3.right, dirVec);
-                
+
             poisonBullet.GetComponent<EnemyBullet>().duration = 0.5f;
             poisonBullet.SetActive(true);
             poisonBullet.GetComponent<EnemyBullet>().Init(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), missileDamage, out bool isCritical), GameManager.instance.players.Length + 1, isCritical, true);
@@ -180,9 +181,9 @@ public class Basilisk : Enemy
             // 쿨 10초
             yield return new WaitForSeconds(1f);
             //발사
-            (coll as CapsuleCollider2D).size = new Vector2(15f,5f);
+            (coll as CapsuleCollider2D).size = new Vector2(15f, 5f);
             yield return new WaitForSeconds(0.5f);
-            (coll as CapsuleCollider2D).size = new Vector2(4.5f,4.5f);
+            (coll as CapsuleCollider2D).size = new Vector2(4.5f, 4.5f);
             yield return new WaitForSeconds(0.5f);
             normalTimer = 0;
             bossState = BossState.Rest;
@@ -210,16 +211,17 @@ public class Basilisk : Enemy
             aimObj = aimPool.Get().gameObject;
             aimObj.transform.position = dirVec;
             TargetAnimation aim = aimObj.GetComponent<TargetAnimation>();
-            aim.AttackTargetArea(dirVec, new Vector3(2,2.5f,0), 3);
+            aim.AttackTargetArea(dirVec, new Vector3(2, 2.5f, 0), 3);
             float time = 2;
-            while(time>0){
+            while (time > 0)
+            {
                 time -= 0.1f;
                 aim.transform.position = nearestTarget.transform.position;
                 yield return new WaitForSeconds(0.1f);
             }
             yield return new WaitForSeconds(1f);
             aim.Done();
-            
+
             //발사
             transform.position = aim.transform.position;
             SetAnimationState(AnimationState.Skill3_2);
@@ -290,8 +292,10 @@ public class Basilisk : Enemy
     {
         Destroy(aimObj.gameObject);
     }
-    protected override void BossPowerUp(){
-        if(curHP <= maxHP/2 && !bossPowerUp){
+    protected override void BossPowerUp()
+    {
+        if (CurHP <= MaxHP / 2 && !bossPowerUp)
+        {
             bossPowerUp = true;
         }
     }
