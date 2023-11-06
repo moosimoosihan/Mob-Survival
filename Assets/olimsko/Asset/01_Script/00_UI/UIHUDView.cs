@@ -43,9 +43,11 @@ public class UIHUDView : UIView
 
     private void Init()
     {
-        Get<UITMPText>("KillCount").SetText(GameManager.instance.kill.ToString());
+        // Get<UITMPText>("KillCount").SetText(GameManager.instance.kill.ToString());
         Get<UITMPText>("BossKillCount").SetText(GameManager.instance.bossKill.ToString());
         OnEXPBar(0);
+
+        Get<UITMPText>("KillCount").SetText(OSManager.GetService<DataManager>().GetData<SkillTableSO>().SkillTable[0].Value[1]);
     }
 
     public void SetPlayer()
@@ -67,7 +69,7 @@ public class UIHUDView : UIView
 
     void OnKillMonster(int value)
     {
-        Get<UITMPText>("KillCount").SetText(value.ToString());
+        // Get<UITMPText>("KillCount").SetText(value.ToString());
     }
 
     void OnKillBoss(int value)

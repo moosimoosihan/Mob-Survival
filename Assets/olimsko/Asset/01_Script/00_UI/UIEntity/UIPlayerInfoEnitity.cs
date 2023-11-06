@@ -7,7 +7,7 @@ public class UIPlayerInfoEnitity : UIViewEntity
 {
     private int m_PlayerID;
     private int m_PlayerIdx;
-    private CharacterTableSO CharacterTable = OSManager.GetService<DataManager>().GetData<CharacterTableSO>();
+    private CharacterTableSO CharacterTable => OSManager.GetService<DataManager>().GetData<CharacterTableSO>();
     private CharacterTable m_CharacterTable;
     private PlayerContext PlayerContext => OSManager.GetService<ContextManager>().GetContext<PlayerContext>();
 
