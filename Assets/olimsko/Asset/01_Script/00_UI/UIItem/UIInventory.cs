@@ -17,58 +17,50 @@ public class UIInventory : UIViewEntity
     {
         base.Awake();
 
-        for (int i = 0; i < m_ListEquipedSlot.Count; i++)
-        {
-            m_ListEquipedSlot[i].Init(this, true, i);
-        }
+        // for (int i = 0; i < m_ListEquipedSlot.Count; i++)
+        // {
+        //     m_ListEquipedSlot[i].Init(this, true, i);
+        // }
 
-        for (int i = 0; i < m_ListInventorySlot.Count; i++)
-        {
-            m_ListInventorySlot[i].Init(this, false, i);
-        }
+        // for (int i = 0; i < m_ListInventorySlot.Count; i++)
+        // {
+        //     m_ListInventorySlot[i].Init(this, false, i);
+        // }
     }
 
     protected override void OnShow()
     {
         base.OnShow();
-        SyncInventory();
-
-        PlayerContext.OnEquipedItemChanged -= SyncEquipedItem;
-        PlayerContext.OnInventoryItemChanged -= SyncInventoryItem;
-        PlayerContext.OnEquipedItemChanged += SyncEquipedItem;
-        PlayerContext.OnInventoryItemChanged += SyncInventoryItem;
+        // SyncInventory();
     }
 
     protected override void OnHide()
     {
         base.OnHide();
 
-        PlayerContext.OnEquipedItemChanged -= SyncEquipedItem;
-        PlayerContext.OnInventoryItemChanged -= SyncInventoryItem;
+
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
-        PlayerContext.OnEquipedItemChanged -= SyncEquipedItem;
-        PlayerContext.OnInventoryItemChanged -= SyncInventoryItem;
     }
 
-    public void SetSelectedSlot(UIInventorySlot slot)
-    {
-        if (slot == null)
-        {
-            m_SelectedSlot.Init(this, false, -1);
-            m_SelectedSlot.SetItem(-1);
-            m_SelectedSlot.gameObject.SetActive(false);
-        }
-        else
-        {
-            SelectedSlot.Init(this, slot.IsEquipedSlot, slot.SlotIndex);
-            SelectedSlot.SetItem(slot.ItemId);
-            SelectedSlot.gameObject.SetActive(true);
-        }
-    }
+    // public void SetSelectedSlot(UIInventorySlot slot)
+    // {
+    //     if (slot == null)
+    //     {
+    //         SelectedSlot.Init(this, false, -1);
+    //         SelectedSlot.SetItem(-1);
+    //         SelectedSlot.gameObject.SetActive(false);
+    //     }
+    //     else
+    //     {
+    //         SelectedSlot.Init(this, slot.IsEquipedSlot, slot.SlotIndex);
+    //         SelectedSlot.SetItem(slot.ItemId);
+    //         SelectedSlot.gameObject.SetActive(true);
+    //     }
+    // }
 
     private void SyncInventory()
     {

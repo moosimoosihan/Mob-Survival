@@ -40,13 +40,13 @@ public class UICharSkillView : UIView
 
         for (int i = 1; i <= 8; i++)
         {
-            Get<UIImage>($"BasicSkillIcon_{i}").sprite = null;
+            Get<UIImage>($"BasicSkillIcon_{i}").sprite = OSManager.GetService<UIManager>().GetTransparentImage(); ;
             Get<UITMPText>($"BasicSkillLevel_{i}").SetText("");
             Get<UITMPText>($"BasicSkillName_{i}").SetText("");
-            Get<UIImage>("UniqueSkillIcon").sprite = null;
+            Get<UIImage>("UniqueSkillIcon").sprite = OSManager.GetService<UIManager>().GetTransparentImage(); ;
             if (i <= 4)
             {
-                Get<UIImage>($"LevelSkillIcon_{i}").sprite = null;
+                Get<UIImage>($"LevelSkillIcon_{i}").sprite = OSManager.GetService<UIManager>().GetTransparentImage(); ;
                 Get<UITMPText>($"LevelSkillLevel_{i}").SetText("");
                 Get<UITMPText>($"LevelSkillName_{i}").SetText("");
             }

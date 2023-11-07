@@ -212,6 +212,11 @@ namespace olimsko
 
             return uiComponent;
         }
+
+        public Sprite GetTransparentImage()
+        {
+            return m_UIConfiguration.TransparentImage;
+        }
     }
 }
 
