@@ -16,7 +16,9 @@ public class GameManager : MonoBehaviour
     [Header("게임 컨트롤")]
     public float gameTime;
     public bool isPlay;
-    public float curTimeScale = 1;
+
+    private float m_CurTimeScale = 1;
+    public float CurTimeScale { get => m_CurTimeScale; set { m_CurTimeScale = value; Time.timeScale = value; } }
 
     [Header("플레이어 정보")]
     public int level = 1;
@@ -44,7 +46,6 @@ public class GameManager : MonoBehaviour
     public Sprite[] playerSptrite;
     public Sprite[] playerSkillSprite;
     public GameObject pauseObj;
-    public GameObject[] playerUI;
 
     // 임시
     [Header("이펙트 프리펩")]
@@ -106,10 +107,6 @@ public class GameManager : MonoBehaviour
             player.transform.SetParent(playerDummies.transform);
             players[i] = player;
             players[i].Init(CharacterData[StageContext.ListSelectedHero[i]]);
-            playerUI[i].SetActive(true);
-            playerUI[i].GetComponentsInChildren<Image>()[2].sprite = playerSptrite[StageContext.ListSelectedHero[i]];
-            playerUI[i].GetComponentsInChildren<Image>()[6].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
-            playerUI[i].GetComponentsInChildren<Image>()[7].sprite = playerSkillSprite[StageContext.ListSelectedHero[i]];
         }
     }
 
@@ -197,7 +194,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         isPlay = true;
-        Time.timeScale = curTimeScale;
+        Time.timeScale = CurTimeScale;
     }
 
     // 리플레이 혹은 메인화면으로 돌아갈 시 singleton 초기화 해야함
@@ -215,38 +212,7 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
     }
-    public void GameSpeedUp()
-    {
-        if (!isPlay)
-            return;
 
-        if (Time.timeScale == 1)
-        {
-            curTimeScale = 1.5f;
-            timeText.text = "x1.5";
-        }
-        else if (Time.timeScale == 1.5f)
-        {
-            curTimeScale = 2;
-            timeText.text = "x2";
-        }
-        else if (Time.timeScale == 2)
-        {
-            curTimeScale = 3;
-            timeText.text = "x3";
-        }
-        else if (Time.timeScale == 3)
-        {
-            curTimeScale = 5;
-            timeText.text = "x5";
-        }
-        else if (Time.timeScale == 5)
-        {
-            curTimeScale = 1;
-            timeText.text = "x1";
-        }
-        Time.timeScale = curTimeScale;
-    }
 }
 [System.Serializable]
 public class playerData

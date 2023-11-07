@@ -31,6 +31,7 @@ public class PlayerControl : MonoBehaviour
     // 1,2,3,4 로 원하는 캐릭터로 교체
     void Start()
     {
+        ChatNum = 0;
         mainCharacter = GameManager.instance.players[ChatNum].gameObject;
         CamSwitch(mainCharacter);
         ControlSwitch(mainCharacter);
@@ -176,7 +177,7 @@ public class PlayerControl : MonoBehaviour
             if (GameManager.instance.players[i].gameObject == conPlayer)
             {
                 GameManager.instance.players[i].inputEnabled = true;
-                GameManager.instance.playerUI[i].GetComponentsInChildren<Image>()[0].sprite = sprites[1];
+
                 for (int j = 0; j < GameManager.instance.players.Length; j++)
                 {
                     GameManager.instance.players[j].GetComponent<CharacterAI>().mainCharacter = mainCharacter;
@@ -184,7 +185,7 @@ public class PlayerControl : MonoBehaviour
             }
             else
             {
-                GameManager.instance.playerUI[i].GetComponentsInChildren<Image>()[0].sprite = sprites[0];
+
                 GameManager.instance.players[i].inputEnabled = false;
             }
         }

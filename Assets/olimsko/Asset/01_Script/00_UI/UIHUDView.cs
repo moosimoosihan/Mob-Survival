@@ -85,4 +85,18 @@ public class UIHUDView : UIView
         Get<UISlider>("EXPBar").SetValue(val);
         Get<UITMPText>("LevelText").SetText($"Lv. {GameManager.instance.level}");
     }
+
+    public void OnClickChangeTimeScale()
+    {
+        if (GameManager.instance.CurTimeScale < 5)
+        {
+            GameManager.instance.CurTimeScale += 1;
+        }
+        else
+        {
+            GameManager.instance.CurTimeScale = 1;
+        }
+
+        Get<UITMPText>("TimeScale").SetText($"x{GameManager.instance.CurTimeScale}");
+    }
 }
