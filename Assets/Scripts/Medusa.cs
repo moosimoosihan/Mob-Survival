@@ -66,8 +66,8 @@ public class Medusa : Enemy
     public override void Init(MonsterTable data, float power)
     {
         base.Init(data, power);
-        missileDamage = attackDamage;
-        specialDamage = attackDamage * 2;
+        missileDamage = CurAttackDamage;
+        specialDamage = CurAttackDamage * 2;
         bulletSpeed = 15;
     }
 

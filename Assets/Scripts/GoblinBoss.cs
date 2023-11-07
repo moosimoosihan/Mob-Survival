@@ -60,7 +60,7 @@ public class GoblinBoss : Enemy
     public override void Init(MonsterTable data, float power)
     {
         base.Init(data, power);
-        missileDamage = attackDamage;
+        missileDamage = CurAttackDamage;
         bulletSpeed = 10;
     }
 

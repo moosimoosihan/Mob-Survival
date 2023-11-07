@@ -151,7 +151,7 @@ public class Enemy : CharacterStatus
         speed = data.Speed;
         MaxHP = data.HP * power;
         CurHP = MaxHP;
-        attackDamage = data.Attack * power;
+        AttackDamage = data.Attack * power;
 
         def = data.Def;
         evasion = data.Avoidance;
@@ -295,19 +295,19 @@ public class Enemy : CharacterStatus
             }
 
             //보호막이 있을 경우 보호막이 먼저 깎인다.
-            if (curShield > 0)
+            if (CurShield > 0)
             {
-                if (curShield > _damage)
+                if (CurShield > _damage)
                 {
-                    curShield -= _damage;
+                    CurShield -= _damage;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
                     return false;
                 }
-                else if (curShield == _damage)
+                else if (CurShield == _damage)
                 {
                     DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
-                    curShield = 0;
-                    if (curShield <= 0)
+                    CurShield = 0;
+                    if (CurShield <= 0)
                     {
                         if (isShield)
                         {
@@ -320,12 +320,12 @@ public class Enemy : CharacterStatus
                 }
                 else
                 {
-                    float tempDamage = _damage - curShield;
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)curShield, gameObject, _isCritical, false);
+                    float tempDamage = _damage - CurShield;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, false);
                     tempDamage = (float)(tempDamage / (1 + def * 0.01));
                     dam = tempDamage;
-                    curShield = 0;
-                    if (curShield <= 0)
+                    CurShield = 0;
+                    if (CurShield <= 0)
                     {
                         if (isShield)
                         {
@@ -437,7 +437,7 @@ public class Enemy : CharacterStatus
     }
     void Attack(Player _player)
     {
-        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), attackDamage, out bool isCritical), isCritical);
+        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), AttackDamage, out bool isCritical), isCritical);
         isAttackable = false;
 
         if (gameObject.activeSelf)

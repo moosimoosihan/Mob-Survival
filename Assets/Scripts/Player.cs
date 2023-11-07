@@ -81,6 +81,8 @@ public class Player : CharacterStatus
         heal = data.Heal;
         critRate = data.CritRate;
         critDamage = data.CritDamage;
+        // ActiveSkillDamage = data.ActiveSkillDamage;
+        AttackDamage = data.Damage;
     }
     void FixedUpdate()
     {
@@ -166,19 +168,19 @@ public class Player : CharacterStatus
             }
 
             //보호막이 있을 경우 보호막이 먼저 깎인다.
-            if (curShield > 0)
+            if (CurShield > 0)
             {
-                if (curShield > _damage)
+                if (CurShield > _damage)
                 {
-                    curShield -= _damage;
+                    CurShield -= _damage;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
                     return;
                 }
-                else if (curShield == _damage)
+                else if (CurShield == _damage)
                 {
                     DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
-                    curShield = 0;
-                    if (curShield <= 0)
+                    CurShield = 0;
+                    if (CurShield <= 0)
                     {
                         if (isShield)
                         {
@@ -191,12 +193,12 @@ public class Player : CharacterStatus
                 }
                 else
                 {
-                    float tempDamage = _damage - curShield;
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)curShield, gameObject, _isCritical, true);
+                    float tempDamage = _damage - CurShield;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, true);
                     tempDamage = (float)(tempDamage / (1 + def * 0.01));
                     dam = tempDamage;
-                    curShield = 0;
-                    if (curShield <= 0)
+                    CurShield = 0;
+                    if (CurShield <= 0)
                     {
                         if (isShield)
                         {

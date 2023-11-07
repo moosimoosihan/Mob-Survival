@@ -3,7 +3,6 @@ using System.Collections;
 
 public class IceActiveSkill : ActiveSkill
 {
-    public float damage;
     public float skillDuration;
     protected override void Awake(){
         base.Awake();
@@ -59,6 +58,6 @@ public class IceActiveSkill : ActiveSkill
         Transform bullet = poolBullet.Get().transform;
         bullet.parent = GameManager.instance.pool.transform;
         bullet.position = vec;
-        bullet.GetComponent<Bullet>().Init(damage, -1, 0, skillDuration, false, true);
+        bullet.GetComponent<Bullet>().Init(Damege, -1, 0, skillDuration, false, true);
     }
 }

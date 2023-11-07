@@ -1,14 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using olimsko;
 
 public class CharacterStatus : MonoBehaviour
 {
     public string character;
     private float maxHP;
     private float curHP = 0;
-    public float maxShield;
-    public float curShield;
+    private float maxShield;
+    private float curShield;
     public bool isShield;
     public float shieldTime;
     public float shieldCurTime;
@@ -19,8 +20,53 @@ public class CharacterStatus : MonoBehaviour
     public float evasion;
     public float heal;
 
-    public float attackDamage;
-
+    private float attackDamage;
+    private float curAttackDamage;
+    private float activeSkillDamage;
+    public float ActiveSkillDamage
+    {
+        get
+        {
+            return activeSkillDamage;
+        }
+        set
+        {
+            // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
+            if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
+                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
+                    if(transform.GetComponentInChildren<ActiveSkill>()){
+                        ActiveSkill activeSkill = transform.GetComponentInChildren<ActiveSkill>();
+                        if(activeSkill.Damege!=0)
+                            value += activeSkill.Damege * 0.15f;
+                    }
+                }
+            }
+            activeSkillDamage = value;
+        }
+    }
+    public float AttackDamage
+    {
+        get
+        {
+            return attackDamage;
+        }
+        set
+        {
+            attackDamage = value;
+        }
+    }
+    public float CurAttackDamage
+    {
+        get
+        {
+            return curAttackDamage;
+        }
+        set
+        {
+            OnAttackDamageChanged?.Invoke();
+            curAttackDamage = AttackDamage + value;
+        }
+    }
     public float MaxHP
     {
         get
@@ -46,8 +92,35 @@ public class CharacterStatus : MonoBehaviour
             curHP = value;
         }
     }
+    public float MaxShield
+    {
+        get
+        {
+            return maxShield;
+        }
+        set
+        {
+            OnShieldChanged?.Invoke();
+            maxShield = value;
+        }
+    }
+    public float CurShield
+    {
+        get
+        {
+            return curShield;
+        }
+        set
+        {
+            OnShieldChanged?.Invoke();
+            curShield = value;
+        }
+    }
+
 
     public Action OnHpChanged;
+    public Action OnShieldChanged;
+    public Action OnAttackDamageChanged;
 
     // [SerializeField]
     // bool createFollowingHpBar;

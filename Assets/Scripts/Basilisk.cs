@@ -35,7 +35,7 @@ public class Basilisk : Enemy
         skeletonAnimation = transform.GetChild(0).GetComponent<SkeletonAnimation>();
         StartCoroutine(BossStateMachine());
         SetAnimationState(AnimationState.Move);
-        missileDamage = attackDamage;
+        missileDamage = CurAttackDamage;
 
         aimPool = new ObjectPool<TargetAnimation>(CreateAim, OnGetAim, OnReleaseAim, OnDestroyAim);
     }
@@ -65,7 +65,7 @@ public class Basilisk : Enemy
     public override void Init(MonsterTable data, float power)
     {
         base.Init(data, power);
-        missileDamage = attackDamage;
+        missileDamage = CurAttackDamage;
         bulletSpeed = 15;
     }
 

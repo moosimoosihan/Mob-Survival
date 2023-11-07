@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class MeleeWeapon : Weapon
 
     [SerializeField]
     public float detectionAngle = 0;
-    public float curDetectionAngle = 0;
+    private float curDetectionAngle = 0;
 
     public bool warriorFire;
     public float warriorFireDamge;
@@ -20,10 +21,23 @@ public class MeleeWeapon : Weapon
 
     public List<float> distanceList = new List<float>();
 
+    public float CurDetectionAngle
+    {
+        get
+        {
+            return curDetectionAngle;
+        }
+        set
+        {
+            OnCurDetectionAngleChanged?.Invoke();
+            curDetectionAngle = value;
+        }
+    }
+    public Action OnCurDetectionAngleChanged;
     protected override void Awake()
     {
         base.Awake();
-        curDetectionAngle = detectionAngle;
+        CurDetectionAngle = detectionAngle;
     }
 
     protected override void Update()

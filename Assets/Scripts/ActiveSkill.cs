@@ -3,6 +3,21 @@ using UnityEngine.Pool;
 
 public abstract class ActiveSkill : MonoBehaviour
 {
+    private float damege;
+    public float Damege
+    {
+        get
+        {
+            return damege;
+        }
+        set
+        {
+            if(GetComponentInParent<CharacterStatus>().ActiveSkillDamage != 0){
+                value += GetComponentInParent<CharacterStatus>().ActiveSkillDamage;
+            }
+            damege = value;
+        }
+    }
     public bool isActive;
     public bool areaOn;
     public GameObject skillArea;

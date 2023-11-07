@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class WarriorActiveSkill : ActiveSkill
 {
-    public float damage;
     public int count;
     public float bulletSpeed;
     public float knockBackPower;
@@ -79,7 +78,7 @@ public class WarriorActiveSkill : ActiveSkill
         FireStrike bulletScript = bullet.GetComponent<FireStrike>();
         bulletScript.speed = bulletSpeed;
         bulletScript.throwBullet = true;
-        bulletScript.Fire(DamageManager.Instance.Critical(player,damage,out bool isCritical), 0, dir, knockBackPower, bulletDuration, isCritical);
+        bulletScript.Fire(DamageManager.Instance.Critical(player,Damege,out bool isCritical), 0, dir, knockBackPower, bulletDuration, isCritical);
 
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Worrior_FireStrike);
 

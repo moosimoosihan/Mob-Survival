@@ -65,7 +65,7 @@ public class GoblinKing : Enemy
     public override void Init(MonsterTable data, float power)
     {
         base.Init(data, power);
-        missileDamage = attackDamage;
+        missileDamage = CurAttackDamage;
     }
 
     IEnumerator BossStateMachine()

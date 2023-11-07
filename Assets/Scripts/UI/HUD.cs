@@ -104,10 +104,10 @@ public class HUD : MonoBehaviour
                     gameObject.SetActive(false);
                     return;
                 }
-                if (GameManager.instance.players[playerNum].curShield > 0 || GameManager.instance.players[playerNum].maxShield > 0)
+                if (GameManager.instance.players[playerNum].CurShield > 0 || GameManager.instance.players[playerNum].MaxShield > 0)
                 {
-                    float curShield = GameManager.instance.players[playerNum].curShield;
-                    float maxShield = GameManager.instance.players[playerNum].maxShield;
+                    float curShield = GameManager.instance.players[playerNum].CurShield;
+                    float maxShield = GameManager.instance.players[playerNum].MaxShield;
                     p_curSheild = curShield;
                     p_maxSheild = maxShield;
                     mySlider.value = curShield / maxShield;
@@ -118,8 +118,8 @@ public class HUD : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.instance.players[playerNum].curShield = 0;
-                    GameManager.instance.players[playerNum].maxShield = 0;
+                    GameManager.instance.players[playerNum].CurShield = 0;
+                    GameManager.instance.players[playerNum].MaxShield = 0;
                     p_curSheild = 0;
                     p_maxSheild = 0;
                     mySlider.value = 0;
@@ -226,10 +226,10 @@ public class HUD : MonoBehaviour
                 }
                 break;
             case InfoYType.Sheild:
-                if (GameManager.instance.players[playerNum].curShield > 0 && GameManager.instance.players[playerNum].maxShield > 0)
+                if (GameManager.instance.players[playerNum].CurShield > 0 && GameManager.instance.players[playerNum].MaxShield > 0)
                 {
-                    float curShield = GameManager.instance.players[playerNum].curShield;
-                    float maxShield = GameManager.instance.players[playerNum].maxShield;
+                    float curShield = GameManager.instance.players[playerNum].CurShield;
+                    float maxShield = GameManager.instance.players[playerNum].MaxShield;
                     curShield = Mathf.FloorToInt(curShield);
                     maxShield = Mathf.FloorToInt(maxShield);
                     if (p_curSheild != curShield || p_maxSheild != maxShield)
@@ -245,8 +245,8 @@ public class HUD : MonoBehaviour
                 }
                 else
                 {
-                    GameManager.instance.players[playerNum].curShield = 0;
-                    GameManager.instance.players[playerNum].maxShield = 0;
+                    GameManager.instance.players[playerNum].CurShield = 0;
+                    GameManager.instance.players[playerNum].MaxShield = 0;
                     p_curSheild = 0;
                     p_maxSheild = 0;
                     mySlider.value = 0;

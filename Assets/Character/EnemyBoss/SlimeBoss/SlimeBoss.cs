@@ -210,7 +210,7 @@ public class SlimeBoss : Enemy
 
         for (int i = 0; i < tempPlayerList.Count; i++)
         {
-            tempPlayerList[i].GetDamage(attackDamage, false);
+            tempPlayerList[i].GetDamage(CurAttackDamage, false);
         }
 
         return true;

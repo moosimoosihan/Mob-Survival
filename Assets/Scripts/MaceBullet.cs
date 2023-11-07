@@ -23,22 +23,22 @@ public class MaceBullet : EffectBullet
             enemyList[i].GetDamage(damage, knockBackPower, isCritical);
 
             // 메이스에 맞은 적이 있다면 보호막을 생성
-            if (!player.isShield && player.curShield <= 0)
+            if (!player.isShield && player.CurShield <= 0)
             {
-                player.maxShield = shiledAmount;
-                player.curShield = player.maxShield;
+                player.MaxShield = shiledAmount;
+                player.CurShield = player.MaxShield;
                 player.shieldTime = shiledTime;
                 player.StartCoroutine(player.ShieldOn());
             }
             else
             {
-                if (player.maxShield < (shiledAmount + player.curShield))
+                if (player.MaxShield < (shiledAmount + player.CurShield))
                 {
-                    player.curShield = player.maxShield;
+                    player.CurShield = player.MaxShield;
                 }
                 else
                 {
-                    player.curShield += shiledAmount;
+                    player.CurShield += shiledAmount;
                 }
                 player.shieldTime = shiledTime;
             }
@@ -59,22 +59,22 @@ public class MaceBullet : EffectBullet
             }
 
             // 체력이 낮은 아군에게 보호막
-            if (!minHealthPlayer.isShield && minHealthPlayer.curShield <= 0)
+            if (!minHealthPlayer.isShield && minHealthPlayer.CurShield <= 0)
             {
-                minHealthPlayer.maxShield = shiledAmount;
-                minHealthPlayer.curShield = minHealthPlayer.maxShield;
+                minHealthPlayer.MaxShield = shiledAmount;
+                minHealthPlayer.CurShield = minHealthPlayer.MaxShield;
                 minHealthPlayer.shieldTime = shiledTime;
                 minHealthPlayer.StartCoroutine(minHealthPlayer.ShieldOn());
             }
             else
             {
-                if (minHealthPlayer.maxShield < (shiledAmount + minHealthPlayer.curShield))
+                if (minHealthPlayer.MaxShield < (shiledAmount + minHealthPlayer.CurShield))
                 {
-                    minHealthPlayer.curShield = minHealthPlayer.maxShield;
+                    minHealthPlayer.CurShield = minHealthPlayer.MaxShield;
                 }
                 else
                 {
-                    minHealthPlayer.curShield += shiledAmount;
+                    minHealthPlayer.CurShield += shiledAmount;
                 }
                 minHealthPlayer.shieldTime = shiledTime;
             }
