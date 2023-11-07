@@ -49,28 +49,28 @@ public class CharacterStatus : MonoBehaviour
 
     public Action OnHpChanged;
 
-    [SerializeField]
-    bool createFollowingHpBar;
+    // [SerializeField]
+    // bool createFollowingHpBar;
 
     // 속도 저항
     public float resistance = 1;
 
     // 버프 이펙트
     public GameObject shielSfxPlayer;
-    public void CreateFollowingHpBar()
-    {
-        if (createFollowingHpBar)
-        {
-            HealthFollow followingHpBar = UISingletonManager.Instance.followingBarManager.CreateFollowingHpBar().GetComponent<HealthFollow>();
-            followingHpBar.Init(this.gameObject);
-        }
-    }
+    // public void CreateFollowingHpBar()
+    // {
+    //     if (createFollowingHpBar)
+    //     {
+    //         HealthFollow followingHpBar = UISingletonManager.Instance.followingBarManager.CreateFollowingHpBar().GetComponent<HealthFollow>();
+    //         followingHpBar.Init(this.gameObject);
+    //     }
+    // }
     public IEnumerator ShieldOn()
     {
         isShield = true;
         // 이펙트 생성해야 함
-        HealthFollow followingSdBar = UISingletonManager.Instance.followingBarManager.CreateFollowingSdBar().GetComponent<HealthFollow>();
-        followingSdBar.Init(this.gameObject);
+        // HealthFollow followingSdBar = UISingletonManager.Instance.followingBarManager.CreateFollowingSdBar().GetComponent<HealthFollow>();
+        // followingSdBar.Init(this.gameObject);
 
         shielSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Shield);
 

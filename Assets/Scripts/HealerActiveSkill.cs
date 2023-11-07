@@ -76,7 +76,7 @@ public class HealerActiveSkill : ActiveSkill
         minHealthPlayer.CurHP = minHealthPlayer.MaxHP;
         minHealthPlayer.playerDead = false;
         minHealthPlayer.collider2D.enabled = true;
-        minHealthPlayer.CreateFollowingHpBar();
+        // minHealthPlayer.CreateFollowingHpBar();
         if (minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive && minHealthPlayer != player)
         {
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopCoroutine(SkillDelay());

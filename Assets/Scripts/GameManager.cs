@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public float curTimeScale = 1;
 
     [Header("플레이어 정보")]
-    public int level;
+    public int level = 1;
     public int kill = 0;
     public int bossKill = 0;
     public float exp = 0;
@@ -58,6 +58,8 @@ public class GameManager : MonoBehaviour
     public Action<int> OnKillMonster;
     public Action<int> OnKillBoss;
     public Action<float> OnEXPBar;
+
+    private Queue<bool> m_QueuePauseGame = new Queue<bool>();
 
 
     public void AddKillCount(int value = 1)
@@ -126,9 +128,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         gameTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            Pause();
     }
 
     private void RevivalPotion(InputAction.CallbackContext obj)
@@ -182,35 +181,29 @@ public class GameManager : MonoBehaviour
         {
             player.inputVec = Vector2.zero;
         }
+
+        m_QueuePauseGame.Enqueue(true);
         Time.timeScale = 0;
     }
     public void Resume()
     {
+        if (m_QueuePauseGame.Count > 0)
+        {
+            m_QueuePauseGame.Dequeue();
+        }
+
+        if (m_QueuePauseGame.Count > 0)
+        {
+            return;
+        }
         isPlay = true;
         Time.timeScale = curTimeScale;
     }
-    public void Pause()
-    {
-        if (pauseObj.activeSelf)
-        {
-            pauseObj.SetActive(false);
-            Resume();
-        }
-        else
-        {
-            pauseObj.SetActive(true);
-            Stop();
-        }
 
-        if (!OSManager.GetService<UIManager>().GetUI<UIPauseView>().IsVisible)
-            OSManager.GetService<UIManager>().GetUI<UIPauseView>().Show();
-        else
-            OSManager.GetService<UIManager>().GetUI<UIPauseView>().Hide();
-    }
     // 리플레이 혹은 메인화면으로 돌아갈 시 singleton 초기화 해야함
     public void Replay()
     {
-        Pause();
+
         SceneManager.LoadScene("main");
     }
     public void GameExit()

@@ -141,7 +141,7 @@ MonoBehaviour:
   m_AnimTime: 0.3
   m_IgnoreTimeScale: 1
   m_HideWhenLoading: 1
-  m_UseCancelHotKey: 1
+  m_UseCancelHotKey: 0
   m_UseBlackOveray: 0
   m_BlackOverayColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_IsModalUI: 0

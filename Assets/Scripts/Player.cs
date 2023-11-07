@@ -61,7 +61,7 @@ public class Player : CharacterStatus
         //사운드
         //audioSource = GetComponent<AudioSource>(); 
 
-        CreateFollowingHpBar();
+        // CreateFollowingHpBar();
     }
 
     private void OnDestroy()
@@ -277,7 +277,7 @@ public class Player : CharacterStatus
         CurHP = MaxHP;
         playerDead = false;
         collider2D.enabled = true;
-        CreateFollowingHpBar();
+        // CreateFollowingHpBar();
         weaponTransform.gameObject.SetActive(true);
         gameObject.layer = 7;
 

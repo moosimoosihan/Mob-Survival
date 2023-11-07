@@ -22,12 +22,16 @@ public class UIPauseView : UIView
         ShowPanelAnimation();
 
         GetEntity<UIInventory>()?.Show();
+
+        GameManager.instance?.Stop();
     }
 
     protected override void OnHide()
     {
         base.OnHide();
         GetEntity<UIInventory>()?.Hide();
+
+        GameManager.instance?.Resume();
     }
 
     public void ShowPanelAnimation()
@@ -64,18 +68,19 @@ public class UIPauseView : UIView
     public void ContinueBtn()
     {
         Hide();
-        GameManager.instance.Resume();
     }
 
     public void ResetStage()
     {
         Hide();
-        GameManager.instance.Replay();
+        Time.timeScale = 1;
+        OSManager.GetService<ContextManager>().GetContext<LoadingContext>().LoadSceneAsyncTrigger("main");
     }
 
     public void ExitStage()
     {
         Hide();
-        GameManager.instance.GameExit();
+        Time.timeScale = 1;
+        OSManager.GetService<ContextManager>().GetContext<LoadingContext>().LoadSceneAsyncTrigger("01_Main");
     }
 }

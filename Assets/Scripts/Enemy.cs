@@ -47,7 +47,7 @@ public class Enemy : CharacterStatus
         itemPool = new ObjectPool<Item>(CreateItem, OnGetItem, OnReleaseItem, OnDestroyItem, maxSize: GameManager.instance.itemManager.itemPoolMaxSize);
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
 
-        CreateFollowingHpBar();
+        // CreateFollowingHpBar();
     }
 
     protected virtual void Update()
@@ -272,7 +272,7 @@ public class Enemy : CharacterStatus
         skeletonAnimation.gameObject.transform.localPosition = position;
         skeletonAnimation.gameObject.transform.localScale = new Vector3(scale, scale, scale);
 
-        CreateFollowingHpBar();
+        // CreateFollowingHpBar();
     }
 
     public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical, bool trueDamage = false)

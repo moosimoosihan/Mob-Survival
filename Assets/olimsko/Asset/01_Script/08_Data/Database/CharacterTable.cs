@@ -14,6 +14,7 @@ public class CharacterTable : ITableData<int>
     [SerializeField] private float m_Damage;
     [SerializeField] private float m_CritRate;
     [SerializeField] private float m_CritDamage;
+    [SerializeField] private float m_ActiveDamage;
     [SerializeField] private float m_AttackSpeed;
     [SerializeField] private float m_AttackRange;
     [SerializeField] private float m_Heal;
@@ -30,7 +31,7 @@ public class CharacterTable : ITableData<int>
 
     public CharacterTable() { }
 
-    public CharacterTable(int idx, string name, string desc, string namekey, float damage, float critrate, float critdamage, float attackspeed, float attackrange, float heal, float hp, int def, int hpregen, float evasion, float vamp, float movespeed, float damagereduction)
+    public CharacterTable(int idx, string name, string desc, string namekey, float damage, float critrate, float critdamage, float activeDamage, float attackspeed, float attackrange, float heal, float hp, int def, int hpregen, float evasion, float vamp, float movespeed, float damagereduction)
     {
         m_Idx = idx;
         m_Name = name;
@@ -39,6 +40,7 @@ public class CharacterTable : ITableData<int>
         m_Damage = damage;
         m_CritRate = critrate;
         m_CritDamage = critdamage;
+        m_ActiveDamage = activeDamage;
         m_AttackSpeed = attackspeed;
         m_AttackRange = attackrange;
         m_Heal = heal;
@@ -58,6 +60,7 @@ public class CharacterTable : ITableData<int>
     public float Damage { get => m_Damage; set => m_Damage = value; }
     public float CritRate { get => m_CritRate; set => m_CritRate = value; }
     public float CritDamage { get => m_CritDamage; set => m_CritDamage = value; }
+    public float ActiveDamage { get => m_ActiveDamage; set => m_ActiveDamage = value; }
     public float AttackSpeed { get => m_AttackSpeed; set => m_AttackSpeed = value; }
     public float AttackRange { get => m_AttackRange; set => m_AttackRange = value; }
     public float Heal { get => m_Heal; set => m_Heal = value; }
@@ -113,15 +116,16 @@ public class CharacterTable : ITableData<int>
         m_Damage = string.IsNullOrEmpty(data[row, 4]) ? default : float.Parse(data[row, 4]);
         m_CritRate = string.IsNullOrEmpty(data[row, 5]) ? default : float.Parse(data[row, 5]);
         m_CritDamage = string.IsNullOrEmpty(data[row, 6]) ? default : float.Parse(data[row, 6]);
-        m_AttackSpeed = string.IsNullOrEmpty(data[row, 7]) ? default : float.Parse(data[row, 7]);
-        m_AttackRange = string.IsNullOrEmpty(data[row, 8]) ? default : float.Parse(data[row, 8]);
-        m_Heal = string.IsNullOrEmpty(data[row, 9]) ? default : float.Parse(data[row, 9]);
-        m_HP = string.IsNullOrEmpty(data[row, 10]) ? default : float.Parse(data[row, 10]);
-        m_Def = string.IsNullOrEmpty(data[row, 11]) ? default : int.Parse(data[row, 11]);
-        m_HPRegen = string.IsNullOrEmpty(data[row, 12]) ? default : int.Parse(data[row, 12]);
-        m_Evasion = string.IsNullOrEmpty(data[row, 13]) ? default : float.Parse(data[row, 13]);
-        m_Vamp = string.IsNullOrEmpty(data[row, 14]) ? default : float.Parse(data[row, 14]);
-        m_MoveSpeed = string.IsNullOrEmpty(data[row, 15]) ? default : float.Parse(data[row, 15]);
-        m_DamageReduction = string.IsNullOrEmpty(data[row, 16]) ? default : float.Parse(data[row, 16]);
+        m_ActiveDamage = string.IsNullOrEmpty(data[row, 7]) ? default : float.Parse(data[row, 7]);
+        m_AttackSpeed = string.IsNullOrEmpty(data[row, 8]) ? default : float.Parse(data[row, 8]);
+        m_AttackRange = string.IsNullOrEmpty(data[row, 9]) ? default : float.Parse(data[row, 9]);
+        m_Heal = string.IsNullOrEmpty(data[row, 10]) ? default : float.Parse(data[row, 10]);
+        m_HP = string.IsNullOrEmpty(data[row, 11]) ? default : float.Parse(data[row, 11]);
+        m_Def = string.IsNullOrEmpty(data[row, 12]) ? default : int.Parse(data[row, 12]);
+        m_HPRegen = string.IsNullOrEmpty(data[row, 13]) ? default : int.Parse(data[row, 13]);
+        m_Evasion = string.IsNullOrEmpty(data[row, 14]) ? default : float.Parse(data[row, 14]);
+        m_Vamp = string.IsNullOrEmpty(data[row, 15]) ? default : float.Parse(data[row, 15]);
+        m_MoveSpeed = string.IsNullOrEmpty(data[row, 16]) ? default : float.Parse(data[row, 16]);
+        m_DamageReduction = string.IsNullOrEmpty(data[row, 17]) ? default : float.Parse(data[row, 17]);
     }
 }

@@ -25,11 +25,13 @@ public class UILevelUpView : UIView
     {
         base.OnShow();
         SetLevelUpSlot();
+        GameManager.instance?.Stop();
     }
 
     protected override void OnHide()
     {
         base.OnHide();
+        GameManager.instance?.Resume();
     }
 
     public void SetCharacterInfo()
