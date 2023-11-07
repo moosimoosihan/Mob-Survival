@@ -59,4 +59,76 @@ public class LevelUpSkills : MonoBehaviour
         }
         return dam;
     }
+
+    // 용사 4스킬 화염 갑옷 화상스킬 
+
+    // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
+    public static float WorriorSkill4(float _damage, int killCount){
+        float dam = _damage;
+        dam += killCount * 0.0001f;
+        return dam;
+    }
+
+    // 용사 4스킬 용사의 일격 스킬 Projectile Type이 QuarterCircle 에서 HalfCircle로 변경
+
+    // 용사 5스킬 용사의 일격 스킬의 Project Range 600으로변경
+    public static float WorriorSkill5(){
+        return 0f;
+    }
+    // 화상 스킬의 Buff Time이 200으로 번경
+    // Damage Reduction 10% 증가하며 파티원이 받는 데미지 50%를 용사가 대신 받음
+    // 화상 디버프가 있는 몬스터가 사망시 Range 100 이내 주변 몬스터에게 화상 디버프를 부여
+    // 용사의 일격 스킬 Projectile Type을 Half Circle에서 Circle로 변경시키고 Cooldown 20초 감소
+    // Damage,Att Range 5% 증가
+    // Damage Reduction 3% 증가
+    // 화상 스킬의 Debuff Value 0.1% 증가
+    // Active Damage 15% 증가
+    // 피격시 무적시간 1초, 이동속도 100%증가로 변경
+    // Att Speed 50% 증가
+    // 파티원 전체 Att Speed/Active Cooldown 15% 증가
+    // 사격에 특수효과를 추가하여 5회 기본 공격시 Crit Rate를 100%로 변경
+    // 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가
+    // 치명타 발생시 액티브 스킬 쿨다운 1초 감소
+    // 액티브의 BuffTime 20초 증가
+    // 액티브가 Critical Damage 100%도 증가시킴
+    // Crit Rate 20%와 Crit Damage 70% 증가
+    // 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가)
+    // 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정)
+    // 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함
+    // Damage,Att Speed 5% 증가
+    // Evasion 1% 증가
+    // 패시브2의 치명타 발생시 Att Speed 1% 추가 증가
+    // 액티브의 Crit Rate 추가 1% 증가
+    // Damage 50% 증가하며 ProjectSize 15로 변경
+    // Att Speed 50% 증가하며 ProjectileSpeed 2로 변경
+    // Add Exp 25%증가
+    // 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
+    // 아이스 필드 스킬의 Area Size 200으로 변경
+    // 아이스 필드 스킬의 Area Duration 10으로 변경
+    // 블리자드의 Area Size 500으로 변경
+    // 블리자드의 Area Duration 20초로 변경하고 Cooldown 60초로 변경
+    // 아이스볼 Damage 30, Cooldown 5초로 변경시키며 피격시 빙결 2중첩씩 부여
+    // 빙결 4중첩된 적을 피격시 2초간 이동속도 100%감소시킴
+    // 아이스 필드의 Area Size를 300, Area Duration을15초로 변경
+    // 블리자드의 범위가 맵 전체로 변경 지속시간 5초 감소와 CoolDown 30초 증가
+    // Damage,Att Range 5% 증가
+    // 아이스 필드의 Area Size 10% 증가
+    // 디버프 빙결의 이동속도 감소를 1% 추가 감소
+    // Active Damage 15% 증가
+    // Att Speed 50% 증가하며 이단심판으로 타격시 2초간 이동속도 100% 감소
+    // 이단심판으로 타격시 아군에게 적용되어 있는 디버프 1개 제거
+    // 파티원 전체 Damage 15%, Defense 15% 증가
+    // 홀리쉴드가 적용된 아군이 5초마다 잃은 HP의 5%를 회복
+    // 홀리쉴드가 파티 전체에 적용되지만 체력에 5%만큼의 보호막이 적용됨
+    // 보호막이 적용된 아군의 Damage 10%, Att Speed 10% 증가
+    // 기적이 적용된 아군에게 5초간 무적효과 부여
+    // 기적이 적용된 아군에게 10초간 Damage 50%, Att Speed 50% 증가
+    // 이단심판으로 타격시 적 현재 HP의 5% 피해 추가
+    // 아군들이 Damage, Att Speed, Active Damage, Active Cooldown 25% 증가
+    // 이단심판으로 적을 피격하지 않아도 5초마다 홀리쉴드가 적용됨
+    // 기적 스킬이 모든 아군에게 적용됨
+    // Att Speed 10% 증가
+    // 보호막이 적용된 아군의 Damage, Att Speed 1% 추가
+    // 보호막이 최대 체력의 1%만큼 더 추가
+    //Active CoolDown 1% 감소
 }
