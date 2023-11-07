@@ -3,19 +3,19 @@ using UnityEngine.Pool;
 
 public abstract class ActiveSkill : MonoBehaviour
 {
-    private float damege;
-    public float Damege
+    private float damage;
+    public float Damage
     {
         get
         {
-            return damege;
+            if(player.CurActiveSkillDamage != 0){
+                damage = player.CurActiveSkillDamage;
+            }
+            return damage;
         }
         set
         {
-            if(GetComponentInParent<CharacterStatus>().ActiveSkillDamage != 0){
-                value += GetComponentInParent<CharacterStatus>().ActiveSkillDamage;
-            }
-            damege = value;
+            damage = value;
         }
     }
     public bool isActive;
@@ -29,19 +29,22 @@ public abstract class ActiveSkill : MonoBehaviour
 
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
-    protected virtual void Awake()
-    {
-        poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
-        poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
-    }
+
     protected virtual void Start()
     {
+        
         timer = delay;
+        
         ActiveSkillInit();
 
         GameManager.instance.inputManager.GetAction("ReadyActiveSkill").Enable();
         GameManager.instance.inputManager.GetAction("ConfirmActiveSkill").Enable();
         GameManager.instance.inputManager.GetAction("CancelActiveSkill").Enable();
+    }
+    protected virtual void Awake()
+    {
+        poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
+        poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
     }
     protected virtual void OnDestroy()
     {

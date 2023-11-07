@@ -9,13 +9,13 @@ public class WarriorFirePassive : Weapon
         if(gameObject.activeSelf){
             if(!player.GetComponentInChildren<MeleeWeapon>().warriorFire){
                 player.GetComponentInChildren<MeleeWeapon>().warriorFire = true;
-                player.GetComponentInChildren<MeleeWeapon>().warriorFireDamge = damage;
+                player.GetComponentInChildren<MeleeWeapon>().warriorFireDamge = value;
                 player.GetComponentInChildren<MeleeWeapon>().warriorFireTime = curDelay;
             }
 
             if(!player.GetComponentInChildren<WarriorActiveSkill>().warriorFire){
                 player.GetComponentInChildren<WarriorActiveSkill>().warriorFire = true;
-                player.GetComponentInChildren<WarriorActiveSkill>().warriorFireDamge = damage;
+                player.GetComponentInChildren<WarriorActiveSkill>().warriorFireDamge = value;
                 player.GetComponentInChildren<WarriorActiveSkill>().warriorFireTime = curDelay;
             }
         }

@@ -23,6 +23,42 @@ public class CharacterStatus : MonoBehaviour
     private float attackDamage;
     private float curAttackDamage;
     private float activeSkillDamage;
+    private float curActiveSkillDamage;
+    private float attackSpeed;
+    public float AttackSpeed
+    {
+        get
+        {
+            return attackSpeed;
+        }
+        set
+        {
+            attackSpeed = value;
+        }
+    }
+    public float CurActiveSkillDamage
+    {
+        get
+        {
+            curActiveSkillDamage = activeSkillDamage;
+
+            //플레이어 여부 검사
+            if(GetComponent<Player>())
+                // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
+                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
+                    if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
+                        if(ActiveSkillDamage!=0)
+                            curActiveSkillDamage += ActiveSkillDamage * 0.15f;
+                    }
+                }
+            
+            return curActiveSkillDamage;
+        }
+        set
+        {
+            curActiveSkillDamage = value;
+        }
+    }
     public float ActiveSkillDamage
     {
         get
@@ -31,16 +67,6 @@ public class CharacterStatus : MonoBehaviour
         }
         set
         {
-            // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-            if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
-                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
-                    if(transform.GetComponentInChildren<ActiveSkill>()){
-                        ActiveSkill activeSkill = transform.GetComponentInChildren<ActiveSkill>();
-                        if(activeSkill.Damege!=0)
-                            value += activeSkill.Damege * 0.15f;
-                    }
-                }
-            }
             activeSkillDamage = value;
         }
     }
@@ -59,12 +85,22 @@ public class CharacterStatus : MonoBehaviour
     {
         get
         {
+            curAttackDamage = AttackDamage;
+
+            if(GetComponent<Player>())
+                // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
+                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
+                    if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
+                        if(AttackDamage!=0)
+                                curAttackDamage += AttackDamage * 0.15f;                    
+                    }
+                }
+            
             return curAttackDamage;
         }
         set
         {
-            OnAttackDamageChanged?.Invoke();
-            curAttackDamage = AttackDamage + value;
+            curAttackDamage = value;
         }
     }
     public float MaxHP
@@ -120,7 +156,7 @@ public class CharacterStatus : MonoBehaviour
 
     public Action OnHpChanged;
     public Action OnShieldChanged;
-    public Action OnAttackDamageChanged;
+    //public Action OnAttackDamageChanged;
 
     // [SerializeField]
     // bool createFollowingHpBar;

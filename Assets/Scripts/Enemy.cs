@@ -437,7 +437,7 @@ public class Enemy : CharacterStatus
     }
     void Attack(Player _player)
     {
-        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), AttackDamage, out bool isCritical), isCritical);
+        _player.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), CurAttackDamage, out bool isCritical), isCritical);
         isAttackable = false;
 
         if (gameObject.activeSelf)

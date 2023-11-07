@@ -4,7 +4,10 @@ using UnityEngine.Pool;
 public abstract class Weapon : MonoBehaviour
 {
     [Header("무기 정보")]
-    public float damage;
+    private float damage;
+    
+    // 회복 및 쿨타임 적용시 사용할 값
+    public float value;
     public int count;
     public float delay;
     public float curDelay;
@@ -19,6 +22,22 @@ public abstract class Weapon : MonoBehaviour
     public GameObject projectilePrefab;
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
+
+    public float Damage
+    {
+        get
+        {
+            if(player.CurAttackDamage != 0){
+                damage = player.CurAttackDamage;
+            }
+            return damage;
+        }
+        set
+        {
+            
+            damage = value;
+        }
+    }
 
     protected virtual void Awake()
     {

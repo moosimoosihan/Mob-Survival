@@ -36,7 +36,7 @@ public class SwordWeapon : MeleeWeapon
         bullet.transform.localScale = new Vector3(scalex, bullet.transform.localScale.y, bullet.transform.localScale.z);
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().detectionAngle = CurDetectionAngle;
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
@@ -49,7 +49,7 @@ public class SwordWeapon : MeleeWeapon
                 bulletBack.transform.localScale = new Vector3(scalex, bullet.transform.localScale.y, bullet.transform.localScale.z);
                 bulletBack.position = transform.position + backDir * spawnDistance;
                 bulletBack.rotation = Quaternion.FromToRotation(Vector3.down, dir);
-                bulletBack.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
+                bulletBack.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
                 bulletBack.GetComponent<EffectBullet>().detectionAngle = CurDetectionAngle;
             }
         }

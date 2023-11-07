@@ -5,6 +5,7 @@ public class IceWeapon : Weapon
     public GameObject iceGroundPrefab;
     public float groundDamage;
     public float groundDuration;
+
     protected override void Awake()
     {
         base.Awake();
@@ -31,7 +32,7 @@ public class IceWeapon : Weapon
         bullet.GetComponent<IceBullet>().groundDamage = groundDamage;
         bullet.GetComponent<IceBullet>().groundDuration = groundDuration;
         bullet.GetComponent<IceBullet>().speed = bulletSpeed;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
         
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Wizard_Attack);
     }

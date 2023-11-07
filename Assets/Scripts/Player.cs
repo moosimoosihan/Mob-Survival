@@ -81,8 +81,9 @@ public class Player : CharacterStatus
         heal = data.Heal;
         critRate = data.CritRate;
         critDamage = data.CritDamage;
-        // ActiveSkillDamage = data.ActiveSkillDamage;
+        ActiveSkillDamage = data.ActiveDamage;
         AttackDamage = data.Damage;
+        AttackSpeed = data.AttackSpeed;
     }
     void FixedUpdate()
     {

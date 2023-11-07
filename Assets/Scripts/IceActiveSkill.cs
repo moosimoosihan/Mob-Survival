@@ -58,6 +58,6 @@ public class IceActiveSkill : ActiveSkill
         Transform bullet = poolBullet.Get().transform;
         bullet.parent = GameManager.instance.pool.transform;
         bullet.position = vec;
-        bullet.GetComponent<Bullet>().Init(Damege, -1, 0, skillDuration, false, true);
+        bullet.GetComponent<Bullet>().Init(Damage, -1, 0, skillDuration, false, true);
     }
 }

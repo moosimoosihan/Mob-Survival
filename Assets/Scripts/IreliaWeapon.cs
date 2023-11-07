@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class IreliaWeapon : Weapon
 {
-    //¹ß»çÃ¼ »ý¼º
+    //ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     List<Bullet> createdBulletList = new List<Bullet>();
 
-    //¹ß»çÃ¼ ´Ù »ý¼ºµÇ¾î¾ß ÁØºñ¿Ï·á
+    //ï¿½ß»ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½Øºï¿½Ï·ï¿½
     [SerializeField]
     bool isCreatingBullets = false;
     [SerializeField]
@@ -26,7 +26,7 @@ public class IreliaWeapon : Weapon
 
     [SerializeField]
     float rotationSpeed = 10;
-
+ 
     protected override void Awake()
     {
         base.Awake();
@@ -34,10 +34,10 @@ public class IreliaWeapon : Weapon
 
     protected override void Update()
     {
-        //ÃÑ¾Ë »ý¼ºµÇ¾î ÀÖÀ¸¸é È¸Àü½ÃÄÑÁÖ°í ¾Æ´Ï¸é µô·¹ÀÌÈÄ »ý¼º
+        //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö°ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         if (isBulletsCreated)
         {
-            //¹ß»ç
+            //ï¿½ß»ï¿½
             timer += Time.deltaTime;
             if (timer > curDelay)
             {
@@ -50,7 +50,7 @@ public class IreliaWeapon : Weapon
         }
         else
         {
-            //»ý¼º
+            //ï¿½ï¿½ï¿½ï¿½
             timer += Time.deltaTime;
             if (timer > curDelay)
             {
@@ -62,7 +62,7 @@ public class IreliaWeapon : Weapon
             }
         }
 
-        //°è¼Ó È¸ÀüÇÏ±â
+        //ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ï±ï¿½
         if (isRotate)
         {
             transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z + Time.deltaTime * rotationSpeed);            
@@ -72,7 +72,7 @@ public class IreliaWeapon : Weapon
                 for (int i = 0; i < createdBulletList.Count; i++)
                 {
                     Vector2 tempTargetDir = targetPos - createdBulletList[i].transform.position;
-                    float targetDegree = Mathf.Atan2(tempTargetDir.y, tempTargetDir.x) * Mathf.Rad2Deg - 90;    //´¯Çô¾ßµÅ¼­
+                    float targetDegree = Mathf.Atan2(tempTargetDir.y, tempTargetDir.x) * Mathf.Rad2Deg - 90;    //ï¿½ï¿½ï¿½ï¿½ï¿½ßµÅ¼ï¿½
                     createdBulletList[i].transform.rotation = Quaternion.Lerp(createdBulletList[i].transform.rotation , Quaternion.Euler(0, 0, targetDegree), Time.deltaTime * 20);
                 }
             }
@@ -123,7 +123,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, lastDir);
 
-            tempBullet.Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), damage, out bool isCritical), count, lastDir, knockBackPower, duration, isCritical);
+            tempBullet.Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, lastDir, knockBackPower, duration, isCritical);
             yield return new WaitForSeconds(0.1f);                
         }
 
@@ -168,7 +168,7 @@ public class IreliaWeapon : Weapon
 
             Vector3 startPos = transform.localPosition;
 
-            //ÃÑ¾Ë ¿øÇüÀ¸·Î À§Ä¡            
+            //ï¿½Ñ¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡            
             float x = Mathf.Cos(angleCumulative * Mathf.Deg2Rad);
             float y = Mathf.Sin(angleCumulative * Mathf.Deg2Rad);
 
@@ -176,7 +176,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.localPosition = Vector3.zero + (positionOffset.normalized * distanceFromPivot);
             tempBullet.rotation = Quaternion.identity;
-            bulletScript.Fire(damage, tempPenetrationCount, Vector3.zero, knockBackPower, duration, false, false);
+            bulletScript.Fire(Damage, tempPenetrationCount, Vector3.zero, knockBackPower, duration, false, false);
             createdBulletList.Add(bulletScript);
             angleCumulative += angleOffset;
 

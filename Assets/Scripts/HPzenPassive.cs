@@ -18,7 +18,7 @@ public class HPzenPassive : Weapon
 
         if (gameObject.activeSelf)
         {
-            me.GetDamage(-damage, false);
+            me.GetDamage(-value, false);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
             if (me.CurHP > me.MaxHP)

@@ -3,6 +3,7 @@ using UnityEngine;
 public class HealWeapon : Weapon
 {
     Player minHealthPlayer;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -29,7 +30,7 @@ public class HealWeapon : Weapon
 
         if (minHealthPlayer.gameObject.activeSelf)
         {
-            minHealthPlayer.GetDamage(-damage, false);
+            minHealthPlayer.GetDamage(-value, false);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
             if (minHealthPlayer.CurHP > minHealthPlayer.MaxHP)

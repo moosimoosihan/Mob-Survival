@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BowWeapon : Weapon
 {
+
     protected override void Awake()
     {
         base.Awake();
@@ -26,7 +27,7 @@ public class BowWeapon : Weapon
         bullet.parent = GameManager.instance.pool.transform;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
         this.isCritical = isCritical;
 
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);

@@ -6,6 +6,7 @@ public class ArcherPassive : Weapon
     public BowWeapon bowWeapon;
     public bool isActivate;
     public float buffTime;
+
     protected override void Awake()
     {
         base.Awake();
@@ -33,7 +34,8 @@ public class ArcherPassive : Weapon
         effect.target = transform.parent;
         effect.transform.position = transform.position;
 
-        bowWeapon.curDelay -=  bowWeapon.delay * damage;
+        
+        bowWeapon.curDelay -=  bowWeapon.delay * value;
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff2);
         
@@ -43,7 +45,8 @@ public class ArcherPassive : Weapon
             yield return new WaitForSeconds(0.1f);
         }
         buffTime = 0;
-        bowWeapon.curDelay +=  bowWeapon.delay * damage;
+        
+        bowWeapon.curDelay +=  bowWeapon.delay * value;
 
         buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
 

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MineWeapon : Weapon
 {
-    // 현재 생성된 발사체 개수
+    // ???? ?????? ???? ????
     [SerializeField]
     List<GameObject> createdMineList = new List<GameObject>();
     [SerializeField]
     int curCreatCount = 0;
     [SerializeField]
     float weaponDuration;
+
     protected override void Awake()
     {
         base.Awake();
@@ -18,7 +19,7 @@ public class MineWeapon : Weapon
 
     protected override void Update()
     {
-        // 지뢰를 생성 할 수 있다면 생성        
+        // ????? ???? ?? ?? ???? ????        
         timer += Time.deltaTime;
         if (timer > curDelay)
         {
@@ -59,7 +60,7 @@ public class MineWeapon : Weapon
             createdMineList.Add(mineBullet.gameObject);
         }
 
-        bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),damage, out bool isCritical), -1, duration, knockBackPower, isCritical);
+        bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), -1, duration, knockBackPower, isCritical);
         bulletScript.DeActivate(weaponDuration);
     }
 
