@@ -7,20 +7,89 @@ public class MeleeWeapon : Weapon
     [SerializeField]
     public string targetLayerMaskName = "Enemy";
     [SerializeField]
-    public float detectRadius = 0;
+    private float detectRadius = 0;
+    private float curDetectRadius = 0;
     [SerializeField]
     public float spawnDistance = 0;
 
     [SerializeField]
-    public float detectionAngle = 0;
+    private float detectionAngle = 0;
     private float curDetectionAngle = 0;
 
     public bool warriorFire;
-    public float warriorFireDamge;
-    public float warriorFireTime;
+    private float warriorFireDamage;
+    private float curWorriorFireDamage;
+    private float warriorFireTime;
+    private float curWarriorFireTime;
 
     public List<float> distanceList = new List<float>();
+    public float WarriorFireTime
+    {
+        get
+        {
+            return warriorFireTime;
+        }
+        set
+        {
+            curWarriorFireTime = value;
+        }
+    }
+    public float CurWarriorFireTime
+    {
+        get
+        {
+            return curWarriorFireTime;
+        }
+        set
+        {
+            curWarriorFireTime = value;
+        }
+    }
+    public float WarriorFireDamage
+    {
+        get
+        {
+            return warriorFireDamage;
+        }
+        set
+        {
+            curWorriorFireDamage = value;
+        }
+    }
+    public float CurWarriorFireDamage
+    {
+        get
+        {
+            return curWorriorFireDamage;
+        }
+        set
+        {
+            curWorriorFireDamage = value;
+        }
+    }
 
+    public float DetectRadius
+    {
+        get
+        {
+            return detectRadius;
+        }
+        set
+        {
+            detectRadius = value;
+        }
+    }
+    public float DetectionAngle
+    {
+        get
+        {
+            return detectionAngle;
+        }
+        set
+        {
+            detectionAngle = value;
+        }
+    }
     public float CurDetectionAngle
     {
         get
@@ -29,11 +98,20 @@ public class MeleeWeapon : Weapon
         }
         set
         {
-            OnCurDetectionAngleChanged?.Invoke();
             curDetectionAngle = value;
         }
     }
-    public Action OnCurDetectionAngleChanged;
+    public float CurDetectRadius
+    {
+        get
+        {
+            return curDetectRadius;
+        }
+        set
+        {
+            curDetectRadius = value;
+        }
+    }
  
     protected override void Awake()
     {
@@ -94,6 +172,6 @@ public class MeleeWeapon : Weapon
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
-        bullet.GetComponent<EffectBullet>().detectionAngle = curDetectionAngle;
+        bullet.GetComponent<EffectBullet>().DetectionAngle = curDetectionAngle;
     }
 }

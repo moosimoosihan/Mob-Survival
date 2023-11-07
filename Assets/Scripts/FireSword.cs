@@ -5,6 +5,9 @@ public class FireSword : EffectBullet
     public bool warriorFire;
     public float warriorFireDamge;
     public float warriorFireTime;
+
+    public bool fireBurn;
+
      public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
         if (enemyList.Count > 0)
@@ -23,7 +26,7 @@ public class FireSword : EffectBullet
             if (enemyList[i].gameObject.activeSelf){                        
                 if(warriorFire){
                     if(!enemyList[i].isFire){
-                        enemyList[i].StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime));
+                        enemyList[i].StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime, fireBurn));
                     } else {
                         enemyList[i].FireInit(warriorFireDamge, warriorFireTime);
                     }

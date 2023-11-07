@@ -28,6 +28,8 @@ public class Enemy : CharacterStatus
     public bool isFire;
     float fireTime;
     public float curFireDamage;
+    public bool isBurn;
+
     public Transform nearestTarget;
     private IObjectPool<Enemy> _ManagedPool;
     private IObjectPool<Item> itemPool;
@@ -130,6 +132,7 @@ public class Enemy : CharacterStatus
         coll.enabled = true;
         rigid.simulated = true;
         isFire = false;
+        isBurn = false;
         fireDeBuffTime = 0;
         CurHP = MaxHP;
 
@@ -364,6 +367,29 @@ public class Enemy : CharacterStatus
             //anim.SetBool("Dead",true);
             GameManager.instance.AddKillCount();
 
+            // 죽을때 isBurn이 true면 주변 5이내 적군에게 화상 디버프를 준다.
+            if(isBurn){
+                Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, 5);
+                foreach (Collider2D coll in colls)
+                {
+                    if (coll.CompareTag("Enemy"))
+                    {
+                        Enemy enemy = coll.GetComponent<Enemy>();
+                        if (enemy != null)
+                        {
+                            if (!enemy.isFire)
+                            {
+                                enemy.StartCoroutine(enemy.WarriorFireOn(curFireDamage, fireDeBuffTime, true));
+                            }
+                            else
+                            {
+                                enemy.FireInit(curFireDamage, fireDeBuffTime);
+                            }
+                        }
+                    }
+                }
+            }
+
             // 경험치 아이템 생성
             Item expItem = itemPool.Get();
             expItem.transform.parent = GameManager.instance.pool.transform;
@@ -450,9 +476,10 @@ public class Enemy : CharacterStatus
             ));
         }
     }
-    public IEnumerator WarriorFireOn(float _damage, float _debuffTime)
+    public IEnumerator WarriorFireOn(float _damage, float _debuffTime, bool _isBurn)
     {
         isFire = true;
+        isBurn = _isBurn;
         BuffEffect effect = poolBuffEffect.Get();
         effect.transform.parent = GameManager.instance.pool.transform;
         effect.transform.position = transform.position;
@@ -468,6 +495,7 @@ public class Enemy : CharacterStatus
         fireDeBuffTime = 0;
         effect.DestroyBuffEffect();
         isFire = false;
+        isBurn = false;
     }
 
     public void FireInit(float _damage, float _debuffTime)

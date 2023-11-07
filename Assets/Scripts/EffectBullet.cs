@@ -4,15 +4,38 @@ using UnityEngine;
 public class EffectBullet : Bullet
 {
     [SerializeField]
-    float attackRadius = 0;
+    private float attackRadius = 0;
     [SerializeField]
-    public float detectionAngle = 0;
+    private float detectionAngle = 0;
 
     Vector3 dir = Vector3.right;
     protected List<Enemy> enemyList = new List<Enemy>();
 
     [SerializeField]
     bool drawRay = false;
+
+    public float AttackRadius
+    {
+        get
+        {
+            return attackRadius;
+        }
+        set
+        {
+            attackRadius = value;
+        }
+    }
+    public float DetectionAngle
+    {
+        get
+        {
+            return detectionAngle;
+        }
+        set
+        {
+            detectionAngle = value;
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {
@@ -35,7 +58,7 @@ public class EffectBullet : Bullet
     {
         List<Enemy> result = new List<Enemy>();
 
-        //¿ø ¾ÈÀÇ ¿ÀºêÁ§Æ®µéÀ» °¡Á®¿À±â À§ÇØ physics »ç¿ë
+        //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ physics ï¿½ï¿½ï¿½
         Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Enemy"));
 
         if (colliders2D.Length > 0)
@@ -45,10 +68,10 @@ public class EffectBullet : Bullet
                 Vector3 direction = targetCol.transform.position - transform.position;
                 float angle = Vector3.Angle(transform.up, direction);
 
-                // ¢Ø¡è¢Ö ºÎÃ¤²Ã °¢µµ ¾È¿¡ ÀÖ´Â ¾Öµé¸¸ °¡Á®¿À±â   
+                // ï¿½Ø¡ï¿½ï¿½ ï¿½ï¿½Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½Ö´ï¿½ ï¿½Öµé¸¸ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½   
                 if (angle <= detectionAngle * 0.5f)
                 {
-                    //0 ~ 180µµ -0 - 180
+                    //0 ~ 180ï¿½ï¿½ -0 - 180
                     Enemy enemyScript = targetCol.GetComponent<Enemy>();
                     if (enemyScript != null)
                         result.Add(enemyScript);
@@ -86,6 +109,6 @@ public class EffectBullet : Bullet
 
     public override void OnTriggerEnter2DUpdate(Collider2D collision)
     {
-        //ÄÝ¶óÀÌ´õ »ç¿ë ¾ÈÇÔ
+        //ï¿½Ý¶ï¿½ï¿½Ì´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }
