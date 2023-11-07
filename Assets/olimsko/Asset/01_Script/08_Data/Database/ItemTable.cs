@@ -93,8 +93,8 @@ public class ItemTable : ITableData<int>
     public void SetDataFromRow(string[,] data, int row)
     {
         m_Idx = string.IsNullOrEmpty(data[row, 0]) ? default : int.Parse(data[row, 0]);
-        m_Name = data[row, 1];
-        m_Desc = data[row, 2];
+        m_Name = $"Str_ItemNameKey_{m_Idx}";
+        m_Desc = $"Str_ItemDescKey_{m_Idx}";
         m_Grade = string.IsNullOrEmpty(data[row, 3]) ? ItemGrade.Default : (ItemGrade)Enum.Parse(typeof(ItemGrade), data[row, 3]);
         m_StatType1 = string.IsNullOrEmpty(data[row, 4]) ? StatType.Default : (StatType)Enum.Parse(typeof(StatType), data[row, 4]);
         m_StatAddType1 = string.IsNullOrEmpty(data[row, 5]) ? StatAddType.Default : (StatAddType)Enum.Parse(typeof(StatAddType), data[row, 5]);

@@ -7,7 +7,6 @@ using System.Linq;
 
 public class PlayerContext : ContextModel
 {
-    public Action OnEquipedItemChanged;
     public Action OnInventoryItemChanged;
     public Action OnSelectedCharacterChanged;
 
@@ -65,7 +64,7 @@ public class PlayerContext : ContextModel
             return;
 
         m_ArrayEquipedItem[index] = itemData;
-        OnEquipedItemChanged?.Invoke();
+        OnInventoryItemChanged?.Invoke();
     }
 
     public void SetInventoryItem(int index, InventoryItemData itemData)
@@ -74,6 +73,32 @@ public class PlayerContext : ContextModel
             return;
 
         m_ArrayInventoryItem[index] = itemData;
+        OnInventoryItemChanged?.Invoke();
+    }
+
+    public void ReplaceInventoryItem(int prevSlotID, bool isPrevEquipedSlot, int nextSlotID, bool isNextEquipedSlot)
+    {
+        int? prevItemID = isPrevEquipedSlot ? m_ArrayEquipedItem[prevSlotID]?.Id : m_ArrayInventoryItem[prevSlotID]?.Id;
+        int? nextItemID = isNextEquipedSlot ? m_ArrayEquipedItem[nextSlotID]?.Id : m_ArrayInventoryItem[nextSlotID]?.Id;
+
+        if (isPrevEquipedSlot)
+        {
+            m_ArrayEquipedItem[prevSlotID] = nextItemID == null ? null : new InventoryItemData(nextItemID.Value);
+        }
+        else
+        {
+            m_ArrayInventoryItem[prevSlotID] = nextItemID == null ? null : new InventoryItemData(nextItemID.Value);
+        }
+
+        if (isNextEquipedSlot)
+        {
+            m_ArrayEquipedItem[nextSlotID] = prevItemID == null ? null : new InventoryItemData(prevItemID.Value);
+        }
+        else
+        {
+            m_ArrayInventoryItem[nextSlotID] = prevItemID == null ? null : new InventoryItemData(prevItemID.Value);
+        }
+
         OnInventoryItemChanged?.Invoke();
     }
 

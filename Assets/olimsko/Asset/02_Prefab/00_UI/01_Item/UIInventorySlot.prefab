@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 579959081726869170}
   - component: {fileID: 5628650548269786555}
   - component: {fileID: 8359238745631877649}
+  - component: {fileID: 8021208974439825082}
   m_Layer: 0
   m_Name: UIInventorySlot
   m_TagString: Untagged
@@ -60,7 +61,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b288f7a2b11a64a983c50680cd7632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ItemCG: {fileID: 6464903629116356293}
   m_ItemImage: {fileID: 5004364825766848302}
+  m_IsEquipedSlot: 0
+  m_SlotIndex: 0
+  m_UseAutoSync: 0
 --- !u!114 &8359238745631877649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +99,18 @@ MonoBehaviour:
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
   m_BindPath: UIInventorySlot
+--- !u!114 &8021208974439825082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415006208550124916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39db96624c3175c4a9de1422be1ea94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4096507875556660739
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +202,7 @@ GameObject:
   - component: {fileID: 4316884757093377545}
   - component: {fileID: 5615936138760052283}
   - component: {fileID: 1637818015809169214}
+  - component: {fileID: 6464903629116356293}
   m_Layer: 0
   m_Name: Mask
   m_TagString: Untagged
@@ -264,3 +282,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!225 &6464903629116356293
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7595778464044519162}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

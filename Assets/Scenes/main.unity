@@ -16758,7 +16758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameTime: 0
   isPlay: 0
-  curTimeScale: 1
   level: 0
   kill: 0
   bossKill: 0
@@ -16790,11 +16789,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9bedb73924644684ba51553b2b93cf7f, type: 3}
   - {fileID: 21300000, guid: 3cdb707cb206a8e428ff14539e1f4db3, type: 3}
   pauseObj: {fileID: 0}
-  playerUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   burnEffect: {fileID: 1976393513513302852, guid: c62b03bd766234d13abd3e551a43a5f8, type: 3}
 --- !u!4 &1971805571
 Transform:
@@ -18549,6 +18543,22 @@ PrefabInstance:
     - target: {fileID: 1355910483612378417, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398929938191434274, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398929938191434274, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398929938191434274, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1398929938191434274, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2306145056356562985, guid: b63a1c9f860a3aa439624980e71e3478, type: 3}
       propertyPath: m_AnchorMax.y

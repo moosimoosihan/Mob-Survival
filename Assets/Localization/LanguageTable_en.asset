@@ -891,6 +891,326 @@ MonoBehaviour:
     m_Localized: Level skill
     m_Metadata:
       m_Items: []
+  - m_Id: 44113304189587456
+    m_Localized: Mana
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416576
+    m_Localized: Demon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416577
+    m_Localized: Ancient artifact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416578
+    m_Localized: Guardian's record
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416579
+    m_Localized: Flame sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416580
+    m_Localized: Arcana's sword
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416581
+    m_Localized: Judgment
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416582
+    m_Localized: Tribute
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416583
+    m_Localized: Mysterious mirror
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416584
+    m_Localized: Dark mirror
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416585
+    m_Localized: Mirror
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416586
+    m_Localized: Dimension
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416587
+    m_Localized: Wizard
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416588
+    m_Localized: Chaos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416589
+    m_Localized: Sydnia's ice necklace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416590
+    m_Localized: Avarok's golden necklace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416591
+    m_Localized: Fairy ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416592
+    m_Localized: Dragon Slayer Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416593
+    m_Localized: Dark Road Ring
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416594
+    m_Localized: Immortal Guardian Rings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416595
+    m_Localized: Patrolism
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416596
+    m_Localized: Dark amulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416597
+    m_Localized: Amulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416598
+    m_Localized: Amulet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416599
+    m_Localized: Golden feather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416600
+    m_Localized: Karas' feathers
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416601
+    m_Localized: Brilliance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416602
+    m_Localized: Angel
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416603
+    m_Localized: Red moon
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416604
+    m_Localized: Worldwide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416605
+    m_Localized: Mysteriousness Dream Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416606
+    m_Localized: Tom's key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416607
+    m_Localized: Chaos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416608
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416609
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416610
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416611
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416612
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416613
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416614
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416615
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416616
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416617
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416618
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416619
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416620
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416621
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416622
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416623
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416624
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416625
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416626
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416627
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304315416628
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610880
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610881
+    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610882
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610883
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610884
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610885
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610886
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610887
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610888
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610889
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610890
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610891
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610892
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610893
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610894
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610895
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610896
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610897
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610898
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610899
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610900
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610901
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610902
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610903
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610904
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
+  - m_Id: 44113304319610905
+    m_Localized: Item description
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

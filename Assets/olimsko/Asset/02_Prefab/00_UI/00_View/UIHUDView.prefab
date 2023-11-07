@@ -2376,6 +2376,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIInventorySlot
       objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_UseAutoSync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_IsEquipedSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7634550047115984643, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2460,6 +2468,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8359238745631877649, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_BindPath
+      value: UIInventorySlot (2)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
 --- !u!224 &7446596263032436583 stripped
@@ -2477,6 +2489,18 @@ PrefabInstance:
     - target: {fileID: 2415006208550124916, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Name
       value: UIInventorySlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_SlotIndex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_UseAutoSync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_IsEquipedSlot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7634550047115984643, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Pivot.x
@@ -2702,6 +2726,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIInventorySlot (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_SlotIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_UseAutoSync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_IsEquipedSlot
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7634550047115984643, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2925,6 +2961,18 @@ PrefabInstance:
     - target: {fileID: 2415006208550124916, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Name
       value: UIInventorySlot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_SlotIndex
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_UseAutoSync
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628650548269786555, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
+      propertyPath: m_IsEquipedSlot
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7634550047115984643, guid: 3136ab91bbcaf8d4cb991fe0ef86425f, type: 3}
       propertyPath: m_Pivot.x

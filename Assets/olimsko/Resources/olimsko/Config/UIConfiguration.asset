@@ -23,6 +23,7 @@ MonoBehaviour:
   UINameWhenNoHotKeyList: UIPauseView
   OverrideObjectLayer: 1
   ObjectLayer: 5
+  TransparentImage: {fileID: 21300000, guid: 58e90996dc8ef104389f8b47117f0baf, type: 3}
   MakeScriptWhenAddPrefab: 1
   ListPrefabs:
   - m_Name: UILoadingView

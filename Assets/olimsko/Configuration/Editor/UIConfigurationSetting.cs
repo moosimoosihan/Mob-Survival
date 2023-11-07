@@ -58,6 +58,7 @@ namespace olimsko
             m_DicProperty.Add("AutoSpawnInputSystem", SerializedObject.FindProperty("AutoSpawnInputSystem"));
             m_DicProperty.Add("CustomInputSystem", SerializedObject.FindProperty("CustomInputSystem"));
             m_DicProperty.Add("MakeScriptWhenAddPrefab", SerializedObject.FindProperty("MakeScriptWhenAddPrefab"));
+            m_DicProperty.Add("TransparentImage", SerializedObject.FindProperty("TransparentImage"));
 
         }
 
@@ -146,6 +147,7 @@ namespace olimsko
             if (m_FoldoutSection3)
             {
                 GUILayout.Space(10);
+                EditorGUILayout.PropertyField(m_DicProperty["TransparentImage"], true);
                 EditorGUILayout.PropertyField(m_DicProperty["MakeScriptWhenAddPrefab"], true);
                 OverrideConfigurationDrawers()[m_DicProperty["ListPrefabs"].propertyPath]?.Invoke(m_DicProperty["ListPrefabs"]);
                 GUILayout.Space(10);

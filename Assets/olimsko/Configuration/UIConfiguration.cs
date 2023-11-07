@@ -23,6 +23,7 @@ namespace olimsko
         public bool OverrideObjectLayer = true;
         public int ObjectLayer = 5;
 
+        public Sprite TransparentImage;
         public bool MakeScriptWhenAddPrefab = true;
         public List<PrefabResources> ListPrefabs = new List<PrefabResources>();
     }
