@@ -36,7 +36,8 @@ public class TestContext : ContextModel
 
         if (Input.GetKeyDown(KeyCode.J))
         {
-            OSManager.GetService<ContextManager>().GetContext<PlayerContext>().AddInventoryItem(Random.Range(0, 40));
+            // OSManager.GetService<ContextManager>().GetContext<PlayerContext>().AddInventoryItem(Random.Range(0, 40));
+            OSManager.GetService<UIManager>().GetUI<UILevelUpView>().Show();
         }
 
 

@@ -38,11 +38,18 @@ public class UICharSkillView : UIView
         Get<UIImage>("UICharIcon").sprite = await characterTable.GetSDSprite();
         Get<UITMPText>("UICharName").SetText(LocalizationSettings.StringDatabase.GetTable("LanguageTable").GetEntry($"Str_CharacterNameKey_{characterTable.Idx}").GetLocalizedString());
 
-        for (int i = 0; i < 8; i++)
+        for (int i = 1; i <= 8; i++)
         {
             Get<UIImage>($"BasicSkillIcon_{i}").sprite = null;
+            Get<UITMPText>($"BasicSkillLevel_{i}").SetText("");
+            Get<UITMPText>($"BasicSkillName_{i}").SetText("");
             Get<UIImage>("UniqueSkillIcon").sprite = null;
-            if (i < 4) Get<UIImage>($"LevelSkillIcon_{i}").sprite = null;
+            if (i <= 4)
+            {
+                Get<UIImage>($"LevelSkillIcon_{i}").sprite = null;
+                Get<UITMPText>($"LevelSkillLevel_{i}").SetText("");
+                Get<UITMPText>($"LevelSkillName_{i}").SetText("");
+            }
         }
 
         EquipedSkillData equipedSkillData = OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[m_PlayerID];
@@ -56,11 +63,15 @@ public class UICharSkillView : UIView
             {
                 basicSkillCount++;
                 Get<UIImage>($"BasicSkillIcon_{basicSkillCount}").sprite = await skillTableSO.SkillTable[skill.Value.Idx].GetIcon();
+                Get<UITMPText>($"BasicSkillLevel_{basicSkillCount}").SetText(skill.Value.Level.ToString());
+                Get<UITMPText>($"BasicSkillName_{basicSkillCount}").SetText(LocalizationSettings.StringDatabase.GetTable("LanguageTable").GetEntry($"Str_SkillNameKey_{skill.Value.Idx}").GetLocalizedString());
             }
             else if (skillTableSO.SkillTable[skill.Value.Idx].Type == SkillType.LevelSkill)
             {
                 levelSkillCount++;
                 Get<UIImage>($"LevelSkillIcon_{levelSkillCount}").sprite = await skillTableSO.SkillTable[skill.Value.Idx].GetIcon();
+                Get<UITMPText>($"LevelSkillLevel_{levelSkillCount}").SetText(skill.Value.Level.ToString());
+                Get<UITMPText>($"LevelSkillName_{levelSkillCount}").SetText(LocalizationSettings.StringDatabase.GetTable("LanguageTable").GetEntry($"Str_SkillNameKey_{skill.Value.Idx}").GetLocalizedString());
             }
             else
             {

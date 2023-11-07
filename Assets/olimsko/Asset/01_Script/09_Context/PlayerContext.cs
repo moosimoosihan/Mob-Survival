@@ -130,7 +130,7 @@ public class PlayerContext : ContextModel
 
         if (characterID0 != -1)
         {
-            List<SkillTable> matchingSkills = listSkillTable.Where(skill => skill.CharacterID == characterID0 && skill.Type == m_DicPlayerEquipedSkill[characterID0].GetNeedSkillType()).ToList();
+            List<SkillTable> matchingSkills = listSkillTable.Where(skill => skill.CharacterID == characterID0 && skill.Type == m_DicPlayerEquipedSkill[characterID0].GetNeedSkillType() && m_DicPlayerEquipedSkill[characterID0].IsCanGetSkillIdx(skill.Idx)).ToList();
 
             if (matchingSkills.Count >= 2)
             {
@@ -147,7 +147,7 @@ public class PlayerContext : ContextModel
 
         if (characterID1 != -1)
         {
-            List<SkillTable> matchingSkills = listSkillTable.Where(skill => skill.CharacterID == characterID1 && skill.Type == m_DicPlayerEquipedSkill[characterID1].GetNeedSkillType()).ToList();
+            List<SkillTable> matchingSkills = listSkillTable.Where(skill => skill.CharacterID == characterID1 && skill.Type == m_DicPlayerEquipedSkill[characterID1].GetNeedSkillType() && m_DicPlayerEquipedSkill[characterID1].IsCanGetSkillIdx(skill.Idx)).ToList();
 
             if (matchingSkills.Count >= 2)
             {

@@ -55,18 +55,34 @@ public class UILevelUpView : UIView
         {
             if (i == 0)
             {
-                int playerID = DataManager.GetData<SkillTableSO>().SkillTable[listSkillIdxs[i]].CharacterID;
-                Get<UIImage>("CharThumbnail1").sprite = await DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].GetLDSprite();
-                Get<UITMPText>("CharName1").SetText(DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].Name);
+                if (listSkillIdxs[i] == -1)
+                {
+                    Get<UIImage>("CharThumbnail1").sprite = null;
+                    Get<UITMPText>("CharName1").SetText("");
+                }
+                else
+                {
+                    int playerID = DataManager.GetData<SkillTableSO>().SkillTable[listSkillIdxs[i]].CharacterID;
+                    Get<UIImage>("CharThumbnail1").sprite = await DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].GetLDSprite();
+                    Get<UITMPText>("CharName1").SetText(DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].Name);
+                }
             }
 
             m_ListLevelUpSlotItems[i].SetSkill(i < listSkillIdxs.Length ? listSkillIdxs[i] : -1);
 
             if (i == 2)
             {
-                int playerID = DataManager.GetData<SkillTableSO>().SkillTable[listSkillIdxs[i]].CharacterID;
-                Get<UIImage>("CharThumbnail2").sprite = await DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].GetLDSprite();
-                Get<UITMPText>("CharName2").SetText(DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].Name);
+                if (listSkillIdxs[i] == -1)
+                {
+                    Get<UIImage>("CharThumbnail2").sprite = null;
+                    Get<UITMPText>("CharName2").SetText("");
+                }
+                else
+                {
+                    int playerID = DataManager.GetData<SkillTableSO>().SkillTable[listSkillIdxs[i]].CharacterID;
+                    Get<UIImage>("CharThumbnail2").sprite = await DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].GetLDSprite();
+                    Get<UITMPText>("CharName2").SetText(DataManager.GetData<CharacterTableSO>().CharacterTable[playerID].Name);
+                }
             }
         }
     }

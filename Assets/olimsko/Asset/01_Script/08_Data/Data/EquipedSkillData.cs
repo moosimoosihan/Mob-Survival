@@ -40,6 +40,19 @@ public class EquipedSkillData
         return skillType;
     }
 
+    public bool IsCanGetSkillIdx(int idx)
+    {
+        if (m_DicEquipedSkill.ContainsKey(idx))
+        {
+            if (SkillTableSO.SkillTable[idx].Type == SkillType.LevelSkill && m_DicEquipedSkill[idx].Level < 10)
+            {
+                return true;
+            }
+            return false;
+        }
+        else return true;
+    }
+
     public int GetSkillLevel(int idx)
     {
         if (m_DicEquipedSkill.ContainsKey(idx))
