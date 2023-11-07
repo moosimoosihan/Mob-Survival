@@ -20,6 +20,7 @@ public class UIHUDView : UIView
         GameManager.instance.OnEXPBar += OnEXPBar;
 
         SetPlayer();
+        Init();
     }
 
     protected override void OnShow()
@@ -43,11 +44,10 @@ public class UIHUDView : UIView
 
     private void Init()
     {
-        // Get<UITMPText>("KillCount").SetText(GameManager.instance.kill.ToString());
-        Get<UITMPText>("BossKillCount").SetText(GameManager.instance.bossKill.ToString());
+        Get<UITMPText>("KillCount").SetText(GameManager.instance.kill.ToString());
+        Get<UITMPText>("BossKillCount").SetText($"{GameManager.instance.bossKill.ToString()}/4");
+        Get<UITMPText>("LevelText").SetText(GameManager.instance.level);
         OnEXPBar(0);
-
-        Get<UITMPText>("KillCount").SetText(OSManager.GetService<DataManager>().GetData<SkillTableSO>().SkillTable[0].Value[1]);
     }
 
     public void SetPlayer()
@@ -69,7 +69,7 @@ public class UIHUDView : UIView
 
     void OnKillMonster(int value)
     {
-        // Get<UITMPText>("KillCount").SetText(value.ToString());
+        Get<UITMPText>("KillCount").SetText(value.ToString());
     }
 
     void OnKillBoss(int value)
@@ -82,6 +82,7 @@ public class UIHUDView : UIView
         float curExp = GameManager.instance.exp;
         float maxExp = GameManager.instance.nextExp[Mathf.Min(GameManager.instance.level, GameManager.instance.nextExp.Length - 1)];
         float val = curExp / maxExp;
-        // Get<UISlider>("EXPBar").value = val;
+        Get<UISlider>("EXPBar").SetValue(val);
+        Get<UITMPText>("LevelText").SetText($"Lv. {GameManager.instance.level}");
     }
 }

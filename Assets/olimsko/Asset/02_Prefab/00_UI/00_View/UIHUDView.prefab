@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 2389088943955462956}
   - component: {fileID: 4775474144454854664}
   m_Layer: 0
-  m_Name: UITMPText
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -325,9 +325,9 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: UITMPText
+  m_BindPath: LevelText
 --- !u!1 &1222401611048672750
 GameObject:
   m_ObjectHideFlags: 0
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 0.5
-  m_IsBind: 1
+  m_IsBind: 0
   m_IsUseCustomBindPath: 0
   m_BindPath: EXPBar
 --- !u!114 &4093565723926727674
@@ -906,7 +906,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
   m_BindPath: EXPBar
 --- !u!1 &2890007676665713367

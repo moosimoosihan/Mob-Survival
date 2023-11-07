@@ -30582,7 +30582,6 @@ MonoBehaviour:
   pool: {fileID: 932958113}
   playerControl: {fileID: 535669752}
   itemManager: {fileID: 2033438851}
-  uiLevelUp: {fileID: 1412637651}
   timeText: {fileID: 665172419}
   gameOverObj: {fileID: 1505934041}
   playerSptrite:

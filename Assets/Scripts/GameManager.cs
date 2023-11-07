@@ -20,9 +20,9 @@ public class GameManager : MonoBehaviour
 
     [Header("플레이어 정보")]
     public int level;
-    public int kill;
+    public int kill = 0;
     public int bossKill = 0;
-    public float exp;
+    public float exp = 0;
     public int gold;
     public int[] nextExp;
     public int life;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
     public GameObject pool;
     public PlayerControl playerControl;
     public ItemManager itemManager;
-    public LevelUp uiLevelUp;
+
     public TextMeshProUGUI timeText;
     [Header("UI Sprite")]
     public GameObject gameOverObj;
@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
             nextExp[i] = System.Convert.ToInt32(expLines[i]);
         }
         CharacterInit();
-        uiLevelUp.Init();
 
         AudioManager.Instance.AmbPlay(AudioManager.Amb.Stage1);
     }
@@ -166,8 +165,9 @@ public class GameManager : MonoBehaviour
         {
             exp -= nextExp[level];
             level++;
-            uiLevelUp.Show();
+
             UIManager.GetUI<UILevelUpView>().Show();
+            OnEXPBar?.Invoke(exp);
         }
     }
     public void GetGold(int amount)
