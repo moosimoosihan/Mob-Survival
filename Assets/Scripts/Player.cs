@@ -1,3 +1,4 @@
+using olimsko;
 using Spine.Unity;
 using System.Collections;
 using UnityEngine;
@@ -158,6 +159,12 @@ public class Player : CharacterStatus
         {
             isDamaged = true;
             StartCoroutine(DamageDelay());
+
+            // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
+            if(character.Equals("용사")){
+                _damage = LevelUpSkills.WorriorSkill3(_damage);
+            }
+
             dam = _damage / (1 + def * 0.01);
             // 회피
             float ran = Random.Range(0, 100);

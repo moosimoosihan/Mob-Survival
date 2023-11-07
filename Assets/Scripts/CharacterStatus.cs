@@ -45,12 +45,7 @@ public class CharacterStatus : MonoBehaviour
             //플레이어 여부 검사
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
-                    if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
-                        if(ActiveSkillDamage!=0)
-                            curActiveSkillDamage += ActiveSkillDamage * 0.15f;
-                    }
-                }
+                curActiveSkillDamage = LevelUpSkills.WorriorSkill2(curActiveSkillDamage);
             
             return curActiveSkillDamage;
         }
@@ -89,12 +84,7 @@ public class CharacterStatus : MonoBehaviour
 
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
-                    if(OSManager.GetService<ContextManager>().GetContext<PlayerContext>().DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
-                        if(AttackDamage!=0)
-                                curAttackDamage += AttackDamage * 0.15f;                    
-                    }
-                }
+                curAttackDamage = LevelUpSkills.WorriorSkill2(curAttackDamage);
             
             return curAttackDamage;
         }
