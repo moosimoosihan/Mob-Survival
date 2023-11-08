@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Pool;
 using Spine.Unity;
+using olimsko;
 
 public class Enemy : CharacterStatus
 {
@@ -63,7 +64,7 @@ public class Enemy : CharacterStatus
             if (fireTime >= 1)
             {
                 fireTime = 0;
-                GetDamage((MaxHP*curFireDamage/100) < 1 ? 1 : (MaxHP*curFireDamage/100), 0, false, true);
+                GetDamage((MaxHP * curFireDamage / 100) < 1 ? 1 : (MaxHP * curFireDamage / 100), 0, false, true);
             }
         }
     }
@@ -368,7 +369,8 @@ public class Enemy : CharacterStatus
             GameManager.instance.AddKillCount();
 
             // 죽을때 isBurn이 true면 주변 5이내 적군에게 화상 디버프를 준다.
-            if(isBurn){
+            if (isBurn)
+            {
                 Collider2D[] colls = Physics2D.OverlapCircleAll(transform.position, 5);
                 foreach (Collider2D coll in colls)
                 {
@@ -390,25 +392,26 @@ public class Enemy : CharacterStatus
                 }
             }
 
+            OSManager.GetService<ContextManager>().GetContext<ItemContext>().RunEnemyDeadProcess(0, gameObject);
             // 경험치 아이템 생성
-            Item expItem = itemPool.Get();
-            expItem.transform.parent = GameManager.instance.pool.transform;
-            Vector2 randomPosition = Random.insideUnitCircle.normalized;
-            expItem.transform.position = (Vector2)transform.position + randomPosition;
-            expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
-            expItem.gameObject.SetActive(true);
+            // Item expItem = itemPool.Get();
+            // expItem.transform.parent = GameManager.instance.pool.transform;
+            // Vector2 randomPosition = Random.insideUnitCircle.normalized;
+            // expItem.transform.position = (Vector2)transform.position + randomPosition;
+            // expItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[0]);
+            // expItem.gameObject.SetActive(true);
 
             // 일정 확률로 골드 아이템 생성
-            int ran = Random.Range(1, 101);
-            if (ran <= 50)
-            {
-                Item goldItem = itemPool.Get();
-                goldItem.transform.parent = GameManager.instance.pool.transform;
-                Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
-                goldItem.transform.position = (Vector2)transform.position + randomPositionGold;
-                goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
-                goldItem.gameObject.SetActive(true);
-            }
+            // int ran = Random.Range(1, 101);
+            // if (ran <= 50)
+            // {
+            //     Item goldItem = itemPool.Get();
+            //     goldItem.transform.parent = GameManager.instance.pool.transform;
+            //     Vector2 randomPositionGold = Random.insideUnitCircle.normalized;
+            //     goldItem.transform.position = (Vector2)transform.position + randomPositionGold;
+            //     goldItem.GetComponent<Item>().Init(GameManager.instance.itemManager.itemDataList[1]);
+            //     goldItem.gameObject.SetActive(true);
+            // }
 
             // 일정 확률로 인게임 아이템 생성
 

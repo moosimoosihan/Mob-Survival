@@ -163,15 +163,17 @@ public class Player : CharacterStatus
             float curDamage = _damage;
 
             // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
-            if(character.Equals("용사")){
+            if (character.Equals("용사"))
+            {
                 _damage = LevelUpSkills.WorriorSkill3(curDamage);
             }
-            
+
             // 용사 9스킬 용사 10% 데미지 감소 및 파티원 50%데미지를 용사가 입는다.
             _damage = LevelUpSkills.WorriorSkill9(character, curDamage, _isCritical);
 
             // 용사 12스킬 데미지 레벨당 5% 감소
-            if(character.Equals("용사")){
+            if (character.Equals("용사"))
+            {
                 _damage = LevelUpSkills.WorriorSkill13(curDamage);
             }
 
