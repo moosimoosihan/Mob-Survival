@@ -9,7 +9,7 @@ public class MaceWeapon : MeleeWeapon
     {
         base.Awake();
         player = GetComponentInParent<Player>();
-        CurDetectionAngle = detectionAngle;
+        CurDetectionAngle = DetectionAngle;
     }
     protected override void Update()
     {
@@ -32,7 +32,7 @@ public class MaceWeapon : MeleeWeapon
         bullet.GetComponent<MaceBullet>().shiledTime = shiledTime;
 
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
-        bullet.GetComponent<EffectBullet>().detectionAngle = CurDetectionAngle;
+        bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
 
     }
 }

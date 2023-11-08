@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class WarriorFirePassive : Weapon
 {
     // 베기와 용사의 일격에 피격당한 적에게 화염 데미지 적용!
@@ -7,10 +9,10 @@ public class WarriorFirePassive : Weapon
     }
     protected override void Update(){
         if(gameObject.activeSelf){
-            if(!player.GetComponentInChildren<MeleeWeapon>().warriorFire){
-                player.GetComponentInChildren<MeleeWeapon>().warriorFire = true;
-                player.GetComponentInChildren<MeleeWeapon>().warriorFireDamge = value;
-                player.GetComponentInChildren<MeleeWeapon>().warriorFireTime = curDelay;
+            if(!player.GetComponentInChildren<SwordWeapon>().warriorFire){
+                player.GetComponentInChildren<SwordWeapon>().warriorFire = true;
+                player.GetComponentInChildren<SwordWeapon>().WarriorFireDamage = value;
+                player.GetComponentInChildren<SwordWeapon>().WarriorFireTime = curDelay;
             }
 
             if(!player.GetComponentInChildren<WarriorActiveSkill>().warriorFire){
