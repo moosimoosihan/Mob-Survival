@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using olimsko;
+using System;
 
 public class UIHUDView : UIView
 {
@@ -18,6 +19,7 @@ public class UIHUDView : UIView
         GameManager.instance.OnKillMonster += OnKillMonster;
         GameManager.instance.OnKillBoss += OnKillBoss;
         GameManager.instance.OnEXPBar += OnEXPBar;
+        GameManager.instance.OnTimeChanged += OnTimeChanged;
 
         SetPlayer();
         Init();
@@ -40,6 +42,7 @@ public class UIHUDView : UIView
         GameManager.instance.OnKillMonster -= OnKillMonster;
         GameManager.instance.OnKillBoss -= OnKillBoss;
         GameManager.instance.OnEXPBar -= OnEXPBar;
+        GameManager.instance.OnTimeChanged -= OnTimeChanged;
     }
 
     private void Init()
@@ -84,6 +87,11 @@ public class UIHUDView : UIView
         float val = curExp / maxExp;
         Get<UISlider>("EXPBar").SetValue(val);
         Get<UITMPText>("LevelText").SetText($"Lv. {GameManager.instance.level}");
+    }
+
+    private void OnTimeChanged(float value)
+    {
+        Get<UITMPText>("Timer").SetText(TimeSpan.FromSeconds(value).ToString(@"mm\:ss"));
     }
 
     public void OnClickChangeTimeScale()

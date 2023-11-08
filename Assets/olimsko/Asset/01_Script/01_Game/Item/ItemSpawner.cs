@@ -17,11 +17,13 @@ public class ItemSpawner : MonoBehaviour
     private void Awake()
     {
         ItemContext.OnCreateNewDropItem += CreateNewDropItem;
+        ItemContext.OnConsumeItemUsed += OnConsumeItemUsed;
     }
 
     private void OnDestroy()
     {
         ItemContext.OnCreateNewDropItem -= CreateNewDropItem;
+        ItemContext.OnConsumeItemUsed -= OnConsumeItemUsed;
     }
 
     public void CreateNewDropItem(DropItemData dropItemData)
@@ -29,7 +31,6 @@ public class ItemSpawner : MonoBehaviour
         DropItem dropItem = GetDropItem();
         dropItem.transform.position = dropItemData.Transform.position;
         dropItem.SetData(this, dropItemData);
-        dropItem.gameObject.SetActive(true);
     }
 
     public DropItem GetDropItem()
@@ -42,6 +43,7 @@ public class ItemSpawner : MonoBehaviour
         else
         {
             DropItem dropItem = Instantiate(m_DropItemPrefab, transform);
+            dropItem.gameObject.SetActive(false);
             m_ListDropItem.Add(dropItem);
             return dropItem;
         }
@@ -52,6 +54,17 @@ public class ItemSpawner : MonoBehaviour
         dropItem.gameObject.SetActive(false);
         m_StackDropItem.Push(dropItem);
         m_ListDropItem.Remove(dropItem);
+    }
+
+    public void OnConsumeItemUsed(int itemID)
+    {
+        if (itemID == 43)
+        {
+            for (int i = 0; i < m_ListDropItem.Count; i++)
+            {
+                m_ListDropItem[i].DoMag(GameManager.instance.playerControl.mainCharacter.transform);
+            }
+        }
     }
 
 

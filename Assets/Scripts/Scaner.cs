@@ -27,7 +27,7 @@ public class Scaner : MonoBehaviour
             foreach (RaycastHit2D itemTarget in itemTargets)
             {
                 DropItem dropItem = itemTarget.transform.gameObject.GetComponent<DropItem>();
-                if (!dropItem.IsUsed)
+                if (dropItem.IsCanUse)
                 {
                     dropItem.DoMag(gameObject.transform);
                 }

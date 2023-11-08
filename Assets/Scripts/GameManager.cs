@@ -6,14 +6,18 @@ using olimsko;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public InputManager inputManager => OSManager.GetService<InputManager>();
+    public ItemContext ItemContext => OSManager.GetService<ContextManager>().GetContext<ItemContext>();
     private List<CharacterTable> CharacterData => OSManager.GetService<DataManager>().GetData<CharacterTableSO>().CharacterTable;
 
     [Header("게임 컨트롤")]
+    private float m_GameTime = 0;
+    public float GameTime { get => m_GameTime; set => m_GameTime = value; }
     public float gameTime;
     public bool isPlay;
 
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
     public Action<int> OnKillMonster;
     public Action<int> OnKillBoss;
     public Action<float> OnEXPBar;
+    public Action<float> OnTimeChanged;
 
     private Queue<bool> m_QueuePauseGame = new Queue<bool>();
 
@@ -115,11 +120,33 @@ public class GameManager : MonoBehaviour
         isPlay = true;
         inputManager.GetAction("UsePotion").Enable();
         inputManager.GetAction("UsePotion").performed += RevivalPotion;
+
+        StartCoroutine(StartTimer());
     }
     private void OnDestroy()
     {
         inputManager.GetAction("UsePotion").performed -= RevivalPotion;
         inputManager.GetAction("UsePotion").Disable();
+    }
+
+    private IEnumerator StartTimer()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            GameTime += 1f;
+            OnTimeChanged?.Invoke(GameTime);
+
+            if (GameTime % 30 == 0)
+            {
+                ItemContext.CreateCunsumptionItem();
+            }
+
+            if (GameTime % 60 == 0)
+            {
+                ItemContext.CreateItemBoxItem();
+            }
+        }
     }
 
     void Update()

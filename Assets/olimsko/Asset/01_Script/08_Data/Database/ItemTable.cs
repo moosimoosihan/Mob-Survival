@@ -49,7 +49,7 @@ public class ItemTable : ITableData<int>
     [SerializeField] private StatType m_StatType3;
     [SerializeField] private StatAddType m_StatAddType3;
     [SerializeField] private int m_StatValue3;
-    [SerializeField] private float m_Probability;
+    [SerializeField] private int m_Probability;
     [SerializeField] private float m_Value;
 
     private Sprite m_Sprite;
@@ -88,7 +88,7 @@ public class ItemTable : ITableData<int>
     public StatType StatType3 { get => m_StatType3; set => m_StatType3 = value; }
     public StatAddType StatAddType3 { get => m_StatAddType3; set => m_StatAddType3 = value; }
     public int StatValue3 { get => m_StatValue3; set => m_StatValue3 = value; }
-    public float Probability { get => m_Probability; set => m_Probability = value; }
+    public int Probability { get => m_Probability; set => m_Probability = value; }
     public float Value { get => m_Value; set => m_Value = value; }
 
     public int GetKey()
@@ -122,7 +122,7 @@ public class ItemTable : ITableData<int>
         m_StatType3 = string.IsNullOrEmpty(data[row, 11]) ? StatType.Default : (StatType)Enum.Parse(typeof(StatType), data[row, 11]);
         m_StatAddType3 = string.IsNullOrEmpty(data[row, 12]) ? StatAddType.Default : (StatAddType)Enum.Parse(typeof(StatAddType), data[row, 12]);
         m_StatValue3 = string.IsNullOrEmpty(data[row, 13]) ? default : int.Parse(data[row, 13]);
-        m_Probability = string.IsNullOrEmpty(data[row, 14]) ? default : float.Parse(data[row, 14]);
+        m_Probability = string.IsNullOrEmpty(data[row, 14]) ? default : int.Parse(data[row, 14]);
         m_Value = string.IsNullOrEmpty(data[row, 15]) ? default : float.Parse(data[row, 15]);
     }
 }
