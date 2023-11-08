@@ -68,11 +68,11 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
-    public static float WorriorSkill5(float _damage, int killCount){
-        float dam = _damage;
+    public static float WorriorSkill5(int killCount){
+        float dam = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(5)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[5].Level > 0){
-                dam += killCount * 0.0001f;
+                dam += killCount * 0.01f;
             }
         }
         return dam;
@@ -173,12 +173,12 @@ public class LevelUpSkills : MonoBehaviour
     }
     
     // 용사 14스킬 화상 스킬의 Debuff Value 0.1% 증가
-    public static float WorriorSkill14(float _fireDamage){
-        float fireDamage = _fireDamage;
+    public static float WorriorSkill14(){
+        float fireDamage = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(14)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[14].Level > 0){
                 int level = playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[14].Level;
-                fireDamage += 0.001f * level;
+                fireDamage += 0.01f * level;
             }
         }
         return fireDamage;

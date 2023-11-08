@@ -63,7 +63,7 @@ public class Enemy : CharacterStatus
             if (fireTime >= 1)
             {
                 fireTime = 0;
-                GetDamage(curFireDamage, 0, false, true);
+                GetDamage((MaxHP*curFireDamage/100) < 1 ? 1 : (MaxHP*curFireDamage/100), 0, false, true);
             }
         }
     }

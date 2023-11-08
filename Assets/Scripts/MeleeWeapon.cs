@@ -17,9 +17,13 @@ public class MeleeWeapon : Weapon
     private float curDetectionAngle = 0;
 
     public bool warriorFire;
+    [SerializeField]
     private float warriorFireDamage;
+    [SerializeField]
     private float curWorriorFireDamage;
+    [SerializeField]
     private float warriorFireTime;
+    [SerializeField]
     private float curWarriorFireTime;
 
     public List<float> distanceList = new List<float>();
@@ -31,7 +35,7 @@ public class MeleeWeapon : Weapon
         }
         set
         {
-            curWarriorFireTime = value;
+            warriorFireTime = value;
         }
     }
     public float CurWarriorFireTime
@@ -53,7 +57,7 @@ public class MeleeWeapon : Weapon
         }
         set
         {
-            curWorriorFireDamage = value;
+            warriorFireDamage = value;
         }
     }
     public float CurWarriorFireDamage

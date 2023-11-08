@@ -34,7 +34,6 @@ public abstract class Weapon : MonoBehaviour
         }
         set
         {
-            
             damage = value;
         }
     }
