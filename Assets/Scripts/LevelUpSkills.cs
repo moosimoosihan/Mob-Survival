@@ -9,7 +9,7 @@ public class LevelUpSkills : MonoBehaviour
     static PlayerContext playerContext = OSManager.GetService<ContextManager>().GetContext<PlayerContext>();
 
     // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-    public static void WorriorSkill0(Transform transform, IObjectPool<Bullet> poolBullet, Vector3 _dir, float _scalex, float _spawnDistance, float curDetectionAngle, Player player, float Damage, int count, float knockBackPower, float duration, float scaley, float detectRadius){
+    public static void WarriorSkill0(Transform transform, IObjectPool<Bullet> poolBullet, Vector3 _dir, float _scalex, float _spawnDistance, float curDetectionAngle, Player player, float Damage, int count, float knockBackPower, float duration, float scaley, float detectRadius){
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(0)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[0].Level > 0){
                 Transform bulletBack = poolBullet.Get().transform;
@@ -25,7 +25,7 @@ public class LevelUpSkills : MonoBehaviour
             }
         }
     }
-    public static float[] WorriorSkill1(float scalex, float detectionAngle){
+    public static float[] WarriorSkill1(float scalex, float detectionAngle){
         float[] result = {scalex , detectionAngle};
         // 용사 1번 스킬 범위증가(베기) 베기스킬 범위 2배 증가
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(1)){
@@ -38,7 +38,7 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-    public static float WorriorSkill2(float _damage){
+    public static float WarriorSkill2(float _damage){
         float damage = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
@@ -50,7 +50,7 @@ public class LevelUpSkills : MonoBehaviour
     }
     
     // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
-    public static float WorriorSkill3(float _damage){
+    public static float WarriorSkill3(float _damage){
         float dam = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(3)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[3].Level > 0){
@@ -61,14 +61,17 @@ public class LevelUpSkills : MonoBehaviour
         return dam;
     }
 
-    // 용사 4스킬 화염 갑옷 화상스킬 
-    // 만들어야 함
-    public static void WorriorSkill4(){
-
+    // 용사 4스킬 화염 갑옷 용사 피격시 적군에게 화상스킬
+    public static void WarriorSkill4(Enemy enemy, float _damage, float _duration){
+        if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(4)){
+            if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[4].Level > 0){
+                enemy.StartCoroutine(enemy.WarriorFireOn(_damage, _duration, true));
+            }
+        }
     }
 
     // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
-    public static float WorriorSkill5(int killCount){
+    public static float WarriorSkill5(int killCount){
         float dam = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(5)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[5].Level > 0){
@@ -80,12 +83,12 @@ public class LevelUpSkills : MonoBehaviour
 
     // 용사 6스킬 용사의 일격 스킬 Projectile Type이 QuarterCircle 에서 HalfCircle로 변경
     // 만들어야 함
-    public static void WorriorSkill6(){
+    public static void WarriorSkill6(){
 
     }
 
     // 용사 7스킬 용사의 일격 스킬의 Project Range 600으로변경
-    public static float[] WorriorSkill7(float _scaley, float _detectRadius){
+    public static float[] WarriorSkill7(float _scaley, float _detectRadius){
         float[] result = {_scaley, _detectRadius};
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(7)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[7].Level > 0){
@@ -97,7 +100,7 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 8스킬 화상 스킬의 Buff Time이 200으로 번경
-    public static float WorriorSkill8(float _buffTime){
+    public static float WarriorSkill8(float _buffTime){
         float buffTime = _buffTime;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(7)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[7].Level > 0){
@@ -108,7 +111,7 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 9스킬 Damage Reduction 10% 증가하며 파티원이 받는 데미지 50%를 용사가 대신 받음
-    public static float WorriorSkill9(string character, float _damage, bool isCritical){
+    public static float WarriorSkill9(string character, float _damage, bool isCritical){
         float damage = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(9)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[9].Level > 0){
@@ -130,7 +133,7 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 10스킬 화상 디버프가 있는 몬스터가 사망시 Range 100 이내 주변 몬스터에게 화상 디버프를 부여
-    public static bool WorriorSkill10(){
+    public static bool WarriorSkill10(){
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(10)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[10].Level > 0){
                 return true;
@@ -141,12 +144,12 @@ public class LevelUpSkills : MonoBehaviour
 
     // 용사 11스킬 용사의 일격 스킬 Projectile Type을 Half Circle에서 Circle로 변경시키고 Cooldown 20초 감소
     // (만들어야 함)
-    public static void WorriorSkill11(){
+    public static void WarriorSkill11(){
 
     }
 
     // 용사 12스킬 Damage,Att Range 5% 증가 (적용 해야함)
-    public static float[] WorriorSkill12(float _damage, float _detectRadius){
+    public static float[] WarriorSkill12(float _damage, float _detectRadius){
         float[] result = {_damage, _detectRadius};
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(12)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[12].Level > 0){
@@ -159,7 +162,7 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 13스킬 Damage Reduction 3% 증가
-    public static float WorriorSkill13(float _damage){
+    public static float WarriorSkill13(float _damage){
         float dam = _damage;
         
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(13)){
@@ -173,7 +176,7 @@ public class LevelUpSkills : MonoBehaviour
     }
     
     // 용사 14스킬 화상 스킬의 Debuff Value 0.1% 증가
-    public static float WorriorSkill14(){
+    public static float WarriorSkill14(){
         float fireDamage = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(14)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[14].Level > 0){

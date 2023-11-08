@@ -24,12 +24,12 @@ public class SwordWeapon : MeleeWeapon
 
 
         // 용사 1번 스킬 범위증가(베기) 베기스킬 범위 2배 증가
-        float[] skill1Values = LevelUpSkills.WorriorSkill1(scalex, DetectionAngle);
+        float[] skill1Values = LevelUpSkills.WarriorSkill1(scalex, DetectionAngle);
         scalex = skill1Values[0];
         CurDetectionAngle = skill1Values[1];
 
         // 용사 7번 스킬 range 증가
-        float[] skill6Values = LevelUpSkills.WorriorSkill7(scaley, DetectRadius);
+        float[] skill6Values = LevelUpSkills.WarriorSkill7(scaley, DetectRadius);
         scaley = skill6Values[0];
         CurDetectRadius = skill6Values[1];
 
@@ -44,30 +44,30 @@ public class SwordWeapon : MeleeWeapon
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-        LevelUpSkills.WorriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, count, knockBackPower, duration, scaley, DetectRadius);
+        LevelUpSkills.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, count, knockBackPower, duration, scaley, DetectRadius);
 
         // 오디오 재생
-        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Worrior_Attack);
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Warrior_Attack);
 
         if (warriorFire)
         {
-            CurWarriorFireDamage = WarriorFireDamage;
-
+            curWarriorFireDamage = warriorFireDamage;
+            
             // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
-            CurWarriorFireDamage = LevelUpSkills.WorriorSkill5(GameManager.instance.kill);
+            curWarriorFireDamage += LevelUpSkills.WarriorSkill5(GameManager.instance.kill);
 
             // 용사 7스킬 화상 스킬 지속시간 증가
-            CurWarriorFireTime = LevelUpSkills.WorriorSkill8(WarriorFireTime);
+            curWarriorFireTime = LevelUpSkills.WarriorSkill8(warriorFireTime);
 
             // 용사 14스킬 화상 스킬의 데미지 레벨당 0.1% 증가
-            CurWarriorFireDamage += LevelUpSkills.WorriorSkill14();
+            curWarriorFireDamage += LevelUpSkills.WarriorSkill14();
 
             bullet.GetComponent<FireSword>().warriorFire = true;
-            bullet.GetComponent<FireSword>().warriorFireDamge = CurWarriorFireDamage;
-            bullet.GetComponent<FireSword>().warriorFireTime = CurWarriorFireTime;
+            bullet.GetComponent<FireSword>().warriorFireDamge = curWarriorFireDamage;
+            bullet.GetComponent<FireSword>().warriorFireTime = curWarriorFireTime;
 
             // 용사 10스킬 화상 디버프가 있는 몬스터 사망시 주변 몬스터에게 화상 디버프 부여
-            bullet.GetComponent<FireSword>().fireBurn = LevelUpSkills.WorriorSkill10();
+            bullet.GetComponent<FireSword>().fireBurn = LevelUpSkills.WarriorSkill10();
         }
     }
 }

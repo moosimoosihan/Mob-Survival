@@ -206,19 +206,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: 
-  maxHP: 100
-  curHP: 0
-  maxShield: 0
-  curShield: 0
   isShield: 0
   shieldTime: 0
   shieldCurTime: 0
   speed: 3
   critRate: 0
   critDamage: 0
-  attackDamage: 0
-  createFollowingHpBar: 1
+  def: 0
+  evasion: 0
+  heal: 0
   resistance: 1
+  shielSfxPlayer: {fileID: 0}
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -227,11 +225,9 @@ MonoBehaviour:
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  childTransform: {fileID: 0}
   weaponTransform: {fileID: 0}
-  def: 0
-  heal: 0
   hpRegen: 0
-  evasion: 0
 --- !u!114 &8887287985837415177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,7 +519,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: detectionAngle
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: knockBackPower

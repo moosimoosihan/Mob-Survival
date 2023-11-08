@@ -45,7 +45,7 @@ public class CharacterStatus : MonoBehaviour
             //플레이어 여부 검사
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                curActiveSkillDamage = LevelUpSkills.WorriorSkill2(curActiveSkillDamage);
+                curActiveSkillDamage = LevelUpSkills.WarriorSkill2(curActiveSkillDamage);
             
             return curActiveSkillDamage;
         }
@@ -84,7 +84,7 @@ public class CharacterStatus : MonoBehaviour
 
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                curAttackDamage = LevelUpSkills.WorriorSkill2(curAttackDamage);
+                curAttackDamage = LevelUpSkills.WarriorSkill2(curAttackDamage);
             
             return curAttackDamage;
         }

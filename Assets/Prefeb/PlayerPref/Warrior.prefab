@@ -629,7 +629,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: warriorFire
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: detectRadius
@@ -641,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: detectionAngle
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: knockBackPower
@@ -649,7 +649,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: warriorFireTime
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: projectilePrefab
@@ -658,6 +658,10 @@ PrefabInstance:
     - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: warriorFireDamge
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5192024046028262005, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
+      propertyPath: warriorFireDamage
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6857669930323094734, guid: 8f98cb0e1acee854899216e5a8fe7c6b, type: 3}
       propertyPath: m_Name
@@ -739,6 +743,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8864418049405222932, guid: 3a0b97113e1142f44ac3b023ca1eb2de, type: 3}
       propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8864418049405222932, guid: 3a0b97113e1142f44ac3b023ca1eb2de, type: 3}
+      propertyPath: weaponValue
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8864418049405222932, guid: 3a0b97113e1142f44ac3b023ca1eb2de, type: 3}
@@ -870,6 +878,10 @@ PrefabInstance:
     - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
       propertyPath: duration
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: weaponValue
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ffe82fc788961ae41af146721384def5, type: 3}

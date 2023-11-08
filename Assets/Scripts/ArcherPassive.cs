@@ -35,7 +35,7 @@ public class ArcherPassive : Weapon
         effect.transform.position = transform.position;
 
         
-        bowWeapon.curDelay -=  bowWeapon.delay * value;
+        bowWeapon.curDelay -=  bowWeapon.delay * weaponValue;
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff2);
         
@@ -46,7 +46,7 @@ public class ArcherPassive : Weapon
         }
         buffTime = 0;
         
-        bowWeapon.curDelay +=  bowWeapon.delay * value;
+        bowWeapon.curDelay +=  bowWeapon.delay * weaponValue;
 
         buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
 

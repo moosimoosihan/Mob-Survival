@@ -23,8 +23,8 @@ public class AudioManager : Singleton<AudioManager>
     public enum Sfx {
         Archer_Attack,
         Healer_Attack,
-        Revive, Worrior_FireStrike,
-        Worrior_Attack,
+        Revive, Warrior_FireStrike,
+        Warrior_Attack,
         Wizard_Attack,
         Ent_Hit,
         Ent_Dark_Die,
@@ -110,10 +110,10 @@ public class AudioManager : Singleton<AudioManager>
             case Sfx.Revive:
                 playNum = 6;
                 break;
-            case Sfx.Worrior_FireStrike:
+            case Sfx.Warrior_FireStrike:
                 playNum = 7;
                 break;
-            case Sfx.Worrior_Attack:
+            case Sfx.Warrior_Attack:
                 playNum = Random.Range(8, 11);
                 break;
             case Sfx.Wizard_Attack:

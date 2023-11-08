@@ -7,7 +7,7 @@ public abstract class Weapon : MonoBehaviour
     private float damage;
     
     // 회복 및 쿨타임 적용시 사용할 값
-    public float value;
+    public float weaponValue;
     public int count;
     public float delay;
     public float curDelay;
