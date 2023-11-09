@@ -26,12 +26,14 @@ public class ArcherActiveSkill : ActiveSkill
     public override void AreaOff(){}
     public override void AreaUpdate(){}
     public override void ActiveSkillUpdate(){
-        Debug.Log("궁수 액티브 스킬 시전");
-        StartCoroutine(SkillDelay());
-        if(!isActivate){
-            StartCoroutine(Skill());
-        } else {
-            buffTime = skillDuration;
+        if(timer >= delay){
+            Debug.Log("궁수 액티브 스킬 시전");
+            StartCoroutine(SkillDelay());
+            if(!isActivate){
+                StartCoroutine(Skill());
+            } else {
+                buffTime = skillDuration;
+            }
         }
     }
     IEnumerator SkillDelay(){

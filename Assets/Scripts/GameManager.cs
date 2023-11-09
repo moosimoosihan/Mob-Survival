@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour
 
     private Queue<bool> m_QueuePauseGame = new Queue<bool>();
 
+    public SkillContext skillContext => OSManager.GetService<ContextManager>().GetContext<SkillContext>();
+
 
     public void AddKillCount(int value = 1)
     {

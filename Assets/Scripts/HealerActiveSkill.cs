@@ -28,9 +28,11 @@ public class HealerActiveSkill : ActiveSkill
     public override void AreaUpdate() { }
     public override void ActiveSkillUpdate()
     {
-        Debug.Log("사제 액티브 스킬 시전");
-        StartCoroutine(SkillDelay());
-        Skill();
+        if(timer >= delay){
+            Debug.Log("사제 액티브 스킬 시전");
+            StartCoroutine(SkillDelay());
+            Skill();
+        }
     }
     IEnumerator SkillDelay()
     {

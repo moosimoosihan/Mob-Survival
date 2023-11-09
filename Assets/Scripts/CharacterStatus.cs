@@ -34,7 +34,7 @@ public class CharacterStatus : MonoBehaviour
 
             //플레이어 여부 검사
             if(GetComponent<Player>() && character.Equals("궁수"))
-                curAttackSpeed += LevelUpSkills.ArcherSkill1(attackSpeed);
+                curAttackSpeed += GameManager.instance.skillContext.ArcherSkill1(attackSpeed);
             
             return curAttackSpeed;
         }
@@ -63,11 +63,11 @@ public class CharacterStatus : MonoBehaviour
             //플레이어 여부 검사
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                curActiveSkillDamage += LevelUpSkills.WarriorSkill2(activeSkillDamage);
+                curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill2(activeSkillDamage);
 
             if(GetComponent<Player>() && character.Equals("용사")){
                 // 용사 15번 스킬 액티브 스킬 15% 증가
-                curActiveSkillDamage += LevelUpSkills.WarriorSkill15(activeSkillDamage);
+                curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill15(activeSkillDamage);
             }
             
             return curActiveSkillDamage;
@@ -107,7 +107,7 @@ public class CharacterStatus : MonoBehaviour
 
             if(GetComponent<Player>())
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
-                curAttackDamage += LevelUpSkills.WarriorSkill2(attackDamage);
+                curAttackDamage += GameManager.instance.skillContext.WarriorSkill2(attackDamage);
             
             return curAttackDamage;
         }
