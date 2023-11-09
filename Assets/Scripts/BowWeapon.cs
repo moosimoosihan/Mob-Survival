@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BowWeapon : Weapon
 {
-
+    int bowCount = 0;
     protected override void Awake()
     {
         base.Awake();
@@ -27,8 +27,21 @@ public class BowWeapon : Weapon
         bullet.parent = GameManager.instance.pool.transform;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), count, dir, knockBackPower, duration, isCritical);
-        this.isCritical = isCritical;
+        // 궁수 4스킬 50마리 처치시 관통 1 증가
+        CurCount += GameManager.instance.skillContext.ArcherSkill4(GameManager.instance.kill);
+
+        // 궁수 3스킬 5번 쏘면 100% 크리티컬
+        if(GameManager.instance.skillContext.ActherSkill3()){
+            bowCount++;
+            if(bowCount == 5){
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), CurCount, dir, knockBackPower, duration, true);
+                this.isCritical = true;
+                bowCount = 0;
+            }
+        } else {
+            bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+            this.isCritical = isCritical;
+        }        
 
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);
     }

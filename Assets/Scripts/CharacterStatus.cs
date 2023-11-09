@@ -14,8 +14,70 @@ public class CharacterStatus : MonoBehaviour
     public float shieldTime;
     public float shieldCurTime;
     public float speed;
-    public float critRate;
-    public float critDamage = 2;
+    [SerializeField]
+    private float critRate;
+    public float CritRate
+    {
+        get
+        {
+            return critRate;
+        }
+        set
+        {
+            critRate = value;
+        }
+    }
+    private float curCritRate;
+    public float CurCritRate
+    {
+        get
+        {
+            curCritRate = critRate;
+            
+            // 궁수 8스킬 크리티컬 확률 및 데미지 증가
+            if(GetComponent<Player>() && character.Equals("궁수")){
+                curCritRate += GameManager.instance.skillContext.ArcherSkill8()[0];
+            }
+
+            return curCritRate;
+        }
+        set
+        {
+            curCritRate = value;
+        }
+    }
+    [SerializeField]
+    private float critDamage;
+    public float CritDamage
+    {
+        get
+        {
+            return critDamage;
+        }
+        set
+        {
+            critDamage = value;
+        }
+    }
+    private float curCritDamage;
+    public float CurCritDamage
+    {
+        get
+        {
+            curCritDamage = critDamage;
+
+            // 궁수 8스킬 크리티컬 확률 및 데미지 증가
+            if(GetComponent<Player>() && character.Equals("궁수")){
+                curCritDamage += GameManager.instance.skillContext.ArcherSkill8()[1];
+            }
+
+            return curCritDamage;
+        }
+        set
+        {
+            curCritDamage = value;
+        }
+    }
     public float def;
     public float evasion;
     public float heal;
@@ -26,6 +88,38 @@ public class CharacterStatus : MonoBehaviour
     private float curActiveSkillDamage;
     private float attackSpeed = 1;
     private float curAttackSpeed;
+    private float activeDelay = 1;
+    private float curActiveDelay;
+    public float ActiveDelay
+    {
+        get
+        {
+            return activeDelay;
+        }
+        set
+        {
+            activeDelay = value;
+        }
+    }
+    public float CurActiveDelay
+    {
+        get
+        {
+            curActiveDelay = activeDelay;
+
+            if(GetComponent<Player>())
+            {
+                // 궁수 2번 스킬 액티브 스킬 딜레이 15% 감소
+                curActiveDelay += GameManager.instance.skillContext.ArcherSkill2(activeDelay);
+            }
+
+            return curActiveDelay;
+        }
+        set
+        {
+            curActiveDelay = value;
+        }
+    }
     public float CurAttackSpeed
     {
         get
@@ -36,6 +130,10 @@ public class CharacterStatus : MonoBehaviour
             if(GetComponent<Player>() && character.Equals("궁수"))
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill1(attackSpeed);
             
+            if(GetComponent<Player>()){
+                curAttackSpeed += GameManager.instance.skillContext.ArcherSkill2(attackSpeed);
+            }
+
             return curAttackSpeed;
         }
         set

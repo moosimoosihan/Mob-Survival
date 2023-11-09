@@ -83,8 +83,8 @@ public class Player : CharacterStatus
         hpRegen = data.HPRegen;
         evasion = data.Evasion;
         heal = data.Heal;
-        critRate = data.CritRate;
-        critDamage = data.CritDamage;
+        CritRate = data.CritRate;
+        CritDamage = data.CritDamage;
         ActiveSkillDamage = data.ActiveDamage;
         AttackDamage = data.Damage;
         AttackSpeed = data.AttackSpeed;

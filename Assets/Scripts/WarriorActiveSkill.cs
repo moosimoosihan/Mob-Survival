@@ -61,7 +61,7 @@ public class WarriorActiveSkill : ActiveSkill
         timer = 0;
         areaOn = false;
         isActive = true;
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(CurDelay);
         isActive = false;
     }
     void Skill(Vector2 vec){

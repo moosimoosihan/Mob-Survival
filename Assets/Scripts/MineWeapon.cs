@@ -55,7 +55,7 @@ public class MineWeapon : Weapon
         mineBullet.transform.position = transform.position;
         mineBullet.rotation = Quaternion.identity;
         
-        if (!createdMineList.Contains(mineBullet.gameObject) || createdMineList.Count < count)
+        if (!createdMineList.Contains(mineBullet.gameObject) || createdMineList.Count < CurCount)
         {
             createdMineList.Add(mineBullet.gameObject);
         }
@@ -78,7 +78,7 @@ public class MineWeapon : Weapon
         }
 
         curCreatCount = tempCount;
-        return curCreatCount < count;
+        return curCreatCount < CurCount;
     }
 
     protected void DeActivate()

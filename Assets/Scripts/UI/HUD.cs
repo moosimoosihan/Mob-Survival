@@ -93,7 +93,7 @@ public class HUD : MonoBehaviour
                     return;
                 }
                 float curTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer;
-                float maxTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
+                float maxTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().CurDelay;
                 p_curActiveSkill = curTimer;
                 p_maxActiveSkill = maxTimer;
                 myImage.fillAmount = curTimer / maxTimer;
@@ -217,7 +217,7 @@ public class HUD : MonoBehaviour
                 break;
             case InfoYType.ActiveSkill:
                 float curTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().timer;
-                float maxTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().delay;
+                float maxTimer = GameManager.instance.players[playerNum].GetComponentInChildren<ActiveSkill>().CurDelay;
                 if (p_curActiveSkill != curTimer || p_maxActiveSkill != maxTimer)
                 {
                     p_curActiveSkill = curTimer;

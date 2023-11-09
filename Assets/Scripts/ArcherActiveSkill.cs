@@ -26,20 +26,21 @@ public class ArcherActiveSkill : ActiveSkill
     public override void AreaOff(){}
     public override void AreaUpdate(){}
     public override void ActiveSkillUpdate(){
-        if(timer >= delay){
+        if(timer >= CurDelay){
             Debug.Log("궁수 액티브 스킬 시전");
             StartCoroutine(SkillDelay());
             if(!isActivate){
                 StartCoroutine(Skill());
             } else {
-                buffTime = skillDuration;
+                // 궁수 6 스킬 버프 20초 증가
+                buffTime = skillDuration + GameManager.instance.skillContext.ArcherSkill6();
             }
         }
     }
     IEnumerator SkillDelay(){
         timer = 0;
         isActive = true;
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(CurDelay);
         isActive = false;
     }
     IEnumerator Skill(){
@@ -49,17 +50,22 @@ public class ArcherActiveSkill : ActiveSkill
         effect.target = transform.parent;
         effect.transform.position = transform.position;
 
-        player.critRate += 0.3f;
+        player.CurCritRate += 0.3f;
+        
+        // 궁수 7스킬 크리티컬 데미지 100% 증가
+        player.CurCritDamage += GameManager.instance.skillContext.ArcherSkill7();
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff1);
-
-        buffTime = skillDuration;
+        
+        // 궁수 6 스킬 버프 20초 증가
+        buffTime = skillDuration + GameManager.instance.skillContext.ArcherSkill6();
         while(buffTime>0){
             buffTime -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         buffTime = 0;
-        player.critRate -= 0.3f;
+        player.CurCritRate -= 0.3f;
+        player.CurCritDamage -= GameManager.instance.skillContext.ArcherSkill7();
 
         buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
 

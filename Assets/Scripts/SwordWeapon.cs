@@ -39,12 +39,12 @@ public class SwordWeapon : MeleeWeapon
         bullet.transform.localScale = new Vector3(scalex, scaley, bullet.transform.localScale.z);
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-        GameManager.instance.skillContext.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, count, knockBackPower, duration, scaley, DetectRadius);
+        GameManager.instance.skillContext.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, CurCount, knockBackPower, duration, scaley, DetectRadius);
 
         // 오디오 재생
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Warrior_Attack);

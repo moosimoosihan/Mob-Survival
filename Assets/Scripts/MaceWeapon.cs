@@ -31,7 +31,7 @@ public class MaceWeapon : MeleeWeapon
         bullet.GetComponent<MaceBullet>().shiledAmount = shiledAmount;
         bullet.GetComponent<MaceBullet>().shiledTime = shiledTime;
 
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
 
     }

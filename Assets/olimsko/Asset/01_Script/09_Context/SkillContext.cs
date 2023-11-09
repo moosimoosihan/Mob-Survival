@@ -187,14 +187,64 @@ public class SkillContext : ContextModel
         return 0;
     }
 
-    // 사제
-    // 파티원 전체 Att Speed/Active Cooldown 15% 증가
-    // 사격에 특수효과를 추가하여 5회 기본 공격시 Crit Rate를 100%로 변경
-    // 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가
-    // 치명타 발생시 액티브 스킬 쿨다운 1초 감소
-    // 액티브의 BuffTime 20초 증가
-    // 액티브가 Critical Damage 100%도 증가시킴
-    // Crit Rate 20%와 Crit Damage 70% 증가
+    // 궁수 2스킬 파티원 전체 Att Speed/Active Cooldown 15% 증가
+    public float ArcherSkill2(float speed){
+        if(PlayerContext.IsHasSkill(1, 18)){
+            return speed * 0.15f;
+        }
+        return 0;
+    }
+
+    // 궁수 3스킬 사격에 특수효과를 추가하여 5회 기본 공격시 Crit Rate를 100%로 변경
+    public bool ActherSkill3(){
+        if(PlayerContext.IsHasSkill(1, 19)){
+            return true;
+        }
+        return false;
+    }
+
+    // 궁수 4스킬 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가
+    public int ArcherSkill4(int count){
+        if(PlayerContext.IsHasSkill(1, 20)){
+            return count%50; // 50마리마다 1씩 증가
+        }
+        return 0;
+    }
+
+    // 궁수 5스킬 치명타 발생시 액티브 스킬 쿨다운 1초 감소
+    public float ArcherSkill5(){
+        if(PlayerContext.IsHasSkill(1, 21)){
+            return 1f;
+        }
+        return 0;
+    }
+
+    // 궁수 6스킬 액티브의 BuffTime 20초 증가
+    public float ArcherSkill6(){
+        if(PlayerContext.IsHasSkill(1, 22)){
+            return 20f;
+        }
+        return 0;
+    }
+    
+    // 궁수 7스킬 액티브가 Critical Damage 100%도 증가시킴
+    public float ArcherSkill7(){
+        if(PlayerContext.IsHasSkill(1, 23)){
+            return 1f;
+        }
+        return 0;
+    }
+
+    // 궁수 8스킬 Crit Rate 20%와 Crit Damage 70% 증가
+    public float[] ArcherSkill8(){
+        float[] result = {0, 0};
+        if(PlayerContext.IsHasSkill(1, 24)){
+            result[0] += 0.2f;
+            result[1] += 0.7f;
+        }
+        return result;
+    }
+    
     // 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가)
     // 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정)
     // 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함
@@ -203,7 +253,7 @@ public class SkillContext : ContextModel
     // 패시브2의 치명타 발생시 Att Speed 1% 추가 증가
     // 액티브의 Crit Rate 추가 1% 증가
 
-    // 현자
+    // 사제
     // Damage 50% 증가하며 ProjectSize 15로 변경
     // Att Speed 50% 증가하며 ProjectileSpeed 2로 변경
     // Add Exp 25%증가
@@ -221,7 +271,7 @@ public class SkillContext : ContextModel
     // 디버프 빙결의 이동속도 감소를 1% 추가 감소
     // Active Damage 15% 증가
 
-
+    // 현자
     // Att Speed 50% 증가하며 이단심판으로 타격시 2초간 이동속도 100% 감소
     // 이단심판으로 타격시 아군에게 적용되어 있는 디버프 1개 제거
     // 파티원 전체 Damage 15%, Defense 15% 증가

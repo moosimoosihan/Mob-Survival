@@ -17,6 +17,15 @@ public class ArcherPassive : Weapon
     {
         if(bowWeapon.isCritical){
             bowWeapon.isCritical = false;
+
+            // 궁수 5스킬 치명타 발생시 액티브 스킬 쿨타임 1초 감소
+            if(GameManager.instance.skillContext.ArcherSkill5()!=0){
+                ArcherActiveSkill archerActiveSkill = player.GetComponentInChildren<ArcherActiveSkill>();
+                if(archerActiveSkill.timer<archerActiveSkill.CurDelay){
+                    archerActiveSkill.timer+=GameManager.instance.skillContext.ArcherSkill5();
+                }
+            }
+            
             Activate();
         }
     }

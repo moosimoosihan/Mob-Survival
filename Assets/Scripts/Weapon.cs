@@ -8,7 +8,21 @@ public abstract class Weapon : MonoBehaviour
     
     // 회복 및 쿨타임 적용시 사용할 값
     public float weaponValue;
-    public int count;
+    [SerializeField]
+    private int count;
+    private int curCount;
+    public int CurCount
+    {
+        get
+        {
+            curCount = count;
+            return curCount;
+        }
+        set
+        {
+            curCount = value;
+        }
+    }
     [SerializeField]
     private float delay;
     private float curDelay;

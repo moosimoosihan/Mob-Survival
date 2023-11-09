@@ -22,6 +22,22 @@ public abstract class ActiveSkill : MonoBehaviour
     public bool areaOn;
     public GameObject skillArea;
     public float delay;
+    private float curDelay;
+    public float CurDelay
+    {
+        get
+        {
+            curDelay = delay;
+            if(player!=null && player.CurActiveDelay != 0){
+                curDelay /= player.CurActiveDelay;
+            }
+            return curDelay;
+        }
+        set
+        {
+            curDelay = value;
+        }
+    }
     public Player player;
     public float timer;
     [SerializeField]
@@ -33,7 +49,7 @@ public abstract class ActiveSkill : MonoBehaviour
     protected virtual void Start()
     {
         
-        timer = delay;
+        timer = CurDelay;
         
         ActiveSkillInit();
 
@@ -54,7 +70,7 @@ public abstract class ActiveSkill : MonoBehaviour
     }
     protected virtual void Update()
     {
-        if(isActive && timer < delay){
+        if(isActive && timer < CurDelay){
             timer += Time.deltaTime;
         }
         if(!player.inputEnabled || !GameManager.instance.isPlay){

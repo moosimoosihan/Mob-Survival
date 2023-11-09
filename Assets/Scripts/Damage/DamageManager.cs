@@ -16,7 +16,7 @@ public class DamageManager : Singleton<DamageManager>
 
     void Start()
     {
-        //Ç® ¹Ì¸® ¸¸µé¾î³õ±â
+        //Ç® ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         GameObject tempObj = null;
         for (int i = 0; i < poolLimitCount; i++)
         {
@@ -40,7 +40,7 @@ public class DamageManager : Singleton<DamageManager>
 
         if (tempLabel == null)
         {
-            //N°³ ³Ñ¾î°¡´Â ¼ø°£ ºÎÅÍ´Â ¼ø¼­´ë·Î ÄÑÁ®ÀÖ´Â¾Ö °­Á¦·Î ²ô°í °¡Á®¿À±â
+            //Nï¿½ï¿½ ï¿½Ñ¾î°¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Í´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´Â¾ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             if(labelPoolList.Count >= poolLimitCount)
             {
                 for (int i = 0; i < labelPoolList.Count; i++)
@@ -78,10 +78,10 @@ public class DamageManager : Singleton<DamageManager>
     public float Critical(CharacterStatus _character, float _damage, out bool _isCritical)
     {
         int ran = Random.Range(0,100);
-        if(_character.critRate*100 > ran){
-            //Å©¸®Æ¼ÄÃ ¼º°ø
+        if(_character.CurCritRate*100 > ran){
+            //Å©ï¿½ï¿½Æ¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             _isCritical = true;
-            return _character.critDamage * _damage;
+            return _character.CurCritRate * _damage;
         } else {
             _isCritical = false;
             return _damage;

@@ -28,7 +28,7 @@ public class HealerActiveSkill : ActiveSkill
     public override void AreaUpdate() { }
     public override void ActiveSkillUpdate()
     {
-        if(timer >= delay){
+        if(timer >= CurDelay){
             Debug.Log("사제 액티브 스킬 시전");
             StartCoroutine(SkillDelay());
             Skill();
@@ -38,7 +38,7 @@ public class HealerActiveSkill : ActiveSkill
     {
         timer = 0;
         isActive = true;
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(CurDelay);
         isActive = false;
     }
     void Skill()
@@ -55,7 +55,7 @@ public class HealerActiveSkill : ActiveSkill
                 {
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopAllCoroutines();
                     minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
-                    minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
+                    minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().CurDelay;
                 }
                 if (Vector3.Distance(GameManager.instance.playerControl.mainCharacter.transform.position, minHealthPlayer.transform.position) > minHealthPlayer.gameObject.GetComponent<CharacterAI>().distWithinMainCharacter)
                 {
@@ -83,7 +83,7 @@ public class HealerActiveSkill : ActiveSkill
         {
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().StopCoroutine(SkillDelay());
             minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive = false;
-            minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().delay;
+            minHealthPlayer.GetComponentInChildren<ActiveSkill>().timer = minHealthPlayer.GetComponentInChildren<ActiveSkill>().CurDelay;
         }
     }
 }
