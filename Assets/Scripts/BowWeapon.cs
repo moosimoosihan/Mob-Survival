@@ -33,10 +33,13 @@ public class BowWeapon : Weapon
         // 궁수 3스킬 5번 쏘면 100% 크리티컬
         if(GameManager.instance.skillContext.ActherSkill3()){
             bowCount++;
-            if(bowCount == 5){
+            if(bowCount >= 5){
                 bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), CurCount, dir, knockBackPower, duration, true);
                 this.isCritical = true;
                 bowCount = 0;
+            } else {
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+                this.isCritical = isCritical;
             }
         } else {
             bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
