@@ -189,4 +189,24 @@ public class PlayerContext : ContextModel
         return randomSkill;
     }
 
+    public bool IsHasSkill(int playerID, int skillIdx)
+    {
+        if (m_DicPlayerEquipedSkill.ContainsKey(playerID))
+        {
+            if (GetSkillLevel(playerID, skillIdx) > 0)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int GetSkillLevel(int playerID, int skillIdx)
+    {
+        if (m_DicPlayerEquipedSkill.ContainsKey(playerID))
+        {
+            return m_DicPlayerEquipedSkill[playerID].GetSkillLevel(skillIdx);
+        }
+        return 0;
+    }
 }
