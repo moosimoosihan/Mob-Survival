@@ -200,14 +200,10 @@ public class Medusa : Enemy
                     Player curPlayer = GameManager.instance.players[i];
                     if ((transform.localScale.x == 1 && curPlayer.childTransform.localScale.x == -1) || (transform.localScale.x == -1 && curPlayer.childTransform.localScale.x == 1))
                     {
-                        if (curPlayer.isDamaged)
-                        { // 보스 공격은 무적시간 없음
-                            curPlayer.isDamaged = false;
-                            curPlayer.StopCoroutine(curPlayer.DamageDelay());
-                        }
+                        // 보스 공격은 무적시간 없음
                         if (curPlayer.resistance != 0)
                         {
-                            curPlayer.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), isCritical);
+                            curPlayer.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), isCritical, null, true);
                             curPlayer.StartCoroutine(curPlayer.Speedresistance(0, specialStopTime));
                         }
                     }

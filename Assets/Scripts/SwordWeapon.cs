@@ -52,12 +52,13 @@ public class SwordWeapon : MeleeWeapon
         if (warriorFire)
         {
             curWarriorFireDamage = warriorFireDamage;
+            curWarriorFireTime = warriorFireTime;
             
             // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
             curWarriorFireDamage += LevelUpSkills.WarriorSkill5(GameManager.instance.kill);
 
             // 용사 7스킬 화상 스킬 지속시간 증가
-            curWarriorFireTime = LevelUpSkills.WarriorSkill8(warriorFireTime);
+            curWarriorFireTime += LevelUpSkills.WarriorSkill8();
 
             // 용사 14스킬 화상 스킬의 데미지 레벨당 0.1% 증가
             curWarriorFireDamage += LevelUpSkills.WarriorSkill14();

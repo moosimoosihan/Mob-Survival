@@ -21,7 +21,7 @@ public class MineWeapon : Weapon
     {
         // ????? ???? ?? ?? ???? ????        
         timer += Time.deltaTime;
-        if (timer > curDelay)
+        if (timer > CurDelay)
         {
             bool ret = FireCheck();
             if (ret)

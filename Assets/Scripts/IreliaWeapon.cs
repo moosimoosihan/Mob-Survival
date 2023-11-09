@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class IreliaWeapon : Weapon
 {
-    //�߻�ü ����
+    //???? ????
     [SerializeField]
     List<Bullet> createdBulletList = new List<Bullet>();
 
-    //�߻�ü �� �����Ǿ�� �غ�Ϸ�
+    //???? ?? ???????? ?????
     [SerializeField]
     bool isCreatingBullets = false;
     [SerializeField]
@@ -34,12 +34,12 @@ public class IreliaWeapon : Weapon
 
     protected override void Update()
     {
-        //�Ѿ� �����Ǿ� ������ ȸ�������ְ� �ƴϸ� �������� ����
+        //??? ??????? ?????? ?????????? ???? ???????? ????
         if (isBulletsCreated)
         {
-            //�߻�
+            //???
             timer += Time.deltaTime;
-            if (timer > curDelay)
+            if (timer > CurDelay)
             {
                 if (OnFire())
                 {
@@ -50,9 +50,9 @@ public class IreliaWeapon : Weapon
         }
         else
         {
-            //����
+            //????
             timer += Time.deltaTime;
-            if (timer > curDelay)
+            if (timer > CurDelay)
             {
                 if(CreateBullets())
                 {
@@ -62,7 +62,7 @@ public class IreliaWeapon : Weapon
             }
         }
 
-        //��� ȸ���ϱ�
+        //??? ??????
         if (isRotate)
         {
             transform.localRotation = Quaternion.Euler(0, 0, transform.localRotation.eulerAngles.z + Time.deltaTime * rotationSpeed);            
@@ -72,7 +72,7 @@ public class IreliaWeapon : Weapon
                 for (int i = 0; i < createdBulletList.Count; i++)
                 {
                     Vector2 tempTargetDir = targetPos - createdBulletList[i].transform.position;
-                    float targetDegree = Mathf.Atan2(tempTargetDir.y, tempTargetDir.x) * Mathf.Rad2Deg - 90;    //�����ߵż�
+                    float targetDegree = Mathf.Atan2(tempTargetDir.y, tempTargetDir.x) * Mathf.Rad2Deg - 90;    //????????
                     createdBulletList[i].transform.rotation = Quaternion.Lerp(createdBulletList[i].transform.rotation , Quaternion.Euler(0, 0, targetDegree), Time.deltaTime * 20);
                 }
             }
@@ -168,7 +168,7 @@ public class IreliaWeapon : Weapon
 
             Vector3 startPos = transform.localPosition;
 
-            //�Ѿ� �������� ��ġ            
+            //??? ???????? ???            
             float x = Mathf.Cos(angleCumulative * Mathf.Deg2Rad);
             float y = Mathf.Sin(angleCumulative * Mathf.Deg2Rad);
 

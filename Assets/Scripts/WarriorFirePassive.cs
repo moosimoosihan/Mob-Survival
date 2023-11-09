@@ -11,14 +11,14 @@ public class WarriorFirePassive : Weapon
         if(gameObject.activeSelf){
             if(!player.GetComponentInChildren<SwordWeapon>().warriorFire){
                 player.GetComponentInChildren<SwordWeapon>().warriorFire = true;
-                player.GetComponentInChildren<SwordWeapon>().warriorFireTime = curDelay;
+                player.GetComponentInChildren<SwordWeapon>().warriorFireTime = Delay;
                 player.GetComponentInChildren<SwordWeapon>().warriorFireDamage = weaponValue;
             }
 
             if(!player.GetComponentInChildren<WarriorActiveSkill>().warriorFire){
                 player.GetComponentInChildren<WarriorActiveSkill>().warriorFire = true;
                 player.GetComponentInChildren<WarriorActiveSkill>().warriorFireDamge = weaponValue;
-                player.GetComponentInChildren<WarriorActiveSkill>().warriorFireTime = curDelay;
+                player.GetComponentInChildren<WarriorActiveSkill>().warriorFireTime = Delay;
             }
         }
     }

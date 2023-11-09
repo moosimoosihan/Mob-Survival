@@ -39,26 +39,24 @@ public class LevelUpSkills : MonoBehaviour
 
     // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
     public static float WarriorSkill2(float _damage){
-        float damage = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(2)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[2].Level > 0){
                 if(_damage!=0)
-                    damage += _damage * 0.15f;
+                    return _damage * 0.15f;
             }
         }
-        return damage;
+        return 0;
     }
     
     // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
     public static float WarriorSkill3(float _damage){
-        float dam = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(3)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[3].Level > 0){
                 if(_damage!=0)
-                    dam -= _damage * 0.1f;
+                    return _damage * 0.1f;
             }
         }
-        return dam;
+        return 0;
     }
 
     // 용사 4스킬 화염 갑옷 용사 피격시 적군에게 화상스킬
@@ -72,13 +70,12 @@ public class LevelUpSkills : MonoBehaviour
 
     // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
     public static float WarriorSkill5(int killCount){
-        float dam = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(5)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[5].Level > 0){
-                dam += killCount * 0.01f;
+                return killCount * 0.01f;
             }
         }
-        return dam;
+        return 0;
     }
 
     // 용사 6스킬 용사의 일격 스킬 Projectile Type이 QuarterCircle 에서 HalfCircle로 변경
@@ -100,36 +97,34 @@ public class LevelUpSkills : MonoBehaviour
     }
 
     // 용사 8스킬 화상 스킬의 Buff Time이 200으로 번경
-    public static float WarriorSkill8(float _buffTime){
-        float buffTime = _buffTime;
+    public static float WarriorSkill8(){
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(7)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[7].Level > 0){
-                buffTime = 200f;
+                return 190f;
             }
         }
-        return buffTime;
+        return 0;
     }
 
     // 용사 9스킬 Damage Reduction 10% 증가하며 파티원이 받는 데미지 50%를 용사가 대신 받음
     public static float WarriorSkill9(string character, float _damage, bool isCritical){
-        float damage = _damage;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(9)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[9].Level > 0){
                 // 워리어라면 10% 감소된 데미지를 받음
                 if(character.Equals("용사")){
-                    damage -= _damage * 0.1f;
+                    return _damage * 0.1f;
                 } else {
                     // 나머지는 워리어가 살아있다면 50%의 데미지를 워리어에게 전달
                     foreach(Player player in GameManager.instance.players){
                         if(player.character.Equals("용사") && !player.playerDead){
-                            player.GetDamage(damage * 0.5f, isCritical);
-                            return damage * 0.5f;
+                            player.GetDamage(_damage * 0.5f, isCritical, null, true);
+                            return _damage * 0.5f;
                         }
                     }
                 }
             }
         }
-        return damage;
+        return 0;
     }
 
     // 용사 10스킬 화상 디버프가 있는 몬스터가 사망시 Range 100 이내 주변 몬스터에게 화상 디버프를 부여
@@ -163,35 +158,59 @@ public class LevelUpSkills : MonoBehaviour
 
     // 용사 13스킬 Damage Reduction 3% 증가
     public static float WarriorSkill13(float _damage){
-        float dam = _damage;
-        
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(13)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[13].Level > 0){
                 int level = playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[13].Level;
                 if(_damage!=0)
-                    dam -= _damage * (0.03f*level);
+                    return _damage * (0.03f*level);
             }
         }
-        return dam;
+        return 0;
     }
     
     // 용사 14스킬 화상 스킬의 Debuff Value 0.1% 증가
     public static float WarriorSkill14(){
-        float fireDamage = 0;
         if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(14)){
             if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[14].Level > 0){
                 int level = playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[14].Level;
-                fireDamage += 0.01f * level;
+                return 0.1f * level;
             }
         }
-        return fireDamage;
+        return 0;
     }
 
     // 용사 15스킬 Active Damage 15% 증가
+    public static float WarriorSkill15(float _damage){
+        if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill.ContainsKey(15)){
+            if(playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[15].Level > 0){
+                int level = playerContext.DicPlayerEquipedSkill[0].DicEquipedSkill[15].Level;
+                if(_damage!=0)
+                    return _damage * (0.15f*level);
+            }
+        }
+        return 0;
+    }
 
-
-    // 피격시 무적시간 1초, 이동속도 100%증가로 변경
+    // 궁수 0스킬 피격시 무적시간 1초, 이동속도 100%증가로 변경 (이속증가가 어떤식으로 되는지 몰라서 일단 구현 안함)
+    public static float ArcherSkill0(){
+        if(playerContext.DicPlayerEquipedSkill[1].DicEquipedSkill.ContainsKey(16)){
+            if(playerContext.DicPlayerEquipedSkill[1].DicEquipedSkill[16].Level > 0){
+                Debug.Log("아처 0레벨 스킬 적용됨");
+                return 0.5f;
+            }
+        }
+        return 0;
+    }
     // Att Speed 50% 증가
+    public static float ArcherSkill1(float speed){
+        if(playerContext.DicPlayerEquipedSkill[1].DicEquipedSkill.ContainsKey(17)){
+            if(playerContext.DicPlayerEquipedSkill[1].DicEquipedSkill[17].Level > 0){
+                Debug.Log("아처 1레벨 스킬 적용됨");
+                return speed * 0.5f;
+            }
+        }
+        return 0;
+    }
     // 파티원 전체 Att Speed/Active Cooldown 15% 증가
     // 사격에 특수효과를 추가하여 5회 기본 공격시 Crit Rate를 100%로 변경
     // 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가

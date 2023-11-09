@@ -9,8 +9,35 @@ public abstract class Weapon : MonoBehaviour
     // 회복 및 쿨타임 적용시 사용할 값
     public float weaponValue;
     public int count;
-    public float delay;
-    public float curDelay;
+    [SerializeField]
+    private float delay;
+    private float curDelay;
+    public float Delay
+    {
+        get
+        {
+            return delay;
+        }
+        set
+        {
+            delay = value;
+        }
+    }
+    public float CurDelay
+    {
+        get
+        {
+            curDelay = delay;
+            // 플레이어의 공속을 가져와 적용
+            curDelay /= player.CurAttackSpeed;
+            
+            return curDelay;
+        }
+        set
+        {
+            curDelay = value;
+        }
+    }
     public float bulletSpeed;
     public float knockBackPower;
     public float duration;
@@ -40,7 +67,6 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Awake()
     {
-        curDelay = delay;
         player = GetComponentInParent<Player>();
         poolBuffEffect = new ObjectPool<BuffEffect>(CreateEffect, OnGetEffect, OnReleaseEffect, OnDestroyEffect);
         poolBullet = new ObjectPool<Bullet>(CreateBullet, OnGetBullet, OnReleaseBullet, OnDestroyBullet);
@@ -48,7 +74,7 @@ public abstract class Weapon : MonoBehaviour
     protected virtual void Update()
     {
         timer += Time.deltaTime;
-        if (timer > curDelay)
+        if (timer > CurDelay)
         {
             timer = 0f;
             Fire();

@@ -79,7 +79,7 @@ public class MeleeWeapon : Weapon
     protected override void Update()
     {
         timer += Time.deltaTime;
-        if (timer > curDelay)
+        if (timer > CurDelay)
         {
             Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, detectRadius, 1 << LayerMask.NameToLayer(targetLayerMaskName));
 

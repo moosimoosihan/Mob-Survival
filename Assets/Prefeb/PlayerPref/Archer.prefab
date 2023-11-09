@@ -490,7 +490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: delay
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3428982458743203029, guid: 33d5e0561ddf136419567938e9f9e473, type: 3}
       propertyPath: damage

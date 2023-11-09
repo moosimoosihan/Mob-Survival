@@ -21,7 +21,10 @@ public class Player : CharacterStatus
     public bool playerDead = false;
     // 무속성, 불, 물, 흙, 바람, 전기, 정신, 빛, 어둠 등 상태 추가 예정
     public bool isDamaged = false;
-    float damageDelay = 1f;
+    [SerializeField]
+    float damageDelay = 0.5f;
+    [SerializeField]
+    float curDamageDelay;
 
     [Header("플레이어 공격 설정")]
     public Scaner scanner;
@@ -149,8 +152,13 @@ public class Player : CharacterStatus
         //spriter.flipX = inputVec.x > 0;
     }
 
-    public void GetDamage(float _damage, bool _isCritical, Enemy enemy=null)
+    public void GetDamage(float _damage, bool _isCritical, Enemy enemy=null, bool trueDamage = false)
     {
+        if(trueDamage){
+            isDamaged = false;
+            StopCoroutine(DamageDelay());
+        }
+        
         if (playerDead || !GameManager.instance.isPlay || isDamaged)
             return;
 
@@ -166,7 +174,7 @@ public class Player : CharacterStatus
             if (character.Equals("용사"))
             {
                 // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
-                _damage = LevelUpSkills.WarriorSkill3(curDamage);
+                curDamage -= LevelUpSkills.WarriorSkill3(_damage);
 
                 // 용사 4스킬 피격시 적군에게 화염을 붙인다.
                 if(enemy != null)
@@ -174,15 +182,15 @@ public class Player : CharacterStatus
             }
 
             // 용사 9스킬 용사 10% 데미지 감소 및 파티원 50%데미지를 용사가 입는다.
-            _damage = LevelUpSkills.WarriorSkill9(character, curDamage, _isCritical);
+            curDamage -= LevelUpSkills.WarriorSkill9(character, _damage, _isCritical);
 
             // 용사 12스킬 데미지 레벨당 5% 감소
             if (character.Equals("용사"))
             {
-                _damage = LevelUpSkills.WarriorSkill13(curDamage);
+                curDamage -= LevelUpSkills.WarriorSkill13(_damage);
             }
 
-            dam = _damage / (1 + def * 0.01);
+            dam = curDamage / (1 + def * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
             if (evasion * 100 > ran)
@@ -296,7 +304,11 @@ public class Player : CharacterStatus
     }
     public IEnumerator DamageDelay()
     {
-        yield return new WaitForSeconds(damageDelay);
+        curDamageDelay = damageDelay;
+        if(character.Equals("궁수")){
+            curDamageDelay += LevelUpSkills.ArcherSkill0();
+        }
+        yield return new WaitForSeconds(curDamageDelay);
         isDamaged = false;
     }
     public void Revival()
