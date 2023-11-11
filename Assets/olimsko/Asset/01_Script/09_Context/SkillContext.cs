@@ -245,7 +245,7 @@ public class SkillContext : ContextModel
         return result;
     }
     
-    // 궁수 9스킬 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가) / 30초마다 10초간을 어디서 구현해야 하나.. 아직 적용 안함
+    // 궁수 9스킬 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가)
     public float ArcherSkill9(){
         if(PlayerContext.IsHasSkill(1, 25)){
             return 0.5f;
@@ -253,7 +253,7 @@ public class SkillContext : ContextModel
         return 0;        
     }
 
-    // 궁수 10스킬 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정) / 유도탄 구현해야 함 관통 후 다시 타겟팅
+    // 궁수 10스킬 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정)
     public bool ArcherSkill10(){
         if(PlayerContext.IsHasSkill(1, 26)){
             return true;
@@ -296,11 +296,39 @@ public class SkillContext : ContextModel
         return 0;
     }
     // 궁수 15스킬 액티브의 Crit Rate 추가 1% 증가
+    public float ArcherSkill15(){
+        if(PlayerContext.IsHasSkill(1, 31)){
+            int level = PlayerContext.GetSkillLevel(1, 31);
+            return 0.01f * level;
+        }
+        return 0;
+    }
 
     // 사제
     // Damage 50% 증가하며 ProjectSize 15로 변경
-    // Att Speed 50% 증가하며 ProjectileSpeed 2로 변경
-    // Add Exp 25%증가
+    public float PriestSkill0(float _damage){
+        if(PlayerContext.IsHasSkill(2, 32)){
+            return _damage * 0.5f;
+        }
+        return 0;
+    }
+
+    // 사제 1스킬 Att Speed 50% 증가하며 ProjectileSpeed 2로 변경 / ProjectileSpeed 2로 변경 아직 안됨
+    public float PriestSkill1(){
+        if(PlayerContext.IsHasSkill(2, 33)){
+            return 0.5f;
+        }
+        return 0;
+    }
+
+    // 사제 2스킬 Add Exp 25%증가
+    public float PriestSkill2(float exp){
+        if(PlayerContext.IsHasSkill(2, 34)){
+            return exp * 0.25f;
+        }
+        return 0;
+    }
+
     // 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
     // 아이스 필드 스킬의 Area Size 200으로 변경
     // 아이스 필드 스킬의 Area Duration 10으로 변경

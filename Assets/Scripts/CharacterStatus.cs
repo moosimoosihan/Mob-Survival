@@ -36,7 +36,7 @@ public class CharacterStatus : MonoBehaviour
         {
             curSpeed = speed;
             
-            if(archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
+            if(GetComponent<Player>() && archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
                 curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill9();
             }
 
@@ -76,6 +76,9 @@ public class CharacterStatus : MonoBehaviour
             // 궁수 액티브 스킬
             if(GetComponent<Player>() && archerSkill7){
                 curCritRate += 0.3f;
+                
+                // 궁수 15스킬 액티브의 크리티컬 확률 레벨당 1% 증가
+                curCritRate += GameManager.instance.skillContext.ArcherSkill15();
             }
 
             return curCritRate;
@@ -191,15 +194,24 @@ public class CharacterStatus : MonoBehaviour
 
             //플레이어 여부 검사
             if(GetComponent<Player>() && character.Equals("궁수"))
+                // 궁수 1스킬 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill1();
+                // 궁수 12스킬 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill12(attackSpeed);
             
             if(GetComponent<Player>()){
+                // 궁수 2스킬 파티원 전체 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill2();
             }
 
             if(GetComponent<Player>() && archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
+                // 궁수 9스킬 30초마다 10초간 파티원 전체 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill9();
+            }
+
+            if(GetComponent<Player>() && character.Equals("사제")){
+                // 사제 1스킬 공속 증가
+                curAttackSpeed += GameManager.instance.skillContext.PriestSkill1();
             }
 
             return curAttackSpeed;
@@ -275,9 +287,15 @@ public class CharacterStatus : MonoBehaviour
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
                 curAttackDamage += GameManager.instance.skillContext.WarriorSkill2(attackDamage);
             
-            if(GetComponent<Player>() && character.Equals("궁수"))
+            if(GetComponent<Player>() && character.Equals("궁수")){
                 // 궁수 12스킬 공격력 5% 증가
                 curAttackDamage += GameManager.instance.skillContext.ArcherSkill12(attackDamage);
+            }
+
+            if(GetComponent<Player>() && character.Equals("사제")){
+                // 사제 0스킬 데미지 50% 증가
+                curAttackDamage += GameManager.instance.skillContext.PriestSkill0(attackDamage);
+            }
 
             return curAttackDamage;
         }
