@@ -20,15 +20,16 @@ public class BowWeapon : Weapon
         Vector3 targetPos = player.scanner.nearestTarget.position;
         Vector3 dir = targetPos - transform.position;
         dir = dir.normalized;
-                
+
         Transform bullet = poolBullet.Get().transform;
 
         bullet.position = transform.position;
         bullet.parent = GameManager.instance.pool.transform;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
-        // 궁수 4스킬 50마리 처치시 관통 1 증가
-        CurCount += GameManager.instance.skillContext.ArcherSkill4(GameManager.instance.kill);
+        
+        // 궁수 10스킬 유도탄으로 변경
+        bullet.GetComponent<Bullet>().isHoming = GameManager.instance.skillContext.ArcherSkill10();
 
         // 궁수 3스킬 5번 쏘면 100% 크리티컬
         if(GameManager.instance.skillContext.ActherSkill3()){

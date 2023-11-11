@@ -81,7 +81,7 @@ public class DamageManager : Singleton<DamageManager>
         if(_character.CurCritRate*100 > ran){
             //ũ��Ƽ�� ����
             _isCritical = true;
-            return _character.CurCritRate * _damage;
+            return _character.CurCritDamage * _damage;
         } else {
             _isCritical = false;
             return _damage;

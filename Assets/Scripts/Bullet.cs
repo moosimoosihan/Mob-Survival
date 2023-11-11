@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Pool;
 public class Bullet : MonoBehaviour
@@ -19,6 +20,11 @@ public class Bullet : MonoBehaviour
     private IObjectPool<Bullet> _ManagedPool;
     public IObjectPool<HitEffect> hitEffectPool;
 
+    // 유도탄 여부
+    public bool isHoming = false;
+    [SerializeField]
+    Transform homingTarget;
+
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -37,7 +43,7 @@ public class Bullet : MonoBehaviour
         knockBackPower = _knockBackPower;
         isCritical = _isCritical;
 
-        //duration이후에 총알 비활성화
+        //duration???Ŀ? ??? ??????
         if (_deActivate)
         {
             DeActivate(_duration);            
@@ -57,7 +63,7 @@ public class Bullet : MonoBehaviour
             rigid.velocity = _dir * speed;
         }
 
-        //duration이후에 총알 비활성화
+        //duration???Ŀ? ??? ??????
         if (_deActivate)
         {
             DeActivate(_duration);
@@ -91,7 +97,7 @@ public class Bullet : MonoBehaviour
         {
             Enemy detectedEnemy = collision.GetComponent<Enemy>();
 
-            //피격 이펙트
+            //??? ?????
             if (hitEffectPrefab != null)
             {
                 HitEffect bulletHitEffect = hitEffectPool.Get();
@@ -101,7 +107,7 @@ public class Bullet : MonoBehaviour
 
             if (hitOnlyOnce)
             {
-                //처음 닿은 대상인 경우 데미지 주고 데미지 입힌 리스트에 보관
+                //??? ???? ????? ??? ?????? ??? ?????? ???? ??????? ????
                 if (detectedEnemyList.Contains(detectedEnemy) == false)
                 {
                     detectedEnemyList.Add(detectedEnemy);
@@ -116,12 +122,18 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        // 피격 이후 생성하는 총알의 경우
+        // ??? ???? ??????? ????? ???
         OnCreateBullet();
 
-        //이미 맞아서 죽어야되는애가 뒤에 오는 총알 맞았을때는 총알이 그냥 지나가게하기
-        if(tempIsHit && !throwBullet)
+        //??? ?¾?? ?????¾?? ??? ???? ??? ?¾??????? ????? ??? ???????????
+        if(tempIsHit && !throwBullet){
             per--;
+            if(isHoming){
+                isHoming = false;
+                homingTarget = null;
+                Invoke("FindEnemy", 0.5f);
+            }
+        }
 
         if (per == -1)
         {
@@ -138,7 +150,7 @@ public class Bullet : MonoBehaviour
         StartCoroutine(CoDelayStarter(() =>
         {
             _ManagedPool.Release(this);
-            detectedEnemyList.Clear();  //비활성화시 이전에 데미지 줬던 녀석들 리스트에서 해제
+            detectedEnemyList.Clear();  //???????? ?????? ?????? ??? ???? ????????? ????
         },
         _inTime
         ));
@@ -172,5 +184,49 @@ public class Bullet : MonoBehaviour
     void OnDestroyEffect(HitEffect buffEffect)
     {
         Destroy(buffEffect.gameObject);
+    }
+    void OnEnable()
+    {
+        homingTarget = null;
+        isHoming = false;
+    }
+    void Update()
+    {
+        // 유도탄일 경우 적군이 주변에 존재하면 적군을 향해 날아간다. 없을경우 정해진 방향으로 날아간다.
+        if(isHoming){
+            // 타겟이 반경 10안에 있다면 타겟을 지정한다.
+            if(homingTarget==null){
+                // 주변에 타겟이 이미 닿았던 detectedEnemyList안에 있다면 다른 적군을 찾고 만약 없다면 해당 아군을 지우고 다시 타겟한다.
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10f);
+                foreach(Collider2D collider in colliders){
+                    if(collider.CompareTag("Enemy") && !detectedEnemyList.Contains(collider.GetComponent<Enemy>())){
+                        homingTarget = collider.transform;
+                        break;
+                    }
+                }
+                // 주변에 이미 맞은 타겟만 있다면 리스트를 비우고 다시 타겟을 지정한다.
+                if(homingTarget == null){
+                    detectedEnemyList.Clear();
+                    foreach(Collider2D collider in colliders){
+                        if(collider.CompareTag("Enemy")){
+                            homingTarget = collider.transform;
+                            break;
+                        }
+                    }
+                }
+            }
+            if(homingTarget != null){
+                Vector3 dir = homingTarget.position - transform.position;
+                dir = dir.normalized;
+                transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+                rigid.velocity = dir * speed;
+            } else {
+                rigid.velocity = transform.up * speed;
+            }
+        }        
+    }
+    void FindEnemy()
+    {
+        isHoming = true;
     }
 }

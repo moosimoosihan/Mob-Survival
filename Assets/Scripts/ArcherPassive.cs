@@ -25,7 +25,7 @@ public class ArcherPassive : Weapon
                     archerActiveSkill.timer+=GameManager.instance.skillContext.ArcherSkill5();
                 }
             }
-            
+
             Activate();
         }
     }
@@ -43,7 +43,6 @@ public class ArcherPassive : Weapon
         effect.target = transform.parent;
         effect.transform.position = transform.position;
 
-        
         bowWeapon.CurDelay -=  bowWeapon.Delay * weaponValue;
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff2);

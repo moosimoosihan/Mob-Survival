@@ -50,10 +50,7 @@ public class ArcherActiveSkill : ActiveSkill
         effect.target = transform.parent;
         effect.transform.position = transform.position;
 
-        player.CurCritRate += 0.3f;
-        
-        // 궁수 7스킬 크리티컬 데미지 100% 증가
-        player.CurCritDamage += GameManager.instance.skillContext.ArcherSkill7();
+        player.archerSkill7 = true;
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff1);
         
@@ -64,8 +61,8 @@ public class ArcherActiveSkill : ActiveSkill
             yield return new WaitForSeconds(0.1f);
         }
         buffTime = 0;
-        player.CurCritRate -= 0.3f;
-        player.CurCritDamage -= GameManager.instance.skillContext.ArcherSkill7();
+        
+        player.archerSkill7 = false;
 
         buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
 

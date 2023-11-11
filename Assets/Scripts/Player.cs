@@ -79,9 +79,9 @@ public class Player : CharacterStatus
         MaxHP = data.HP;
         CurHP = MaxHP;
         def = data.Def;
-        speed = data.MoveSpeed;
+        Speed = data.MoveSpeed;
         hpRegen = data.HPRegen;
-        evasion = data.Evasion;
+        Evasion = data.Evasion;
         heal = data.Heal;
         CritRate = data.CritRate;
         CritDamage = data.CritDamage;
@@ -98,7 +98,7 @@ public class Player : CharacterStatus
         {
             // 현재 다이나믹으로 했을 경우 필요 없음
             //StopToWall(inputVec);
-            Vector2 nextVec = inputVec.normalized * speed * Time.fixedDeltaTime * resistance;
+            Vector2 nextVec = inputVec.normalized * CurSpeed * Time.fixedDeltaTime * resistance;
             rigid.MovePosition(isBorder ? rigid.position : rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
@@ -193,7 +193,7 @@ public class Player : CharacterStatus
             dam = curDamage / (1 + def * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
-            if (evasion * 100 > ran)
+            if (CurEvasion * 100 > ran)
             {
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);

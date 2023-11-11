@@ -104,7 +104,7 @@ public class Enemy : CharacterStatus
         target = nearestTarget.GetComponent<Rigidbody2D>();
 
         Vector2 dirVec = target.position - rigid.position;
-        Vector2 nextVec = dirVec.normalized * speed * Time.fixedDeltaTime;
+        Vector2 nextVec = dirVec.normalized * CurSpeed * Time.fixedDeltaTime;
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
 
@@ -152,13 +152,13 @@ public class Enemy : CharacterStatus
     {
         character = data.Name;
         power = powerValue;
-        speed = data.Speed;
+        Speed = data.Speed;
         MaxHP = data.HP * power;
         CurHP = MaxHP;
         AttackDamage = data.Attack * power;
 
         def = data.Def;
-        evasion = data.Avoidance;
+        Evasion = data.Avoidance;
         heal = data.HPRegen;
 
         (coll as CapsuleCollider2D).size = new Vector2(1.8f, 1.8f);
@@ -291,7 +291,7 @@ public class Enemy : CharacterStatus
             dam = _damage / (1 + def * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
-            if (evasion * 100 > ran)
+            if (CurEvasion * 100 > ran)
             {
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);

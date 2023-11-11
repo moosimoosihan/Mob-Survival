@@ -180,17 +180,17 @@ public class SkillContext : ContextModel
     }
 
     // 궁수 1스킬 Att Speed 50% 증가
-    public float ArcherSkill1(float speed){
+    public float ArcherSkill1(){
         if(PlayerContext.IsHasSkill(1, 17)){
-            return speed * 0.5f;
+            return 0.5f;
         }
         return 0;
     }
 
     // 궁수 2스킬 파티원 전체 Att Speed/Active Cooldown 15% 증가
-    public float ArcherSkill2(float speed){
+    public float ArcherSkill2(){
         if(PlayerContext.IsHasSkill(1, 18)){
-            return speed * 0.15f;
+            return 0.15f;
         }
         return 0;
     }
@@ -206,7 +206,7 @@ public class SkillContext : ContextModel
     // 궁수 4스킬 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가
     public int ArcherSkill4(int count){
         if(PlayerContext.IsHasSkill(1, 20)){
-            return count%50; // 50마리마다 1씩 증가
+            return count/50; // 50마리마다 1씩 증가
         }
         return 0;
     }
@@ -245,13 +245,57 @@ public class SkillContext : ContextModel
         return result;
     }
     
-    // 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가)
-    // 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정)
-    // 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함
-    // Damage,Att Speed 5% 증가
-    // Evasion 1% 증가
-    // 패시브2의 치명타 발생시 Att Speed 1% 추가 증가
-    // 액티브의 Crit Rate 추가 1% 증가
+    // 궁수 9스킬 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가) / 30초마다 10초간을 어디서 구현해야 하나.. 아직 적용 안함
+    public float ArcherSkill9(){
+        if(PlayerContext.IsHasSkill(1, 25)){
+            return 0.5f;
+        }
+        return 0;        
+    }
+
+    // 궁수 10스킬 투사체 관통 1증가 시키고 유도 부여 (관통시 가장 가까운 적 에게 자동 타겟 설정) / 유도탄 구현해야 함 관통 후 다시 타겟팅
+    public bool ArcherSkill10(){
+        if(PlayerContext.IsHasSkill(1, 26)){
+            return true;
+        }
+        return false;
+    }
+
+    // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 뭔말인지 모르겠음 ㅠ
+    public int ArcherSkill11(){
+        if(PlayerContext.IsHasSkill(1, 27)){
+            return 2;
+        }
+        return 0;
+    }
+
+    // 궁수 12스킬 Damage,Att Speed 5% 증가
+    public float ArcherSkill12(float _damage){
+        if(PlayerContext.IsHasSkill(1, 28)){
+            int level = PlayerContext.GetSkillLevel(1, 28);
+            return _damage * (0.05f * level);
+        }
+        return 0;
+    }
+
+    // 궁수 13스킬 Evasion 1% 증가
+    public float ArcherSkill13(){
+        if(PlayerContext.IsHasSkill(1, 29)){
+            int level = PlayerContext.GetSkillLevel(1, 29);
+            return 0.01f * level;
+        }
+        return 0;
+    }
+
+    // 궁수 14스킬 패시브2의 치명타 발생시 Att Speed 1% 추가 증가
+    public float ArcherSkill14(){
+        if(PlayerContext.IsHasSkill(1, 30)){
+            int level = PlayerContext.GetSkillLevel(1, 30);
+            return 0.01f * level;
+        }
+        return 0;
+    }
+    // 궁수 15스킬 액티브의 Crit Rate 추가 1% 증가
 
     // 사제
     // Damage 50% 증가하며 ProjectSize 15로 변경

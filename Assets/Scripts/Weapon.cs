@@ -10,12 +10,22 @@ public abstract class Weapon : MonoBehaviour
     public float weaponValue;
     [SerializeField]
     private int count;
+    [SerializeField]
     private int curCount;
     public int CurCount
     {
         get
         {
             curCount = count;
+            if(GetComponent<BowWeapon>() && player.character.Equals("궁수")){
+                // 궁수 4스킬 50마리 처치시 관통 1 증가
+                curCount += GameManager.instance.skillContext.ArcherSkill4(GameManager.instance.kill);
+
+                // 궁수 10스킬 투사체 관통 1 증가
+                if(GameManager.instance.skillContext.ArcherSkill10()){
+                    curCount += 1;
+                }
+            }
             return curCount;
         }
         set
@@ -41,9 +51,8 @@ public abstract class Weapon : MonoBehaviour
     {
         get
         {
-            curDelay = delay;
             // 플레이어의 공속을 가져와 적용
-            curDelay /= player.CurAttackSpeed;
+            curDelay = delay / player.CurAttackSpeed;
             
             return curDelay;
         }
