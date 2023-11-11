@@ -283,19 +283,27 @@ public class CharacterStatus : MonoBehaviour
         {
             curAttackDamage = attackDamage;
 
-            if(GetComponent<Player>())
+            if(GetComponent<Player>()){
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
                 curAttackDamage += GameManager.instance.skillContext.WarriorSkill2(attackDamage);
-            
-            if(GetComponent<Player>() && character.Equals("궁수")){
-                // 궁수 12스킬 공격력 5% 증가
-                curAttackDamage += GameManager.instance.skillContext.ArcherSkill12(attackDamage);
-            }
+                
+                if(character.Equals("용사")){
+                    // 용사 12스킬 데미지 5%증가
+                    curAttackDamage += GameManager.instance.skillContext.WarriorSkill12(attackDamage);
+                }
 
-            if(GetComponent<Player>() && character.Equals("사제")){
-                // 사제 0스킬 데미지 50% 증가
-                curAttackDamage += GameManager.instance.skillContext.PriestSkill0(attackDamage);
+                if(character.Equals("궁수")){
+                    // 궁수 12스킬 공격력 5% 증가
+                    curAttackDamage += GameManager.instance.skillContext.ArcherSkill12(attackDamage);
+                }
+
+                if(character.Equals("사제")){
+                    // 사제 0스킬 데미지 50% 증가
+                    curAttackDamage += GameManager.instance.skillContext.PriestSkill0(attackDamage);
+                }
             }
+            
+            
 
             return curAttackDamage;
         }

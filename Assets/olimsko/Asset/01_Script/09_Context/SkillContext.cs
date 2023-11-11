@@ -7,6 +7,7 @@ using olimsko;
 public class SkillContext : ContextModel
 {
     private PlayerContext PlayerContext => OSManager.GetService<ContextManager>().GetContext<PlayerContext>();
+    private SkillTableSO SkillTable => OSManager.GetService<DataManager>().GetData<SkillTableSO>();
 
     // 용사
     // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
@@ -28,10 +29,10 @@ public class SkillContext : ContextModel
     // 용사 1번 스킬 범위증가(베기) 베기스킬 범위 2배 증가
     public float[] WarriorSkill1(float scalex, float detectionAngle){
         float[] result = {scalex , detectionAngle};
-        
         if(PlayerContext.IsHasSkill(0, 1)){
-            result[0] *= 2f;
-            result[1] = detectionAngle * 2f;
+            float val = SkillTable.SkillTable[1].Value[0];
+            result[0] *= val;
+            result[1] = detectionAngle * val;
         }
         return result;
     }
@@ -39,8 +40,10 @@ public class SkillContext : ContextModel
     // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
     public float WarriorSkill2(float _damage){
         if(PlayerContext.IsHasSkill(0, 2)){
-            if(_damage!=0)
-                return _damage * 0.15f;
+            if(_damage!=0){
+                float val = SkillTable.SkillTable[2].Value[0];
+                return _damage * val;
+            }
         }
         return 0;
     }
@@ -48,8 +51,10 @@ public class SkillContext : ContextModel
     // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
     public float WarriorSkill3(float _damage){
         if(PlayerContext.IsHasSkill(0, 3)){
-            if(_damage!=0)
-                return _damage * 0.1f;
+            if(_damage!=0){
+                float val = SkillTable.SkillTable[3].Value[0];
+                return _damage * val;
+            }
         }
         return 0;
     }
@@ -64,7 +69,8 @@ public class SkillContext : ContextModel
     // 용사 5스킬 화상 피해 증가 10마리당 0.1% 증가
     public float WarriorSkill5(int killCount){
         if(PlayerContext.IsHasSkill(0, 5)){
-            return killCount * 0.01f;
+            float val = SkillTable.SkillTable[5].Value[0];
+            return Mathf.Floor(killCount/10) * val;
         }
         return 0;
     }
@@ -81,8 +87,9 @@ public class SkillContext : ContextModel
     public  float[] WarriorSkill7(float _scaley, float _detectRadius){
         float[] result = {_scaley, _detectRadius};
         if(PlayerContext.IsHasSkill(0, 7)){
-            result[0] *= 2f;
-            result[1] *= 2f;
+            float val = SkillTable.SkillTable[7].Value[0];
+            result[0] *= val;
+            result[1] *= val;
         }
         return result;
     }
@@ -90,7 +97,8 @@ public class SkillContext : ContextModel
     // 용사 8스킬 화상 스킬의 Buff Time이 200으로 번경
     public float WarriorSkill8(){
         if(PlayerContext.IsHasSkill(0, 8)){
-            return 190f;
+            float val = SkillTable.SkillTable[8].Value[0];
+            return val;
         }
         return 0;
     }
@@ -100,13 +108,15 @@ public class SkillContext : ContextModel
         if(PlayerContext.IsHasSkill(0, 9)){
             // 워리어라면 10% 감소된 데미지를 받음
             if(character.Equals("용사")){
-                return _damage * 0.1f;
+                float val = SkillTable.SkillTable[9].Value[0];
+                return _damage * val;
             } else {
                 // 나머지는 워리어가 살아있다면 50%의 데미지를 워리어에게 전달
                 foreach(Player player in GameManager.instance.players){
                     if(player.character.Equals("용사") && !player.playerDead){
-                        player.GetDamage(_damage * 0.5f, isCritical, null, true);
-                        return _damage * 0.5f;
+                        float val = SkillTable.SkillTable[9].Value[1];
+                        player.GetDamage(_damage * val, isCritical, null, true);
+                        return _damage * val;
                     }
                 }
             }
@@ -130,23 +140,24 @@ public class SkillContext : ContextModel
         }
     }
 
-    // 용사 12스킬 Damage,Att Range 5% 증가 (적용 해야함)
-    public  float[] WarriorSkill12(float _damage, float _detectRadius){
-        float[] result = {_damage, _detectRadius};
+    // 용사 12스킬 Damage,Att Range 5% 증가 (공격 범위는 적용 해야함)
+    public  float WarriorSkill12(float values){
         if(PlayerContext.IsHasSkill(0, 12)){
+            float val = SkillTable.SkillTable[12].Value[0];
             int level = PlayerContext.GetSkillLevel(0, 12);
-            result[0] *= 1f + (level * 0.05f);
-            result[1] *= 1f + (level * 0.05f);
+            return values * (level * val);
         }
-        return result;
+        return 0;
     }
 
     // 용사 13스킬 Damage Reduction 3% 증가
     public float WarriorSkill13(float _damage){
         if(PlayerContext.IsHasSkill(0, 13)){
             int level = PlayerContext.GetSkillLevel(0, 13);
-            if(_damage!=0)
-                return _damage * (0.03f*level);
+            if(_damage>0){
+                float val = SkillTable.SkillTable[13].Value[0];
+                return _damage * (val*level);
+            }
         }
         return 0;
     }
@@ -154,8 +165,9 @@ public class SkillContext : ContextModel
     // 용사 14스킬 화상 스킬의 Debuff Value 0.1% 증가
     public float WarriorSkill14(){
         if(PlayerContext.IsHasSkill(0, 14)){
+            float val = SkillTable.SkillTable[14].Value[0];
             int level = PlayerContext.GetSkillLevel(0, 14);
-            return 0.1f * level;
+            return val * level;
         }
         return 0;
     }
@@ -164,17 +176,19 @@ public class SkillContext : ContextModel
     public float WarriorSkill15(float _damage){
         if(PlayerContext.IsHasSkill(0, 15)){
             int level = PlayerContext.GetSkillLevel(0, 15);
-            if(_damage!=0)
-                return _damage * (0.15f*level);
+            if(_damage>0){
+                float val = SkillTable.SkillTable[15].Value[0];
+                return _damage * (val*level);
+            }
         }
         return 0;
     }
 
     // 궁수
-    // 궁수 0스킬 피격시 무적시간 1초, 이동속도 100%증가로 변경 (이속증가가 어떤식으로 되는지 몰라서 일단 구현 안함)
+    // 궁수 0스킬 피격시 무적시간 1초(현재 0.5f), 이동속도 100%증가로 변경 (이속증가가 어떤식으로 되는지 몰라서 일단 구현 안함)
     public float ArcherSkill0(){
         if(PlayerContext.IsHasSkill(1, 16)){
-            return 0.5f;
+            return SkillTable.SkillTable[16].Value[0];
         }
         return 0;
     }
@@ -182,7 +196,7 @@ public class SkillContext : ContextModel
     // 궁수 1스킬 Att Speed 50% 증가
     public float ArcherSkill1(){
         if(PlayerContext.IsHasSkill(1, 17)){
-            return 0.5f;
+            return SkillTable.SkillTable[17].Value[0];
         }
         return 0;
     }
@@ -190,7 +204,7 @@ public class SkillContext : ContextModel
     // 궁수 2스킬 파티원 전체 Att Speed/Active Cooldown 15% 증가
     public float ArcherSkill2(){
         if(PlayerContext.IsHasSkill(1, 18)){
-            return 0.15f;
+            return SkillTable.SkillTable[18].Value[0];;
         }
         return 0;
     }
@@ -206,7 +220,7 @@ public class SkillContext : ContextModel
     // 궁수 4스킬 궁수가 적 50마리 처치시 사격스킬의 투사체 관통 1증가
     public int ArcherSkill4(int count){
         if(PlayerContext.IsHasSkill(1, 20)){
-            return count/50; // 50마리마다 1씩 증가
+            return count/(int)SkillTable.SkillTable[20].Value[0]; // 50마리마다 1씩 증가
         }
         return 0;
     }
@@ -214,7 +228,7 @@ public class SkillContext : ContextModel
     // 궁수 5스킬 치명타 발생시 액티브 스킬 쿨다운 1초 감소
     public float ArcherSkill5(){
         if(PlayerContext.IsHasSkill(1, 21)){
-            return 1f;
+            return SkillTable.SkillTable[21].Value[0];;
         }
         return 0;
     }
@@ -222,7 +236,7 @@ public class SkillContext : ContextModel
     // 궁수 6스킬 액티브의 BuffTime 20초 증가
     public float ArcherSkill6(){
         if(PlayerContext.IsHasSkill(1, 22)){
-            return 20f;
+            return SkillTable.SkillTable[22].Value[0];;
         }
         return 0;
     }
@@ -230,7 +244,7 @@ public class SkillContext : ContextModel
     // 궁수 7스킬 액티브가 Critical Damage 100%도 증가시킴
     public float ArcherSkill7(){
         if(PlayerContext.IsHasSkill(1, 23)){
-            return 1f;
+            return SkillTable.SkillTable[23].Value[0];;
         }
         return 0;
     }
@@ -239,8 +253,8 @@ public class SkillContext : ContextModel
     public float[] ArcherSkill8(){
         float[] result = {0, 0};
         if(PlayerContext.IsHasSkill(1, 24)){
-            result[0] += 0.2f;
-            result[1] += 0.7f;
+            result[0] += SkillTable.SkillTable[24].Value[0];
+            result[1] += SkillTable.SkillTable[24].Value[1];
         }
         return result;
     }
@@ -248,7 +262,7 @@ public class SkillContext : ContextModel
     // 궁수 9스킬 30초마다 10초간 파티원 전체 신속 부여 (Att Speed 50%, Move Speed 50% 증가)
     public float ArcherSkill9(){
         if(PlayerContext.IsHasSkill(1, 25)){
-            return 0.5f;
+            return SkillTable.SkillTable[25].Value[0];
         }
         return 0;        
     }
@@ -264,7 +278,7 @@ public class SkillContext : ContextModel
     // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 뭔말인지 모르겠음 ㅠ
     public int ArcherSkill11(){
         if(PlayerContext.IsHasSkill(1, 27)){
-            return 2;
+            return (int)SkillTable.SkillTable[27].Value[0];
         }
         return 0;
     }
@@ -272,8 +286,9 @@ public class SkillContext : ContextModel
     // 궁수 12스킬 Damage,Att Speed 5% 증가
     public float ArcherSkill12(float _damage){
         if(PlayerContext.IsHasSkill(1, 28)){
+            float val = SkillTable.SkillTable[28].Value[0];
             int level = PlayerContext.GetSkillLevel(1, 28);
-            return _damage * (0.05f * level);
+            return _damage * (val * level);
         }
         return 0;
     }
@@ -282,7 +297,7 @@ public class SkillContext : ContextModel
     public float ArcherSkill13(){
         if(PlayerContext.IsHasSkill(1, 29)){
             int level = PlayerContext.GetSkillLevel(1, 29);
-            return 0.01f * level;
+            return SkillTable.SkillTable[29].Value[0] * level;
         }
         return 0;
     }
@@ -291,7 +306,7 @@ public class SkillContext : ContextModel
     public float ArcherSkill14(){
         if(PlayerContext.IsHasSkill(1, 30)){
             int level = PlayerContext.GetSkillLevel(1, 30);
-            return 0.01f * level;
+            return SkillTable.SkillTable[30].Value[0] * level;
         }
         return 0;
     }
@@ -299,16 +314,16 @@ public class SkillContext : ContextModel
     public float ArcherSkill15(){
         if(PlayerContext.IsHasSkill(1, 31)){
             int level = PlayerContext.GetSkillLevel(1, 31);
-            return 0.01f * level;
+            return SkillTable.SkillTable[31].Value[0] * level;
         }
         return 0;
     }
 
     // 사제
-    // Damage 50% 증가하며 ProjectSize 15로 변경
+    // 사제 0스킬 Damage 50% 증가하며 ProjectSize 15로 변경
     public float PriestSkill0(float _damage){
         if(PlayerContext.IsHasSkill(2, 32)){
-            return _damage * 0.5f;
+            return _damage * SkillTable.SkillTable[32].Value[0];
         }
         return 0;
     }
@@ -316,7 +331,7 @@ public class SkillContext : ContextModel
     // 사제 1스킬 Att Speed 50% 증가하며 ProjectileSpeed 2로 변경 / ProjectileSpeed 2로 변경 아직 안됨
     public float PriestSkill1(){
         if(PlayerContext.IsHasSkill(2, 33)){
-            return 0.5f;
+            return SkillTable.SkillTable[33].Value[0];
         }
         return 0;
     }
@@ -324,12 +339,14 @@ public class SkillContext : ContextModel
     // 사제 2스킬 Add Exp 25%증가
     public float PriestSkill2(float exp){
         if(PlayerContext.IsHasSkill(2, 34)){
-            return exp * 0.25f;
+            return exp * SkillTable.SkillTable[34].Value[0];
         }
         return 0;
     }
 
-    // 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
+    // 사제 3스킬 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
+    
+
     // 아이스 필드 스킬의 Area Size 200으로 변경
     // 아이스 필드 스킬의 Area Duration 10으로 변경
     // 블리자드의 Area Size 500으로 변경
