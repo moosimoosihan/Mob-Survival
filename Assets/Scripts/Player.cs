@@ -251,6 +251,15 @@ public class Player : CharacterStatus
 
         CurHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
+        // 궁수 0스킬 피격시 5초동안 이속 증가
+        if(character.Equals("궁수")){
+            if(!archerSkill0){
+                StartCoroutine(ArcherSkill0Buff());
+                archerSkill0BuffTime = 5f;
+            } else {
+                archerSkill0BuffTime = 5f;
+            }
+        }
 
         if (CurHP <= 0)
         {
@@ -306,7 +315,7 @@ public class Player : CharacterStatus
     {
         curDamageDelay = damageDelay;
         if(character.Equals("궁수")){
-            curDamageDelay += GameManager.instance.skillContext.ArcherSkill0();
+            curDamageDelay += GameManager.instance.skillContext.ArcherSkill0()[0];
         }
         yield return new WaitForSeconds(curDamageDelay);
         isDamaged = false;

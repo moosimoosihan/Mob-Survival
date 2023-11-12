@@ -11,13 +11,13 @@ public class SkillContext : ContextModel
 
     // 용사
     // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-    public void WarriorSkill0(Transform transform, IObjectPool<Bullet> poolBullet, Vector3 _dir, float _scalex, float _spawnDistance, float curDetectionAngle, Player player, float Damage, int count, float knockBackPower, float duration, float scaley, float detectRadius){
+    public void WarriorSkill0(Transform transform, IObjectPool<Bullet> poolBullet, Vector3 _dir, float _scalex, float _spawnDistance, float curDetectionAngle, Player player, float Damage, int count, float knockBackPower, float duration, float detectRadius){
         if(PlayerContext.IsHasSkill(0, 0)){
             Transform bulletBack = poolBullet.Get().transform;
             
             Vector3 backDir = new Vector3(_dir.x * -1,_dir.y * -1, _dir.z);
             bulletBack.parent = GameManager.instance.pool.transform;
-            bulletBack.transform.localScale = new Vector3(_scalex, scaley, transform.transform.localScale.z);
+            bulletBack.transform.localScale = new Vector3(_scalex, bulletBack.transform.localScale.y, bulletBack.transform.localScale.z);
             bulletBack.position = transform.position + backDir * _spawnDistance;
             bulletBack.rotation = Quaternion.FromToRotation(Vector3.down, _dir);
             bulletBack.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player, Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
@@ -75,23 +75,20 @@ public class SkillContext : ContextModel
         return 0;
     }
 
-    // 용사 6스킬 용사의 일격 스킬 Projectile Type이 QuarterCircle 에서 HalfCircle로 변경
-    // 만들어야 함
-    public void WarriorSkill6(){
+    // 용사 6스킬 용사의 일격 스킬 Projectile Type이 QuarterCircle 에서 HalfCircle로 변경 (액티브 스킬 좌우로 넓어짐)
+    public float WarriorSkill6(){
         if(PlayerContext.IsHasSkill(0, 6)){
-            
+            return SkillTable.SkillTable[6].Value[0];
         }
+        return 0;
     }
 
-    // 용사 7스킬 용사의 일격 스킬의 Project Range 600으로변경
-    public  float[] WarriorSkill7(float _scaley, float _detectRadius){
-        float[] result = {_scaley, _detectRadius};
+    // 용사 7스킬 용사의 일격 스킬의 Project Range 600으로변경 (액티브 스킬로 바꾸고 속도 2배 증가)
+    public float WarriorSkill7(){
         if(PlayerContext.IsHasSkill(0, 7)){
-            float val = SkillTable.SkillTable[7].Value[0];
-            result[0] *= val;
-            result[1] *= val;
+            return SkillTable.SkillTable[7].Value[0];
         }
-        return result;
+        return 0;
     }
 
     // 용사 8스킬 화상 스킬의 Buff Time이 200으로 번경
@@ -132,12 +129,12 @@ public class SkillContext : ContextModel
         return false;
     }
 
-    // 용사 11스킬 용사의 일격 스킬 Projectile Type을 Half Circle에서 Circle로 변경시키고 Cooldown 20초 감소
-    // (만들어야 함)
-    public void WarriorSkill11(){
+    // 용사 11스킬 용사의 일격 스킬 Projectile Type을 Half Circle에서 Circle로 변경시키고 Cooldown 20초 감소(액티브 스킬 앞 뒤로 나가도록!)
+    public bool WarriorSkill11(){
         if(PlayerContext.IsHasSkill(0, 11)){
-            
+            return true;
         }
+        return false;
     }
 
     // 용사 12스킬 Damage,Att Range 5% 증가 (공격 범위는 적용 해야함)
@@ -185,12 +182,15 @@ public class SkillContext : ContextModel
     }
 
     // 궁수
-    // 궁수 0스킬 피격시 무적시간 1초(현재 0.5f), 이동속도 100%증가로 변경 (이속증가가 어떤식으로 되는지 몰라서 일단 구현 안함)
-    public float ArcherSkill0(){
+    // 궁수 0스킬 피격시 무적시간 1초(현재 0.5f), 이동속도 100%증가로 변경 (피격시 5초동안 이속증가 버프)
+    public float[] ArcherSkill0(){
+        float[] vals = {0, 0};
         if(PlayerContext.IsHasSkill(1, 16)){
-            return SkillTable.SkillTable[16].Value[0];
+            vals[0] = SkillTable.SkillTable[16].Value[0];
+            vals[1] = SkillTable.SkillTable[15].Value[1];
+            return vals;
         }
-        return 0;
+        return vals;
     }
 
     // 궁수 1스킬 Att Speed 50% 증가
@@ -275,7 +275,7 @@ public class SkillContext : ContextModel
         return false;
     }
 
-    // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 뭔말인지 모르겠음 ㅠ
+    // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 다발사격 느낌으로 좌우로 퍼져서 2개 추가되어 나가도록!
     public int ArcherSkill11(){
         if(PlayerContext.IsHasSkill(1, 27)){
             return (int)SkillTable.SkillTable[27].Value[0];
@@ -319,32 +319,35 @@ public class SkillContext : ContextModel
         return 0;
     }
 
-    // 사제
-    // 사제 0스킬 Damage 50% 증가하며 ProjectSize 15로 변경
-    public float PriestSkill0(float _damage){
+    // 현자
+    // 현자 0스킬 Damage 50% 증가하며 ProjectSize 15로 변경 (아이스볼트가 커짐)
+    public float[] WizardSkill0(float _damage = 0){
+        float[] vals = {0, 0};
         if(PlayerContext.IsHasSkill(2, 32)){
-            return _damage * SkillTable.SkillTable[32].Value[0];
+            vals[0] = _damage * SkillTable.SkillTable[32].Value[0];
+            vals[1] = SkillTable.SkillTable[32].Value[1];
+            return vals;
         }
-        return 0;
+        return vals;
     }
 
-    // 사제 1스킬 Att Speed 50% 증가하며 ProjectileSpeed 2로 변경 / ProjectileSpeed 2로 변경 아직 안됨
-    public float PriestSkill1(){
+    // 현자 1스킬 Att Speed 50% 증가하며 ProjectileSpeed 2로 변경 / 총알 투사체 속도가 증가 구현해야함
+    public float WizardSkill1(){
         if(PlayerContext.IsHasSkill(2, 33)){
             return SkillTable.SkillTable[33].Value[0];
         }
         return 0;
     }
 
-    // 사제 2스킬 Add Exp 25%증가
-    public float PriestSkill2(float exp){
+    // 현자 2스킬 Add Exp 25%증가
+    public float WizardSkill2(float exp){
         if(PlayerContext.IsHasSkill(2, 34)){
             return exp * SkillTable.SkillTable[34].Value[0];
         }
         return 0;
     }
 
-    // 사제 3스킬 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
+    // 현자 3스킬 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
     
 
     // 아이스 필드 스킬의 Area Size 200으로 변경
@@ -360,7 +363,7 @@ public class SkillContext : ContextModel
     // 디버프 빙결의 이동속도 감소를 1% 추가 감소
     // Active Damage 15% 증가
 
-    // 현자
+    // 사제
     // Att Speed 50% 증가하며 이단심판으로 타격시 2초간 이동속도 100% 감소
     // 이단심판으로 타격시 아군에게 적용되어 있는 디버프 1개 제거
     // 파티원 전체 Damage 15%, Defense 15% 증가

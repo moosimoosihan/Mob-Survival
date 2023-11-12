@@ -184,8 +184,8 @@ public class GameManager : MonoBehaviour
     //경험치 획득
     public void GetExp(int amount)
     {
-        // 사제 2스킬 경험치 획득량 증가
-        exp += amount + skillContext.PriestSkill2(exp);
+        // 현자 2스킬 경험치 획득량 증가
+        exp += amount + skillContext.WizardSkill2(exp);
         OnEXPBar?.Invoke(exp);
         if (exp >= nextExp[level])
         {

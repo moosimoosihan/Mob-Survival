@@ -7,6 +7,7 @@ public class CharacterStatus : MonoBehaviour
 {
     private bool archerSkill9 = false;
     public bool archerSkill7 = false;
+    public bool archerSkill0 = false;
     public string character;
     private float maxHP;
     private float curHP = 0;
@@ -38,6 +39,10 @@ public class CharacterStatus : MonoBehaviour
             
             if(GetComponent<Player>() && archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
                 curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill9();
+            }
+
+            if(GetComponent<Player>() && character.Equals("아처") && archerSkill0){
+                curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill0()[1];
             }
 
             return curSpeed;
@@ -209,9 +214,9 @@ public class CharacterStatus : MonoBehaviour
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill9();
             }
 
-            if(GetComponent<Player>() && character.Equals("사제")){
-                // 사제 1스킬 공속 증가
-                curAttackSpeed += GameManager.instance.skillContext.PriestSkill1();
+            if(GetComponent<Player>() && character.Equals("현자")){
+                // 현자 1스킬 공속 증가
+                curAttackSpeed += GameManager.instance.skillContext.WizardSkill1();
             }
 
             return curAttackSpeed;
@@ -297,9 +302,9 @@ public class CharacterStatus : MonoBehaviour
                     curAttackDamage += GameManager.instance.skillContext.ArcherSkill12(attackDamage);
                 }
 
-                if(character.Equals("사제")){
-                    // 사제 0스킬 데미지 50% 증가
-                    curAttackDamage += GameManager.instance.skillContext.PriestSkill0(attackDamage);
+                if(character.Equals("현자")){
+                    // 현자 0스킬 데미지 50% 증가
+                    curAttackDamage += GameManager.instance.skillContext.WizardSkill0(attackDamage)[0];
                 }
             }
             
@@ -429,5 +434,17 @@ public class CharacterStatus : MonoBehaviour
                 StartCoroutine(ArcherSkill9Buff());
             }
         }
+    }
+    // 궁수 0스킬 피격시 5초동안 이속 증가
+    public float archerSkill0BuffTime = 5f;
+    public IEnumerator ArcherSkill0Buff()
+    {
+        archerSkill0 = true;
+        archerSkill0BuffTime = 5;
+        while(archerSkill0BuffTime>0){
+            archerSkill0BuffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        archerSkill0 = false;
     }
 }

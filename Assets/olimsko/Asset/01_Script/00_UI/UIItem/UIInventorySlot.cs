@@ -4,7 +4,6 @@ using UnityEngine;
 using olimsko;
 using UnityEngine.EventSystems;
 using UnityEngine.Localization.Settings;
-using UnityEditorInternal.VersionControl;
 
 public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IToolTipData
 {

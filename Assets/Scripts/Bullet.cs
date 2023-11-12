@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Pool;
 public class Bullet : MonoBehaviour
@@ -20,7 +19,7 @@ public class Bullet : MonoBehaviour
     private IObjectPool<Bullet> _ManagedPool;
     public IObjectPool<HitEffect> hitEffectPool;
 
-    // À¯µµÅº ¿©ºÎ
+    // ï¿½ï¿½ï¿½ï¿½Åº ï¿½ï¿½ï¿½ï¿½
     public bool isHoming = false;
     [SerializeField]
     Transform homingTarget;
@@ -43,7 +42,7 @@ public class Bullet : MonoBehaviour
         knockBackPower = _knockBackPower;
         isCritical = _isCritical;
 
-        //duration???¨¨? ??? ??????
+        //duration???ï¿½ï¿½? ??? ??????
         if (_deActivate)
         {
             DeActivate(_duration);            
@@ -63,7 +62,7 @@ public class Bullet : MonoBehaviour
             rigid.velocity = _dir * speed;
         }
 
-        //duration???¨¨? ??? ??????
+        //duration???ï¿½ï¿½? ??? ??????
         if (_deActivate)
         {
             DeActivate(_duration);
@@ -125,7 +124,7 @@ public class Bullet : MonoBehaviour
         // ??? ???? ??????? ????? ???
         OnCreateBullet();
 
-        //??? ?¨ú?? ?????¨ú?? ??? ???? ??? ?¨ú??????? ????? ??? ???????????
+        //??? ?ï¿½ï¿½?? ?????ï¿½ï¿½?? ??? ???? ??? ?ï¿½ï¿½??????? ????? ??? ???????????
         if(tempIsHit && !throwBullet){
             per--;
             if(isHoming){
@@ -192,11 +191,11 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
-        // À¯µµÅºÀÏ °æ¿ì Àû±ºÀÌ ÁÖº¯¿¡ Á¸ÀçÇÏ¸é Àû±ºÀ» ÇâÇØ ³¯¾Æ°£´Ù. ¾øÀ»°æ¿ì Á¤ÇØÁø ¹æÇâÀ¸·Î ³¯¾Æ°£´Ù.
+        // ï¿½ï¿½ï¿½ï¿½Åºï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Öºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Æ°ï¿½ï¿½ï¿½.
         if(isHoming){
-            // Å¸°ÙÀÌ ¹Ý°æ 10¾È¿¡ ÀÖ´Ù¸é Å¸°ÙÀ» ÁöÁ¤ÇÑ´Ù.
+            // Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ý°ï¿½ 10ï¿½È¿ï¿½ ï¿½Ö´Ù¸ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
             if(homingTarget==null){
-                // ÁÖº¯¿¡ Å¸°ÙÀÌ ÀÌ¹Ì ´ê¾Ò´ø detectedEnemyList¾È¿¡ ÀÖ´Ù¸é ´Ù¸¥ Àû±ºÀ» Ã£°í ¸¸¾à ¾ø´Ù¸é ÇØ´ç ¾Æ±ºÀ» Áö¿ì°í ´Ù½Ã Å¸°ÙÇÑ´Ù.
+                // ï¿½Öºï¿½ï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½Ò´ï¿½ detectedEnemyListï¿½È¿ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ ï¿½Ø´ï¿½ ï¿½Æ±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ Å¸ï¿½ï¿½ï¿½Ñ´ï¿½.
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 10f);
                 foreach(Collider2D collider in colliders){
                     if(collider.CompareTag("Enemy") && !detectedEnemyList.Contains(collider.GetComponent<Enemy>())){
@@ -204,7 +203,7 @@ public class Bullet : MonoBehaviour
                         break;
                     }
                 }
-                // ÁÖº¯¿¡ ÀÌ¹Ì ¸ÂÀº Å¸°Ù¸¸ ÀÖ´Ù¸é ¸®½ºÆ®¸¦ ºñ¿ì°í ´Ù½Ã Å¸°ÙÀ» ÁöÁ¤ÇÑ´Ù.
+                // ï¿½Öºï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½Ù¸ï¿½ ï¿½Ö´Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ù½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
                 if(homingTarget == null){
                     detectedEnemyList.Clear();
                     foreach(Collider2D collider in colliders){

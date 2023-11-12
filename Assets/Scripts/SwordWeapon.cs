@@ -20,23 +20,16 @@ public class SwordWeapon : MeleeWeapon
         dir = dir.normalized;
 
         float scalex = player.transform.localScale.x / 2;
-        float scaley = player.transform.localScale.y / 2;
-
 
         // 용사 1번 스킬 범위증가(베기) 베기스킬 범위 2배 증가
         float[] skill1Values = GameManager.instance.skillContext.WarriorSkill1(scalex, DetectionAngle);
         scalex = skill1Values[0];
         CurDetectionAngle = skill1Values[1];
 
-        // 용사 7번 스킬 range 증가
-        float[] skill6Values = GameManager.instance.skillContext.WarriorSkill7(scaley, DetectRadius);
-        scaley = skill6Values[0];
-        CurDetectRadius = skill6Values[1];
-
         Transform bullet = poolBullet.Get().transform;
 
         bullet.parent = GameManager.instance.pool.transform;
-        bullet.transform.localScale = new Vector3(scalex, scaley, bullet.transform.localScale.z);
+        bullet.transform.localScale = new Vector3(scalex, bullet.transform.localScale.y, bullet.transform.localScale.z);
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
@@ -44,7 +37,7 @@ public class SwordWeapon : MeleeWeapon
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-        GameManager.instance.skillContext.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, CurCount, knockBackPower, duration, scaley, DetectRadius);
+        GameManager.instance.skillContext.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, CurCount, knockBackPower, duration, DetectRadius);
 
         // 오디오 재생
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Warrior_Attack);
