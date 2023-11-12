@@ -15,6 +15,22 @@ public class IceGround : Bullet
             Enemy detectedEnemy = collision.GetComponent<Enemy>();
             detectedEnemy.GetDamage(damage, 0, false, true);
             time = 0;
+
+            if(GameManager.instance.skillContext.WizardSkill3()){
+                // 현자 스킬3 적중시 빙결1스택 증가 최대 4스택 빙결최대 3초
+                if(!detectedEnemy.slowDeBuff){
+                    detectedEnemy.slowDeBuffTime = 3;
+                    detectedEnemy.slowDeBuffCount++;
+                    StartCoroutine(detectedEnemy.SlowDeBuff());
+                } else {
+                    detectedEnemy.slowDeBuffTime = 3;
+                    if(detectedEnemy.slowDeBuffCount<4){
+                        detectedEnemy.slowDeBuffCount++;
+                    }
+                }
+                
+
+            }
         }
     }
     void OnEnable()

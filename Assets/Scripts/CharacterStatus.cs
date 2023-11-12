@@ -45,6 +45,10 @@ public class CharacterStatus : MonoBehaviour
                 curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill0()[1];
             }
 
+            if(GetComponent<Enemy>() && slowDeBuff){
+                curSpeed -= Speed * (slowDeBuffCount * 0.1f);
+            }
+
             return curSpeed;
         }
         set
@@ -446,5 +450,19 @@ public class CharacterStatus : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         archerSkill0 = false;
+    }
+
+    public int slowDeBuffCount = 0;
+    public float slowDeBuffTime = 0;
+    public bool slowDeBuff = false;
+    public IEnumerator SlowDeBuff(){
+        slowDeBuff = true;
+        while(slowDeBuffTime>0){
+            slowDeBuffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        slowDeBuffTime = 0;
+        slowDeBuffCount = 0;
+        slowDeBuff = false;
     }
 }

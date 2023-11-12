@@ -135,6 +135,11 @@ public class Enemy : CharacterStatus
         isFire = false;
         isBurn = false;
         fireDeBuffTime = 0;
+
+        slowDeBuffTime = 0;
+        slowDeBuffCount = 0;
+        slowDeBuff = false;
+
         CurHP = MaxHP;
 
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
@@ -450,6 +455,7 @@ public class Enemy : CharacterStatus
         //gameObject.SetActive(false);
         DieSound();
         StopCoroutine("WarriorFireOn");
+        StopCoroutine("SlowDeBuff");
         CancelInvoke("FindClosestObject");
         DestroyEnemy();
     }

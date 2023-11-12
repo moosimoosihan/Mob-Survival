@@ -348,7 +348,12 @@ public class SkillContext : ContextModel
     }
 
     // 현자 3스킬 모든 스킬에 특수효과로 디버프 빙결을 부여 (피격시 10초간 이동속도 10%감소 4중첩 가능)
-    
+    public bool WizardSkill3(){
+        if(PlayerContext.IsHasSkill(2, 35)){
+            return true;
+        }
+        return false;
+    }
 
     // 아이스 필드 스킬의 Area Size 200으로 변경
     // 아이스 필드 스킬의 Area Duration 10으로 변경
