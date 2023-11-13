@@ -62,6 +62,7 @@ public class GoblinBoss : Enemy
         base.Init(data, power);
         missileDamage = CurAttackDamage;
         bulletSpeed = 10;
+        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

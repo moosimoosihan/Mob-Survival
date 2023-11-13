@@ -66,6 +66,7 @@ public class GoblinKing : Enemy
     {
         base.Init(data, power);
         missileDamage = CurAttackDamage;
+        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

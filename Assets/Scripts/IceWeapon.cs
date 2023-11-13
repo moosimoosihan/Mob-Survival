@@ -29,7 +29,7 @@ public class IceWeapon : Weapon
         if(GameManager.instance.skillContext.WizardSkill0()[1]!=0){
             float val = GameManager.instance.skillContext.WizardSkill0()[1];
             Vector2 size = bullet.transform.localScale;
-            size = new Vector2(size.x*val,size.y*val);
+            size = new Vector2(val,val);
             bullet.transform.localScale = size;
         }
 
@@ -38,7 +38,7 @@ public class IceWeapon : Weapon
         bullet.rotation = Quaternion.FromToRotation(Vector3.left, dir);
         bullet.GetComponent<IceBullet>().projectilePrefab = iceGroundPrefab;
         bullet.GetComponent<IceBullet>().groundDamage = groundDamage;
-        bullet.GetComponent<IceBullet>().groundDuration = groundDuration;
+        bullet.GetComponent<IceBullet>().GroundDuration = groundDuration;
         bullet.GetComponent<IceBullet>().speed = bulletSpeed;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
         

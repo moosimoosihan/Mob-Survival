@@ -187,7 +187,7 @@ public class SkillContext : ContextModel
         float[] vals = {0, 0};
         if(PlayerContext.IsHasSkill(1, 16)){
             vals[0] = SkillTable.SkillTable[16].Value[0];
-            vals[1] = SkillTable.SkillTable[15].Value[1];
+            vals[1] = SkillTable.SkillTable[16].Value[1];
             return vals;
         }
         return vals;
@@ -355,25 +355,160 @@ public class SkillContext : ContextModel
         return false;
     }
 
-    // 아이스 필드 스킬의 Area Size 200으로 변경
-    // 아이스 필드 스킬의 Area Duration 10으로 변경
-    // 블리자드의 Area Size 500으로 변경
-    // 블리자드의 Area Duration 20초로 변경하고 Cooldown 60초로 변경
-    // 아이스볼 Damage 30, Cooldown 5초로 변경시키며 피격시 빙결 2중첩씩 부여
-    // 빙결 4중첩된 적을 피격시 2초간 이동속도 100%감소시킴
-    // 아이스 필드의 Area Size를 300, Area Duration을15초로 변경
-    // 블리자드의 범위가 맵 전체로 변경 지속시간 5초 감소와 CoolDown 30초 증가
-    // Damage,Att Range 5% 증가
-    // 아이스 필드의 Area Size 10% 증가
-    // 디버프 빙결의 이동속도 감소를 1% 추가 감소
-    // Active Damage 15% 증가
+    // 현자 4스킬 아이스 필드 스킬의 Area Size 200으로 변경
+    public float WizardSkill4(){
+        if(PlayerContext.IsHasSkill(2, 36)){
+            return SkillTable.SkillTable[36].Value[0];
+        }
+        return 0;
+    }
+    // 현자 5스킬 아이스 필드 스킬의 Area Duration 10으로 변경
+    public float WizardSkill5(){
+        if(PlayerContext.IsHasSkill(2, 37)){
+            return SkillTable.SkillTable[37].Value[0];
+        }
+        return 0;
+    }
+    // 현자 6스킬 블리자드의 Area Size 500으로 변경
+    public float WizardSkill6(){
+        if(PlayerContext.IsHasSkill(2, 38)){
+            return SkillTable.SkillTable[38].Value[0];
+        }
+        return 0;
+    }
+    // 현자 7스킬 블리자드의 Area Duration 20초로 변경하고 Cooldown 60초로 변경
+    public float[] WizardSkill7(){
+        float[] vals = {0, 0};
+        if(PlayerContext.IsHasSkill(2, 39)){
+            vals[0] = SkillTable.SkillTable[39].Value[0];
+            vals[1] = SkillTable.SkillTable[39].Value[1];
+            return vals;
+        }
+        return vals;
+    }
+    
+    // 현자 8스킬 아이스볼 Damage 30, Cooldown 5초로 변경시키며 피격시 빙결 2중첩씩 부여
+    public float[] WizardSkill8(){
+        float[] vals = {0, 0};
+        if(PlayerContext.IsHasSkill(2, 40)){
+            vals[0] = SkillTable.SkillTable[40].Value[0];
+            vals[1] = SkillTable.SkillTable[40].Value[1];
+            return vals;
+        }
+        return vals;
+    }
+    
+    // 현자 9스킬 빙결 4중첩된 적을 피격시 2초간 이동속도 100%감소시킴
+    public bool WizardSkill9(){
+        if(PlayerContext.IsHasSkill(2, 41)){
+            return true;
+        }
+        return false;
+    }
+    // 현자 10스킬 아이스 필드의 Area Size를 300, Area Duration을15초로 변경
+    public float[] WizardSkill10(){
+        float[] vals = {0, 0};
+        if(PlayerContext.IsHasSkill(2, 42)){
+            vals[0] = SkillTable.SkillTable[42].Value[0];
+            vals[1] = SkillTable.SkillTable[42].Value[1];
+            return vals;
+        }
+        return vals;
+    }
+    // 현자 11스킬 블리자드의 범위가 맵 전체로 변경 지속시간 5초 감소와 CoolDown 30초 증가
+    public float[] WizardSkill11(){
+        float[] vals = {0, 0};
+        if(PlayerContext.IsHasSkill(2, 43)){
+            vals[0] = SkillTable.SkillTable[43].Value[0];
+            vals[1] = SkillTable.SkillTable[43].Value[1];
+            return vals;
+        }
+        return vals;
+    }
+    
+    // 현자 12스킬 Damage,Att Range 5% 증가
+    public float WizardSkill12(float _damage){
+        if(PlayerContext.IsHasSkill(2, 44)){
+            float val = SkillTable.SkillTable[44].Value[0];
+            int level = PlayerContext.GetSkillLevel(2, 44);
+            return _damage * (val * level);
+        }
+        return 0;
+    }
+
+    // 현자 13스킬 아이스 필드의 Area Size 10% 증가
+    public float WizardSkill13(){
+        if(PlayerContext.IsHasSkill(2, 45)){
+            float val = SkillTable.SkillTable[45].Value[0];
+            int level = PlayerContext.GetSkillLevel(2, 45);
+            return val * level;
+        }
+        return 0;
+    }
+    // 현자 14스킬 디버프 빙결의 이동속도 감소를 1% 추가 감소
+    public float WizardSkill14(){
+        if(PlayerContext.IsHasSkill(2, 46)){
+            float val = SkillTable.SkillTable[46].Value[0];
+            int level = PlayerContext.GetSkillLevel(2, 46);
+            return val * level;
+        }
+        return 0;
+    }
+    // 현자 15스킬 Active Damage 15% 증가
+    public float WizardSkill15(float _damage){
+        if(PlayerContext.IsHasSkill(2, 47)){
+            float val = SkillTable.SkillTable[47].Value[0];
+            int level = PlayerContext.GetSkillLevel(2, 47);
+            return _damage * (val * level);
+        }
+        return 0;
+    }
 
     // 사제
-    // Att Speed 50% 증가하며 이단심판으로 타격시 2초간 이동속도 100% 감소
-    // 이단심판으로 타격시 아군에게 적용되어 있는 디버프 1개 제거
-    // 파티원 전체 Damage 15%, Defense 15% 증가
-    // 홀리쉴드가 적용된 아군이 5초마다 잃은 HP의 5%를 회복
-    // 홀리쉴드가 파티 전체에 적용되지만 체력에 5%만큼의 보호막이 적용됨
+    // 사제 0스킬 Att Speed 50% 증가하며 이단심판으로 타격시 2초간 이동속도 100% 감소
+    public float[] PriestSkill0(){
+        float[] vals = {0, 0};
+        if(PlayerContext.IsHasSkill(3, 48)){
+            vals[0] = SkillTable.SkillTable[48].Value[0];
+            vals[1] = SkillTable.SkillTable[48].Value[1];
+            return vals;
+        }
+        return vals;
+    }
+    
+    // 사제 1스킬 이단심판으로 타격시 아군에게 적용되어 있는 디버프 1개 제거
+    public bool PriestSkill1(){
+        if(PlayerContext.IsHasSkill(3, 49)){
+            return true;
+        }
+        return false;
+    }
+
+    // 사제 2스킬 파티원 전체 Damage 15%, Defense 15% 증가
+    public float PriestSkill2(float value){
+        if(PlayerContext.IsHasSkill(3, 50)){
+            float val = SkillTable.SkillTable[50].Value[0];
+            return value * val;
+        }
+        return 0;
+    }
+
+    // 사제 3스킬 홀리쉴드가 적용된 아군이 5초마다 잃은 HP의 5%를 회복
+    public float PriestSkill3(){
+        if(PlayerContext.IsHasSkill(3, 51)){
+            return SkillTable.SkillTable[51].Value[0];
+        }
+        return 0;
+    }
+
+    // 사제 4스킬 홀리쉴드가 파티 전체에 적용되지만 체력에 5%만큼의 보호막이 적용됨(현재 10 적용되니 5로 줄이는건가?)
+    public float PriestSkill4(){
+        if(PlayerContext.IsHasSkill(3, 52)){
+            return SkillTable.SkillTable[52].Value[0];
+        }
+        return 0;
+    }
+    
     // 보호막이 적용된 아군의 Damage 10%, Att Speed 10% 증가
     // 기적이 적용된 아군에게 5초간 무적효과 부여
     // 기적이 적용된 아군에게 10초간 Damage 50%, Att Speed 50% 증가

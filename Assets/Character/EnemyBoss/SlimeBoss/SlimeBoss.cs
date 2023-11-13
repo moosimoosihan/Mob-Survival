@@ -247,4 +247,9 @@ public class SlimeBoss : Enemy
     {
         Destroy(aimObj.gameObject);
     }
+    public override void Init(MonsterTable data, float power)
+    {
+        base.Init(data, power);
+        isBoss = true;
+    }
 }

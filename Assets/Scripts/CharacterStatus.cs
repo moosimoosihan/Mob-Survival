@@ -37,16 +37,36 @@ public class CharacterStatus : MonoBehaviour
         {
             curSpeed = speed;
             
-            if(GetComponent<Player>() && archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
-                curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill9();
+            if(GetComponent<Player>()){
+                if(archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
+                    curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill9();
+                }
+
+                if(character.Equals("궁수") && archerSkill0){
+                    curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill0()[1];
+                }
             }
 
-            if(GetComponent<Player>() && character.Equals("아처") && archerSkill0){
-                curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill0()[1];
+            if(slowDeBuff && !stunDeBuff){
+                if(GetComponent<Enemy>()){
+                    if(!GetComponent<Enemy>().isBoss && GameManager.instance.skillContext.WizardSkill14()!=0){
+                        // 현자 14스킬 슬로우 추가
+                        float addSlow = GameManager.instance.skillContext.WizardSkill14();
+                        curSpeed -= Speed * (slowDeBuffCount * (0.1f + addSlow));
+                    }
+                } else {
+                    curSpeed -= Speed * (slowDeBuffCount * 0.1f);
+                }
             }
-
-            if(GetComponent<Enemy>() && slowDeBuff){
-                curSpeed -= Speed * (slowDeBuffCount * 0.1f);
+            
+            if(stunDeBuff){
+                if(GetComponent<Enemy>()){
+                    if(!GetComponent<Enemy>().isBoss){
+                        curSpeed = 0;
+                    }
+                } else {
+                    curSpeed = 0;
+                }
             }
 
             return curSpeed;
@@ -80,14 +100,14 @@ public class CharacterStatus : MonoBehaviour
             // 궁수 8스킬 크리티컬 확률 및 데미지 증가
             if(GetComponent<Player>() && character.Equals("궁수")){
                 curCritRate += GameManager.instance.skillContext.ArcherSkill8()[0];
-            }
             
-            // 궁수 액티브 스킬
-            if(GetComponent<Player>() && archerSkill7){
-                curCritRate += 0.3f;
-                
-                // 궁수 15스킬 액티브의 크리티컬 확률 레벨당 1% 증가
-                curCritRate += GameManager.instance.skillContext.ArcherSkill15();
+                // 궁수 액티브 스킬
+                if(archerSkill7){
+                    curCritRate += 0.3f;
+                    
+                    // 궁수 15스킬 액티브의 크리티컬 확률 레벨당 1% 증가
+                    curCritRate += GameManager.instance.skillContext.ArcherSkill15();
+                }
             }
 
             return curCritRate;
@@ -118,14 +138,16 @@ public class CharacterStatus : MonoBehaviour
         {
             curCritDamage = critDamage;
 
-            // 궁수 8스킬 크리티컬 확률 및 데미지 증가
-            if(GetComponent<Player>() && character.Equals("궁수")){
-                curCritDamage += GameManager.instance.skillContext.ArcherSkill8()[1];
-            }
-            
-            // 궁수 7스킬 크리티컬 확률 및 데미지 증가
-            if(GetComponent<Player>() && archerSkill7 && character.Equals("궁수") && GameManager.instance.skillContext.ArcherSkill7()!=0){
-                curCritDamage += GameManager.instance.skillContext.ArcherSkill7();
+            if(GetComponent<Player>()){
+                if(character.Equals("궁수")){
+                    // 궁수 8스킬 크리티컬 확률 및 데미지 증가
+                    curCritDamage += GameManager.instance.skillContext.ArcherSkill8()[1];
+                    
+                    // 궁수 7스킬 크리티컬 확률 및 데미지 증가
+                    if(archerSkill7 && GameManager.instance.skillContext.ArcherSkill7()!=0){
+                        curCritDamage += GameManager.instance.skillContext.ArcherSkill7();
+                    }
+                }
             }
 
             return curCritDamage;
@@ -135,7 +157,38 @@ public class CharacterStatus : MonoBehaviour
             curCritDamage = value;
         }
     }
-    public float def;
+    private float def;
+    private float curDef;
+    public float Def
+    {
+        get
+        {
+            return def;
+        }
+        set
+        {
+            def = value;
+        }
+    }
+    public float CurDef
+    {
+        get
+        {
+            curDef = def;
+
+            if(GetComponent<Player>()){
+                // 사제 2스킬 파티원 전체 방어력 15% 증가
+                curDef += GameManager.instance.skillContext.PriestSkill2(def);
+            }
+
+            return curDef;
+        }
+        set
+        {
+            curDef = value;
+        }
+    }
+
     private float evasion;
     private float curEvasion;
     public float Evasion
@@ -202,25 +255,31 @@ public class CharacterStatus : MonoBehaviour
             curAttackSpeed = attackSpeed;
 
             //플레이어 여부 검사
-            if(GetComponent<Player>() && character.Equals("궁수"))
-                // 궁수 1스킬 공속 증가
-                curAttackSpeed += GameManager.instance.skillContext.ArcherSkill1();
-                // 궁수 12스킬 공속 증가
-                curAttackSpeed += GameManager.instance.skillContext.ArcherSkill12(attackSpeed);
-            
             if(GetComponent<Player>()){
                 // 궁수 2스킬 파티원 전체 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill2();
-            }
+                
+                if(archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
+                    // 궁수 9스킬 30초마다 10초간 파티원 전체 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.ArcherSkill9();
+                }
+                
+                if(character.Equals("궁수")){
+                    // 궁수 1스킬 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.ArcherSkill1();
+                    // 궁수 12스킬 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.ArcherSkill12(attackSpeed);
+                }
 
-            if(GetComponent<Player>() && archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
-                // 궁수 9스킬 30초마다 10초간 파티원 전체 공속 증가
-                curAttackSpeed += GameManager.instance.skillContext.ArcherSkill9();
-            }
+                if(character.Equals("현자")){
+                    // 현자 1스킬 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.WizardSkill1();
+                }
 
-            if(GetComponent<Player>() && character.Equals("현자")){
-                // 현자 1스킬 공속 증가
-                curAttackSpeed += GameManager.instance.skillContext.WizardSkill1();
+                if(character.Equals("사제")){
+                    // 사제 0스킬 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.PriestSkill0()[0];
+                }
             }
 
             return curAttackSpeed;
@@ -248,15 +307,21 @@ public class CharacterStatus : MonoBehaviour
             curActiveSkillDamage = activeSkillDamage;
 
             //플레이어 여부 검사
-            if(GetComponent<Player>())
-                // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
+            if(GetComponent<Player>()){
+                // 용사 2스킬 파티버프 전체 데미지 15% 증가
                 curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill2(activeSkillDamage);
+                
+                if(character.Equals("용사")){
+                    // 용사 15스킬 액티브 데미지 증가
+                    curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill15(activeSkillDamage);
+                }
 
-            if(GetComponent<Player>() && character.Equals("용사")){
-                // 용사 15번 스킬 액티브 스킬 15% 증가
-                curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill15(activeSkillDamage);
+                if(character.Equals("현자")){
+                    // 현자 15스킬 액티브 데미지 증가
+                    curActiveSkillDamage += GameManager.instance.skillContext.WizardSkill15(activeSkillDamage);
+                }
             }
-            
+
             return curActiveSkillDamage;
         }
         set
@@ -295,6 +360,9 @@ public class CharacterStatus : MonoBehaviour
             if(GetComponent<Player>()){
                 // 용사 2번 스킬 파티버프 전체 데미지 15% 증가
                 curAttackDamage += GameManager.instance.skillContext.WarriorSkill2(attackDamage);
+
+                // 사제 2스킬 파티원 전체 15% 증가
+                curAttackDamage += GameManager.instance.skillContext.PriestSkill2(attackDamage);
                 
                 if(character.Equals("용사")){
                     // 용사 12스킬 데미지 5%증가
@@ -309,10 +377,14 @@ public class CharacterStatus : MonoBehaviour
                 if(character.Equals("현자")){
                     // 현자 0스킬 데미지 50% 증가
                     curAttackDamage += GameManager.instance.skillContext.WizardSkill0(attackDamage)[0];
+
+                    // 현자 8스킬 데미지 10 증가
+                    curAttackDamage += GameManager.instance.skillContext.WizardSkill8()[0];
+
+                    // 현자 12스킬 데미지 증가
+                    curAttackDamage += GameManager.instance.skillContext.WizardSkill12(attackDamage);
                 }
             }
-            
-            
 
             return curAttackDamage;
         }
@@ -380,7 +452,42 @@ public class CharacterStatus : MonoBehaviour
     // bool createFollowingHpBar;
 
     // 속도 저항
-    public float resistance = 1;
+    private float resistance = 1;
+    private float curResistance;
+    public float CurResistance
+    {
+        get
+        {
+            curResistance = resistance;
+
+            if(slowDeBuff && !stunDeBuff){
+                if(GetComponent<Enemy>()){
+                    if(!GetComponent<Enemy>().isBoss && GameManager.instance.skillContext.WizardSkill14()!=0){
+                        // 현자 14스킬 슬로우 추가
+                        float addSlow = GameManager.instance.skillContext.WizardSkill14();
+                        curResistance -= resistance * (slowDeBuffCount * (0.1f + addSlow));
+                    }
+                } else {
+                    curResistance -= resistance * (slowDeBuffCount * 0.1f);
+                }
+            }
+            if(stunDeBuff){
+                if(GetComponent<Enemy>()){
+                    if(!GetComponent<Enemy>().isBoss){
+                        curResistance = 0;
+                    }
+                } else {
+                    curResistance = 0;
+                }
+            }
+
+            return curResistance;
+        }
+        set
+        {
+            curResistance = value;
+        }
+    }
 
     // 버프 이펙트
     public GameObject shielSfxPlayer;
@@ -415,12 +522,6 @@ public class CharacterStatus : MonoBehaviour
         //이펙트 제거해야 함
         isShield = false;
     }
-    public IEnumerator Speedresistance(float _resistance, float _time)
-    {
-        resistance = _resistance;
-        yield return new WaitForSeconds(_time);
-        resistance = 1;
-    }
 
     public IEnumerator ArcherSkill9Buff()
     {
@@ -429,6 +530,7 @@ public class CharacterStatus : MonoBehaviour
         archerSkill9 = false;
     }
     float archerSkill9Count = 0;
+    float priestSkill3Count = 0;
     void Update()
     {
         if(GameManager.instance.skillContext.ArcherSkill9()!=0){
@@ -436,6 +538,23 @@ public class CharacterStatus : MonoBehaviour
             if(archerSkill9Count<=0){
                 archerSkill9Count = 40;
                 StartCoroutine(ArcherSkill9Buff());
+            }
+        }
+
+        // 사제 3스킬 보호막이 활성화되어 있을경우 5초마다 잃은체력의 5%를 회복
+        if(isShield && GameManager.instance.skillContext.PriestSkill3()!=0 && GetComponent<Player>()){
+            float val = GameManager.instance.skillContext.PriestSkill3();
+            priestSkill3Count -= Time.deltaTime;
+            if(priestSkill3Count<=0){
+                priestSkill3Count = 5;
+                if(CurHP<MaxHP){
+                    GetComponent<Player>().GetDamage((MaxHP-CurHP)*val, false);
+                    if(GetComponent<Player>().CurHP>GetComponent<Player>().MaxHP){
+                        GetComponent<Player>().CurHP = GetComponent<Player>().MaxHP;
+                    }
+                } else {
+                    GetComponent<Player>().GetDamage(0, false);
+                }
             }
         }
     }
@@ -464,5 +583,23 @@ public class CharacterStatus : MonoBehaviour
         slowDeBuffTime = 0;
         slowDeBuffCount = 0;
         slowDeBuff = false;
+    }
+
+    public float stunDeBuffTime = 0;
+    public bool stunDeBuff = false;
+    public IEnumerator StunDeBuff(){
+        stunDeBuff = true;
+        resistance = 0;
+        priestSkill3Count = 5;
+
+        while(stunDeBuffTime>0){
+            stunDeBuffTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        priestSkill3Count = 0;
+        stunDeBuffTime = 0;
+        stunDeBuff = false;
+        resistance = 1;
     }
 }

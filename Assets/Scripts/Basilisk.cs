@@ -67,6 +67,7 @@ public class Basilisk : Enemy
         base.Init(data, power);
         missileDamage = CurAttackDamage;
         bulletSpeed = 15;
+        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

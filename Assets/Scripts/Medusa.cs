@@ -201,11 +201,9 @@ public class Medusa : Enemy
                     if ((transform.localScale.x == 1 && curPlayer.childTransform.localScale.x == -1) || (transform.localScale.x == -1 && curPlayer.childTransform.localScale.x == 1))
                     {
                         // 보스 공격은 무적시간 없음
-                        if (curPlayer.resistance != 0)
-                        {
-                            curPlayer.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), isCritical, null, true);
-                            curPlayer.StartCoroutine(curPlayer.Speedresistance(0, specialStopTime));
-                        }
+                        curPlayer.GetDamage(DamageManager.Instance.Critical(GetComponent<CharacterStatus>(), specialDamage, out bool isCritical), isCritical, null, true);
+                        curPlayer.stunDeBuffTime = specialStopTime;
+                        curPlayer.StartCoroutine(curPlayer.StunDeBuff());
                     }
                 }
                 elapsedTime += Time.deltaTime;

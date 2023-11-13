@@ -51,8 +51,15 @@ public abstract class Weapon : MonoBehaviour
     {
         get
         {
+            curDelay = delay;
+
+            // 현자 8스킬 쿨타임 5초 감소
+            if(GetComponent<IceWeapon>()){
+                curDelay -= GameManager.instance.skillContext.WizardSkill8()[1];
+            }
+
             // 플레이어의 공속을 가져와 적용
-            curDelay = delay / player.CurAttackSpeed;
+            curDelay /= player.CurAttackSpeed;
             
             return curDelay;
         }

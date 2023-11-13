@@ -78,7 +78,7 @@ public class Player : CharacterStatus
         character = data.Name;
         MaxHP = data.HP;
         CurHP = MaxHP;
-        def = data.Def;
+        Def = data.Def;
         Speed = data.MoveSpeed;
         hpRegen = data.HPRegen;
         Evasion = data.Evasion;
@@ -98,7 +98,7 @@ public class Player : CharacterStatus
         {
             // 현재 다이나믹으로 했을 경우 필요 없음
             //StopToWall(inputVec);
-            Vector2 nextVec = inputVec.normalized * CurSpeed * Time.fixedDeltaTime * resistance;
+            Vector2 nextVec = inputVec.normalized * CurSpeed * Time.fixedDeltaTime;
             rigid.MovePosition(isBorder ? rigid.position : rigid.position + nextVec);
 
             if (nextVec != Vector2.zero)
@@ -115,7 +115,7 @@ public class Player : CharacterStatus
             inputVec = Vector2.zero;
         }
 
-        skeletonAnimation.timeScale = resistance;
+        skeletonAnimation.timeScale = CurResistance;
     }
     public void StopToWall(Vector2 _inputVec)
     {
@@ -138,7 +138,7 @@ public class Player : CharacterStatus
         if (playerDead || !GameManager.instance.isPlay)
             return;
 
-        if (inputVec.x != 0)
+        if (inputVec.x != 0 && !stunDeBuff)
         {
             if (inputVec.x < 0)
             {
@@ -190,7 +190,7 @@ public class Player : CharacterStatus
                 curDamage -= GameManager.instance.skillContext.WarriorSkill13(_damage);
             }
 
-            dam = curDamage / (1 + def * 0.01);
+            dam = curDamage / (1 + CurDef * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
             if (CurEvasion * 100 > ran)
@@ -228,7 +228,7 @@ public class Player : CharacterStatus
                 {
                     float tempDamage = _damage - CurShield;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, true);
-                    tempDamage = (float)(tempDamage / (1 + def * 0.01));
+                    tempDamage = (float)(tempDamage / (1 + CurDef * 0.01));
                     dam = tempDamage;
                     CurShield = 0;
                     if (CurShield <= 0)

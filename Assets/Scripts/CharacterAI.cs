@@ -5,10 +5,6 @@ public class CharacterAI : MonoBehaviour
     Rigidbody2D rigid;
     Scaner scanner;
 
-    [SerializeField]
-    float speed;
-    float curSpeed;
-
     //따라다닐 메인 오브젝트
     public GameObject mainCharacter;
 
@@ -47,7 +43,6 @@ public class CharacterAI : MonoBehaviour
         playerScript = GetComponent<Player>();
 
         playerRadius = (selfColl as CapsuleCollider2D).size.x * transform.localScale.x / 2;
-        speed = playerScript.CurSpeed;
         timer = limitTime;
     }
 
@@ -63,17 +58,17 @@ public class CharacterAI : MonoBehaviour
 
             if (isMoving == false)
             {
-                curSpeed = Mathf.Lerp(curSpeed, 0, Time.fixedDeltaTime * 8);
+            //     playerScript.CurSpeed = Mathf.Lerp(playerScript.CurSpeed, 0, Time.fixedDeltaTime * 8);
                 playerScript.SetAnimationState(Player.AnimationState.Idle);
             }
             else
             {
-                curSpeed = Mathf.Lerp(curSpeed, speed, Time.fixedDeltaTime * 8);
+            //     playerScript.CurSpeed = Mathf.Lerp(playerScript.CurSpeed, playerScript.CurSpeed, Time.fixedDeltaTime * 8);
                 playerScript.SetAnimationState(Player.AnimationState.Run);
             }
 
-            moveVec = dir.normalized * curSpeed * Time.fixedDeltaTime * playerScript.resistance;
-            if (moveVec.x < 0)
+            moveVec = dir.normalized * (isMoving?playerScript.CurSpeed:0) * Time.fixedDeltaTime;
+            if (moveVec.x < 0 && !playerScript.stunDeBuff)
             {
                 childTransform.localScale = new Vector3(1, 1, 1);
             }

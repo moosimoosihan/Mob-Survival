@@ -23,7 +23,8 @@ public class GiantEntBullet : EnemyBullet
             
         // 해당 플레이어의 이동속도를 제한 몇초동안? 묶인 이펙트를 생성해야 함
         Player player = other.GetComponent<Player>();
-        player.StartCoroutine(player.Speedresistance(0, 1));
+        player.stunDeBuffTime = 1;
+        player.StartCoroutine(player.StunDeBuff());
         BuffEffect hitEffect = hitEffectPool.Get();
         hitEffect.transform.parent = GameManager.instance.pool.transform;
         hitEffect.target = other.transform;

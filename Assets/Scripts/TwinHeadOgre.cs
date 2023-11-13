@@ -75,6 +75,7 @@ public class TwinHeadOgre : Enemy
         missileDamage = CurAttackDamage;
         specialDamage = CurAttackDamage * 2;
         bulletSpeed = 15;
+        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

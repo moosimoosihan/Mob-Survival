@@ -14,6 +14,7 @@ public class Enemy : CharacterStatus
     public bool isLive;
     public bool knockBack;
     public float power = 1;
+    public bool isBoss;
 
 
     public Rigidbody2D rigid;
@@ -108,7 +109,7 @@ public class Enemy : CharacterStatus
         rigid.MovePosition(rigid.position + nextVec);
         rigid.velocity = Vector2.zero;
 
-        skeletonAnimation.timeScale = resistance;
+        skeletonAnimation.timeScale = CurResistance;
     }
 
     protected virtual void LateUpdate()
@@ -140,6 +141,8 @@ public class Enemy : CharacterStatus
         slowDeBuffCount = 0;
         slowDeBuff = false;
 
+        isBoss = false;
+
         CurHP = MaxHP;
 
         InvokeRepeating("FindClosestObject", 0f, 0.1f);
@@ -162,7 +165,7 @@ public class Enemy : CharacterStatus
         CurHP = MaxHP;
         AttackDamage = data.Attack * power;
 
-        def = data.Def;
+        Def = data.Def;
         Evasion = data.Avoidance;
         heal = data.HPRegen;
 
@@ -293,7 +296,7 @@ public class Enemy : CharacterStatus
         double dam = 0;
         if (_damage > 0 && !trueDamage)
         {
-            dam = _damage / (1 + def * 0.01);
+            dam = _damage / (1 + CurDef * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
             if (CurEvasion * 100 > ran)
@@ -331,7 +334,7 @@ public class Enemy : CharacterStatus
                 {
                     float tempDamage = _damage - CurShield;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, false);
-                    tempDamage = (float)(tempDamage / (1 + def * 0.01));
+                    tempDamage = (float)(tempDamage / (1 + CurDef * 0.01));
                     dam = tempDamage;
                     CurShield = 0;
                     if (CurShield <= 0)

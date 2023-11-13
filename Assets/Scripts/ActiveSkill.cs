@@ -28,13 +28,24 @@ public abstract class ActiveSkill : MonoBehaviour
         get
         {
             curDelay = delay;
-                    // 전사 11스킬 쿨타임 20초 감소
+            
+            // 전사 11스킬 쿨타임 20초 감소
             if(GetComponent<WarriorActiveSkill>() && GameManager.instance.skillContext.WarriorSkill11()){
                 if(curDelay > 20)
                     curDelay -= 20;
                 else
                     curDelay = 0;
             }
+
+            
+            if(GetComponent<IceActiveSkill>()){
+                // 현자 7스킬 쿨타임 30초 감소
+                curDelay -= GameManager.instance.skillContext.WizardSkill7()[1];
+
+                // 현자 11스킬 쿨타임 30초 증가
+                curDelay += GameManager.instance.skillContext.WizardSkill11()[1];
+            }
+
             if(player!=null && player.CurActiveDelay != 0 && curDelay != 0){
                 curDelay /= player.CurActiveDelay;
             }

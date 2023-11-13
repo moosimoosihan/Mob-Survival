@@ -3,7 +3,30 @@ using System.Collections;
 
 public class IceActiveSkill : ActiveSkill
 {
-    public float skillDuration;
+    [SerializeField]
+    private float skillDuration;
+    [SerializeField]
+    private float curSkillDuration;
+    public float CurSkillDuration
+    {
+        get
+        {
+            curSkillDuration = skillDuration;
+            
+            // 현자 7스킬 얼음 장판 지속시간 증가
+            curSkillDuration += GameManager.instance.skillContext.WizardSkill7()[0];
+
+            // 현자 11스킬 얼음 장판 지속시간 감소
+            curSkillDuration -= GameManager.instance.skillContext.WizardSkill11()[0];
+            
+            return curSkillDuration;
+        }
+        set
+        {
+            curSkillDuration = value;
+        }
+    }
+
     protected override void Awake(){
         base.Awake();
     }
@@ -36,6 +59,20 @@ public class IceActiveSkill : ActiveSkill
         }
 
         skillArea.SetActive(areaOn);
+
+        // 현자 11스킬 장판 맵 전체 적용
+        if(GameManager.instance.skillContext.WizardSkill11()[0]!=0){
+            skillArea.transform.localScale = new Vector3(200, 100, 0);
+            skillArea.transform.position = new Vector3(0, 0, 0);
+            return;
+        }
+
+        // 현자 6스킬 아이스그라운드 사이즈 증가로인한 스킬영역 사이즈 증가
+        if(GameManager.instance.skillContext.WizardSkill6()!=0){
+            float val = GameManager.instance.skillContext.WizardSkill6();
+            transform.localScale = new Vector3(val, val, val);
+        }
+        
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         skillArea.transform.position = mousePos;
     }
@@ -56,8 +93,25 @@ public class IceActiveSkill : ActiveSkill
     void Skill(Vector2 vec){
         // 해당 마우스 지점에 블리자드 생성
         Transform bullet = poolBullet.Get().transform;
+
+        // 현자 6스킬 아이스그라운드 사이즈 증가
+        if(GameManager.instance.skillContext.WizardSkill6()!=0){
+            float val = GameManager.instance.skillContext.WizardSkill6();
+            bullet.localScale = new Vector3(val, val, val);
+        }
+
+        
+
         bullet.parent = GameManager.instance.pool.transform;
-        bullet.position = vec;
+        
+        // 현자 11스킬 아이스그라운드 맵 전체 적용
+        if(GameManager.instance.skillContext.WizardSkill11()[0]!=0){
+            bullet.localScale = new Vector3(20, 25, 0);
+            bullet.position = Vector2.zero;
+        } else {
+            bullet.position = vec;
+        }
+
         bullet.GetComponent<Bullet>().Init(Damage, -1, 0, skillDuration, false, true);
     }
 }

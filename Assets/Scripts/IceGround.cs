@@ -18,14 +18,33 @@ public class IceGround : Bullet
 
             if(GameManager.instance.skillContext.WizardSkill3()){
                 // 현자 스킬3 적중시 빙결1스택 증가 최대 4스택 빙결최대 3초
-                if(!detectedEnemy.slowDeBuff){
+                if(!detectedEnemy.slowDeBuff && !detectedEnemy.stunDeBuff){
                     detectedEnemy.slowDeBuffTime = 3;
                     detectedEnemy.slowDeBuffCount++;
                     StartCoroutine(detectedEnemy.SlowDeBuff());
                 } else {
                     detectedEnemy.slowDeBuffTime = 3;
                     if(detectedEnemy.slowDeBuffCount<4){
-                        detectedEnemy.slowDeBuffCount++;
+                        // 현자 8스킬 빙결 2스택 증가
+                        if(GameManager.instance.skillContext.WizardSkill8()[0]!=0){
+                            detectedEnemy.slowDeBuffCount+=2;
+                            if(detectedEnemy.slowDeBuffCount>4)
+                                detectedEnemy.slowDeBuffCount = 4;
+                        } else {
+                            detectedEnemy.slowDeBuffCount++;
+                        }
+                    } else if (detectedEnemy.slowDeBuffCount==4 && GameManager.instance.skillContext.WizardSkill9()){
+                        // 현자 9스킬 빙결 4스택에서 한번 더 타격시 빙결 슬로우 관련 버프와 코루틴 제거 후 빙결 코루틴 시작 빙결은 2초 빙결시에는 슬로우 내성
+                        detectedEnemy.slowDeBuffCount = 0;
+                        detectedEnemy.slowDeBuffTime = 0;
+                        detectedEnemy.slowDeBuff = false;
+                        StopCoroutine(detectedEnemy.SlowDeBuff());
+
+                        detectedEnemy.stunDeBuffTime = 2;
+                        detectedEnemy.stunDeBuff = true;
+                        StartCoroutine(detectedEnemy.StunDeBuff());
+
+                        // 빙결 이펙트(만들기)
                     }
                 }
                 
