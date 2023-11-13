@@ -33,6 +33,6 @@ public class MaceWeapon : MeleeWeapon
 
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
-
+        bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
     }
 }
