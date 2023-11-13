@@ -276,11 +276,11 @@ public class SkillContext : ContextModel
     }
 
     // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 다발사격 느낌으로 좌우로 퍼져서 2개 추가되어 나가도록!
-    public int ArcherSkill11(){
+    public bool ArcherSkill11(){
         if(PlayerContext.IsHasSkill(1, 27)){
-            return (int)SkillTable.SkillTable[27].Value[0];
+            return true;
         }
-        return 0;
+        return false;
     }
 
     // 궁수 12스킬 Damage,Att Speed 5% 증가

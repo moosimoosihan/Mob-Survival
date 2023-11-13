@@ -48,5 +48,28 @@ public class BowWeapon : Weapon
         }        
 
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);
+
+        // 궁수 11스킬 화살 2개가 가운데 화살을 중심으로 양 옆 30도정도로 퍼져나간다.
+        if(GameManager.instance.skillContext.ArcherSkill11()){
+            Transform bullet2 = poolBullet.Get().transform;
+            // 왼쪽 화살
+            Vector3 dir2 = Quaternion.Euler(0,0,30) * dir;
+            bullet2.position = transform.position;
+            bullet2.parent = GameManager.instance.pool.transform;
+            bullet2.rotation = Quaternion.FromToRotation(Vector3.up, dir2);
+            bullet2.GetComponent<Bullet>().speed = bulletSpeed;
+            bullet2.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical2), CurCount, dir2, knockBackPower, duration, isCritical);
+            isCritical = isCritical2;
+
+            Transform bullet3 = poolBullet.Get().transform;
+            // 오른쪽 화살
+            Vector3 dir3 = Quaternion.Euler(0,0,-30) * dir;
+            bullet3.position = transform.position;
+            bullet3.parent = GameManager.instance.pool.transform;
+            bullet3.rotation = Quaternion.FromToRotation(Vector3.up, dir3);
+            bullet3.GetComponent<Bullet>().speed = bulletSpeed;
+            bullet3.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical3), CurCount, dir3, knockBackPower, duration, isCritical);
+            isCritical = isCritical3;
+        }
     }
 }
