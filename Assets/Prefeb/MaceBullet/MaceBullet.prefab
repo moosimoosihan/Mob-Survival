@@ -91,12 +91,13 @@ MonoBehaviour:
   knockBackPower: 0
   throwBullet: 0
   isCritical: 0
+  isHoming: 0
+  homingTarget: {fileID: 0}
   attackRadius: 1
   detectionAngle: 0
-  drawRay: 0
+  drawRay: 1
   player: {fileID: 0}
-  shiledAmount: 0
-  shiledTime: 0
+  shieldTime: 0
 --- !u!1 &8710447557592290794
 GameObject:
   m_ObjectHideFlags: 0

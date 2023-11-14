@@ -509,15 +509,98 @@ public class SkillContext : ContextModel
         return 0;
     }
     
-    // 보호막이 적용된 아군의 Damage 10%, Att Speed 10% 증가
-    // 기적이 적용된 아군에게 5초간 무적효과 부여
-    // 기적이 적용된 아군에게 10초간 Damage 50%, Att Speed 50% 증가
-    // 이단심판으로 타격시 적 현재 HP의 5% 피해 추가
-    // 아군들이 Damage, Att Speed, Active Damage, Active Cooldown 25% 증가
-    // 이단심판으로 적을 피격하지 않아도 5초마다 홀리쉴드가 적용됨
-    // 기적 스킬이 모든 아군에게 적용됨
-    // Att Speed 10% 증가
-    // 보호막이 적용된 아군의 Damage, Att Speed 1% 추가
-    // 보호막이 최대 체력의 1%만큼 더 추가
-    //Active CoolDown 1% 감소
+    // 사제 5스킬 보호막이 적용된 아군의 Damage 10%, Att Speed 10% 증가
+    public float PriestSkill5(float value){
+        if(PlayerContext.IsHasSkill(3, 53)){
+            float val = SkillTable.SkillTable[53].Value[0];
+            return value * val;
+        }
+        return 0;
+    }
+    // 사제 6스킬 기적이 적용된 아군에게 5초간 무적효과 부여
+    public float PriestSkill6(){
+        if(PlayerContext.IsHasSkill(3, 54)){
+            return SkillTable.SkillTable[54].Value[0];
+        }
+        return 0;
+    }
+    // 사제 7스킬 기적이 적용된 아군에게 10초간 Damage 50%, Att Speed 50% 증가
+    public float PriestSkill7(float value){
+        if(PlayerContext.IsHasSkill(3, 55)){
+            float val = SkillTable.SkillTable[55].Value[0];
+            return value * val;
+        }
+        return 0;
+    }
+    
+    // 사제 8스킬 이단심판으로 타격시 적 현재 HP의 5% 피해 추가
+    public float PriestSkill8(){
+        if(PlayerContext.IsHasSkill(3, 56)){
+            return SkillTable.SkillTable[56].Value[0];
+        }
+        return 0;
+    }
+
+    // 사제 9스킬 아군들이 Damage, Att Speed, Active Damage, Active Cooldown 25% 증가
+    public float PriestSkill9(float value){
+        if(PlayerContext.IsHasSkill(3, 57)){
+            float val = SkillTable.SkillTable[57].Value[0];
+            return value * val;
+        }
+        return 0;
+    }
+    
+    // 사제 10스킬 이단심판으로 적을 피격하지 않아도 5초마다 홀리쉴드가 적용됨
+    public float PriestSkill10(){
+        if(PlayerContext.IsHasSkill(3, 58)){
+            return SkillTable.SkillTable[58].Value[0];
+        }
+        return 0;
+    }
+
+    // 사제 11스킬 기적 스킬이 모든 아군에게 적용됨
+    public bool PriestSkill11(){
+        if(PlayerContext.IsHasSkill(3, 59)){
+            return true;
+        }
+        return false;
+    }
+
+    // 사제 12스킬 Att Speed 10% 증가
+    public float PriestSkill12(){
+        if(PlayerContext.IsHasSkill(3, 60)){
+            float level = PlayerContext.GetSkillLevel(3, 60);
+            return level * SkillTable.SkillTable[60].Value[0];
+        }
+        return 0;
+    }
+
+    // 사제 13스킬 보호막이 적용된 아군의 Damage, Att Speed 1% 추가
+    public float PriestSkill13(float value){
+        if(PlayerContext.IsHasSkill(3, 61)){
+            float val = SkillTable.SkillTable[61].Value[0];
+            float level = PlayerContext.GetSkillLevel(3, 61);
+            return value * (val * level);
+        }
+        return 0;
+    }
+    // 사제 14스킬 보호막이 최대 체력의 1%만큼 더 추가 (보호막이 현재 값으로 들어가있어서 수정해야 할듯!)
+    public float PriestSkill14(float value){
+        if(PlayerContext.IsHasSkill(3, 62)){
+            float val = SkillTable.SkillTable[62].Value[0];
+            float level = PlayerContext.GetSkillLevel(3, 62);
+            return value * (val * level);
+        }
+        return 0;
+    }
+
+    // 사제 15스킬 Active CoolDown 1% 감소
+    public float PriestSkill15(){
+        if(PlayerContext.IsHasSkill(3, 63)){
+            float val = SkillTable.SkillTable[63].Value[0];
+            float level = PlayerContext.GetSkillLevel(3, 63);
+            return val * level;
+        }
+        return 0;
+    }
 }

@@ -237,8 +237,16 @@ public class CharacterStatus : MonoBehaviour
 
             if(GetComponent<Player>())
             {
-                // 궁수 2번 스킬 액티브 스킬 딜레이 15% 감소
+                // 궁수 2스킬 액티브 스킬 딜레이 15% 감소
                 curActiveDelay += GameManager.instance.skillContext.ArcherSkill2();
+
+                // 사제 9스킬 액티브 스킬 딜레이 감소
+                curActiveDelay += GameManager.instance.skillContext.PriestSkill9(1);
+
+                if(character.Equals("사제")){
+                    // 사제 15스킬 액티브 스킬 딜레이 감소
+                    curActiveDelay += GameManager.instance.skillContext.PriestSkill15();
+                }
             }
 
             return curActiveDelay;
@@ -258,6 +266,23 @@ public class CharacterStatus : MonoBehaviour
             if(GetComponent<Player>()){
                 // 궁수 2스킬 파티원 전체 공속 증가
                 curAttackSpeed += GameManager.instance.skillContext.ArcherSkill2();
+
+                
+                if(isShield && CurShield > 0){
+                    // 사제 5스킬 보호막이 적용된 아군 데미지 증가
+                    curAttackSpeed += GameManager.instance.skillContext.PriestSkill5(attackSpeed);
+
+                    // 사제 13스킬 보호막이 적용된 아군 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.PriestSkill13(attackSpeed);
+                }
+
+                //사제 9스킬 공속 증가
+                curAttackSpeed += GameManager.instance.skillContext.PriestSkill9(attackSpeed);
+
+                // 사제 7스킬 기적 발동시 공속 증가
+                if(priestSkill7){
+                    curAttackSpeed += GameManager.instance.skillContext.PriestSkill7(attackSpeed);
+                }
                 
                 if(archerSkill9 && GameManager.instance.skillContext.ArcherSkill9()!=0){
                     // 궁수 9스킬 30초마다 10초간 파티원 전체 공속 증가
@@ -279,6 +304,9 @@ public class CharacterStatus : MonoBehaviour
                 if(character.Equals("사제")){
                     // 사제 0스킬 공속 증가
                     curAttackSpeed += GameManager.instance.skillContext.PriestSkill0()[0];
+
+                    // 사제 12스킬 공속 증가
+                    curAttackSpeed += GameManager.instance.skillContext.PriestSkill12();
                 }
             }
 
@@ -310,6 +338,9 @@ public class CharacterStatus : MonoBehaviour
             if(GetComponent<Player>()){
                 // 용사 2스킬 파티버프 전체 데미지 15% 증가
                 curActiveSkillDamage += GameManager.instance.skillContext.WarriorSkill2(activeSkillDamage);
+
+                // 사제 9스킬 액티브 데미지 증가
+                curActiveSkillDamage += GameManager.instance.skillContext.PriestSkill9(activeSkillDamage);
                 
                 if(character.Equals("용사")){
                     // 용사 15스킬 액티브 데미지 증가
@@ -363,6 +394,22 @@ public class CharacterStatus : MonoBehaviour
 
                 // 사제 2스킬 파티원 전체 15% 증가
                 curAttackDamage += GameManager.instance.skillContext.PriestSkill2(attackDamage);
+
+                // 사제 9스킬 데미지 증가
+                curAttackDamage += GameManager.instance.skillContext.PriestSkill9(attackDamage);
+
+                if(isShield && CurShield > 0){
+                    // 사제 5스킬 보호막이 적용된 아군 데미지 증가
+                    curAttackDamage += GameManager.instance.skillContext.PriestSkill5(attackDamage);
+
+                    // 사제 13스킬 보호막이 적용된 아군 데미지 증가
+                    curAttackDamage += GameManager.instance.skillContext.PriestSkill13(attackDamage);
+                }
+
+                // 사제 7스킬 기적 발동시 데미지 증가
+                if(priestSkill7){
+                    curAttackDamage += GameManager.instance.skillContext.PriestSkill7(attackDamage);
+                }
                 
                 if(character.Equals("용사")){
                     // 용사 12스킬 데미지 5%증가
@@ -531,29 +578,66 @@ public class CharacterStatus : MonoBehaviour
     }
     float archerSkill9Count = 0;
     float priestSkill3Count = 0;
+
+    public bool priestSkill10;
+    public float priestSkill10Time;
     void Update()
     {
-        if(GameManager.instance.skillContext.ArcherSkill9()!=0){
-            archerSkill9Count -= Time.deltaTime;
-            if(archerSkill9Count<=0){
-                archerSkill9Count = 40;
-                StartCoroutine(ArcherSkill9Buff());
-            }
-        }
+        if(GetComponent<Player>()){
 
-        // 사제 3스킬 보호막이 활성화되어 있을경우 5초마다 잃은체력의 5%를 회복
-        if(isShield && GameManager.instance.skillContext.PriestSkill3()!=0 && GetComponent<Player>()){
-            float val = GameManager.instance.skillContext.PriestSkill3();
-            priestSkill3Count -= Time.deltaTime;
-            if(priestSkill3Count<=0){
-                priestSkill3Count = 5;
-                if(CurHP<MaxHP){
-                    GetComponent<Player>().GetDamage((MaxHP-CurHP)*val, false);
-                    if(GetComponent<Player>().CurHP>GetComponent<Player>().MaxHP){
-                        GetComponent<Player>().CurHP = GetComponent<Player>().MaxHP;
+            // 궁수 9스킬 30초마다 10초간 버프
+            if(GameManager.instance.skillContext.ArcherSkill9()!=0){
+                archerSkill9Count -= Time.deltaTime;
+                if(archerSkill9Count<=0){
+                    archerSkill9Count = 40;
+                    StartCoroutine(ArcherSkill9Buff());
+                }
+            }
+
+            // 사제 3스킬 보호막이 활성화되어 있을경우 5초마다 잃은체력의 5%를 회복
+            if(isShield && GameManager.instance.skillContext.PriestSkill3()!=0 && GetComponent<Player>()){
+                float val = GameManager.instance.skillContext.PriestSkill3();
+                priestSkill3Count -= Time.deltaTime;
+                if(priestSkill3Count<=0){
+                    priestSkill3Count = 5;
+                    if(CurHP<MaxHP){
+                        GetComponent<Player>().GetDamage((MaxHP-CurHP)*val, false);
+                        if(GetComponent<Player>().CurHP>GetComponent<Player>().MaxHP){
+                            GetComponent<Player>().CurHP = GetComponent<Player>().MaxHP;
+                        }
+                    } else {
+                        GetComponent<Player>().GetDamage(0, false);
                     }
-                } else {
-                    GetComponent<Player>().GetDamage(0, false);
+                }
+            }
+            
+            // 일정시간마다 쉴드 적용
+            if(GameManager.instance.skillContext.PriestSkill10()!=0){
+                priestSkill10Time += Time.deltaTime;
+                if(priestSkill10Time>=GameManager.instance.skillContext.PriestSkill10()){
+                    priestSkill10Time = 0;
+                    MaceBullet maceBullet = null;
+                    foreach(Player pl in GameManager.instance.players){
+                        if(pl.character.Equals("사제")){
+                            maceBullet = pl.GetComponentInChildren<MaceBullet>();
+                            break;
+                        }
+                    }
+                    if(!GetComponent<Player>().playerDead && maceBullet != null){
+                        if(isShield && CurShield <= 0){
+                            MaxShield = maceBullet.CurShieldAmount;
+                            CurShield = MaxShield;
+                            shieldTime = maceBullet.shieldTime;
+                            StartCoroutine(ShieldOn());
+                        } else {
+                            if(MaxShield < (maceBullet.CurShieldAmount + CurShield)){
+                                CurShield = MaxShield;
+                            } else {
+                                CurShield += maceBullet.CurShieldAmount;
+                            }
+                            shieldTime = maceBullet.shieldTime;
+                        }
+                    }
                 }
             }
         }
@@ -601,5 +685,18 @@ public class CharacterStatus : MonoBehaviour
         stunDeBuffTime = 0;
         stunDeBuff = false;
         resistance = 1;
+    }
+
+    public bool priestSkill7;
+    public float priestSkill7Time;
+    public IEnumerator PriestSkill7Buff(float time){
+        priestSkill7 = true;
+        priestSkill7Time = time;
+        while(priestSkill7Time>0){
+            priestSkill7Time -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        priestSkill7Time = 0;
+        priestSkill7 = false;
     }
 }

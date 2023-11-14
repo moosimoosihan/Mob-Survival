@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MineBullet : EffectBullet
@@ -17,6 +18,10 @@ public class MineBullet : EffectBullet
 
     bool isExplode = false;
 
+    public override List<Enemy> GetEnemies(){
+        return base.GetEnemies();
+    }
+
     private void OnEnable()
     {
         mineObj.SetActive(true);
@@ -27,7 +32,7 @@ public class MineBullet : EffectBullet
     {
         if (isExplode == false)
         {
-            //±ÙÃ³¿¡ ÀûÀ» Å½Áö ÇßÀ»¶§
+            //ï¿½ï¿½Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             Collider2D[] col2D = Physics2D.OverlapCircleAll(transform.position, detectRadius, 1 << LayerMask.NameToLayer(targetLayerMaskName));
             if (col2D.Length > 0)
             {
@@ -47,7 +52,7 @@ public class MineBullet : EffectBullet
         {
             isExplode = false;
             gameObject.SetActive(false);
-            detectedEnemyList.Clear();  //ºñÈ°¼ºÈ­½Ã ÀÌÀü¿¡ µ¥¹ÌÁö Áá´ø ³à¼®µé ¸®½ºÆ®¿¡¼­ ÇØÁ¦
+            detectedEnemyList.Clear();  //ï¿½ï¿½È°ï¿½ï¿½È­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½à¼®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         },
         _inTime
         ));

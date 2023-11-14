@@ -51,6 +51,7 @@ public class MeleeWeapon : Weapon
     {
         get
         {
+            curDetectionAngle = detectionAngle;
             return curDetectionAngle;
         }
         set
@@ -62,6 +63,7 @@ public class MeleeWeapon : Weapon
     {
         get
         {
+            curDetectionAngle = detectRadius;
             return curDetectRadius;
         }
         set

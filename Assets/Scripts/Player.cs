@@ -154,12 +154,15 @@ public class Player : CharacterStatus
 
     public void GetDamage(float _damage, bool _isCritical, Enemy enemy=null, bool trueDamage = false)
     {
+        if (playerDead || !GameManager.instance.isPlay)
+            return;
+
         if(trueDamage){
             isDamaged = false;
             StopCoroutine(DamageDelay());
         }
-        
-        if (playerDead || !GameManager.instance.isPlay || isDamaged)
+
+        if(isDamaged || invincibleBuff)
             return;
 
         double dam = 0;
@@ -330,5 +333,16 @@ public class Player : CharacterStatus
         gameObject.layer = 7;
 
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Revive);
+    }
+
+    public float invincibleBuffTime;
+    public bool invincibleBuff;
+    // 무적 버프
+    public IEnumerator InvincibleBuff(float _time)
+    {
+        invincibleBuffTime = _time;
+        invincibleBuff = true;
+        yield return new WaitForSeconds(_time);
+        invincibleBuff = false;
     }
 }

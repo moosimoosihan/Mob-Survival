@@ -219,12 +219,16 @@ MonoBehaviour:
   curCritDamage: 0
   heal: 0
   shielSfxPlayer: {fileID: 0}
+  priestSkill10: 0
+  priestSkill10Time: 0
   archerSkill0BuffTime: 5
   slowDeBuffCount: 0
   slowDeBuffTime: 0
   slowDeBuff: 0
   stunDeBuffTime: 0
   stunDeBuff: 0
+  priestSkill7: 0
+  priestSkill7Time: 0
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
@@ -238,6 +242,8 @@ MonoBehaviour:
   childTransform: {fileID: 0}
   weaponTransform: {fileID: 0}
   hpRegen: 0
+  invincibleBuffTime: 0
+  invincibleBuff: 0
 --- !u!114 &8887287985837415177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,12 +517,20 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: shieldTime
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: shiledTime
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: detectRadius
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
+      propertyPath: shieldAmount
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4324248828505094696, guid: 4692d11bf3da10744aae07041bffd6d5, type: 3}
       propertyPath: shiledAmount

@@ -1,39 +1,48 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MaceBullet : EffectBullet
 {
     public Player player;
     Player minHealthPlayer;
-    private float shiledAmount;
-    private float curShiledAmount;
-    public float ShiledAmount
+    private float shieldAmount;
+    private float curShieldAmount;
+    public float ShieldAmount
     {
         get
         {
-            return shiledAmount;
+            return shieldAmount;
         }
         set
         {
-            shiledAmount = value;
+            shieldAmount = value;
         }
     }
-    public float CurShiledAmount
+    public float CurShieldAmount
     {
         get
         {
-            curShiledAmount = shiledAmount;
+            curShieldAmount = shieldAmount;
 
             // 사제 4스킬 보호막이 5로 줄어듬
-            curShiledAmount -= GameManager.instance.skillContext.PriestSkill4();
+            curShieldAmount -= GameManager.instance.skillContext.PriestSkill4();
 
-            return curShiledAmount;
+            // 사제 14스킬 보호막이 늘어남
+            curShieldAmount += GameManager.instance.skillContext.PriestSkill14(shieldAmount);
+
+            return curShieldAmount;
         }
         set
         {
-            curShiledAmount = value;
+            curShieldAmount = value;
         }
     }
-    public float shiledTime;
+    public float shieldTime;
+    int removeDebuffCount;
+
+    public override List<Enemy> GetEnemies(){
+        return base.GetEnemies();
+    }
 
     public override void Fire(float _damage, int _per, Vector3 _dir, float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {
@@ -46,11 +55,20 @@ public class MaceBullet : EffectBullet
         knockBackPower = _knockBackPower;
         isCritical = _isCritical;
 
-        int removeDebuffCount = 1;
+        removeDebuffCount = 1;
 
         for (int i = 0; i < enemyList.Count; i++)
         {
+            if(!enemyList[i].gameObject.activeSelf)
+                return;
+
+            // 사제 8스킬 타격시 적 HP의 5% 추가 데미지
+            if(GameManager.instance.skillContext.PriestSkill8() > 0){
+                damage += enemyList[i].CurHP * GameManager.instance.skillContext.PriestSkill8();
+            }
+
             enemyList[i].GetDamage(damage, knockBackPower, isCritical);
+            
             // 사제 0스킬 타격시 2초간 스턴
             if(GameManager.instance.skillContext.PriestSkill0()[1]!=0){
                 if(!enemyList[i].stunDeBuff){
@@ -63,42 +81,28 @@ public class MaceBullet : EffectBullet
 
             // 사제 1스킬 타격시 디버프 1개 제거
             if(GameManager.instance.skillContext.PriestSkill1() && removeDebuffCount>0){
-                foreach(Player player in GameManager.instance.players){
-                    if(player.slowDeBuff){
-                        StopCoroutine(player.SlowDeBuff());
-                        player.slowDeBuff = false;
-                        player.slowDeBuffTime = 0;
-                        removeDebuffCount--;
-                        break;
-                    } else if(player.stunDeBuff){
-                        StopCoroutine(player.StunDeBuff());
-                        player.stunDeBuff = false;
-                        player.stunDeBuffTime = 0;
-                        removeDebuffCount--;
-                        break;
-                    }
-                }
+                Debeff();
             }
 
             // 메이스에 맞은 적이 있다면 보호막을 생성
             if (!player.isShield && player.CurShield <= 0)
             {
-                player.MaxShield = CurShiledAmount;
+                player.MaxShield = CurShieldAmount;
                 player.CurShield = player.MaxShield;
-                player.shieldTime = shiledTime;
+                player.shieldTime = shieldTime;
                 player.StartCoroutine(player.ShieldOn());
             }
             else
             {
-                if (player.MaxShield < (CurShiledAmount + player.CurShield))
+                if (player.MaxShield < (CurShieldAmount + player.CurShield))
                 {
                     player.CurShield = player.MaxShield;
                 }
                 else
                 {
-                    player.CurShield += CurShiledAmount;
+                    player.CurShield += CurShieldAmount;
                 }
-                player.shieldTime = shiledTime;
+                player.shieldTime = shieldTime;
             }
 
             if(GameManager.instance.skillContext.PriestSkill4()!=0){
@@ -108,17 +112,17 @@ public class MaceBullet : EffectBullet
                 foreach(Player pl in playerList){
                     if(!pl.playerDead && pl != player){
                         if(!pl.isShield && pl.CurShield <= 0){
-                            pl.MaxShield = CurShiledAmount;
+                            pl.MaxShield = CurShieldAmount;
                             pl.CurShield = pl.MaxShield;
-                            pl.shieldTime = shiledTime;
+                            pl.shieldTime = shieldTime;
                             pl.StartCoroutine(pl.ShieldOn());
                         } else {
-                            if(pl.MaxShield < (CurShiledAmount + pl.CurShield)){
+                            if(pl.MaxShield < (CurShieldAmount + pl.CurShield)){
                                 pl.CurShield = pl.MaxShield;
                             } else {
-                                pl.CurShield += CurShiledAmount;
+                                pl.CurShield += CurShieldAmount;
                             }
-                            pl.shieldTime = shiledTime;
+                            pl.shieldTime = shieldTime;
                         }
                     }
                 }
@@ -141,22 +145,22 @@ public class MaceBullet : EffectBullet
                 // 체력이 낮은 아군에게 보호막
                 if (!minHealthPlayer.isShield && minHealthPlayer.CurShield <= 0)
                 {
-                    minHealthPlayer.MaxShield = CurShiledAmount;
+                    minHealthPlayer.MaxShield = CurShieldAmount;
                     minHealthPlayer.CurShield = minHealthPlayer.MaxShield;
-                    minHealthPlayer.shieldTime = shiledTime;
+                    minHealthPlayer.shieldTime = shieldTime;
                     minHealthPlayer.StartCoroutine(minHealthPlayer.ShieldOn());
                 }
                 else
                 {
-                    if (minHealthPlayer.MaxShield < (CurShiledAmount + minHealthPlayer.CurShield))
+                    if (minHealthPlayer.MaxShield < (CurShieldAmount + minHealthPlayer.CurShield))
                     {
                         minHealthPlayer.CurShield = minHealthPlayer.MaxShield;
                     }
                     else
                     {
-                        minHealthPlayer.CurShield += CurShiledAmount;
+                        minHealthPlayer.CurShield += CurShieldAmount;
                     }
-                    minHealthPlayer.shieldTime = shiledTime;
+                    minHealthPlayer.shieldTime = shieldTime;
                 }
             }
         }
@@ -164,6 +168,24 @@ public class MaceBullet : EffectBullet
         if (_deActivate)
         {
             DeActivate(_duration);
+        }
+    }
+
+    void Debeff(){
+        foreach(Player player in GameManager.instance.players){
+            if(player.slowDeBuff){
+                StopCoroutine(player.SlowDeBuff());
+                player.slowDeBuff = false;
+                player.slowDeBuffTime = 0;
+                removeDebuffCount--;
+                break;
+            } else if(player.stunDeBuff){
+                StopCoroutine(player.StunDeBuff());
+                player.stunDeBuff = false;
+                player.stunDeBuffTime = 0;
+                removeDebuffCount--;
+                break;
+            }
         }
     }
 }

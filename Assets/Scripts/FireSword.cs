@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class FireSword : EffectBullet
@@ -7,6 +8,10 @@ public class FireSword : EffectBullet
     public float warriorFireTime;
 
     public bool fireBurn;
+
+    public override List<Enemy> GetEnemies(){
+        return base.GetEnemies();
+    }
 
      public override void Fire(float _damage, int _per, Vector3 _dir,  float _knockBackPower, float _duration, bool _isCritical, bool _deActivate = true, bool _hitOnlyOnce = true)
     {

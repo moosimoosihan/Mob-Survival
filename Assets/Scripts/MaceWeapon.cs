@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class MaceWeapon : MeleeWeapon
 {
-    public float shiledAmount;
-    public float shiledTime;
+    public float shieldAmount;
+    public float shieldTime;
 
     protected override void Awake()
     {
@@ -28,8 +28,8 @@ public class MaceWeapon : MeleeWeapon
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<MaceBullet>().player = player;
-        bullet.GetComponent<MaceBullet>().ShiledAmount = shiledAmount;
-        bullet.GetComponent<MaceBullet>().shiledTime = shiledTime;
+        bullet.GetComponent<MaceBullet>().ShieldAmount = shieldAmount;
+        bullet.GetComponent<MaceBullet>().shieldTime = shieldTime;
 
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;

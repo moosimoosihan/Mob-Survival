@@ -4,9 +4,9 @@ using UnityEngine;
 public class EffectBullet : Bullet
 {
     [SerializeField]
-    private float attackRadius = 0;
+    private float attackRadius;
     [SerializeField]
-    private float detectionAngle = 0;
+    private float detectionAngle;
 
     Vector3 dir = Vector3.right;
     protected List<Enemy> enemyList = new List<Enemy>();
@@ -54,7 +54,7 @@ public class EffectBullet : Bullet
         return result;
     }
 
-    public List<Enemy> GetEnemies()
+    public virtual List<Enemy> GetEnemies()
     {
         List<Enemy> result = new List<Enemy>();
 
