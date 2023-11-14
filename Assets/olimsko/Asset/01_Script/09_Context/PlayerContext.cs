@@ -21,6 +21,7 @@ public class PlayerContext : ContextModel
     public Dictionary<int, EquipedSkillData> DicPlayerEquipedSkill { get => m_DicPlayerEquipedSkill; set => m_DicPlayerEquipedSkill = value; }
 
     private ContextManager ContextManager => OSManager.GetService<ContextManager>();
+    ItemTableSO itemTableSO => OSManager.GetService<DataManager>().GetData<ItemTableSO>();
 
     private int m_SelectedCharacterIdx = 0;
 
@@ -130,6 +131,17 @@ public class PlayerContext : ContextModel
         {
             m_DicPlayerEquipedSkill[playerID].AddEquipedSkill(idx);
         }
+    }
+
+    public ItemTable IsHasItem(int itemID)
+    {
+        InventoryItemData inventoryItemData = EquipedItem.Where(x => x.Id == itemID).FirstOrDefault();
+
+        if (inventoryItemData != null && inventoryItemData.Id == itemID)
+        {
+            return itemTableSO.ItemTable[itemID];
+        }
+        return null;
     }
 
     public int[] GetRandomSkill()
