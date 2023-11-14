@@ -75,16 +75,21 @@ public class DamageManager : Singleton<DamageManager>
         tempScoreLabelObj.SetActive(true);
         tempScoreLabelObj.GetComponent<DamageLabel>().ShowDamageAnimation(_message, _OnObj);
     }
-    public float Critical(CharacterStatus _character, float _damage, out bool _isCritical)
+    public float Critical(CharacterStatus _character, float _damage, out bool _isCritical, bool trueCritical = false)
     {
-        int ran = Random.Range(0,100);
-        if(_character.CurCritRate*100 > ran){
-            //ũ��Ƽ�� ����
+        if(trueCritical){
             _isCritical = true;
             return _character.CurCritDamage * _damage;
         } else {
-            _isCritical = false;
-            return _damage;
+            int ran = Random.Range(0,100);
+            if(_character.CurCritRate*100 > ran){
+                //ũ��Ƽ�� ����
+                _isCritical = true;
+                return _character.CurCritDamage * _damage;
+            } else {
+                _isCritical = false;
+                return _damage;
+            }
         }
     }
 }

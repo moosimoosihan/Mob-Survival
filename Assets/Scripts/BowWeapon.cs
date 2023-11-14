@@ -33,17 +33,17 @@ public class BowWeapon : Weapon
 
         // 궁수 3스킬 5번 쏘면 100% 크리티컬
         if(GameManager.instance.skillContext.ActherSkill3()){
-            bowCount++;
             if(bowCount >= 5){
-                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), CurCount, dir, knockBackPower, duration, true);
-                this.isCritical = true;
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dir, knockBackPower, duration, isCritical);
+                this.isCritical = isCritical;
                 bowCount = 0;
             } else {
-                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+                bowCount++;
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
                 this.isCritical = isCritical;
             }
         } else {
-            bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+            bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
             this.isCritical = isCritical;
         }        
 
@@ -58,7 +58,7 @@ public class BowWeapon : Weapon
             bullet2.parent = GameManager.instance.pool.transform;
             bullet2.rotation = Quaternion.FromToRotation(Vector3.up, dir2);
             bullet2.GetComponent<Bullet>().speed = bulletSpeed;
-            bullet2.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical2), CurCount, dir2, knockBackPower, duration, isCritical);
+            bullet2.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical2), CurCount, dir2, knockBackPower, duration, isCritical);
             isCritical = isCritical2;
 
             Transform bullet3 = poolBullet.Get().transform;
@@ -68,7 +68,7 @@ public class BowWeapon : Weapon
             bullet3.parent = GameManager.instance.pool.transform;
             bullet3.rotation = Quaternion.FromToRotation(Vector3.up, dir3);
             bullet3.GetComponent<Bullet>().speed = bulletSpeed;
-            bullet3.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical3), CurCount, dir3, knockBackPower, duration, isCritical);
+            bullet3.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical3), CurCount, dir3, knockBackPower, duration, isCritical);
             isCritical = isCritical3;
         }
     }
