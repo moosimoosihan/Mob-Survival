@@ -168,7 +168,7 @@ public class Enemy : CharacterStatus
 
         Def = data.Def;
         Evasion = data.Avoidance;
-        heal = data.HPRegen;
+        Heal = data.HPRegen;
 
         (coll as CapsuleCollider2D).size = new Vector2(1.8f, 1.8f);
         (coll as CapsuleCollider2D).offset = Vector2.zero;
@@ -360,7 +360,7 @@ public class Enemy : CharacterStatus
         else
         {
             // 회복의 경우
-            dam = _damage * (1 + heal);
+            dam = _damage * (1 + CurHeal);
         }
 
         CurHP -= System.Convert.ToSingle(dam);

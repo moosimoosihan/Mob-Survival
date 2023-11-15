@@ -82,7 +82,7 @@ public class Player : CharacterStatus
         Speed = data.MoveSpeed;
         hpRegen = data.HPRegen;
         Evasion = data.Evasion;
-        heal = data.Heal;
+        Heal = data.Heal;
         CritRate = data.CritRate;
         CritDamage = data.CritDamage;
         ActiveSkillDamage = data.ActiveDamage;
@@ -248,7 +248,7 @@ public class Player : CharacterStatus
         else
         {
             // 회복의 경우
-            dam = _damage * (1 + heal);
+            dam = _damage * (1 + CurHeal);
         }
 
         CurHP -= System.Convert.ToSingle(dam);

@@ -9,13 +9,39 @@ public class Scaner : MonoBehaviour
     public Transform nearestTarget;
 
     [Header("아이템 스캔 정보")]
-    public float itemScanRange;
+    private float itemScanRange;
+    private float curItemScanRange;
+    public float CurItemScanRange
+    {
+        get
+        {
+            curItemScanRange = itemScanRange;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 스캔 범위 증가
+                // 목걸이
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(12)[0]/100;
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(13)[0]/100;
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(14)[0]/100;
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(15)[0]/100;
+                // 열쇠
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(30)[1]/100;
+                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(31)[1]/100;
+            }
+            return curItemScanRange;
+        }
+        set
+        {
+            curItemScanRange = value;
+        }
+    }
+
     public LayerMask itemLayer;
     public RaycastHit2D[] itemTargets;
 
     void FixedUpdate()
     {
-        itemTargets = Physics2D.CircleCastAll(transform.position, itemScanRange, Vector2.zero, 0, itemLayer);
+        itemTargets = Physics2D.CircleCastAll(transform.position, CurItemScanRange, Vector2.zero, 0, itemLayer);
         ItemGet();
         targets = Physics2D.CircleCastAll(transform.position, scanRange, Vector2.zero, 0, targetLayer);
         nearestTarget = GetNearest();

@@ -185,7 +185,19 @@ public class GameManager : MonoBehaviour
     public void GetExp(int amount)
     {
         // 현자 2스킬 경험치 획득량 증가
-        exp += amount + skillContext.WizardSkill2(exp);
+        float priestSkill2 = skillContext.WizardSkill2(amount);
+        
+        // 아이템장착으로 경험치 증가
+        // 목걸이
+        float expItem14 = skillContext.GetItemValues(14)[1]==0 ? 0 : skillContext.GetItemValues(15)[1]/100 * amount;
+        float expItem15 = skillContext.GetItemValues(15)[1]==0 ? 0 : skillContext.GetItemValues(15)[1]/100 * amount;
+        // 열쇠
+        float expItem28 = skillContext.GetItemValues(16)[1]==0 ? 0 : skillContext.GetItemValues(28)[0]/100 * amount;
+        float expItem29 = skillContext.GetItemValues(17)[1]==0 ? 0 : skillContext.GetItemValues(29)[0]/100 * amount;
+        float expItem30 = skillContext.GetItemValues(18)[1]==0 ? 0 : skillContext.GetItemValues(30)[0]/100 * amount;
+        float expItem31 = skillContext.GetItemValues(19)[1]==0 ? 0 : skillContext.GetItemValues(31)[0]/100 * amount;
+
+        exp += amount + priestSkill2 + expItem14 + expItem15;
         OnEXPBar?.Invoke(exp);
         if (exp >= nextExp[level])
         {
