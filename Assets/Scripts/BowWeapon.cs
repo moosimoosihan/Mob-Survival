@@ -27,6 +27,7 @@ public class BowWeapon : Weapon
         bullet.parent = GameManager.instance.pool.transform;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().speed = bulletSpeed;
+        bullet.GetComponent<Bullet>().player = player;
         
         // 궁수 10스킬 유도탄으로 변경
         bullet.GetComponent<Bullet>().isHoming = GameManager.instance.skillContext.ArcherSkill10();

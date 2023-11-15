@@ -45,6 +45,9 @@ public class CharacterStatus : MonoBehaviour
                 if(character.Equals("궁수") && archerSkill0){
                     curSpeed += Speed * GameManager.instance.skillContext.ArcherSkill0()[1];
                 }
+
+                // 아이템 장착 이속 증가
+                curSpeed += Speed * (GameManager.instance.skillContext.GetItemValues(3)[1]/100);
             }
 
             if(slowDeBuff && !stunDeBuff){
@@ -108,6 +111,13 @@ public class CharacterStatus : MonoBehaviour
                     // 궁수 15스킬 액티브의 크리티컬 확률 레벨당 1% 증가
                     curCritRate += GameManager.instance.skillContext.ArcherSkill15();
                 }
+
+                // 아이템 장착 크리티컬 확률 증가
+                curCritRate += GameManager.instance.skillContext.GetItemValues(5)[1]/100;
+
+                curCritRate += GameManager.instance.skillContext.GetItemValues(6)[1]/100;
+
+                curCritRate += GameManager.instance.skillContext.GetItemValues(7)[1]/100;
             }
 
             return curCritRate;
@@ -308,6 +318,13 @@ public class CharacterStatus : MonoBehaviour
                     // 사제 12스킬 공속 증가
                     curAttackSpeed += GameManager.instance.skillContext.PriestSkill12();
                 }
+
+                // 아이템 장착 공속 증가
+                curAttackSpeed += GameManager.instance.skillContext.GetItemValues(1)[1]/100;
+
+                curAttackSpeed += GameManager.instance.skillContext.GetItemValues(2)[1]/100;
+
+                curAttackSpeed += GameManager.instance.skillContext.GetItemValues(3)[1]/100;
             }
 
             return curAttackSpeed;
@@ -431,6 +448,15 @@ public class CharacterStatus : MonoBehaviour
                     // 현자 12스킬 데미지 증가
                     curAttackDamage += GameManager.instance.skillContext.WizardSkill12(attackDamage);
                 }
+
+                // 아이템 장착 데미지 증가
+                curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(4)[0]/100;
+
+                curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(5)[0]/100;
+
+                curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(6)[0]/100;
+
+                curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(7)[0]/100;
             }
 
             return curAttackDamage;
@@ -698,5 +724,38 @@ public class CharacterStatus : MonoBehaviour
         }
         priestSkill7Time = 0;
         priestSkill7 = false;
+    }
+    [SerializeField]
+    private float vamp;
+    [SerializeField]
+    private float curVamp;
+    public float Vamp
+    {
+        get
+        {
+            return vamp;
+        }
+        set
+        {
+            vamp = value;
+        }
+    }
+    public float CurVamp
+    {
+        get
+        {
+            curVamp = vamp;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 흡혈 증가
+                curVamp += GameManager.instance.skillContext.GetItemValues(7)[2]/100;
+            }
+
+            return curVamp;
+        }
+        set
+        {
+            curVamp = value;
+        }
     }
 }

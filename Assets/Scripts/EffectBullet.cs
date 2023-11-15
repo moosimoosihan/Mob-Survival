@@ -98,7 +98,7 @@ public class EffectBullet : Bullet
             if(!enemyList[i].gameObject.activeSelf)
                 return;
 
-            enemyList[i].GetDamage(damage, knockBackPower, isCritical);
+            enemyList[i].GetDamage(damage, knockBackPower, isCritical, player);
         }
 
         if(_deActivate)

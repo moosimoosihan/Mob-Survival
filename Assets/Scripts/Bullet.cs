@@ -24,6 +24,8 @@ public class Bullet : MonoBehaviour
     [SerializeField]
     Transform homingTarget;
 
+    public Player player;
+
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -111,13 +113,13 @@ public class Bullet : MonoBehaviour
                 {
                     detectedEnemyList.Add(detectedEnemy);
                     if (detectedEnemy.gameObject.activeSelf){
-                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                        tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical, player);
                     }
                 }
             }
             else
             {
-                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical, player);
             }
         }
 

@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MaceBullet : EffectBullet
 {
-    public Player player;
     Player minHealthPlayer;
     private float shieldAmount;
     private float curShieldAmount;
@@ -67,7 +66,7 @@ public class MaceBullet : EffectBullet
                 damage += enemyList[i].CurHP * GameManager.instance.skillContext.PriestSkill8();
             }
 
-            enemyList[i].GetDamage(damage, knockBackPower, isCritical);
+            enemyList[i].GetDamage(damage, knockBackPower, isCritical, player);
             
             // 사제 0스킬 타격시 2초간 스턴
             if(GameManager.instance.skillContext.PriestSkill0()[1]!=0){

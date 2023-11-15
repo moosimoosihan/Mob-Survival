@@ -65,7 +65,7 @@ public class Enemy : CharacterStatus
             if (fireTime >= 1)
             {
                 fireTime = 0;
-                GetDamage((MaxHP * curFireDamage / 100) < 1 ? 1 : (MaxHP * curFireDamage / 100), 0, false, true);
+                GetDamage((MaxHP * curFireDamage / 100) < 1 ? 1 : (MaxHP * curFireDamage / 100), 0, false, null, true);
             }
         }
     }
@@ -164,6 +164,7 @@ public class Enemy : CharacterStatus
         MaxHP = data.HP * power;
         CurHP = MaxHP;
         AttackDamage = data.Attack * power;
+        // Vamp = data.Vamp;
 
         Def = data.Def;
         Evasion = data.Avoidance;
@@ -287,7 +288,7 @@ public class Enemy : CharacterStatus
         // CreateFollowingHpBar();
     }
 
-    public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical, bool trueDamage = false)
+    public virtual bool GetDamage(float _damage, float knockBackPower, bool _isCritical, Player isPlayer, bool trueDamage = false)
     {
         if (CurHP <= 0 || !GameManager.instance.isPlay)
             return false;
@@ -304,6 +305,13 @@ public class Enemy : CharacterStatus
                 //회피 성공
                 DamageManager.Instance.ShowMessageLabelOnObj(DamageLabel.Message.Miss, gameObject);
                 return false;
+            }
+
+            // 플레이어의 흡혈이 있을경우 플레이어에게 흡혈 수치만큼 회복
+            if(isPlayer != null){
+                if(isPlayer.CurVamp > 0){
+                    isPlayer.GetDamage(-isPlayer.CurVamp * System.Convert.ToSingle(dam),false, null, true);
+                }
             }
 
             //보호막이 있을 경우 보호막이 먼저 깎인다.

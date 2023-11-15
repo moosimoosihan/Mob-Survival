@@ -40,6 +40,7 @@ public class IceWeapon : Weapon
         bullet.GetComponent<IceBullet>().groundDamage = groundDamage;
         bullet.GetComponent<IceBullet>().GroundDuration = groundDuration;
         bullet.GetComponent<IceBullet>().speed = bulletSpeed;
+        bullet.GetComponent<IceBullet>().player = player;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
         
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Wizard_Attack);

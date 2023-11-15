@@ -13,7 +13,7 @@ public class IceGround : Bullet
         time += Time.deltaTime;
         if(time>1){
             Enemy detectedEnemy = collision.GetComponent<Enemy>();
-            detectedEnemy.GetDamage(damage, 0, false, true);
+            detectedEnemy.GetDamage(damage, 0, false, null, true);
             time = 0;
 
             if(GameManager.instance.skillContext.WizardSkill3()){

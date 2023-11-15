@@ -32,6 +32,7 @@ public class SwordWeapon : MeleeWeapon
         bullet.transform.localScale = new Vector3(scalex, bullet.transform.localScale.y, bullet.transform.localScale.z);
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.GetComponent<FireSword>().player = player;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;

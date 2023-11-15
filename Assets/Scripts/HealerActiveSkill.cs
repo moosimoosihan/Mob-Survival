@@ -47,7 +47,7 @@ public class HealerActiveSkill : ActiveSkill
         if(GameManager.instance.skillContext.PriestSkill11()){
             foreach(Player pl in GameManager.instance.players){
                 if(pl.character.Equals("사제")){
-                    pl.GetDamage(pl.CurHP - pl.MaxHP, false);
+                    pl.GetDamage(pl.CurHP - pl.MaxHP, false, null, true);
                 } else {
                     if(pl.playerDead){
                         pl.Revival();
@@ -76,7 +76,7 @@ public class HealerActiveSkill : ActiveSkill
                         if(GameManager.instance.skillContext.PriestSkill7(1) > 0)
                             StartCoroutine(pl.PriestSkill7Buff(10f));
                     } else {
-                        pl.GetDamage(pl.CurHP - pl.MaxHP, false);
+                        pl.GetDamage(pl.CurHP - pl.MaxHP, false, null, true);
                         if(pl.GetComponentInChildren<ActiveSkill>().isActive && pl != player){
                             pl.GetComponentInChildren<ActiveSkill>().StopCoroutine(SkillDelay());
                             pl.GetComponentInChildren<ActiveSkill>().isActive = false;
@@ -133,7 +133,7 @@ public class HealerActiveSkill : ActiveSkill
                 }
             }
             // 전부 회복 및 스킬 쿨타임 초기화
-            minHealthPlayer.GetDamage(minHealthPlayer.CurHP - minHealthPlayer.MaxHP, false);
+            minHealthPlayer.GetDamage(minHealthPlayer.CurHP - minHealthPlayer.MaxHP, false, null, true);
 
             // minHealthPlayer.CreateFollowingHpBar();
             if (minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive && minHealthPlayer != player)

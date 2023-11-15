@@ -756,7 +756,6 @@ public class SkillContext : ContextModel
             values[2] = itemTable.StatValue3;
             return values;
         }
-
         return values;
     }
 }

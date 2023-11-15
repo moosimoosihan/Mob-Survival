@@ -59,7 +59,7 @@ public class MineWeapon : Weapon
         {
             createdMineList.Add(mineBullet.gameObject);
         }
-
+        bulletScript.player = player;
         bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), -1, duration, knockBackPower, isCritical);
         bulletScript.DeActivate(weaponDuration);
     }

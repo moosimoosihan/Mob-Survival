@@ -26,7 +26,7 @@ public class FireSword : EffectBullet
 
         for (int i = 0; i < enemyList.Count; i++)
         {            
-            enemyList[i].GetDamage(damage, knockBackPower, isCritical);
+            enemyList[i].GetDamage(damage, knockBackPower, isCritical, player);
             
             if (enemyList[i].gameObject.activeSelf){                        
                 if(warriorFire){

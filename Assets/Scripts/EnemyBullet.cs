@@ -38,14 +38,7 @@ public class EnemyBullet : MonoBehaviour
     void Attack(Player _player)
     {
         // 보스 공격은 무적시간 없음
-        if(bossBullet){
-            if(_player.isDamaged){
-                _player.isDamaged = false;
-                _player.StopCoroutine(_player.DamageDelay());
-            }
-        }
-
-        _player.GetDamage(damage, isCritical);
+        _player.GetDamage(damage, isCritical, null, bossBullet);
         per--;
 
         if(per<1){

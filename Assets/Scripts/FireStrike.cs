@@ -39,7 +39,7 @@ public class FireStrike : Bullet
                 {
                     detectedEnemyList.Add(detectedEnemy);
                     
-                    tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                    tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical, player);
                     
                     if (detectedEnemy.gameObject.activeSelf){                        
                         if(warriorFire){
@@ -54,7 +54,7 @@ public class FireStrike : Bullet
             }
             else
             {
-                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical);
+                tempIsHit = detectedEnemy.GetDamage(damage, knockBackPower, isCritical, player);
                 if(warriorFire){
                     if(!detectedEnemy.isFire){
                         StartCoroutine(detectedEnemy.WarriorFireOn(warriorFireDamge, warriorFireTime, GameManager.instance.skillContext.WarriorSkill10()));

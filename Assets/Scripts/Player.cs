@@ -88,6 +88,7 @@ public class Player : CharacterStatus
         ActiveSkillDamage = data.ActiveDamage;
         AttackDamage = data.Damage;
         AttackSpeed = data.AttackSpeed;
+        Vamp = data.Vamp;
     }
     void FixedUpdate()
     {
@@ -157,19 +158,17 @@ public class Player : CharacterStatus
         if (playerDead || !GameManager.instance.isPlay)
             return;
 
-        if(trueDamage){
-            isDamaged = false;
-            StopCoroutine(DamageDelay());
-        }
-
-        if(isDamaged || invincibleBuff)
-            return;
+        if(!trueDamage)
+            if(isDamaged || invincibleBuff)
+                return;
 
         double dam = 0;
         if (_damage > 0)
         {
-            isDamaged = true;
-            StartCoroutine(DamageDelay());
+            if(!trueDamage){
+                isDamaged = true;
+                StartCoroutine(DamageDelay());
+            }
 
             float curDamage = _damage;
 
@@ -255,7 +254,7 @@ public class Player : CharacterStatus
         CurHP -= System.Convert.ToSingle(dam);
         DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
         // 궁수 0스킬 피격시 5초동안 이속 증가
-        if(character.Equals("궁수")){
+        if(dam > 0 && character.Equals("궁수")){
             if(!archerSkill0){
                 StartCoroutine(ArcherSkill0Buff());
                 archerSkill0BuffTime = 5f;

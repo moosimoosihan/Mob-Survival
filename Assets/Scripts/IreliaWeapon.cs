@@ -123,6 +123,8 @@ public class IreliaWeapon : Weapon
 
             tempBullet.transform.rotation = Quaternion.FromToRotation(Vector3.up, lastDir);
 
+            tempBullet.GetComponent<Bullet>().player = player;
+
             tempBullet.Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, lastDir, knockBackPower, duration, isCritical);
             yield return new WaitForSeconds(0.1f);                
         }

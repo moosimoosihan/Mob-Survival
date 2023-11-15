@@ -135,7 +135,7 @@ public class PlayerContext : ContextModel
 
     public ItemTable IsHasItem(int itemID)
     {
-        InventoryItemData inventoryItemData = EquipedItem.Where(x => x.Id == itemID).FirstOrDefault();
+        InventoryItemData inventoryItemData = EquipedItem.FirstOrDefault(item => item != null && item.Id == itemID);
 
         if (inventoryItemData != null && inventoryItemData.Id == itemID)
         {

@@ -211,7 +211,7 @@ MonoBehaviour:
   isShield: 0
   shieldTime: 0
   shieldCurTime: 0
-  speed: 3
+  speed: 0
   curSpeed: 0
   critRate: 0
   curCritRate: 0
@@ -229,6 +229,8 @@ MonoBehaviour:
   stunDeBuff: 0
   priestSkill7: 0
   priestSkill7Time: 0
+  vamp: 0
+  curVamp: 0
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}

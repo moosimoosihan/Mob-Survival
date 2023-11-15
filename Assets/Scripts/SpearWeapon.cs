@@ -25,6 +25,7 @@ public class SpearWeapon : Weapon
         bullet.parent = GameManager.instance.pool.transform;
         bullet.position = transform.position + dir;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+        bullet.GetComponent<Bullet>().player = player;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
     }
 }
