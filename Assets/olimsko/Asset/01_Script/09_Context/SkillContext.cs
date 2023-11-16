@@ -750,5 +750,5 @@ public class SkillContext : ContextModel
         }
         return values;
     }
-    // TODO : AttRange, NumberOfProjectile(weapon에는 갯수만 구현함), ProjectilePenetration, ElementalDamage, HP, DamageReduction 구현 해야 함
+    // TODO : AttRange, ProjectilePenetration, ElementalDamage, HP, DamageReduction 구현 해야 함
 }
