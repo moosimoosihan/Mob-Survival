@@ -56,7 +56,7 @@ public class IceWeapon : Weapon
                 }
 
                 int a = i%2 == 0 ? 1 : -1;
-                Vector3 dirs = Quaternion.Euler(0,0,10*((i%2==0?i*-1:i)+1)*a) * dir;
+                Vector3 dirs = Quaternion.Euler(0,0,10*(i%2==0?i-1:i)*a) * dir;
                 bullets.position = transform.position;
                 bullets.parent = GameManager.instance.pool.transform;
                 bullets.rotation = Quaternion.FromToRotation(Vector3.left, dirs);
