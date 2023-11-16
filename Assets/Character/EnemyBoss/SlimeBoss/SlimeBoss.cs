@@ -56,6 +56,9 @@ public class SlimeBoss : Enemy
 
     protected override void LateUpdate()
     {
+        if(!isBoss)
+            isBoss = true;
+        
         timer += Time.deltaTime;
 
         if (timer >= attackDelay)
@@ -250,6 +253,5 @@ public class SlimeBoss : Enemy
     public override void Init(MonsterTable data, float power)
     {
         base.Init(data, power);
-        isBoss = true;
     }
 }

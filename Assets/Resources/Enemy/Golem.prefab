@@ -243,23 +243,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3f1082d75779cd46861cefb9b2e2c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  archerActiveSkill: 0
+  archerSkill0: 0
   character: 
-  maxHP: 0
-  curHP: 0
-  maxShield: 0
-  curShield: 0
   isShield: 0
   shieldTime: 0
   shieldCurTime: 0
   speed: 0
+  curSpeed: 0
   critRate: 0
+  curCritRate: 0
   critDamage: 2
-  def: 0
-  evasion: 0
-  heal: 0
-  attackDamage: 0
-  createFollowingHpBar: 1
-  resistance: 1
+  curCritDamage: 0
+  shielSfxPlayer: {fileID: 0}
+  priestSkill10: 0
+  priestSkill10Time: 0
+  archerSkill0BuffTime: 5
+  slowDeBuffCount: 0
+  slowDeBuffTime: 0
+  slowDeBuff: 0
+  stunDeBuffTime: 0
+  stunDeBuff: 0
+  priestSkill7: 0
+  priestSkill7Time: 0
+  vamp: 0
+  curVamp: 0
   animCon: []
   target: {fileID: 0}
   originTargetRigid2D: {fileID: 0}
@@ -267,6 +275,7 @@ MonoBehaviour:
   isLive: 0
   knockBack: 0
   power: 1
+  isBoss: 0
   rigid: {fileID: 0}
   coll: {fileID: 0}
   spriter: {fileID: 0}
@@ -275,6 +284,7 @@ MonoBehaviour:
   fireDeBuffTime: 0
   isFire: 0
   curFireDamage: 0
+  isBurn: 0
   nearestTarget: {fileID: 0}
   skeletonAnimation: {fileID: 0}
   missileDamage: 0
@@ -407,7 +417,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7697528598531506110}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.98, y: 3.48, z: 0}
+  m_LocalPosition: {x: -14.98, y: 0, z: 0}
   m_LocalScale: {x: 1.77, y: 1.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

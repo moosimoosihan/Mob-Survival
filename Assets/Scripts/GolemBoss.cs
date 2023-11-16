@@ -40,6 +40,9 @@ public class GolemBoss : Enemy
     }
     protected override void FixedUpdate()
     {
+        if(!isBoss)
+            isBoss = true;
+        
         timer += Time.fixedDeltaTime;
 
         // 넉백 구현을 위해 Hit 에니메이션시 움직임 x ( 공격 혹은 기모을동안 움직임 제한 )
@@ -63,7 +66,6 @@ public class GolemBoss : Enemy
     {
         base.Init(data, power);
         missileDamage = CurAttackDamage;
-        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

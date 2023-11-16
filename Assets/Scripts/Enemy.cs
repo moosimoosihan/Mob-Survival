@@ -141,6 +141,9 @@ public class Enemy : CharacterStatus
         slowDeBuffCount = 0;
         slowDeBuff = false;
 
+        stunDeBuffTime = 0;
+        stunDeBuff = false;
+
         isBoss = false;
 
         CurHP = MaxHP;
@@ -468,6 +471,7 @@ public class Enemy : CharacterStatus
         StopCoroutine("WarriorFireOn");
         StopCoroutine("SlowDeBuff");
         CancelInvoke("FindClosestObject");
+        StopCoroutine("StunDeBuff");
         DestroyEnemy();
     }
 

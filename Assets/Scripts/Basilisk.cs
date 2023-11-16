@@ -56,6 +56,9 @@ public class Basilisk : Enemy
     }
     protected override void LateUpdate()
     {
+        if(!isBoss)
+            isBoss = true;
+        
         base.LateUpdate();
     }
     protected override void OnEnable()
@@ -67,7 +70,6 @@ public class Basilisk : Enemy
         base.Init(data, power);
         missileDamage = CurAttackDamage;
         bulletSpeed = 15;
-        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

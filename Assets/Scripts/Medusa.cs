@@ -44,6 +44,9 @@ public class Medusa : Enemy
     }
     protected override void FixedUpdate()
     {
+        if(!isBoss)
+            isBoss = true;
+        
         normalTimer += Time.fixedDeltaTime;
         specialTimer += Time.fixedDeltaTime;
 

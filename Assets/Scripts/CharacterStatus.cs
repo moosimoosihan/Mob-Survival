@@ -560,6 +560,19 @@ public class CharacterStatus : MonoBehaviour
             maxHP = value;
         }
     }
+    private float curMaxHP;
+    public float CurMaxHP
+    {
+        get
+        {
+            curMaxHP = maxHP;
+            return curMaxHP;
+        }
+        set
+        {
+            curMaxHP = value;
+        }
+    }
 
     public float CurHP
     {

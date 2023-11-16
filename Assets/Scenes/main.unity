@@ -14830,7 +14830,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  poolLimitCount: 20
+  poolLimitCount: 50
 --- !u!4 &1751755208
 Transform:
   m_ObjectHideFlags: 0

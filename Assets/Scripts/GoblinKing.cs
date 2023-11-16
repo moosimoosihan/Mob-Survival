@@ -56,6 +56,9 @@ public class GoblinKing : Enemy
     }
     protected override void LateUpdate()
     {
+        if(!isBoss)
+            isBoss = true;
+        
         base.LateUpdate();
     }
     protected override void OnEnable()
@@ -66,7 +69,6 @@ public class GoblinKing : Enemy
     {
         base.Init(data, power);
         missileDamage = CurAttackDamage;
-        isBoss = true;
     }
 
     IEnumerator BossStateMachine()

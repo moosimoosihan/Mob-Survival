@@ -63,6 +63,9 @@ public class TwinHeadOgre : Enemy
     }
     protected override void LateUpdate()
     {
+        if (!isBoss)
+            isBoss = true;
+        
         base.LateUpdate();
     }
     protected override void OnEnable()
@@ -75,7 +78,6 @@ public class TwinHeadOgre : Enemy
         missileDamage = CurAttackDamage;
         specialDamage = CurAttackDamage * 2;
         bulletSpeed = 15;
-        isBoss = true;
     }
 
     IEnumerator BossStateMachine()
