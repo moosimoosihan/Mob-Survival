@@ -79,7 +79,7 @@ public abstract class Weapon : MonoBehaviour
     public GameObject projectilePrefab;
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
-
+    [SerializeField]
     private int projectilePrefabNum = 1;
     public int ProjectilePrefabNum
     {
@@ -92,6 +92,7 @@ public abstract class Weapon : MonoBehaviour
             projectilePrefabNum = value;
         }
     }
+    [SerializeField]
     private int curProjectilePrefabNum;
     public int CurProjectilePrefabNum
     {
@@ -99,6 +100,11 @@ public abstract class Weapon : MonoBehaviour
         {
             curProjectilePrefabNum = projectilePrefabNum;
             
+            if(GetComponent<BowWeapon>() && player.GetComponent<Player>().archerActiveSkill){
+                // 궁수 11스킬 투사체 2개 추가
+                curProjectilePrefabNum += (int)GameManager.instance.skillContext.ArcherSkill11();
+            }
+
             // 아이템 장착시 갯수 증가
             // 반지
             curProjectilePrefabNum += GameManager.instance.skillContext.GetItemValues(18)[1];

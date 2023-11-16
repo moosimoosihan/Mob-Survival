@@ -133,5 +133,6 @@ public class MeleeWeapon : Weapon
         bullet.GetComponent<FireSword>().player = player;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = curDetectionAngle;
+        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
     }
 }

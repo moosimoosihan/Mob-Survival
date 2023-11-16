@@ -50,7 +50,7 @@ public class ArcherActiveSkill : ActiveSkill
         effect.target = transform.parent;
         effect.transform.position = transform.position;
 
-        player.archerSkill7 = true;
+        player.archerActiveSkill = true;
 
         GameObject buffSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Archer_Buff1);
         
@@ -62,7 +62,7 @@ public class ArcherActiveSkill : ActiveSkill
         }
         buffTime = 0;
         
-        player.archerSkill7 = false;
+        player.archerActiveSkill = false;
 
         buffSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
 

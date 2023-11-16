@@ -33,12 +33,26 @@ public class SwordWeapon : MeleeWeapon
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<FireSword>().player = player;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
+        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-        GameManager.instance.skillContext.WarriorSkill0(transform, poolBullet, dir, scalex, spawnDistance, CurDetectionAngle, player, Damage, CurCount, knockBackPower, duration, DetectRadius);
+        if(GameManager.instance.skillContext.WarriorSkill0()){
+            Transform bulletBack = poolBullet.Get().transform;
+
+            Vector3 backDir = new Vector3(dir.x * -1, dir.y * -1, dir.z);
+            bulletBack.parent = GameManager.instance.pool.transform;
+            bulletBack.transform.localScale = new Vector3(scalex, bulletBack.transform.localScale.y, bulletBack.transform.localScale.z);
+            bulletBack.position = transform.position + backDir * spawnDistance;
+            bulletBack.rotation = Quaternion.FromToRotation(Vector3.down, dir);
+            bulletBack.GetComponent<FireSword>().player = player;
+            bulletBack.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(player, Damage, out bool isCriticalb), CurCount, Vector3.zero, knockBackPower, duration, isCriticalb);
+            bulletBack.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
+            bulletBack.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
+            if(isCriticalb || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
+        }
 
         // 오디오 재생
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Warrior_Attack);

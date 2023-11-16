@@ -36,41 +36,50 @@ public class BowWeapon : Weapon
         if(GameManager.instance.skillContext.ActherSkill3()){
             if(bowCount >= 5){
                 bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dir, knockBackPower, duration, isCritical);
-                this.isCritical = isCritical;
+                if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
                 bowCount = 0;
             } else {
                 bowCount++;
                 bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
-                this.isCritical = isCritical;
+                if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
             }
         } else {
             bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
-            this.isCritical = isCritical;
+            if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
         }        
 
-        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);
+        AudioManager.Instance.SfxPlay(AudioManager.Sfx.Archer_Attack);        
 
-        // 궁수 11스킬 화살 2개가 가운데 화살을 중심으로 양 옆 30도정도로 퍼져나간다.
-        if(GameManager.instance.skillContext.ArcherSkill11()){
-            Transform bullet2 = poolBullet.Get().transform;
-            // 왼쪽 화살
-            Vector3 dir2 = Quaternion.Euler(0,0,30) * dir;
-            bullet2.position = transform.position;
-            bullet2.parent = GameManager.instance.pool.transform;
-            bullet2.rotation = Quaternion.FromToRotation(Vector3.up, dir2);
-            bullet2.GetComponent<Bullet>().speed = bulletSpeed;
-            bullet2.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical2), CurCount, dir2, knockBackPower, duration, isCritical);
-            isCritical = isCritical2;
-
-            Transform bullet3 = poolBullet.Get().transform;
-            // 오른쪽 화살
-            Vector3 dir3 = Quaternion.Euler(0,0,-30) * dir;
-            bullet3.position = transform.position;
-            bullet3.parent = GameManager.instance.pool.transform;
-            bullet3.rotation = Quaternion.FromToRotation(Vector3.up, dir3);
-            bullet3.GetComponent<Bullet>().speed = bulletSpeed;
-            bullet3.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical3), CurCount, dir3, knockBackPower, duration, isCritical);
-            isCritical = isCritical3;
+        // 화살 개수 증가시 양 옆으로 각도를 조금씩 틀어서 쏘도록 변경
+        if(CurProjectilePrefabNum > 1){
+            for(int i=1;i<=CurProjectilePrefabNum-1;i++){
+                Transform bullets = poolBullet.Get().transform;
+                
+                int a = i%2 == 0 ? 1 : -1;
+                Vector3 dirs = Quaternion.Euler(0,0,10*((i%2==0?i*-1:i)+1)*a) * dir;
+                bullets.position = transform.position;
+                bullets.parent = GameManager.instance.pool.transform;
+                bullets.rotation = Quaternion.FromToRotation(Vector3.up, dirs);
+                bullets.GetComponent<Bullet>().speed = bulletSpeed;
+                bullets.GetComponent<Bullet>().player = player;
+                // 궁수 10스킬 유도탄으로 변경
+                bullets.GetComponent<Bullet>().isHoming = GameManager.instance.skillContext.ArcherSkill10();
+                // 궁수 3스킬 5번 쏘면 100% 크리티컬
+                if(GameManager.instance.skillContext.ActherSkill3()){
+                    if(bowCount >= 5){
+                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dir, knockBackPower, duration, isCritical);
+                        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
+                        bowCount = 0;
+                    } else {
+                        bowCount++;
+                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+                        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
+                    }
+                } else {
+                    bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+                    if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
+                }
+            }
         }
     }
 }

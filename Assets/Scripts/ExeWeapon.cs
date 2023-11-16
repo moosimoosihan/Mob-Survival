@@ -34,6 +34,8 @@ public class ExeWeapon : Weapon
         Vector3 ranVec = new Vector3(Random.Range(-distX, distX), distY, 0);
         bullet.GetComponent<Bullet>().player = player;
         bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), CurCount, ranVec, knockBackPower, duration, isCritical);
-    }
+        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
 
+        // 갯수가 늘어나면 여러개로 나눠서 발사하는거 구현해야 함 (아직 사용하지 않아서 구현x)
+    }
 }

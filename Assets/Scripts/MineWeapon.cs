@@ -62,6 +62,7 @@ public class MineWeapon : Weapon
         bulletScript.player = player;
         bulletScript.Init(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage, out bool isCritical), -1, duration, knockBackPower, isCritical);
         bulletScript.DeActivate(weaponDuration);
+        if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
     }
 
     bool FireCheck()

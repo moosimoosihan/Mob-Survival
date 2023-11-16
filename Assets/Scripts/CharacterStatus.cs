@@ -6,7 +6,7 @@ using olimsko;
 public class CharacterStatus : MonoBehaviour
 {
     private bool archerSkill9 = false;
-    public bool archerSkill7 = false;
+    public bool archerActiveSkill = false;
     public bool archerSkill0 = false;
     public string character;
     private float maxHP;
@@ -111,7 +111,7 @@ public class CharacterStatus : MonoBehaviour
                 curCritRate += GameManager.instance.skillContext.ArcherSkill8()[0];
             
                 // 궁수 액티브 스킬
-                if(archerSkill7){
+                if(archerActiveSkill){
                     curCritRate += 0.3f;
                     
                     // 궁수 15스킬 액티브의 크리티컬 확률 레벨당 1% 증가
@@ -164,7 +164,7 @@ public class CharacterStatus : MonoBehaviour
                     curCritDamage += GameManager.instance.skillContext.ArcherSkill8()[1];
                     
                     // 궁수 7스킬 크리티컬 확률 및 데미지 증가
-                    if(archerSkill7 && GameManager.instance.skillContext.ArcherSkill7()!=0){
+                    if(archerActiveSkill){
                         curCritDamage += GameManager.instance.skillContext.ArcherSkill7();
                     }
 

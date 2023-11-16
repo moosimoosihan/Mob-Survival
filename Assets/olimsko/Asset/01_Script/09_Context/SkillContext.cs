@@ -12,21 +12,13 @@ public class SkillContext : ContextModel
 
     // 용사
     // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
-    public void WarriorSkill0(Transform transform, IObjectPool<Bullet> poolBullet, Vector3 _dir, float _scalex, float _spawnDistance, float curDetectionAngle, Player player, float Damage, int count, float knockBackPower, float duration, float detectRadius)
+    public bool WarriorSkill0()
     {
         if (PlayerContext.IsHasSkill(0, 0))
         {
-            Transform bulletBack = poolBullet.Get().transform;
-
-            Vector3 backDir = new Vector3(_dir.x * -1, _dir.y * -1, _dir.z);
-            bulletBack.parent = GameManager.instance.pool.transform;
-            bulletBack.transform.localScale = new Vector3(_scalex, bulletBack.transform.localScale.y, bulletBack.transform.localScale.z);
-            bulletBack.position = transform.position + backDir * _spawnDistance;
-            bulletBack.rotation = Quaternion.FromToRotation(Vector3.down, _dir);
-            bulletBack.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player, Damage, out bool isCritical), count, Vector3.zero, knockBackPower, duration, isCritical);
-            bulletBack.GetComponent<EffectBullet>().DetectionAngle = curDetectionAngle;
-            bulletBack.GetComponent<EffectBullet>().AttackRadius = detectRadius;
+            return true;
         }
+        return false;
     }
 
     // 용사 1번 스킬 범위증가(베기) 베기스킬 범위 2배 증가
@@ -340,13 +332,13 @@ public class SkillContext : ContextModel
     }
 
     // 궁수 11스킬 액티브가 지속중인 동안 사격 스킬의 Number of Projectile 2개 더 추가함 / 다발사격 느낌으로 좌우로 퍼져서 2개 추가되어 나가도록!
-    public bool ArcherSkill11()
+    public float ArcherSkill11()
     {
         if (PlayerContext.IsHasSkill(1, 27))
         {
-            return true;
+            return SkillTable.SkillTable[27].Value[0];
         }
-        return false;
+        return 0;
     }
 
     // 궁수 12스킬 Damage,Att Speed 5% 증가
