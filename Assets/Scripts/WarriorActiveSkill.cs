@@ -48,6 +48,7 @@ public class WarriorActiveSkill : ActiveSkill
 
         // 전사 11스킬 영역 2개
         if(skillArea.activeSelf){
+            skillArea.transform.localScale = new Vector3(GameManager.instance.skillContext.WarriorSkill6()!=0?GameManager.instance.skillContext.WarriorSkill6()*1 : 1 ,skillArea.transform.localScale.y ,skillArea.transform.localScale.z);
             if(GameManager.instance.skillContext.WarriorSkill11()){
                 if(!skillArea2.activeSelf)
                     skillArea2.SetActive(areaOn);
@@ -85,9 +86,9 @@ public class WarriorActiveSkill : ActiveSkill
         dir = dir.normalized;
         
         Transform bullet = poolBullet.Get().transform;
-        float scaley = Mathf.Abs(bullet.localScale.y);
-        scaley += GameManager.instance.skillContext.WarriorSkill6();
-        bullet.localScale = new Vector3(bullet.localScale.x, scaley, bullet.localScale.z);
+        float scale = 1f;
+        float scaley = GameManager.instance.skillContext.WarriorSkill6();
+        bullet.localScale = new Vector3(bullet.localScale.x, scale * scaley, bullet.localScale.z);
 
         bullet.parent = GameManager.instance.pool.transform;
         bullet.position = transform.position;
