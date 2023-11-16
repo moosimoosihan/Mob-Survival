@@ -80,7 +80,7 @@ public class Player : CharacterStatus
         CurHP = MaxHP;
         Def = data.Def;
         Speed = data.MoveSpeed;
-        hpRegen = data.HPRegen;
+        HpRezen = data.HPRegen;
         Evasion = data.Evasion;
         Heal = data.Heal;
         CritRate = data.CritRate;

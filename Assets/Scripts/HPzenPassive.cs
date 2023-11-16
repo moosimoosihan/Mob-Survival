@@ -13,12 +13,10 @@ public class HPzenPassive : Weapon
     protected override void Fire()
     {
         Player me = gameObject.GetComponentInParent<Player>();
-        float maxHealth = me.MaxHP;
 
-
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && me.CurHpRezen > 0 && !me.playerDead)
         {
-            me.GetDamage(-weaponValue, false, null, true);
+            me.GetDamage(-me.CurHpRezen, false, null, true);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
             if (me.CurHP > me.MaxHP)

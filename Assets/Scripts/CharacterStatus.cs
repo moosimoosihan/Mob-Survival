@@ -840,4 +840,45 @@ public class CharacterStatus : MonoBehaviour
             curVamp = value;
         }
     }
+
+    private float hpRezen;
+    private float curHpRezen;
+    public float HpRezen
+    {
+        get
+        {
+            return hpRezen;
+        }
+        set
+        {
+            hpRezen = value;
+        }
+    }
+    public float CurHpRezen
+    {
+        get
+        {
+            curHpRezen = hpRezen;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 체력 회복량 증가
+                // 구슬
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(32)[1];
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(33)[1];
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(34)[1];
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(35)[1];
+
+                //갑옷
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(37)[1];
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(38)[1];
+                curHpRezen += GameManager.instance.skillContext.GetItemValues(39)[1];
+            }
+
+            return curHpRezen;
+        }
+        set
+        {
+            curHpRezen = value;
+        }
+    }
 }

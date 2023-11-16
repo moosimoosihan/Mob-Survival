@@ -28,6 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1258892851279659959}
   - {fileID: 3808647645583258391}
   m_Father: {fileID: 7871761288496920733}
   m_RootOrder: 1
@@ -168,8 +169,8 @@ MonoBehaviour:
   player: {fileID: 0}
   timer: 0
   projectilePrefab: {fileID: 8053629336657862800, guid: ce29ba1e0b02bff44a7b0f44cc806684, type: 3}
-  damage: 100
   skillDuration: 10
+  curSkillDuration: 0
 --- !u!1 &7871761287356152023
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,33 +376,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf69fd933df7d9a44a5d0893471555ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  archerSkill7: 0
+  archerSkill0: 0
   character: 
-  maxHP: 0
-  curHP: 0
-  maxShield: 0
-  curShield: 0
   isShield: 0
   shieldTime: 0
   shieldCurTime: 0
   speed: 0
+  curSpeed: 0
   critRate: 0
+  curCritRate: 0
   critDamage: 0
-  attackDamage: 0
-  createFollowingHpBar: 1
-  resistance: 1
+  curCritDamage: 0
+  shielSfxPlayer: {fileID: 0}
+  priestSkill10: 0
+  priestSkill10Time: 0
+  archerSkill0BuffTime: 5
+  slowDeBuffCount: 0
+  slowDeBuffTime: 0
+  slowDeBuff: 0
+  stunDeBuffTime: 0
+  stunDeBuff: 0
+  priestSkill7: 0
+  priestSkill7Time: 0
+  vamp: 0
+  curVamp: 0
   inputVec: {x: 0, y: 0}
   isBorder: 0
   anim: {fileID: 0}
   playerDead: 0
   isDamaged: 0
+  damageDelay: 0.5
+  curDamageDelay: 0
   scanner: {fileID: 0}
   inputEnabled: 1
   collider2D: {fileID: 0}
+  childTransform: {fileID: 0}
   weaponTransform: {fileID: 0}
-  def: 0
-  heal: 0
   hpRegen: 0
-  evasion: 0
+  invincibleBuffTime: 0
+  invincibleBuff: 0
 --- !u!114 &7871761288496920730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,7 +433,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   nearestTarget: {fileID: 0}
-  itemScanRange: 3
   itemLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -435,7 +448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919802ad6abb42c46ac5d8c427e31fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   mainCharacter: {fileID: 7871761288496920805}
   distWithinMainCharacter: 6
   distAwayFromEnemy: 3
@@ -569,6 +581,88 @@ MonoBehaviour:
   _animationName: 
   loop: 1
   timeScale: 1
+--- !u!1001 &3470963211303129742
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7871761286609124086}
+    m_Modifications:
+    - target: {fileID: 2401310057500348727, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_Name
+      value: HPzenPassive
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: delay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: duration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6734794347679594849, guid: ffe82fc788961ae41af146721384def5, type: 3}
+      propertyPath: weaponValue
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffe82fc788961ae41af146721384def5, type: 3}
+--- !u!4 &1258892851279659959 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2401310057500348729, guid: ffe82fc788961ae41af146721384def5, type: 3}
+  m_PrefabInstance: {fileID: 3470963211303129742}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6949231345137432680
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -578,7 +672,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6101156814805732223, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6101156814805732223, guid: 2195b592a664ff042b3d30842ac76c5e, type: 3}
       propertyPath: m_LocalPosition.x

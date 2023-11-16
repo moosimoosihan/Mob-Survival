@@ -80,6 +80,38 @@ public abstract class Weapon : MonoBehaviour
     public IObjectPool<BuffEffect> poolBuffEffect;
     public IObjectPool<Bullet> poolBullet;
 
+    private int projectilePrefabNum = 1;
+    public int ProjectilePrefabNum
+    {
+        get
+        {
+            return projectilePrefabNum;
+        }
+        set
+        {
+            projectilePrefabNum = value;
+        }
+    }
+    private int curProjectilePrefabNum;
+    public int CurProjectilePrefabNum
+    {
+        get
+        {
+            curProjectilePrefabNum = projectilePrefabNum;
+            
+            // 아이템 장착시 갯수 증가
+            // 반지
+            curProjectilePrefabNum += GameManager.instance.skillContext.GetItemValues(18)[1];
+            curProjectilePrefabNum += GameManager.instance.skillContext.GetItemValues(19)[1];
+
+            return curProjectilePrefabNum;
+        }
+        set
+        {
+            curProjectilePrefabNum = value;
+        }
+    }
+
     public float Damage
     {
         get
