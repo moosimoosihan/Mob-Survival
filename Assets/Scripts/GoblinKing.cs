@@ -289,7 +289,7 @@ public class GoblinKing : Enemy
     }
     protected override void BossPowerUp()
     {
-        if (CurHP <= MaxHP / 2 && !bossPowerUp)
+        if (CurHP <= CurMaxHP / 2 && !bossPowerUp)
         {
             bossPowerUp = true;
         }

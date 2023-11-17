@@ -65,7 +65,7 @@ public class Enemy : CharacterStatus
             if (fireTime >= 1)
             {
                 fireTime = 0;
-                GetDamage((MaxHP * curFireDamage / 100) < 1 ? 1 : (MaxHP * curFireDamage / 100), 0, false, null, true);
+                GetDamage((CurMaxHP * curFireDamage / 100) < 1 ? 1 : (CurMaxHP * curFireDamage / 100), 0, false, null, true);
             }
         }
     }
@@ -300,6 +300,9 @@ public class Enemy : CharacterStatus
         double dam = 0;
         if (_damage > 0 && !trueDamage)
         {
+            // DamageReduction 데미지 감소
+            _damage -= CurDamageReduction * _damage;
+            // 방어력 계산
             dam = _damage / (1 + CurDef * 0.01);
             // 회피
             float ran = Random.Range(0, 100);

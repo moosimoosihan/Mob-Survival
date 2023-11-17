@@ -47,7 +47,7 @@ public class HealerActiveSkill : ActiveSkill
         if(GameManager.instance.skillContext.PriestSkill11()){
             foreach(Player pl in GameManager.instance.players){
                 if(pl.character.Equals("사제")){
-                    pl.GetDamage(pl.CurHP - pl.MaxHP, false, null, true);
+                    pl.GetDamage(pl.CurHP - pl.CurMaxHP, false, null, true);
                 } else {
                     if(pl.playerDead){
                         pl.Revival();
@@ -76,7 +76,7 @@ public class HealerActiveSkill : ActiveSkill
                         if(GameManager.instance.skillContext.PriestSkill7(1) > 0)
                             StartCoroutine(pl.PriestSkill7Buff(10f));
                     } else {
-                        pl.GetDamage(pl.CurHP - pl.MaxHP, false, null, true);
+                        pl.GetDamage(pl.CurHP - pl.CurMaxHP, false, null, true);
                         if(pl.GetComponentInChildren<ActiveSkill>().isActive && pl != player){
                             pl.GetComponentInChildren<ActiveSkill>().StopCoroutine(SkillDelay());
                             pl.GetComponentInChildren<ActiveSkill>().isActive = false;
@@ -127,13 +127,13 @@ public class HealerActiveSkill : ActiveSkill
                         StartCoroutine(minHealthPlayer.PriestSkill7Buff(10f));
                     return;
                 }
-                else if (GameManager.instance.players[i].CurHP / GameManager.instance.players[i].MaxHP < minHealthPlayer.CurHP / minHealthPlayer.MaxHP)
+                else if (GameManager.instance.players[i].CurHP / GameManager.instance.players[i].CurMaxHP < minHealthPlayer.CurHP / minHealthPlayer.CurMaxHP)
                 {
                     minHealthPlayer = GameManager.instance.players[i];
                 }
             }
             // 전부 회복 및 스킬 쿨타임 초기화
-            minHealthPlayer.GetDamage(minHealthPlayer.CurHP - minHealthPlayer.MaxHP, false, null, true);
+            minHealthPlayer.GetDamage(minHealthPlayer.CurHP - minHealthPlayer.CurMaxHP, false, null, true);
 
             // minHealthPlayer.CreateFollowingHpBar();
             if (minHealthPlayer.GetComponentInChildren<ActiveSkill>().isActive && minHealthPlayer != player)

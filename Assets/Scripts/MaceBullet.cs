@@ -134,10 +134,10 @@ public class MaceBullet : EffectBullet
                 // 가장 체력이 낮은 아군을 탐지
                 for (int y = 0; y < GameManager.instance.players.Length; y++)
                 {
-                    if (!playersList[y].playerDead && playersList[y] != player && playersList[y].CurHP / playersList[y].MaxHP < minHeath)
+                    if (!playersList[y].playerDead && playersList[y] != player && playersList[y].CurHP / playersList[y].CurMaxHP < minHeath)
                     {
                         minHealthPlayer = GameManager.instance.players[y];
-                        minHeath = playersList[y].CurHP / playersList[y].MaxHP;
+                        minHeath = playersList[y].CurHP / playersList[y].CurMaxHP;
                     }
                 }
 

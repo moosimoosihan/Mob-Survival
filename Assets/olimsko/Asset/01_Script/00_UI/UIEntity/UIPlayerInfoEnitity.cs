@@ -46,10 +46,10 @@ public class UIPlayerInfoEnitity : UIViewEntity
 
     private void OnHpChanged()
     {
-        Get<UISlider>("HPBar").maxValue = GameManager.instance.players[m_PlayerIdx].MaxHP;
+        Get<UISlider>("HPBar").maxValue = GameManager.instance.players[m_PlayerIdx].CurMaxHP;
         Get<UISlider>("HPBar").value = GameManager.instance.players[m_PlayerIdx].CurHP;
 
-        Get<UITMPText>("HPText").SetText($"{GameManager.instance.players[m_PlayerIdx].CurHP}/{GameManager.instance.players[m_PlayerIdx].MaxHP}");
+        Get<UITMPText>("HPText").SetText($"{GameManager.instance.players[m_PlayerIdx].CurHP}/{GameManager.instance.players[m_PlayerIdx].CurMaxHP}");
     }
 
     protected override void OnDestroy()

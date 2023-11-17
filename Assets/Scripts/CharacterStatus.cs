@@ -566,6 +566,13 @@ public class CharacterStatus : MonoBehaviour
         get
         {
             curMaxHP = maxHP;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 후 체력 증가
+                // 구슬
+                curMaxHP += GameManager.instance.skillContext.GetItemValues(35)[2];
+            }
+
             return curMaxHP;
         }
         set
@@ -721,10 +728,10 @@ public class CharacterStatus : MonoBehaviour
                 priestSkill3Count -= Time.deltaTime;
                 if(priestSkill3Count<=0){
                     priestSkill3Count = 5;
-                    if(CurHP<MaxHP){
-                        GetComponent<Player>().GetDamage((MaxHP-CurHP)*val, false);
-                        if(GetComponent<Player>().CurHP>GetComponent<Player>().MaxHP){
-                            GetComponent<Player>().CurHP = GetComponent<Player>().MaxHP;
+                    if(CurHP<CurMaxHP){
+                        GetComponent<Player>().GetDamage((CurMaxHP-CurHP)*val, false);
+                        if(GetComponent<Player>().CurHP>GetComponent<Player>().CurMaxHP){
+                            GetComponent<Player>().CurHP = GetComponent<Player>().CurMaxHP;
                         }
                     } else {
                         GetComponent<Player>().GetDamage(0, false);
@@ -892,6 +899,27 @@ public class CharacterStatus : MonoBehaviour
         set
         {
             curHpRezen = value;
+        }
+    }
+    private float DamageReduction = 0;
+    private float curDamageReduction;
+    public float CurDamageReduction
+    {
+        get
+        {
+            curDamageReduction = DamageReduction;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 데미지 감소
+                // 갑옷
+                curDamageReduction += GameManager.instance.skillContext.GetItemValues(39)[2]/100;
+            }
+
+            return curDamageReduction;
+        }
+        set
+        {
+            curDamageReduction = value;
         }
     }
 }

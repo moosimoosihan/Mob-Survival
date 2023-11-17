@@ -21,10 +21,10 @@ public class HealWeapon : Weapon
         // 가장 체력이 낮은 아군을 탐지
         for (int i = 0; i < GameManager.instance.players.Length; i++)
         {
-            if (!playersList[i].playerDead && playersList[i].CurHP / playersList[i].MaxHP < minHeath)
+            if (!playersList[i].playerDead && playersList[i].CurHP / playersList[i].CurMaxHP < minHeath)
             {
                 minHealthPlayer = GameManager.instance.players[i];
-                minHeath = playersList[i].CurHP / playersList[i].MaxHP;
+                minHeath = playersList[i].CurHP / playersList[i].CurMaxHP;
             }
         }
 
@@ -33,9 +33,9 @@ public class HealWeapon : Weapon
             minHealthPlayer.GetDamage(-weaponValue, false);
 
             // 체력이 넘칠 경우 최대 체력으로 설정
-            if (minHealthPlayer.CurHP > minHealthPlayer.MaxHP)
+            if (minHealthPlayer.CurHP > minHealthPlayer.CurMaxHP)
             {
-                minHealthPlayer.CurHP = minHealthPlayer.MaxHP;
+                minHealthPlayer.CurHP = minHealthPlayer.CurMaxHP;
             }
 
             // 체력 회복 이펙트 생성

@@ -69,7 +69,7 @@ public class HUD : MonoBehaviour
                     return;
                 }
                 float curHealth = GameManager.instance.players[playerNum].CurHP;
-                float maxHealth = GameManager.instance.players[playerNum].MaxHP;
+                float maxHealth = GameManager.instance.players[playerNum].CurMaxHP;
                 p_curHealth = curHealth;
                 p_maxHealth = maxHealth;
                 mySlider.value = curHealth / maxHealth;
@@ -180,7 +180,7 @@ public class HUD : MonoBehaviour
             case InfoYType.Health:
 
                 float curHealth = GameManager.instance.players[playerNum].CurHP;
-                float maxHealth = GameManager.instance.players[playerNum].MaxHP;
+                float maxHealth = GameManager.instance.players[playerNum].CurMaxHP;
                 curHealth = Mathf.FloorToInt(curHealth);
                 maxHealth = Mathf.FloorToInt(maxHealth);
                 if (p_curHealth != curHealth || p_maxHealth != maxHealth)

@@ -177,6 +177,9 @@ public class Player : CharacterStatus
             {
                 // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
                 curDamage -= GameManager.instance.skillContext.WarriorSkill3(_damage);
+                
+                // 용사 12스킬 데미지 레벨당 5% 감소
+                curDamage -= GameManager.instance.skillContext.WarriorSkill13(_damage);
 
                 // 용사 4스킬 피격시 적군에게 화염을 붙인다.
                 if(enemy != null)
@@ -186,12 +189,9 @@ public class Player : CharacterStatus
             // 용사 9스킬 용사 10% 데미지 감소 및 파티원 50%데미지를 용사가 입는다.
             curDamage -= GameManager.instance.skillContext.WarriorSkill9(character, _damage, _isCritical);
 
-            // 용사 12스킬 데미지 레벨당 5% 감소
-            if (character.Equals("용사"))
-            {
-                curDamage -= GameManager.instance.skillContext.WarriorSkill13(_damage);
-            }
-
+            // DamageReduction 데미지 감소
+            curDamage -= CurDamageReduction * _damage;
+            // 방어력 계산
             dam = curDamage / (1 + CurDef * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
@@ -324,7 +324,7 @@ public class Player : CharacterStatus
     }
     public void Revival()
     {
-        CurHP = MaxHP;
+        CurHP = CurMaxHP;
         playerDead = false;
         collider2D.enabled = true;
         // CreateFollowingHpBar();
