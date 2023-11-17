@@ -682,6 +682,7 @@ public class CharacterStatus : MonoBehaviour
         // followingSdBar.Init(this.gameObject);
 
         shielSfxPlayer = AudioManager.Instance.LoopSfxPlay(AudioManager.LoopSfx.Shield);
+        priestSkill3Count = 5;
 
         shieldCurTime = shieldTime;
         while (shieldCurTime > 0)
@@ -692,6 +693,7 @@ public class CharacterStatus : MonoBehaviour
 
         shieldCurTime = 0;
         curShield = 0;
+        priestSkill3Count = 0;
 
         shielSfxPlayer.GetComponent<LoopSFXPlayer>().Stop();
         //이펙트 제거해야 함
@@ -802,14 +804,12 @@ public class CharacterStatus : MonoBehaviour
     public IEnumerator StunDeBuff(){
         stunDeBuff = true;
         resistance = 0;
-        priestSkill3Count = 5;
 
         while(stunDeBuffTime>0){
             stunDeBuffTime -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
 
-        priestSkill3Count = 0;
         stunDeBuffTime = 0;
         stunDeBuff = false;
         resistance = 1;

@@ -20,13 +20,13 @@ public class Scaner : MonoBehaviour
             if(GetComponent<Player>()){
                 // 아이템 장착 스캔 범위 증가
                 // 목걸이
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(12)[0]/100;
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(13)[0]/100;
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(14)[0]/100;
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(15)[0]/100;
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(12)[0];
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(13)[0];
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(14)[0];
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(15)[0];
                 // 열쇠
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(30)[1]/100;
-                curItemScanRange += itemScanRange * GameManager.instance.skillContext.GetItemValues(31)[1]/100;
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(30)[1];
+                curItemScanRange += GameManager.instance.skillContext.GetItemValues(31)[1];
             }
             return curItemScanRange;
         }

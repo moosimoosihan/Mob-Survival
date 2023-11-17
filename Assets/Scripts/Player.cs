@@ -266,7 +266,11 @@ public class Player : CharacterStatus
         if (CurHP <= 0)
         {
             CurHP = 0;
-            //죽음
+            // 죽음
+
+            // 모든 상태이상 제거
+            PlayerDead();
+
             SetAnimationState(AnimationState.Death);
 
             int livePlayerCount = 0;
@@ -343,5 +347,14 @@ public class Player : CharacterStatus
         invincibleBuff = true;
         yield return new WaitForSeconds(_time);
         invincibleBuff = false;
+    }
+    void PlayerDead(){
+        slowDeBuff = false;
+        stunDeBuff = false;
+        
+        slowDeBuffTime = 0;
+        slowDeBuffCount = 0;
+
+        stunDeBuffTime = 0;
     }
 }
