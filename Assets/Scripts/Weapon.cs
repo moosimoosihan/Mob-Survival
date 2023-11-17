@@ -26,6 +26,14 @@ public abstract class Weapon : MonoBehaviour
                     curCount += 1;
                 }
             }
+
+            // 아이템 장착시 관통 증가
+            // 반지
+            curCount += GameManager.instance.skillContext.GetItemValues(18)[0];
+            curCount += GameManager.instance.skillContext.GetItemValues(19)[0];
+            curCount += GameManager.instance.skillContext.GetItemValues(20)[0];
+            curCount += GameManager.instance.skillContext.GetItemValues(21)[0];
+            
             return curCount;
         }
         set
