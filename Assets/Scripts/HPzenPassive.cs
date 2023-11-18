@@ -18,12 +18,6 @@ public class HPzenPassive : Weapon
         {
             me.GetDamage(-me.CurHpRezen, false, null, true);
 
-            // 체력이 넘칠 경우 최대 체력으로 설정
-            if (me.CurHP > me.CurMaxHP)
-            {
-                me.CurHP = me.CurMaxHP;
-            }
-
             // 체력 회복 이펙트 생성
             Transform healEffect = poolBullet.Get().transform;
             healEffect.parent = GameManager.instance.pool.transform;

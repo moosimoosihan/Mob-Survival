@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
 
     public SkillContext skillContext => OSManager.GetService<ContextManager>().GetContext<SkillContext>();
 
+    public GameObject boom;
 
     public void AddKillCount(int value = 1)
     {
@@ -253,6 +254,14 @@ public class GameManager : MonoBehaviour
     public void GameEnd()
     {
         Application.Quit();
+    }
+    public void Boom(){
+        boom.transform.position = playerControl.mainCharacter.transform.position;
+        boom.SetActive(true);
+        Invoke("BoomEnd",0.2f);
+    }
+    public void BoomEnd(){
+        boom.SetActive(false);
     }
 
 }

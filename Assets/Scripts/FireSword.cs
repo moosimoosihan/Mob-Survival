@@ -25,16 +25,17 @@ public class FireSword : EffectBullet
         isCritical = _isCritical;
 
         for (int i = 0; i < enemyList.Count; i++)
-        {            
-            enemyList[i].GetDamage(damage, knockBackPower, isCritical, player);
+        {
+            if(!enemyList[i].gameObject.activeSelf)
+                return;
             
-            if (enemyList[i].gameObject.activeSelf){                        
-                if(warriorFire){
-                    if(!enemyList[i].isFire){
-                        enemyList[i].StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime, fireBurn));
-                    } else {
-                        enemyList[i].FireInit(warriorFireDamge, warriorFireTime);
-                    }
+            enemyList[i].GetDamage(damage, knockBackPower, isCritical, player);
+                                    
+            if(warriorFire && enemyList[i].gameObject.activeSelf){
+                if(!enemyList[i].isFire){
+                    enemyList[i].StartCoroutine(enemyList[i].WarriorFireOn(warriorFireDamge, warriorFireTime, fireBurn));
+                } else {
+                    enemyList[i].FireInit(warriorFireDamge, warriorFireTime);
                 }
             }
         }

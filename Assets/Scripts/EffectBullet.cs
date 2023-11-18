@@ -41,8 +41,8 @@ public class EffectBullet : Bullet
     {
         if (drawRay)
         {
-            Debug.DrawRay(transform.position, EulerAngleToVector(detectionAngle * 0.5f) * attackRadius);
-            Debug.DrawRay(transform.position, EulerAngleToVector(-detectionAngle * 0.5f) * attackRadius);
+            Debug.DrawRay(transform.position, EulerAngleToVector(DetectionAngle * 0.5f) * attackRadius);
+            Debug.DrawRay(transform.position, EulerAngleToVector(-DetectionAngle * 0.5f) * attackRadius);
         }
     }
 
@@ -59,7 +59,7 @@ public class EffectBullet : Bullet
         List<Enemy> result = new List<Enemy>();
 
         //�� ���� ������Ʈ���� �������� ���� physics ���
-        Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, attackRadius, LayerMask.GetMask("Enemy"));
+        Collider2D[] colliders2D = Physics2D.OverlapCircleAll(transform.position, AttackRadius, LayerMask.GetMask("Enemy"));
 
         if (colliders2D.Length > 0)
         {
@@ -110,5 +110,8 @@ public class EffectBullet : Bullet
     public override void OnTriggerEnter2DUpdate(Collider2D collision)
     {
         //�ݶ��̴� ��� ����
+    }
+    private void Update() {
+        OnDrawGizmosSelected();
     }
 }

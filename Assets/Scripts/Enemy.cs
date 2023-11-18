@@ -137,14 +137,26 @@ public class Enemy : CharacterStatus
         isBurn = false;
         fireDeBuffTime = 0;
 
+        isBoss = false;
+
+        slowDeBuff = false;
+        stunDeBuff = false;
+        isShield = false;
+        
+        strongPotion = false;
+        agilityPotion = false;
+
         slowDeBuffTime = 0;
         slowDeBuffCount = 0;
-        slowDeBuff = false;
-
         stunDeBuffTime = 0;
-        stunDeBuff = false;
 
-        isBoss = false;
+        strongPotionTime = 0;
+        agilityPotionTime = 0;
+
+        shieldTime = 0;
+        CurShield = 0;
+        MaxShield = 0;
+        shieldCurTime = 0;
 
         CurHP = MaxHP;
 
@@ -367,6 +379,12 @@ public class Enemy : CharacterStatus
         {
             // 회복의 경우
             dam = _damage * (1 + CurHeal);
+            
+            // 체력이 넘칠 경우 최대 체력으로 설정
+            if (CurHP > CurMaxHP)
+            {
+                CurHP = CurMaxHP;
+            }
         }
 
         CurHP -= System.Convert.ToSingle(dam);
@@ -471,10 +489,7 @@ public class Enemy : CharacterStatus
     {
         //gameObject.SetActive(false);
         DieSound();
-        StopCoroutine("WarriorFireOn");
-        StopCoroutine("SlowDeBuff");
-        CancelInvoke("FindClosestObject");
-        StopCoroutine("StunDeBuff");
+        StopAllCoroutines();
         DestroyEnemy();
     }
 

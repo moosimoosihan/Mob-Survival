@@ -65,7 +65,7 @@ public class SkillContext : ContextModel
     // 용사 4스킬 화염 갑옷 용사 피격시 적군에게 화상스킬
     public void WarriorSkill4(Enemy enemy, float _damage, float _duration)
     {
-        if (PlayerContext.IsHasSkill(0, 4))
+        if (PlayerContext.IsHasSkill(0, 4) && enemy != null && enemy.gameObject.activeSelf)
         {
             enemy.StartCoroutine(enemy.WarriorFireOn(_damage, _duration, true));
         }

@@ -249,6 +249,12 @@ public class Player : CharacterStatus
         {
             // 회복의 경우
             dam = _damage * (1 + CurHeal);
+
+            // 체력이 넘칠 경우 최대 체력으로 설정
+            if (CurHP > CurMaxHP)
+            {
+                CurHP = CurMaxHP;
+            }
         }
 
         CurHP -= System.Convert.ToSingle(dam);
@@ -351,10 +357,33 @@ public class Player : CharacterStatus
     void PlayerDead(){
         slowDeBuff = false;
         stunDeBuff = false;
+        isShield = false;
+        invincibleBuff = false;
+        
+        archerSkill9 = false;
+        archerActiveSkill = false;
+        archerSkill0 = false;
+        priestSkill7 = false;
+
+        strongPotion = false;
+        agilityPotion = false;
+        
+        priestSkill7Time = 0;
+        archerSkill0BuffTime = 0;
         
         slowDeBuffTime = 0;
         slowDeBuffCount = 0;
-
         stunDeBuffTime = 0;
+        invincibleBuffTime = 0;
+
+        strongPotionTime = 0;
+        agilityPotionTime = 0;
+        
+        shieldTime = 0;
+        CurShield = 0;
+        MaxShield = 0;
+        shieldCurTime = 0;
+
+        StopAllCoroutines();
     }
 }

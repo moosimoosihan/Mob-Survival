@@ -5,7 +5,7 @@ using olimsko;
 
 public class CharacterStatus : MonoBehaviour
 {
-    private bool archerSkill9 = false;
+    public bool archerSkill9 = false;
     public bool archerActiveSkill = false;
     public bool archerSkill0 = false;
     public string character;
@@ -54,6 +54,11 @@ public class CharacterStatus : MonoBehaviour
                 curSpeed += Speed * (GameManager.instance.skillContext.GetItemValues(25)[0]/100);
                 curSpeed += Speed * (GameManager.instance.skillContext.GetItemValues(26)[0]/100);
                 curSpeed += Speed * (GameManager.instance.skillContext.GetItemValues(27)[0]/100);
+
+                // 아이템 습득 후 버프
+                if(speedPotion){
+                    curSpeed += Speed * 0.5f;
+                }
             }
 
             if(slowDeBuff && !stunDeBuff){
@@ -396,6 +401,11 @@ public class CharacterStatus : MonoBehaviour
                 curAttackSpeed += GameManager.instance.skillContext.GetItemValues(25)[1]/100;
                 curAttackSpeed += GameManager.instance.skillContext.GetItemValues(26)[1]/100;
                 curAttackSpeed += GameManager.instance.skillContext.GetItemValues(27)[1]/100;
+
+                // 아이템 습득 후 버프
+                if(agilityPotion){
+                    curAttackSpeed += 0.5f;
+                }
             }
 
             return curAttackSpeed;
@@ -531,14 +541,15 @@ public class CharacterStatus : MonoBehaviour
 
                 // 아이템 장착 데미지 증가
                 curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(4)[0]/100;
-
                 curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(5)[0]/100;
-
                 curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(6)[0]/100;
-
                 curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(7)[0]/100;
-
                 curAttackDamage += attackDamage * GameManager.instance.skillContext.GetItemValues(11)[2]/100;
+
+                // 아이템 습득 후 버프
+                if(strongPotion){
+                    curAttackDamage += attackDamage * 0.5f;
+                }
             }
 
             return curAttackDamage;
@@ -709,11 +720,10 @@ public class CharacterStatus : MonoBehaviour
     float archerSkill9Count = 0;
     float priestSkill3Count = 0;
 
-    public bool priestSkill10;
     public float priestSkill10Time;
     void Update()
     {
-        if(GetComponent<Player>()){
+        if(GetComponent<Player>() && !GetComponent<Player>().playerDead){
 
             // 궁수 9스킬 30초마다 10초간 버프
             if(GameManager.instance.skillContext.ArcherSkill9()!=0){
@@ -753,7 +763,7 @@ public class CharacterStatus : MonoBehaviour
                             break;
                         }
                     }
-                    if(!GetComponent<Player>().playerDead && maceBullet != null){
+                    if(maceBullet != null){
                         if(isShield && CurShield <= 0){
                             MaxShield = maceBullet.CurShieldAmount;
                             CurShield = MaxShield;
@@ -921,5 +931,46 @@ public class CharacterStatus : MonoBehaviour
         {
             curDamageReduction = value;
         }
+    }
+
+    // 포션 아이템들 구현
+    // 힘의 비약
+    public float strongPotionTime;
+    public bool strongPotion;
+    public IEnumerator StrongPotion(){
+        strongPotion = true;
+        strongPotionTime = 20;
+        while(strongPotionTime>0){
+            strongPotionTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        strongPotionTime = 0;
+        strongPotion = false;
+    }
+    // 민첩의 비약
+    public float speedPotionTime;
+    public bool speedPotion;
+    public IEnumerator SpeedPotion(){
+        speedPotion = true;
+        speedPotionTime = 20;
+        while(speedPotionTime>0){
+            speedPotionTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        speedPotionTime = 0;
+        speedPotion = false;
+    }
+    // 마나의 비약
+    public float agilityPotionTime;
+    public bool agilityPotion;
+    public IEnumerator AgilityPotion(){
+        agilityPotion = true;
+        agilityPotionTime = 20;
+        while(agilityPotionTime>0){
+            agilityPotionTime -= 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+        agilityPotionTime = 0;
+        agilityPotion = false;
     }
 }

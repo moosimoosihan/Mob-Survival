@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 using olimsko;
 using System.Linq;
 using System;
+using Cysharp.Threading.Tasks.Triggers;
 
 public class ItemContext : ContextModel
 {
@@ -96,15 +98,51 @@ public class ItemContext : ContextModel
             case ItemType.Consumption:
                 switch (item.Idx)
                 {
+                    case 44:
+                        GameManager.instance.Boom(); break;
+                    case 45:
+                        Player player = GameManager.instance.playerControl.mainCharacter.GetComponent<Player>();
+                        player.GetDamage(-player.CurMaxHP * 0.2f, false, null, true); break;
                     case 46:
                         GameManager.instance.GetGold((int)item.Value);
                         AudioManager.Instance.ItemSfxPlay(AudioManager.ItemSfx.Coin); break;
                     case 47:
                         GameManager.instance.GetGold((int)item.Value);
                         AudioManager.Instance.ItemSfxPlay(AudioManager.ItemSfx.Coin); break;
+                    case 48:
+                        foreach(Player pl in GameManager.instance.players){
+                            if(!pl.playerDead){
+                                if(pl.strongPotion){
+                                    pl.strongPotionTime = 20f;
+                                } else {
+                                    StartCoroutine(pl.StrongPotion());
+                                }
+                            }
+                        } break;
+                    case 49:
+                        foreach(Player pl in GameManager.instance.players){
+                            if(!pl.playerDead){
+                                if(pl.speedPotion){
+                                    pl.speedPotionTime = 20f;
+                                } else {
+                                    StartCoroutine(pl.SpeedPotion());
+                                }
+                            }
+                        } break;
+                    case 50:
+                        foreach(Player pl in GameManager.instance.players){
+                            if(!pl.playerDead){
+                                if(pl.agilityPotion){
+                                    pl.agilityPotionTime = 20f;
+                                } else {
+                                    StartCoroutine(pl.AgilityPotion());
+                                }
+                            }
+                        } break;
+                    case 51:
+                        GameManager.instance.life++; break;                        
                     default: OnConsumeItemUsed?.Invoke(item.Idx); break;
                 }
-
                 break;
         }
     }
