@@ -30,10 +30,9 @@ public class MaceWeapon : MeleeWeapon
         bullet.GetComponent<MaceBullet>().player = player;
         bullet.GetComponent<MaceBullet>().ShieldAmount = shieldAmount;
         bullet.GetComponent<MaceBullet>().shieldTime = shieldTime;
-
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = CurDetectionAngle;
         bullet.GetComponent<EffectBullet>().AttackRadius = CurDetectRadius;
+        bullet.GetComponent<EffectBullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
     }
 }
