@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2104943936379506461}
   - component: {fileID: -5601719430733546225}
   - component: {fileID: 6573357436458701643}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AnimTime: 1
+  m_AnimRange: 5
 --- !u!212 &2104943936379506461
 SpriteRenderer:
   m_ObjectHideFlags: 0

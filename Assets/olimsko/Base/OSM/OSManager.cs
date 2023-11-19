@@ -68,7 +68,10 @@ namespace olimsko
                 await postInitializationTasks[i]();
                 if (!IsInitializing) return;
             }
+        }
 
+        public static void SetInitialized()
+        {
             m_InitializeOSM?.TrySetResult();
             Debug.Log("OSManager Initialized Done.");
             OnInitializeComplete?.Invoke();

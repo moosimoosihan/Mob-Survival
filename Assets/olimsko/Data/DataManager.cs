@@ -40,8 +40,9 @@ namespace olimsko
                     }
 
                     m_DictionaryGoogleSheetData.Add(data.Data.GetType(), data.Data);
-                }
 
+
+                }
 
                 Debug.Log("GoogleSheetData Initialized Done.");
             }

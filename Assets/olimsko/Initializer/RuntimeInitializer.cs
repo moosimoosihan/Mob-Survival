@@ -75,6 +75,7 @@ namespace olimsko
                 await entity.InitializeAsync();
             }
 
+            OSManager.SetInitialized();
             InitializeRuntime.TrySetResult();
         }
     }

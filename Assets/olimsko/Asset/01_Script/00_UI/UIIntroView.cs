@@ -25,7 +25,17 @@ public class UIIntroView : UIView
         m_Sequence.Append(Get<UIImage>("Logo").DOFade(0, m_FadeDuration));
         m_Sequence.OnComplete(() =>
         {
-            OSManager.GetService<ContextManager>().GetContext<LoadingContext>().LoadSceneAsyncTrigger("01_Main");
+            if (OSManager.IsInitialized)
+            {
+                OSManager.GetService<ContextManager>().GetContext<LoadingContext>().LoadSceneAsyncTrigger("01_Main");
+            }
+            else
+            {
+                OSManager.OnInitializeComplete += () =>
+                {
+                    OSManager.GetService<ContextManager>().GetContext<LoadingContext>().LoadSceneAsyncTrigger("01_Main");
+                };
+            }
         });
 
     }
