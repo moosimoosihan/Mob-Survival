@@ -4,6 +4,15 @@ using olimsko;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 
+public enum ElementalType
+{
+    Fire,
+    Water,
+    Wind,
+    Earth,
+    Default
+}
+
 [Serializable]
 public class CharacterTable : ITableData<int>
 {
@@ -25,13 +34,15 @@ public class CharacterTable : ITableData<int>
     [SerializeField] private float m_Vamp;
     [SerializeField] private float m_MoveSpeed;
     [SerializeField] private float m_DamageReduction;
+    [SerializeField] private float m_ElemtDamage;
+    [SerializeField] private ElementalType m_ElemtType;
     [SerializeField] private Sprite m_SpriteLD;
     [SerializeField] private Sprite m_SpriteSD;
     [SerializeField] private Sprite m_SpriteProfile;
 
     public CharacterTable() { }
 
-    public CharacterTable(int idx, string name, string desc, string namekey, float damage, float critrate, float critdamage, float activeDamage, float attackspeed, float attackrange, float heal, float hp, int def, int hpregen, float evasion, float vamp, float movespeed, float damagereduction)
+    public CharacterTable(int idx, string name, string desc, string namekey, float damage, float critrate, float critdamage, float activeDamage, float attackspeed, float attackrange, float heal, float hp, int def, int hpregen, float evasion, float vamp, float movespeed, float damagereduction, float elemtDamage, ElementalType elemtType)
     {
         m_Idx = idx;
         m_Name = name;
@@ -51,6 +62,8 @@ public class CharacterTable : ITableData<int>
         m_Vamp = vamp;
         m_MoveSpeed = movespeed;
         m_DamageReduction = damagereduction;
+        ElemtDamage = elemtDamage;
+        ElemtType = elemtType;
     }
 
     public int Idx { get => m_Idx; set => m_Idx = value; }
@@ -71,6 +84,8 @@ public class CharacterTable : ITableData<int>
     public float Vamp { get => m_Vamp; set => m_Vamp = value; }
     public float MoveSpeed { get => m_MoveSpeed; set => m_MoveSpeed = value; }
     public float DamageReduction { get => m_DamageReduction; set => m_DamageReduction = value; }
+    public float ElemtDamage { get => m_ElemtDamage; set => m_ElemtDamage = value; }
+    public ElementalType ElemtType { get => m_ElemtType; set => m_ElemtType = value; }
 
     public async UniTask<Sprite> GetLDSprite()
     {
@@ -127,5 +142,7 @@ public class CharacterTable : ITableData<int>
         m_Vamp = string.IsNullOrEmpty(data[row, 15]) ? default : float.Parse(data[row, 15]);
         m_MoveSpeed = string.IsNullOrEmpty(data[row, 16]) ? default : float.Parse(data[row, 16]);
         m_DamageReduction = string.IsNullOrEmpty(data[row, 17]) ? default : float.Parse(data[row, 17]);
+        m_ElemtDamage = string.IsNullOrEmpty(data[row, 18]) ? default : float.Parse(data[row, 18]);
+        m_ElemtType = string.IsNullOrEmpty(data[row, 19]) ? ElementalType.Default : (ElementalType)Enum.Parse(typeof(ElementalType), data[row, 19]);
     }
 }
