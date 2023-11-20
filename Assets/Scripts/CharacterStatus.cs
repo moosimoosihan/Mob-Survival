@@ -973,4 +973,42 @@ public class CharacterStatus : MonoBehaviour
         agilityPotionTime = 0;
         agilityPotion = false;
     }
+    public Elemental elemental;
+    [SerializeField]
+    private float elementalDamage;
+    [SerializeField]
+    private float curElementalDamage;
+    public float ElementalDamage
+    {
+        get
+        {
+            return elementalDamage;
+        }
+        set
+        {
+            elementalDamage = value;
+        }
+    }
+    public float CurElementalDamage
+    {
+        get
+        {
+            curElementalDamage = elementalDamage;
+
+            if(GetComponent<Player>()){
+                // 아이템 장착 속성 데미지 증가
+                // 고서
+                curElementalDamage += GameManager.instance.skillContext.GetItemValues(0)[0]/100;
+                curElementalDamage += GameManager.instance.skillContext.GetItemValues(1)[0]/100;
+                curElementalDamage += GameManager.instance.skillContext.GetItemValues(2)[0]/100;
+                curElementalDamage += GameManager.instance.skillContext.GetItemValues(3)[0]/100;
+            }
+
+            return curElementalDamage;
+        }
+        set
+        {
+            curElementalDamage = value;
+        }
+    }
 }

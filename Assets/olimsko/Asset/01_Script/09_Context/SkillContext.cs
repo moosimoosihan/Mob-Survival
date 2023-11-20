@@ -750,5 +750,5 @@ public class SkillContext : ContextModel
         }
         return values;
     }
-    // TODO : AttRange, ElementalDamage 구현 해야 함
+    // TODO : AttRange 구현 해야 함
 }

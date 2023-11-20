@@ -92,4 +92,68 @@ public class DamageManager : Singleton<DamageManager>
             }
         }
     }
+
+    public float ElementalDamageCalculator(float damage, Elemental isAttacker, Elemental isDeffender, float isAttackerElementalDamager){
+        // 물 물 = 80%
+        // 물 불 = 150%
+        // 물 땅 = 100%
+        // 물 바람 = 50%
+
+        // 불 물 = 50%
+        // 불 불 = 80%
+        // 불 땅 = 150%
+        // 불 바람 = 100%
+
+        // 땅 물 = 100%
+        // 땅 불 = 50%
+        // 땅 땅 = 80%
+        // 땅 바람 = 150%
+
+        // 바람 물 = 150%
+        // 바람 불 = 100%
+        // 바람 땅 = 50%
+        // 바람 바람 = 80%
+        if(isAttacker == Elemental.Water){
+            if(isDeffender == Elemental.Water){
+                return damage * 0.8f * isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Fire){
+                return damage * 1.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Earth){
+                return damage * 1f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Wind){
+                return damage * 0.5f* isAttackerElementalDamager;
+            }
+        } else if(isAttacker == Elemental.Fire){
+            if(isDeffender == Elemental.Water){
+                return damage * 0.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Fire){
+                return damage * 0.8f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Earth){
+                return damage * 1.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Wind){
+                return damage * 1f* isAttackerElementalDamager;
+            }
+        } else if(isAttacker == Elemental.Earth){
+            if(isDeffender == Elemental.Water){
+                return damage * 1f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Fire){
+                return damage * 0.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Earth){
+                return damage * 0.8f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Wind){
+                return damage * 1.5f* isAttackerElementalDamager;
+            }
+        } else if(isAttacker == Elemental.Wind){
+            if(isDeffender == Elemental.Water){
+                return damage * 1.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Fire){
+                return damage * 1f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Earth){
+                return damage * 0.5f* isAttackerElementalDamager;
+            } else if(isDeffender == Elemental.Wind){
+                return damage * 0.8f* isAttackerElementalDamager;
+            }
+        }
+        return damage;
+    }
 }

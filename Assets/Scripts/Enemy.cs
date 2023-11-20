@@ -180,6 +180,8 @@ public class Enemy : CharacterStatus
         CurHP = MaxHP;
         AttackDamage = data.Attack * power;
         // Vamp = data.Vamp;
+        ElementalDamage = data.ElementalDamage;
+        elemental = data.ElementalType;
 
         Def = data.Def;
         Evasion = data.Avoidance;
@@ -312,10 +314,12 @@ public class Enemy : CharacterStatus
         double dam = 0;
         if (_damage > 0 && !trueDamage)
         {
+            // 몬스터의 속성에따라 데미지 변화
+            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, isPlayer.elemental, isPlayer.CurElementalDamage);
             // DamageReduction 데미지 감소
-            _damage -= CurDamageReduction * _damage;
+            curDamage -= CurDamageReduction * curDamage;
             // 방어력 계산
-            dam = _damage / (1 + CurDef * 0.01);
+            dam = curDamage / (1 + CurDef * 0.01);
             // 회피
             float ran = Random.Range(0, 100);
             if (CurEvasion * 100 > ran)
@@ -335,15 +339,15 @@ public class Enemy : CharacterStatus
             //보호막이 있을 경우 보호막이 먼저 깎인다.
             if (CurShield > 0)
             {
-                if (CurShield > _damage)
+                if (CurShield > dam)
                 {
-                    CurShield -= _damage;
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
+                    CurShield -= (int)dam;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, false);
                     return false;
                 }
-                else if (CurShield == _damage)
+                else if (CurShield == dam)
                 {
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, false);
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, false);
                     CurShield = 0;
                     if (CurShield <= 0)
                     {
@@ -358,7 +362,7 @@ public class Enemy : CharacterStatus
                 }
                 else
                 {
-                    float tempDamage = _damage - CurShield;
+                    float tempDamage = (int)dam - CurShield;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, false);
                     tempDamage = (float)(tempDamage / (1 + CurDef * 0.01));
                     dam = tempDamage;

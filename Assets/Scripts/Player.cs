@@ -89,6 +89,8 @@ public class Player : CharacterStatus
         AttackDamage = data.Damage;
         AttackSpeed = data.AttackSpeed;
         Vamp = data.Vamp;
+        ElementalDamage = data.ElementalDamage;
+        elemental = data.ElementalType;
     }
     void FixedUpdate()
     {
@@ -170,9 +172,9 @@ public class Player : CharacterStatus
                 StartCoroutine(DamageDelay());
             }
 
-            float curDamage = _damage;
+            // 몬스터의 속성에따라 데미지 변화
+            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, enemy.elemental, enemy.CurElementalDamage);
 
-            
             if (character.Equals("용사"))
             {
                 // 용사 3스킬 튼튼한 갑옷 데미지 10% 감소
@@ -205,15 +207,15 @@ public class Player : CharacterStatus
             //보호막이 있을 경우 보호막이 먼저 깎인다.
             if (CurShield > 0)
             {
-                if (CurShield > _damage)
+                if (CurShield > dam)
                 {
-                    CurShield -= _damage;
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
+                    CurShield -= (int)dam;
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
                     return;
                 }
-                else if (CurShield == _damage)
+                else if (CurShield == dam)
                 {
-                    DamageManager.Instance.ShowDamageLabelOnObj((int)_damage, gameObject, _isCritical, true);
+                    DamageManager.Instance.ShowDamageLabelOnObj((int)dam, gameObject, _isCritical, true);
                     CurShield = 0;
                     if (CurShield <= 0)
                     {
@@ -228,7 +230,7 @@ public class Player : CharacterStatus
                 }
                 else
                 {
-                    float tempDamage = _damage - CurShield;
+                    float tempDamage = (int)dam - CurShield;
                     DamageManager.Instance.ShowDamageLabelOnObj((int)CurShield, gameObject, _isCritical, true);
                     tempDamage = (float)(tempDamage / (1 + CurDef * 0.01));
                     dam = tempDamage;
