@@ -35,7 +35,7 @@ public class SwordWeapon : MeleeWeapon
         bullet.GetComponent<FireSword>().player = player;
         bullet.GetComponent<FireSword>().DetectionAngle = CurDetectionAngle;
         bullet.GetComponent<FireSword>().AttackRadius = CurDetectRadius;
-        bullet.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, CurDuration, isCritical);
         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
 
         // 용사 0번 스킬 숙련된 베기 하프에서 서클로 변경
@@ -50,7 +50,7 @@ public class SwordWeapon : MeleeWeapon
             bulletBack.GetComponent<FireSword>().player = player;
             bulletBack.GetComponent<FireSword>().DetectionAngle = CurDetectionAngle;
             bulletBack.GetComponent<FireSword>().AttackRadius = CurDetectRadius;
-            bulletBack.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(player, Damage, out bool isCriticalb), CurCount, Vector3.zero, knockBackPower, duration, isCriticalb);
+            bulletBack.GetComponent<FireSword>().Fire(DamageManager.Instance.Critical(player, Damage, out bool isCriticalb), CurCount, Vector3.zero, knockBackPower, CurDuration, isCriticalb);
             if(isCriticalb || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
         }
 

@@ -125,7 +125,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.GetComponent<Bullet>().player = player;
 
-            tempBullet.Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, lastDir, knockBackPower, duration, isCritical);
+            tempBullet.Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, lastDir, knockBackPower, CurDuration, isCritical);
             if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
             yield return new WaitForSeconds(0.1f);                
         }
@@ -179,7 +179,7 @@ public class IreliaWeapon : Weapon
 
             tempBullet.localPosition = Vector3.zero + (positionOffset.normalized * distanceFromPivot);
             tempBullet.rotation = Quaternion.identity;
-            bulletScript.Fire(Damage, tempPenetrationCount, Vector3.zero, knockBackPower, duration, false, false);
+            bulletScript.Fire(Damage, tempPenetrationCount, Vector3.zero, knockBackPower, CurDuration, false, false);
             if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
             createdBulletList.Add(bulletScript);
             angleCumulative += angleOffset;

@@ -26,7 +26,7 @@ public class SpearWeapon : Weapon
         bullet.position = transform.position + dir;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<Bullet>().player = player;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, CurDuration, isCritical);
         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
     }
 }

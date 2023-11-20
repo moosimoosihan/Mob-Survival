@@ -63,7 +63,8 @@ public class MeleeWeapon : Weapon
     {
         get
         {
-            curDetectionAngle = detectRadius;
+            curDetectRadius = detectRadius;
+            curDetectRadius += GameManager.instance.skillContext.GetItemValues(27)[2]/100;
             return curDetectRadius;
         }
         set
@@ -131,7 +132,7 @@ public class MeleeWeapon : Weapon
         bullet.position = transform.position + dir * spawnDistance;
         bullet.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         bullet.GetComponent<FireSword>().player = player;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(), Damage, out bool isCritical), CurCount, Vector3.zero, knockBackPower, CurDuration, isCritical);
         bullet.GetComponent<EffectBullet>().DetectionAngle = curDetectionAngle;
         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
     }

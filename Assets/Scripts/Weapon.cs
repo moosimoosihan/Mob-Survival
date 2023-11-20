@@ -78,7 +78,41 @@ public abstract class Weapon : MonoBehaviour
     }
     public float bulletSpeed;
     public float knockBackPower;
-    public float duration;
+    [SerializeField]
+    private float duration;
+    [SerializeField]
+    private float curDuration;
+    public float Duration
+    {
+        get
+        {
+            return duration;
+        }
+        set
+        {
+            duration = value;
+        }
+    }
+    public float CurDuration
+    {
+        get
+        {
+            curDuration = duration;
+
+            // 아이템 장착에 의한 지속시간 증가
+            if(!GetComponent<MeleeWeapon>()){ // 근접무기가 아닐경우
+                // 깃털
+                curDuration += duration * GameManager.instance.skillContext.GetItemValues(27)[2]/100;
+            }
+            
+            return curDuration;
+        }
+        set
+        {
+            curDuration = value;
+        }
+    }
+
     public bool isCritical;
 
     protected float timer;

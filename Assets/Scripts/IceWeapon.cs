@@ -39,7 +39,7 @@ public class IceWeapon : Weapon
         bullet.GetComponent<IceBullet>().GroundDuration = groundDuration;
         bullet.GetComponent<IceBullet>().speed = bulletSpeed;
         bullet.GetComponent<IceBullet>().player = player;
-        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+        bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(GetComponentInParent<Player>(),Damage,out bool isCritical), CurCount, dir, knockBackPower, CurDuration, isCritical);
         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
         
         AudioManager.Instance.SfxPlay(AudioManager.Sfx.Wizard_Attack);
@@ -65,7 +65,7 @@ public class IceWeapon : Weapon
                 bullets.GetComponent<IceBullet>().GroundDuration = groundDuration;
                 bullets.GetComponent<IceBullet>().speed = bulletSpeed;
                 bullets.GetComponent<IceBullet>().player = player;
-                bullets.GetComponent<IceBullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCriticals), CurCount, dirs, knockBackPower, duration, isCriticals);
+                bullets.GetComponent<IceBullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCriticals), CurCount, dirs, knockBackPower, CurDuration, isCriticals);
                 if(isCriticals || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
             }
         }

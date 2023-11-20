@@ -750,5 +750,4 @@ public class SkillContext : ContextModel
         }
         return values;
     }
-    // TODO : AttRange 구현 해야 함
 }

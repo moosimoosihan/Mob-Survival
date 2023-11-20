@@ -35,16 +35,16 @@ public class BowWeapon : Weapon
         // 궁수 3스킬 5번 쏘면 100% 크리티컬
         if(GameManager.instance.skillContext.ActherSkill3()){
             if(bowCount >= 5){
-                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dir, knockBackPower, duration, isCritical);
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dir, knockBackPower, CurDuration, isCritical);
                 if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
                 bowCount = 0;
             } else {
                 bowCount++;
-                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+                bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, CurDuration, isCritical);
                 if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
             }
         } else {
-            bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, duration, isCritical);
+            bullet.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dir, knockBackPower, CurDuration, isCritical);
             if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
         }        
 
@@ -67,16 +67,16 @@ public class BowWeapon : Weapon
                 // 궁수 3스킬 5번 쏘면 100% 크리티컬
                 if(GameManager.instance.skillContext.ActherSkill3()){
                     if(bowCount >= 5){
-                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dirs, knockBackPower, duration, isCritical);
+                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage, out bool isCritical, true), CurCount, dirs, knockBackPower, CurDuration, isCritical);
                         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
                         bowCount = 0;
                     } else {
                         bowCount++;
-                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dirs, knockBackPower, duration, isCritical);
+                        bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dirs, knockBackPower, CurDuration, isCritical);
                         if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
                     }
                 } else {
-                    bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dirs, knockBackPower, duration, isCritical);
+                    bullets.GetComponent<Bullet>().Fire(DamageManager.Instance.Critical(player,Damage,out bool isCritical), CurCount, dirs, knockBackPower, CurDuration, isCritical);
                     if(isCritical || this.isCritical) {this.isCritical=true;} else {this.isCritical=false;}
                 }
             }
