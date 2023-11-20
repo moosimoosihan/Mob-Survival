@@ -5,11 +5,12 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Spine.Unity;
 using Cysharp.Threading.Tasks;
-public enum Elemental {
-    땅,
-    불,
-    물,
-    바람,
+public enum Elemental
+{
+    Fire,
+    Water,
+    Wind,
+    Earth,
     Default
 }
 
@@ -26,12 +27,13 @@ public class MonsterTable : ITableData<int>
     [SerializeField] private float m_Def;
     [SerializeField] private float m_HPRegen;
     [SerializeField] private float m_Avoidance;
-    [SerializeField] private Elemental m_Elemental;
+    [SerializeField] private Elemental m_ElementalType;
+    [SerializeField] private float m_ElementalDamage;
     [SerializeField] private SkeletonDataAsset m_SkeletonDataAsset;
 
     public MonsterTable() { }
 
-    public MonsterTable(int index, string namekey, string name, string desc, float hp, float speed, float attack, float def, float hpregen, float avoidance, Elemental elemental)
+    public MonsterTable(int index, string namekey, string name, string desc, float hp, float speed, float attack, float def, float hpregen, float avoidance, Elemental elementalType, float elementalDamage)
     {
         m_Index = index;
         m_NameKey = namekey;
@@ -43,7 +45,8 @@ public class MonsterTable : ITableData<int>
         m_Def = def;
         m_HPRegen = hpregen;
         m_Avoidance = avoidance;
-        m_Elemental = elemental;
+        ElementalType = elementalType;
+        ElementalDamage = elementalDamage;
     }
 
     public int Index { get => m_Index; set => m_Index = value; }
@@ -56,7 +59,8 @@ public class MonsterTable : ITableData<int>
     public float Def { get => m_Def; set => m_Def = value; }
     public float HPRegen { get => m_HPRegen; set => m_HPRegen = value; }
     public float Avoidance { get => m_Avoidance; set => m_Avoidance = value; }
-    public Elemental Elemental { get => m_Elemental; set => m_Elemental = value; }
+    public Elemental ElementalType { get => m_ElementalType; set => m_ElementalType = value; }
+    public float ElementalDamage { get => m_ElementalDamage; set => m_ElementalDamage = value; }
 
     public int GetKey()
     {
@@ -84,6 +88,8 @@ public class MonsterTable : ITableData<int>
         m_Def = string.IsNullOrEmpty(data[row, 7]) ? default : float.Parse(data[row, 7]);
         m_HPRegen = string.IsNullOrEmpty(data[row, 8]) ? default : float.Parse(data[row, 8]);
         m_Avoidance = string.IsNullOrEmpty(data[row, 9]) ? default : float.Parse(data[row, 9]);
-        m_Elemental = string.IsNullOrEmpty(data[row, 10]) ? Elemental.Default : (Elemental)Enum.Parse(typeof(Elemental), data[row, 10]);
+        m_ElementalType = string.IsNullOrEmpty(data[row, 10]) ? Elemental.Default : (Elemental)Enum.Parse(typeof(Elemental), data[row, 10]);
+        m_ElementalDamage = string.IsNullOrEmpty(data[row, 11]) ? default : float.Parse(data[row, 11]);
+
     }
 }
