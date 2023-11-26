@@ -314,8 +314,10 @@ public class Enemy : CharacterStatus
         double dam = 0;
         if (_damage > 0 && !trueDamage)
         {
+            
             // 몬스터의 속성에따라 데미지 변화
-            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, isPlayer.elemental, isPlayer.CurElementalDamage);
+            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, isPlayer==null?Elemental.Default:isPlayer.elemental, isPlayer.CurElementalDamage);
+
             // DamageReduction 데미지 감소
             curDamage -= CurDamageReduction * curDamage;
             // 방어력 계산

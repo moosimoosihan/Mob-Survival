@@ -173,7 +173,7 @@ public class Player : CharacterStatus
             }
 
             // 몬스터의 속성에따라 데미지 변화
-            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, enemy.elemental, enemy.CurElementalDamage);
+            float curDamage = DamageManager.Instance.ElementalDamageCalculator(_damage, elemental, enemy==null?Elemental.Default:enemy.elemental, enemy.CurElementalDamage);
 
             if (character.Equals("용사"))
             {
