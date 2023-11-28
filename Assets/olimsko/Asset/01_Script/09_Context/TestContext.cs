@@ -31,7 +31,7 @@ public class TestContext : ContextModel
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-            OSManager.GetService<GlobalManager>().PlayerInventory.Gold -= 1000;
+            OSManager.GetService<GlobalManager>().PlayerInventory.AddUpgradeStone(11, 50);
         }
 
         if (Input.GetKeyDown(KeyCode.J))

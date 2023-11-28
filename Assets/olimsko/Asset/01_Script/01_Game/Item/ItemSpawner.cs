@@ -31,6 +31,7 @@ public class ItemSpawner : MonoBehaviour
         DropItem dropItem = GetDropItem();
         dropItem.transform.position = dropItemData.Transform.position;
         dropItem.SetData(this, dropItemData);
+        m_ListDropItem.Add(dropItem);
     }
 
     public DropItem GetDropItem()
@@ -44,7 +45,7 @@ public class ItemSpawner : MonoBehaviour
         {
             DropItem dropItem = Instantiate(m_DropItemPrefab, transform);
             dropItem.gameObject.SetActive(false);
-            m_ListDropItem.Add(dropItem);
+
             return dropItem;
         }
     }

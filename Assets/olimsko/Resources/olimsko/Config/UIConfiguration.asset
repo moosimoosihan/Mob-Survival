@@ -36,3 +36,5 @@ MonoBehaviour:
     m_Prefab: {fileID: 8291332439410686179, guid: 3bf512e0587947c41a2b3b89141acff7, type: 3}
   - m_Name: UIToolTipView
     m_Prefab: {fileID: 8291332439410686179, guid: e2fae9f07ab054448b1e863bf5c1c0f0, type: 3}
+  - m_Name: UIIndicatorView
+    m_Prefab: {fileID: 8291332439410686179, guid: 283831eab7ea48e40a481dad82a3e8ca, type: 3}

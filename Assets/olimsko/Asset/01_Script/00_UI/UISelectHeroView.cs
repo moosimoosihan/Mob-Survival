@@ -38,6 +38,10 @@ public class UISelectHeroView : UIView
     {
         base.OnShow();
         InitializeData();
+
+        Debug.Log("SelectedChapter : " + OSManager.GetService<ContextManager>().GetContext<StageContext>().SelectedChapter);
+        Debug.Log("SelectedStage : " + OSManager.GetService<ContextManager>().GetContext<StageContext>().SelectedStage);
+        Debug.Log("SelectedDifficulty : " + OSManager.GetService<ContextManager>().GetContext<StageContext>().SelectedDifficulty);
     }
 
     protected override void OnHide()

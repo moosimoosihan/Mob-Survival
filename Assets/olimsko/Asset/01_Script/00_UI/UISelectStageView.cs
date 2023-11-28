@@ -22,6 +22,13 @@ public class UISelectStageView : UIView
 
     public void OnShowSelectHero()
     {
+        int stageIdx = Get<UIToggle>("Stage1").isOn ? 1 : Get<UIToggle>("Stage2").isOn ? 2 : 3;
+        OSManager.GetService<ContextManager>().GetContext<StageContext>().SelectedStage = stageIdx;
+
+        int difficulty = Get<UIToggle>($"Stage{stageIdx}_Normal").isOn ? 1 : Get<UIToggle>($"Stage{stageIdx}_Hard").isOn ? 2 : 3;
+        OSManager.GetService<ContextManager>().GetContext<StageContext>().SelectedDifficulty = difficulty;
+
         OSManager.GetService<UIManager>().GetUI<UISelectHeroView>().Show();
     }
+
 }

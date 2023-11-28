@@ -70,6 +70,11 @@ public class UIUpgradeView : UIView
             m_SelectedHeroIndex = index;
         }
         CharSpriteAnimation();
+
+        for (int i = 0; i < m_ListStatUpgradeItem.Count; i++)
+        {
+            m_ListStatUpgradeItem[i].SetCharacterStatAsync(StageContext.ListSelectableHero[m_SelectedHeroIndex]);
+        }
     }
 
     public void CharSpriteAnimation()

@@ -4,27 +4,31 @@ using olimsko;
 
 public class CharacterInfo
 {
-    private List<Dictionary<StatType, StatUpgradeTable>> m_ListCharUpgradeStat = new List<Dictionary<StatType, StatUpgradeTable>>();
+    private Dictionary<int, Dictionary<StatType, int>> m_DicCharUpgradedStat = new Dictionary<int, Dictionary<StatType, int>>();
 
-    public List<Dictionary<StatType, StatUpgradeTable>> ListCharUpgradeStat { get => m_ListCharUpgradeStat; set => m_ListCharUpgradeStat = value; }
+    public Dictionary<int, Dictionary<StatType, int>> DicCharUpgradedStat { get => m_DicCharUpgradedStat; set => m_DicCharUpgradedStat = value; }
 
     public CharacterInfo()
     {
-        ListCharUpgradeStat = new List<Dictionary<StatType, StatUpgradeTable>>();
+        DicCharUpgradedStat = new Dictionary<int, Dictionary<StatType, int>>();
 
         CharacterTableSO characterTableSO = OSManager.GetService<DataManager>().GetData<CharacterTableSO>();
         StatUpgradeTableSO statUpgradeTableSO = OSManager.GetService<DataManager>().GetData<StatUpgradeTableSO>();
 
         for (int i = 0; i < characterTableSO.CharacterTable.Count; i++)
         {
-            Dictionary<StatType, StatUpgradeTable> dicStat = new Dictionary<StatType, StatUpgradeTable>();
-
-            foreach (var statUpgradeTable in statUpgradeTableSO.StatUpgradeTable)
+            if (!DicCharUpgradedStat.ContainsKey(characterTableSO.CharacterTable[i].Idx))
             {
-                dicStat.Add(statUpgradeTable.Key, statUpgradeTable.Value);
+                DicCharUpgradedStat.Add(characterTableSO.CharacterTable[i].Idx, new Dictionary<StatType, int>());
             }
 
-            ListCharUpgradeStat.Add(dicStat);
+            for (int j = 0; j < statUpgradeTableSO.StatUpgradeTable.Count; j++)
+            {
+                if (!DicCharUpgradedStat[characterTableSO.CharacterTable[i].Idx].ContainsKey(statUpgradeTableSO.StatUpgradeTable[j].Stat))
+                {
+                    DicCharUpgradedStat[characterTableSO.CharacterTable[i].Idx].Add(statUpgradeTableSO.StatUpgradeTable[j].Stat, 0);
+                }
+            }
         }
     }
 }

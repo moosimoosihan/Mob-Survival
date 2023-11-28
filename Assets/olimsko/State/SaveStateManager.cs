@@ -125,7 +125,7 @@ namespace olimsko
         {
             var jsonData = OSManager.GetConfiguration<StateConfiguration>().UseNewtonsoftJson ? JsonConvert.SerializeObject(data, Formatting.Indented, new JsonSerializerSettings
             {
-                // ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
                 TypeNameHandling = TypeNameHandling.Auto
             }) : JsonUtility.ToJson(data, PrettifyJson);
             var filePath = SlotIdToFilePath(slotId);

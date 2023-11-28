@@ -8,7 +8,10 @@ public class StageContext : ContextModel
 {
     public Action OnSelectedHeroChanged;
 
-    public int SelectedStage { get; set; } = -1;
+    public int SelectedChapter { get; set; } = 1;
+    public int SelectedStage { get; set; } = 1;
+    public int SelectedDifficulty { get; set; } = 1;
+
     public List<int> ListSelectedHero { get; } = new List<int>();
     public List<int> ListSelectableHero { get; private set; } = new List<int>();
 

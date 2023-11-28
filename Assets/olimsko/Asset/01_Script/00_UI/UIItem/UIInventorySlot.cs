@@ -115,9 +115,20 @@ public class UIInventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     public string GetToolTipTitle()
     {
-        if (m_ItemId != -1)
-            return LocalizationSettings.StringDatabase.GetTable("LanguageTable").GetEntry(ListItemTable[m_ItemId].Name).GetLocalizedString();
-        else return "";
+        string title = "";
+
+        if (m_ItemId == -1) return "";
+
+        switch (ListItemTable[m_ItemId].Grade)
+        {
+            case ItemGrade.Normal: title = "<color=#5DDB54>{content}</color>"; break;
+            case ItemGrade.Rare: title = "<color=#54BBDB>{content}</color>"; break;
+            case ItemGrade.Unique: title = "<color=#FF6F59>{content}</color>"; break;
+            case ItemGrade.Legendary: title = "<color=#FFD658>{content}</color>"; break;
+        }
+
+        title = title.Replace("{content}", LocalizationSettings.StringDatabase.GetTable("LanguageTable").GetEntry(ListItemTable[m_ItemId].Name).GetLocalizedString());
+        return title;
     }
 
     public string GetToolTipDesc()

@@ -4,7 +4,8 @@ using olimsko;
 
 public class UIStageView : UIView
 {
-    // Add your UI logic here
+    StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
+
     protected override void Awake()
     {
         base.Awake();
@@ -20,4 +21,14 @@ public class UIStageView : UIView
         base.OnHide();
     }
 
+    public void OnClickSelectChapter(int chapter)
+    {
+        StageContext.SelectedChapter = chapter;
+        OSManager.GetService<UIManager>().GetUI<UISelectStageView>().Show();
+    }
+
+    public void OnClickUpgrade()
+    {
+        OSManager.GetService<UIManager>().GetUI<UIUpgradeView>().Show();
+    }
 }

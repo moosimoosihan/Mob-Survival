@@ -6,9 +6,14 @@ using olimsko;
 [CreateAssetMenu(fileName = "StatUpgradeTableSO", menuName = "olimsko/Data/StatUpgradeTableSO", order = 1)]
 public class StatUpgradeTableSO : GoogleSheetData
 {
-    [SerializeField] public Dictionary<StatType,StatUpgradeTable> StatUpgradeTable = new Dictionary<StatType,StatUpgradeTable>();
+    [SerializeField] public List<StatUpgradeTable> StatUpgradeTable = new List<StatUpgradeTable>();
     public override void SetData(string[,] data)
     {
         SetDataToList(data, StatUpgradeTable);
+    }
+
+    public StatUpgradeTable GetStatTable(int charID, StatType statType, int level)
+    {
+        return StatUpgradeTable.Find(x => x.CharID == charID && x.Stat == statType && x.Level == level);
     }
 }

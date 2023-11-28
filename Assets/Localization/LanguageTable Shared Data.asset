@@ -1187,6 +1187,150 @@ MonoBehaviour:
     m_Key: Str_ItemDescKey_39
     m_Metadata:
       m_Items: []
+  - m_Id: 49148252634140672
+    m_Key: Str_ItemNameKey_40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386880
+    m_Key: Str_ItemNameKey_41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386881
+    m_Key: Str_ItemNameKey_42
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386882
+    m_Key: Str_ItemNameKey_43
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386883
+    m_Key: Str_ItemNameKey_44
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386884
+    m_Key: Str_ItemNameKey_45
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386885
+    m_Key: Str_ItemNameKey_46
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386886
+    m_Key: Str_ItemNameKey_47
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386887
+    m_Key: Str_ItemNameKey_48
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386888
+    m_Key: Str_ItemNameKey_49
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386889
+    m_Key: Str_ItemNameKey_50
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386890
+    m_Key: Str_ItemNameKey_51
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386891
+    m_Key: Str_ItemNameKey_52
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386892
+    m_Key: Str_ItemNameKey_53
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386893
+    m_Key: Str_ItemDescKey_40
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386894
+    m_Key: Str_ItemDescKey_41
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386895
+    m_Key: Str_ItemDescKey_42
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386896
+    m_Key: Str_ItemDescKey_43
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386897
+    m_Key: Str_ItemDescKey_44
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386898
+    m_Key: Str_ItemDescKey_45
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386899
+    m_Key: Str_ItemDescKey_46
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386900
+    m_Key: Str_ItemDescKey_47
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386901
+    m_Key: Str_ItemDescKey_48
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386902
+    m_Key: Str_ItemDescKey_49
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386903
+    m_Key: Str_ItemDescKey_50
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386904
+    m_Key: Str_ItemDescKey_51
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386905
+    m_Key: Str_ItemDescKey_52
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386906
+    m_Key: Str_ItemDescKey_53
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789505196032
+    m_Key: Str_StageClear
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442240
+    m_Key: Str_StageFailure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442241
+    m_Key: Str_PlayTime
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51658218800599040
+    m_Key: Str_UpgradeList
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442242
+    m_Key: Str_GetItem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636544
+    m_Key: Str_GetGold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636545
+    m_Key: Str_KillCount
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636546
+    m_Key: Str_KillBoss
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

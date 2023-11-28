@@ -551,7 +551,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706612
-    m_Localized: Full protection
+    m_Localized: Whole protection
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706613
@@ -615,7 +615,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706628
-    m_Localized: Burn Skills Add to DEBUFF Condition
+    m_Localized: Burn Skills Add to DEBUFF CONDITION
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706629
@@ -676,7 +676,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706642
-    m_Localized: All party members all ATT SPEED/Active CoolDown increased 15%
+    m_Localized: All party members ATT SPEED/Active CoolDown increase 15%
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706643
@@ -685,8 +685,8 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706644
-    m_Localized: When the archer is killed by 50 enemies, the construction of the
-      shooting skill of the shooting skill is increased by 1
+    m_Localized: When the archer is killed by 50 enemies, the construction of a projectile
+      penetration of shooting skills increases by 1
     m_Metadata:
       m_Items: []
   - m_Id: 43441903392706645
@@ -1024,191 +1024,345 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416608
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Ice bead
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416609
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Mana bead
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416610
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Perforation
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416611
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Chain armor
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416612
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Paladin Armor
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416613
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Hell
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416614
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Dragon
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416615
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: 10 additional attribute damage
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416616
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: 15 additional attribute damage, 5 additional attack speed
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416617
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: 20 additional attribute damage, 10 additional attack speed
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416618
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Attribute damage 40 additional, 15 additional attack speed, 10 additional
+      movement speed
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416619
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Damage 10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416620
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Damage 15, Critical probability 5
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416621
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Damage 20, Critical Chance 10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416622
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Damage 40, Critical Probability 15, Vampire 5
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416623
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Skill damage 10, skill cooldown 10%reduction
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416624
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Skill damage increased by 15, cooldown 15%reduction
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416625
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: 20% increase in skill damage, 20% reduction in cooldown
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416626
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Skill damage increased by 30, cooldown 30% reduction, damage 10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416627
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Item acquisition distance slightly increased
     m_Metadata:
       m_Items: []
   - m_Id: 44113304315416628
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Increased item acquisition distance
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610880
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Item acquisition distance significantly increased, experience acquisition
+      10%
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610881
-    m_Localized: "\uB85C\uB4DC \uC911..."
+    m_Localized: Item acquisition distance significantly increased+, experience acquisition
+      20%
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610882
-    m_Localized: Item description
+    m_Localized: Penetration +1
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610883
-    m_Localized: Item description
+    m_Localized: Penetration +2
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610884
-    m_Localized: Item description
+    m_Localized: Penetration +3, projectile +1
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610885
-    m_Localized: Item description
+    m_Localized: Penetration +4, projectile +2
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610886
-    m_Localized: Item description
+    m_Localized: Critical probability 10, critical damage increased by 15
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610887
-    m_Localized: Item description
+    m_Localized: Cree probability damage 15 25 increases
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610888
-    m_Localized: Item description
+    m_Localized: Cree 20 40
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610889
-    m_Localized: Item description
+    m_Localized: Cree 30 60
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610890
-    m_Localized: Item description
+    m_Localized: +10, attack speed +10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610891
-    m_Localized: Item description
+    m_Localized: +15, speed +15
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610892
-    m_Localized: Item description
+    m_Localized: +20, speed +20
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610893
-    m_Localized: Item description
+    m_Localized: +30, speed speed +30, range +10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610894
-    m_Localized: Item description
+    m_Localized: Acquisition of experience +10
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610895
-    m_Localized: Item description
+    m_Localized: Experience acquisition +20
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610896
-    m_Localized: Item description
+    m_Localized: Acquisition of experience +30, item acquisition is slightly increased
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610897
-    m_Localized: Item description
+    m_Localized: Acquisition of experience +50, item acquisition distance increases
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610898
-    m_Localized: Item description
+    m_Localized: Hill amount +10, regeneration +1
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610899
-    m_Localized: Item description
+    m_Localized: Hill amount +20, regeneration +2
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610900
-    m_Localized: Item description
+    m_Localized: Hill amount +30, regeneration +3
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610901
-    m_Localized: Item description
+    m_Localized: Hill amount +50, regeneration +5, maximum health 50
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610902
-    m_Localized: Item description
+    m_Localized: Defense +20
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610903
-    m_Localized: Item description
+    m_Localized: Defense +30, Recovery +1
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610904
-    m_Localized: Item description
+    m_Localized: Defense +40, Recovery +2
     m_Metadata:
       m_Items: []
   - m_Id: 44113304319610905
-    m_Localized: Item description
+    m_Localized: Defense +50, Recovery +4, Damage Reduction +10
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252634140672
+    m_Localized: Normal item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386880
+    m_Localized: Rare item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386881
+    m_Localized: Unique item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386882
+    m_Localized: magnet
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386883
+    m_Localized: Celestial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386884
+    m_Localized: Recovery mushroom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386885
+    m_Localized: Gold (middle)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386886
+    m_Localized: Gold (large)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386887
+    m_Localized: Leap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386888
+    m_Localized: Leap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386889
+    m_Localized: Mana's leap
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386890
+    m_Localized: Celestial wings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386891
+    m_Localized: gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386892
+    m_Localized: Experience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386893
+    m_Localized: Normal item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386894
+    m_Localized: Rare item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386895
+    m_Localized: Unique item box
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386896
+    m_Localized: When acquired, all the experiences and gold all over the map gathers
+      at the character.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386897
+    m_Localized: When acquiring, all monsters on the current screen are damaged by
+      {150}
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386898
+    m_Localized: The character of the character acquired when acquired is restored
+      20%
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386899
+    m_Localized: Get Gold 50 when acquired.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386900
+    m_Localized: Get Gold 100 when acquired.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386901
+    m_Localized: When acquired, the attack power of the entire character will increase
+      by 50% for 20 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386902
+    m_Localized: When acquired, the speed of the entire character will increase by
+      50% for 20 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386903
+    m_Localized: When acquired, the attack speed of the entire character will increase
+      by 50% for 20 seconds.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386904
+    m_Localized: Consumable that resurrects one of the dead allied characters when
+      acquired
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386905
+    m_Localized: gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 49148252747386906
+    m_Localized: Experience
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789505196032
+    m_Localized: Adventure success
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442240
+    m_Localized: Adventure failure
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442241
+    m_Localized: Play time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789618442242
+    m_Localized: Acquisition
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636544
+    m_Localized: Acquired Gold
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636545
+    m_Localized: Kill monster
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51657789622636546
+    m_Localized: boss
+    m_Metadata:
+      m_Items: []
+  - m_Id: 51658218800599040
+    m_Localized: upgrade
     m_Metadata:
       m_Items: []
   references:

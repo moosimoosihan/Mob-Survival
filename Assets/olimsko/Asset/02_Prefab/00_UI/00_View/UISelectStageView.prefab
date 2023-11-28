@@ -1351,7 +1351,7 @@ GameObject:
   - component: {fileID: 2411584953987040257}
   - component: {fileID: 8536649653317989069}
   m_Layer: 0
-  m_Name: Toggle_Normal
+  m_Name: Stage2_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage2_Normal
 --- !u!114 &3835057738252193532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1461,9 +1461,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 1
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage2_Normal
 --- !u!222 &1440780711066413075
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1779,7 +1779,7 @@ GameObject:
   - component: {fileID: 8952934827223518686}
   - component: {fileID: 7077427327845778446}
   m_Layer: 0
-  m_Name: Toggle_Hell
+  m_Name: Stage1_Hell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1839,7 +1839,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage1_Hell
 --- !u!114 &95016273399248555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,9 +1889,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage1_Hell
 --- !u!222 &4611096578426160541
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2857,7 +2857,7 @@ GameObject:
   - component: {fileID: 5862896651651852699}
   - component: {fileID: 6070824169490119517}
   m_Layer: 0
-  m_Name: Toggle_Normal
+  m_Name: Stage1_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2917,7 +2917,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage1_Normal
 --- !u!114 &6146053978568934342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2967,9 +2967,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 1
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage1_Normal
 --- !u!222 &6433874631048381496
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3064,7 +3064,7 @@ GameObject:
   - component: {fileID: 1472632914083725818}
   - component: {fileID: 7503921528778225436}
   m_Layer: 0
-  m_Name: Toggle_Hard
+  m_Name: Stage1_Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3124,7 +3124,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage1_Hard
 --- !u!114 &5259847194134142948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3174,9 +3174,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage1_Hard
 --- !u!222 &6757031424728962882
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3332,7 +3332,7 @@ GameObject:
   - component: {fileID: 955245707448764278}
   - component: {fileID: 5384608654902864946}
   m_Layer: 0
-  m_Name: Toggle_Hell
+  m_Name: Stage3_Hell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3392,7 +3392,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage3_Hell
 --- !u!114 &7030142439975581248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3442,9 +3442,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage3_Hell
 --- !u!222 &6881371316844948571
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3995,7 +3995,7 @@ GameObject:
   - component: {fileID: 131668686948584750}
   - component: {fileID: 7866539623410413361}
   m_Layer: 0
-  m_Name: Toggle_Hard
+  m_Name: Stage2_Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4055,7 +4055,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage2_Hard
 --- !u!114 &2696305579655640344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4105,9 +4105,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage2_Hard
 --- !u!222 &4102359953578726858
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4202,7 +4202,7 @@ GameObject:
   - component: {fileID: 3112516846693971484}
   - component: {fileID: 9222823560413718423}
   m_Layer: 0
-  m_Name: Toggle_Hard
+  m_Name: Stage3_Hard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4262,7 +4262,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage3_Hard
 --- !u!114 &4854766133251664054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4312,9 +4312,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hard
+  m_BindPath: Stage3_Hard
 --- !u!222 &8901675917966928901
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4727,7 +4727,7 @@ GameObject:
   - component: {fileID: 8928408891505757866}
   - component: {fileID: 7857560733377946987}
   m_Layer: 0
-  m_Name: Toggle_Normal
+  m_Name: Stage3_Normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4787,7 +4787,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage3_Normal
 --- !u!114 &4746941944411113124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,9 +4837,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 1
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Normal
+  m_BindPath: Stage3_Normal
 --- !u!222 &3660161666747281696
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5214,7 +5214,7 @@ GameObject:
   - component: {fileID: 8449161157176941910}
   - component: {fileID: 7706301338040708525}
   m_Layer: 0
-  m_Name: Toggle_Hell
+  m_Name: Stage2_Hell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   m_PixelsPerUnitMultiplier: 0.5
   m_IsBind: 0
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage2_Hell
 --- !u!114 &1719498741848024116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5324,9 +5324,9 @@ MonoBehaviour:
       m_Calls: []
   m_IsOn: 0
   m_UITransition: {fileID: 0}
-  m_IsBind: 0
+  m_IsBind: 1
   m_IsUseCustomBindPath: 0
-  m_BindPath: Toggle_Hell
+  m_BindPath: Stage2_Hell
 --- !u!222 &2357814754992105997
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5615,9 +5615,21 @@ PrefabInstance:
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 5089962253915311567}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_IsBind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440551241976521135, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_text
+      value: Stage 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5845352860673728548, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Name
-      value: UIStageSelectItem
+      value: Stage3
       objectReference: {fileID: 0}
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Pivot.x
@@ -5702,6 +5714,10 @@ PrefabInstance:
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369978520169851015, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd69162984b85545955093692c2087d, type: 3}
@@ -5725,9 +5741,17 @@ PrefabInstance:
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 5089962253915311567}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_IsBind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage1
+      objectReference: {fileID: 0}
     - target: {fileID: 5845352860673728548, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Name
-      value: UIStageSelectItem
+      value: Stage1
       objectReference: {fileID: 0}
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Pivot.x
@@ -5812,6 +5836,10 @@ PrefabInstance:
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369978520169851015, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd69162984b85545955093692c2087d, type: 3}
@@ -5835,9 +5863,21 @@ PrefabInstance:
       propertyPath: m_Group
       value: 
       objectReference: {fileID: 5089962253915311567}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_IsBind
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 333918722051891768, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4440551241976521135, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_text
+      value: Stage 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5845352860673728548, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Name
-      value: UIStageSelectItem
+      value: Stage2
       objectReference: {fileID: 0}
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_Pivot.x
@@ -5922,6 +5962,10 @@ PrefabInstance:
     - target: {fileID: 5931335124433574235, guid: 6cd69162984b85545955093692c2087d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8369978520169851015, guid: 6cd69162984b85545955093692c2087d, type: 3}
+      propertyPath: m_BindPath
+      value: Stage2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cd69162984b85545955093692c2087d, type: 3}

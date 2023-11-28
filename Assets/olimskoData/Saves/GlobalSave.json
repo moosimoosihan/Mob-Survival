@@ -1,3 +1,83 @@
 {
-  "ObjectMap": {}
+  "ObjectMap": {
+    "PlayerInventory, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "PlayerInventory, Assembly-CSharp",
+      "Gold": 275,
+      "UpgradeStone": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        15
+      ]
+    },
+    "CharacterInfo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null": {
+      "$type": "CharacterInfo, Assembly-CSharp",
+      "DicCharUpgradedStat": {
+        "0": {
+          "Damage": 10,
+          "CritRate": 0,
+          "CritDamage": 5,
+          "AttSpeed": 0,
+          "ActiveDamage": 0,
+          "ActiveCooldown": 0,
+          "HP": 0,
+          "Def": 5,
+          "MoveSpeed": 0,
+          "Passive1": 0,
+          "Passive2": 0,
+          "Passive3": 0
+        },
+        "1": {
+          "Damage": 0,
+          "CritRate": 0,
+          "CritDamage": 0,
+          "AttSpeed": 0,
+          "ActiveDamage": 0,
+          "ActiveCooldown": 0,
+          "HP": 0,
+          "Def": 0,
+          "MoveSpeed": 0,
+          "Passive1": 0,
+          "Passive2": 0,
+          "Passive3": 0
+        },
+        "2": {
+          "Damage": 0,
+          "CritRate": 0,
+          "CritDamage": 0,
+          "AttSpeed": 0,
+          "ActiveDamage": 0,
+          "ActiveCooldown": 0,
+          "HP": 0,
+          "Def": 0,
+          "MoveSpeed": 0,
+          "Passive1": 0,
+          "Passive2": 0,
+          "Passive3": 0
+        },
+        "3": {
+          "Damage": 0,
+          "CritRate": 0,
+          "CritDamage": 0,
+          "AttSpeed": 0,
+          "ActiveDamage": 0,
+          "ActiveCooldown": 0,
+          "HP": 0,
+          "Def": 0,
+          "MoveSpeed": 0,
+          "Passive1": 0,
+          "Passive2": 0,
+          "Passive3": 0
+        }
+      }
+    }
+  }
 }

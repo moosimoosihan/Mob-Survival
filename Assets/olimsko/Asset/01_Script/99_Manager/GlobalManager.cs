@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class GlobalManager : IOSMEntity, IManagedState<GlobalState>
 {
     private StateManager StateManager => OSManager.GetService<StateManager>();
+    private UIManager UIManager => OSManager.GetService<UIManager>();
 
     private PlayerInventory m_PlayerInventory;
     private CharacterInfo m_CharacterInfo;
@@ -14,6 +15,7 @@ public class GlobalManager : IOSMEntity, IManagedState<GlobalState>
 
     public PlayerInventory PlayerInventory { get => m_PlayerInventory; set => m_PlayerInventory = value; }
     public CharacterInfo CharacterInfo { get => m_CharacterInfo; set => m_CharacterInfo = value; }
+
 
     public UniTask InitializeAsync()
     {
@@ -30,13 +32,15 @@ public class GlobalManager : IOSMEntity, IManagedState<GlobalState>
 
     public void SaveDataState(GlobalState state)
     {
-        state.SetState<PlayerInventory>(m_PlayerInventory);
+        state.SetState<PlayerInventory>(PlayerInventory);
         state.SetState<CharacterInfo>(CharacterInfo);
     }
 
     public async UniTask SaveData()
     {
+        UIManager.GetUI<UIIndicatorView>().Show();
         await StateManager.SaveGlobalAsync();
+        UIManager.GetUI<UIIndicatorView>().Hide();
     }
 
     public void Reset()
