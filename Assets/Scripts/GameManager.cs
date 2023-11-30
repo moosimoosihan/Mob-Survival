@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour
     public ItemContext ItemContext => OSManager.GetService<ContextManager>().GetContext<ItemContext>();
     private List<CharacterTable> CharacterData => OSManager.GetService<DataManager>().GetData<CharacterTableSO>().CharacterTable;
 
+    [Header("스테이지")]
+    public int chapter;
+    public int stage;
+    public int difficulty;
+    public GameObject[] mapObjs;
+
     [Header("게임 컨트롤")]
     private float m_GameTime = 0;
     public float GameTime { get => m_GameTime; set => m_GameTime = value; }
@@ -100,6 +106,10 @@ public class GameManager : MonoBehaviour
         {
             nextExp[i] = System.Convert.ToInt32(expLines[i]);
         }
+        // 스테이지 불러오기
+        StageInit();
+        
+        // 케릭터 불러오기
         CharacterInit();
 
         AudioManager.Instance.AmbPlay(AudioManager.Amb.Stage1);
@@ -264,6 +274,15 @@ public class GameManager : MonoBehaviour
         boom.SetActive(false);
     }
 
+    void StageInit()
+    {
+        chapter = StageContext.SelectedChapter;
+        stage = StageContext.SelectedStage;
+        difficulty = StageContext.SelectedDifficulty;
+
+        int stageNum = chapter + stage - 2;
+        mapObjs[stageNum].SetActive(true);
+    }
 }
 [System.Serializable]
 public class playerData
