@@ -27,6 +27,7 @@ public class Spawner : MonoBehaviour
     private IObjectPool<Enemy> _Pool;
     public GameObject enemyPrefab;
     public GameObject[] bossPrefab;
+    float difficulty;
 
     void Awake()
     {
@@ -64,6 +65,8 @@ public class Spawner : MonoBehaviour
             spawnDataList.Add(tempSpawnData);
         }
         _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy, maxSize : enemyPoolMaxSize);
+
+        difficulty = GameManager.instance.StageContext.SelectedDifficulty==1? 1: GameManager.instance.StageContext.SelectedDifficulty==2? 1.5f: 2;
     }
     void Update()
     {
@@ -94,7 +97,7 @@ public class Spawner : MonoBehaviour
 
         if (enemy != null)
         {
-            enemy.Init(MonsterTable[monsterIndex], 1);
+            enemy.Init(MonsterTable[monsterIndex], difficulty);
         }
         enemy.gameObject.SetActive(true);
     }
@@ -140,7 +143,7 @@ public class Spawner : MonoBehaviour
         }
         boss.transform.parent = GameManager.instance.pool.transform;
         boss.transform.position = spawnPoint[randPointIndex].position;
-        boss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], 1);
+        boss.GetComponent<Enemy>().Init(MonsterTable[monsterIndex], difficulty);
     }
     // 일반 몬스터
     Enemy CreateEnemy()

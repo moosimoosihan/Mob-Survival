@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
     private UIManager UIManager => OSManager.GetService<UIManager>();
 
-    private StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
+    public StageContext StageContext => OSManager.GetService<ContextManager>().GetContext<StageContext>();
     private ContextManager ContextManager => OSManager.GetService<ContextManager>();
 
     public Action<int> OnKillMonster;

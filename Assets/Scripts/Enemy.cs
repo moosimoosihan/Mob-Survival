@@ -38,6 +38,7 @@ public class Enemy : CharacterStatus
     private IObjectPool<BuffEffect> poolBuffEffect;
 
     public SkeletonAnimation skeletonAnimation;
+    
     protected virtual void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -173,6 +174,7 @@ public class Enemy : CharacterStatus
     }
     public virtual void Init(MonsterTable data, float powerValue)
     {
+        
         character = data.Name;
         power = powerValue;
         Speed = data.Speed;
