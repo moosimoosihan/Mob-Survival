@@ -65,7 +65,9 @@ public class Spawner : MonoBehaviour
             spawnDataList.Add(tempSpawnData);
         }
         _Pool = new ObjectPool<Enemy>(CreateEnemy, OnGetEnemy, OnReleaseEnemy, OnDestroyEnemy, maxSize : enemyPoolMaxSize);
-
+    }
+    void Start()
+    {
         difficulty = GameManager.instance.StageContext.SelectedDifficulty==1? 1: GameManager.instance.StageContext.SelectedDifficulty==2? 1.5f: 2;
     }
     void Update()
